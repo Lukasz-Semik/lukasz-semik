@@ -5,6 +5,8 @@ import { Normalize } from 'styled-normalize';
 import GlobalStyles from 'src/styles/GlobalStyles';
 
 import PageHead from './components/PageHead';
+import BackgroundUnderwater from './components/BackgroundUnderwater';
+import { ContentWrapper } from './components/styled';
 
 const Root = ({ children }) => (
   <>
@@ -12,7 +14,9 @@ const Root = ({ children }) => (
     <GlobalStyles />
     <PageHead />
 
-    {children}
+    <BackgroundUnderwater />
+
+    <ContentWrapper>{children}</ContentWrapper>
   </>
 );
 
