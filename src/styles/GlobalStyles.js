@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import styles from './index';
+
 const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
@@ -8,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: red;
+    background-color: ${styles.colors.bgUnderwaterLight};
   }
 
   a {

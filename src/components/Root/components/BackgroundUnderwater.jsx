@@ -4,12 +4,13 @@ import styled from 'styled-components';
 
 import { styleOverlay } from 'src/styles/helpers';
 import Background from 'src/assets/bg-u-test.svg';
+import styles from 'src/styles';
 
 const Wrapper = styled.div`
   ${styleOverlay}
-  background: #b2fefa;
-  background: -webkit-linear-gradient(to top, #0ed2f7, #b2fefa);
-  background: linear-gradient(to top, #0ed2f7, #b2fefa);
+  background: ${styles.colors.bgUnderwaterDark};
+  background: -webkit-linear-gradient(to top, ${styles.colors.bgUnderwaterDark}, ${styles.colors.bgUnderwaterLight});
+  background: linear-gradient(to top, ${styles.colors.bgUnderwaterDark}, ${styles.colors.bgUnderwaterLight});
 
   svg {
     width: 100% !important;
