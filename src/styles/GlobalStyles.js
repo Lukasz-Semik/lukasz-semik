@@ -4,17 +4,22 @@ import styles from './index';
 
 const GlobalStyles = createGlobalStyle`
   * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
   }
 
   body {
+    font-family: 'Caveat Brush', cursive;
     background-color: ${styles.colors.bgUnderwaterLight};
   }
 
   a {
     text-decoration: none;
+  }
+
+  button {
+    outline: none;
   }
 `;
 

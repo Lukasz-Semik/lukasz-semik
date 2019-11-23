@@ -1,11 +1,9 @@
 import React from 'react';
-import { FormattedMessage } from 'gatsby-plugin-intl';
 
-import Drop from 'src/components/Drops/Drop';
+import DropsLanding from 'src/components/Drops/DropsLanding/DropsLanding';
 
 export default () => (
   <div>
-    <FormattedMessage id="underwater.title" />
-    <Drop />
+    <DropsLanding />
   </div>
 );
