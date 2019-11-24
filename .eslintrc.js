@@ -17,6 +17,7 @@ module.exports = {
     'implicit-arrow-linebreak': 0,
     'operator-linebreak': 0,
     'no-confusing-arrow': 0,
+    'react/button-has-type': 0,
     'react-hooks/rules-of-hooks': 2,
     'react-hooks/exhaustive-deps': 2,
   },
