@@ -30,9 +30,11 @@ const Wrapper = styled.button`
 const Drop = () => {
   const [isPreparing, setIsPreparing] = useState(false);
   const ref = useRef();
+  /* eslint-disable react-hooks/exhaustive-deps */
   const leftPosition = useMemo(() => random(5, 90), [isPreparing]);
   const delay = useMemo(() => random(0, 10, true), [isPreparing]);
   const dropSize = useMemo(() => random(25, 50), [isPreparing]);
+  /* eslint-enable */
   const maxOpacity = useMemo(() => (dropSize - 25) / 20, [dropSize]);
 
   useEffect(() => {
@@ -46,7 +48,7 @@ const Drop = () => {
       .to(ref.current, { opacity: maxOpacity, scale: 1, duration: 0.3 })
       .to(ref.current, { top: '10%', ease: 'linear', duration: 8 })
       .to(ref.current, { top: 0, opacity: 0.3, ease: 'linear', duration: 1 });
-  }, []);
+  }, [delay, maxOpacity]);
 
   useEffect(() => {
     if (isPreparing) {

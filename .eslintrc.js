@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
   extends: 'airbnb',
+  plugins: ['react-hooks'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -16,6 +17,8 @@ module.exports = {
     'implicit-arrow-linebreak': 0,
     'operator-linebreak': 0,
     'no-confusing-arrow': 0,
+    'react-hooks/rules-of-hooks': 2,
+    'react-hooks/exhaustive-deps': 2,
   },
   env: {
     browser: true,

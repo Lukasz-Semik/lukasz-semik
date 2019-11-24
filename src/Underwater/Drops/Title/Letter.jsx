@@ -41,7 +41,7 @@ const Letter = ({ letter, index }) => {
         getAnimationConfig()
       );
     }
-  }, [isMounted]);
+  }, [isMounted, index]);
 
   return (
     <LetterStyled hasMarginRight={letter.hasMarginRight} ref={ref}>

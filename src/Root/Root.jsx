@@ -2,16 +2,11 @@ import React from 'react';
 
 import Underwater from 'src/Underwater/Underwater';
 
-import BackgroundUnderwater from './components/BackgroundUnderwater';
-import { ContentWrapper } from './components/styled';
-
 const Root = () => (
   <>
-    <BackgroundUnderwater />
-
-    <ContentWrapper>
+    <div>
       <Underwater />
-    </ContentWrapper>
+    </div>
   </>
 );
 

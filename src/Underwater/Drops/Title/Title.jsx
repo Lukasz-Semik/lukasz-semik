@@ -35,7 +35,7 @@ const Title = () => {
       .filter(letter => letter.value.trim());
 
     return preparedLetters;
-  }, []);
+  }, [intl]);
 
   return (
     <TitleStyled>
