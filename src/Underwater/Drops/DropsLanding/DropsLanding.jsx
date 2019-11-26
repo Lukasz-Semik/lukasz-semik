@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { styleOverlay } from 'src/styles/helpers';
+
 import Drop from '../Drop/Drop';
 import Title from '../Title/Title';
 

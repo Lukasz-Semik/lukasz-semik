@@ -10,6 +10,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    overflow: hidden;
+    max-height: 100vh;
     font-family: 'Caveat Brush', cursive;
     background-color: ${styles.colors.bgUnderwaterLight};
   }

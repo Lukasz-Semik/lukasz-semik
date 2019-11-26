@@ -1,9 +1,5 @@
 import React from 'react';
 
-import DropsLanding from 'src/components/Drops/DropsLanding/DropsLanding';
+import Root from 'src/Root/Root';
 
-export default () => (
-  <div>
-    <DropsLanding />
-  </div>
-);
+export default () => <Root />;

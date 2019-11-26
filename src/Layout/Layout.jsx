@@ -5,23 +5,19 @@ import { Normalize } from 'styled-normalize';
 import GlobalStyles from 'src/styles/GlobalStyles';
 
 import PageHead from './components/PageHead';
-import BackgroundUnderwater from './components/BackgroundUnderwater';
-import { ContentWrapper } from './components/styled';
 
-const Root = ({ children }) => (
+const Layout = ({ children }) => (
   <>
     <Normalize />
     <GlobalStyles />
     <PageHead />
 
-    <BackgroundUnderwater />
-
-    <ContentWrapper>{children}</ContentWrapper>
+    {children}
   </>
 );
 
-Root.propTypes = {
+Layout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Root;
+export default Layout;
