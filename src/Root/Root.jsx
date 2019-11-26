@@ -10,9 +10,16 @@ const Wrapper = styled.div`
   max-height: 100vh;
 `;
 
+// TODO: move and finish buttons
 const Button = styled.button`
   position: absolute;
   top: 0;
+  z-index: 1;
+`;
+
+const Button2 = styled.button`
+  position: absolute;
+  bottom: 0;
   z-index: 1;
 `;
 
@@ -72,7 +79,11 @@ const Root = () => {
       </UnderwaterWrapper>
 
       <SurfaceWrapper isVisible={!isUnderwater}>
-        {!isSurfaceHidden && <SurfacePlaceholder>Surface</SurfacePlaceholder>}
+        {!isSurfaceHidden && (
+          <SurfacePlaceholder>
+            <Button2 onClick={changeView}>Move</Button2>
+          </SurfacePlaceholder>
+        )}
       </SurfaceWrapper>
     </Wrapper>
   );
