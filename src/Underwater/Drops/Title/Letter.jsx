@@ -7,9 +7,9 @@ const topPosition = 20;
 
 const LetterStyled = styled.span`
   position: relative;
-  top: ${topPosition}px;
+  top: -30px;
   display: inline-block;
-  opacity: 0.7;
+  opacity: 0;
 
   ${({ hasMarginRight }) => hasMarginRight && 'margin-right: 20px'};
 `;
@@ -20,11 +20,11 @@ const Letter = ({ letter, index }) => {
 
   useEffect(() => {
     if (!isMounted) {
-      gsap.from(ref.current, {
-        opacity: 0,
+      gsap.to(ref.current, {
+        opacity: 0.7,
         delay: 0.2 * index,
         duration: 1,
-        top: '-30px',
+        top: topPosition,
         onComplete: () => setIsMounted(true),
       });
     } else {

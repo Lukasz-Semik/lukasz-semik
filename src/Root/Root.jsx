@@ -1,8 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import styleOverlay from 'src/styles';
 import Underwater from 'src/Underwater/Underwater';
+
+import useView from './useView';
 
 const Wrapper = styled.div`
   ${styleOverlay};
@@ -45,43 +47,30 @@ const SurfacePlaceholder = styled.div`
 `;
 
 const Root = () => {
-  const [isUnderwater, setIsUnderwater] = useState(true);
-  const [isUnderwaterHidden, setIsUnderwaterHidden] = useState(false);
-  const [isSurfaceHidden, setIsSurfaceHidden] = useState(true);
-
-  const changeView = useCallback(() => {
-    if (isUnderwater) {
-      setIsSurfaceHidden(false);
-    } else {
-      setIsUnderwaterHidden(false);
-    }
-
-    setIsUnderwater(!isUnderwater);
-  }, [isUnderwater]);
-
-  const onViewChangeEnd = useCallback(() => {
-    if (!isUnderwater) {
-      setIsUnderwaterHidden(true);
-    } else {
-      setIsSurfaceHidden(true);
-    }
-  }, [isUnderwater]);
+  const {
+    futureView,
+    goUp,
+    goDown,
+    setView,
+    getIsMounted,
+    viewType,
+  } = useView();
 
   return (
     <Wrapper>
       <UnderwaterWrapper
-        isVisible={isUnderwater}
-        onTransitionEnd={onViewChangeEnd}
+        isVisible={futureView === viewType.underwater}
+        onTransitionEnd={setView}
       >
-        <Button onClick={changeView}>Move</Button>
+        <Button onClick={goUp}>Move</Button>
 
-        {!isUnderwaterHidden && <Underwater />}
+        {getIsMounted(viewType.underwater) && <Underwater />}
       </UnderwaterWrapper>
 
-      <SurfaceWrapper isVisible={!isUnderwater}>
-        {!isSurfaceHidden && (
+      <SurfaceWrapper isVisible={futureView === viewType.surface}>
+        {getIsMounted(viewType.surface) && (
           <SurfacePlaceholder>
-            <Button2 onClick={changeView}>Move</Button2>
+            <Button2 onClick={goDown}>Move</Button2>
           </SurfacePlaceholder>
         )}
       </SurfaceWrapper>
