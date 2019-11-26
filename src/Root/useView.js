@@ -32,9 +32,9 @@ const useView = () => {
     currentView,
     goUp,
     goDown,
+    viewType,
     setView: () => setCurrentView(futureView),
     getIsMounted: view => futureView === view || currentView === view,
-    viewType,
   };
 };
 
