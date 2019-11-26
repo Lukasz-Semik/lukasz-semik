@@ -25,16 +25,10 @@ const Button2 = styled.button`
   z-index: 1;
 `;
 
-const UnderwaterWrapper = styled.div`
+const ItemWrapper = styled.div`
   position: absolute;
-  top: ${({ isVisible }) => (isVisible ? 0 : '100%')};
-  left: 0;
-  transition: top 2s ease;
-`;
-
-const SurfaceWrapper = styled.div`
-  position: absolute;
-  top: ${({ isVisible }) => (isVisible ? 0 : '-100%')};
+  top: ${({ isVisible, startingPosition }) =>
+    isVisible ? 0 : startingPosition};
   left: 0;
   transition: top 2s ease;
 `;
@@ -58,22 +52,26 @@ const Root = () => {
 
   return (
     <Wrapper>
-      <UnderwaterWrapper
+      <ItemWrapper
         isVisible={futureView === viewType.underwater}
         onTransitionEnd={setView}
+        startingPosition="100%"
       >
         <Button onClick={goUp}>Move</Button>
 
         {getIsMounted(viewType.underwater) && <Underwater />}
-      </UnderwaterWrapper>
+      </ItemWrapper>
 
-      <SurfaceWrapper isVisible={futureView === viewType.surface}>
+      <ItemWrapper
+        isVisible={futureView === viewType.surface}
+        startingPosition="-100%"
+      >
         {getIsMounted(viewType.surface) && (
           <SurfacePlaceholder>
             <Button2 onClick={goDown}>Move</Button2>
           </SurfacePlaceholder>
         )}
-      </SurfaceWrapper>
+      </ItemWrapper>
     </Wrapper>
   );
 };
