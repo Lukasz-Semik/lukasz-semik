@@ -1,7 +1,13 @@
 const path = require('path');
 
 module.exports = {
-  extends: ['airbnb', 'prettier/react', 'plugin:prettier/recommended'],
+  extends: [
+    'airbnb',
+    'prettier/react',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+  ],
+  parser: '@typescript-eslint/parser',
   plugins: ['react-hooks'],
   parserOptions: {
     ecmaFeatures: {
@@ -21,6 +27,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 2,
     'react-hooks/exhaustive-deps': 2,
     'react/jsx-props-no-spreading': 0,
+    '@typescript-eslint/explicit-function-return-type': 0,
   },
   env: {
     browser: true,

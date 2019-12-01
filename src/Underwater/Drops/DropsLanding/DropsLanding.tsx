@@ -20,7 +20,7 @@ const Button = styled.button`
 
 const DropsLanding = () => {
   const { setGameStateStarter } = useUnderwaterState();
-
+  console.log('dasdas');
   return (
     <Wrapper>
       {times(40, i => (

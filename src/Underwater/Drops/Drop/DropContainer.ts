@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 
-const DropContainer = ({ render }) => {
+export interface RenderProps {
+  resetDrop: () => void;
+}
+
+const DropContainer = ({ render }: ContainerProps<RenderProps>) => {
   const [isPreparing, setIsPreparing] = useState(false);
 
   useEffect(() => {

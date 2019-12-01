@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import styleOverlay from 'src/styles';
 import Underwater from 'src/Underwater/Underwater';
 
-import useView from './useView';
+import useView, { View } from './useView';
 
 const Wrapper = styled.div`
   ${styleOverlay};
@@ -25,7 +25,10 @@ const Button2 = styled.button`
   z-index: 1;
 `;
 
-const ItemWrapper = styled.div`
+const ItemWrapper = styled.div<{
+  isVisible: boolean;
+  startingPosition: string;
+}>`
   position: absolute;
   top: ${({ isVisible, startingPosition }) =>
     isVisible ? 0 : startingPosition};
@@ -41,32 +44,25 @@ const SurfacePlaceholder = styled.div`
 `;
 
 const Root = () => {
-  const {
-    futureView,
-    goUp,
-    goDown,
-    setView,
-    getIsMounted,
-    viewType,
-  } = useView();
+  const { futureView, goUp, goDown, setView, getIsMounted } = useView();
 
   return (
     <Wrapper>
       <ItemWrapper
-        isVisible={futureView === viewType.underwater}
+        isVisible={futureView === View.Underwater}
         onTransitionEnd={setView}
         startingPosition="100%"
       >
         <Button onClick={goUp}>Move</Button>
 
-        {getIsMounted(viewType.underwater) && <Underwater />}
+        {getIsMounted(View.Underwater) && <Underwater />}
       </ItemWrapper>
 
       <ItemWrapper
-        isVisible={futureView === viewType.surface}
+        isVisible={futureView === View.Surface}
         startingPosition="-100%"
       >
-        {getIsMounted(viewType.surface) && (
+        {getIsMounted(View.Surface) && (
           <SurfacePlaceholder>
             <Button2 onClick={goDown}>Move</Button2>
           </SurfacePlaceholder>

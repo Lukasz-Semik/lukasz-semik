@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
+// @ts-ignore TODO: resolve problem with imports of svg
 import BackgroundImage from 'src/assets/bg-underwater.svg';
 import styles from 'src/styles';
 
@@ -22,7 +22,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const Background = ({ children }) => (
+interface Props {
+  children: React.ReactNode | React.ReactNode[];
+}
+
+const Background = ({ children }: Props) => (
   <Wrapper>
     <BackgroundImage />
     {children}
@@ -30,7 +34,3 @@ const Background = ({ children }) => (
 );
 
 export default Background;
-
-Background.propTypes = {
-  children: PropTypes.node.isRequired,
-};
