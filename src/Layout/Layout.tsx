@@ -1,12 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Normalize } from 'styled-normalize';
 
 import GlobalStyles from 'src/styles/GlobalStyles';
 
 import PageHead from './components/PageHead';
 
-const Layout = ({ children }) => (
+interface Props {
+  children: React.ReactNode | React.ReactNode[];
+}
+
+const Layout = ({ children }: Props) => (
   <>
     <Normalize />
     <GlobalStyles />
@@ -15,9 +18,5 @@ const Layout = ({ children }) => (
     {children}
   </>
 );
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Layout;

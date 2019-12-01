@@ -1,15 +1,15 @@
 import { useState, useCallback } from 'react';
 
-const viewType = {
-  underwater: 'underwater',
-  surface: 'surface',
-};
+export enum View {
+  Underwater = 'underwater',
+  Surface = 'surface',
+}
 
-const views = [viewType.underwater, viewType.surface];
+const views = [View.Underwater, View.Surface];
 
 const useView = () => {
-  const [futureView, setFutureView] = useState(viewType.underwater);
-  const [currentView, setCurrentView] = useState(viewType.underwater);
+  const [futureView, setFutureView] = useState<View>(View.Underwater);
+  const [currentView, setCurrentView] = useState<View>(View.Underwater);
 
   const goUp = useCallback(() => {
     const currentIndex = views.indexOf(futureView);
@@ -32,9 +32,8 @@ const useView = () => {
     currentView,
     goUp,
     goDown,
-    viewType,
     setView: () => setCurrentView(futureView),
-    getIsMounted: view => futureView === view || currentView === view,
+    getIsMounted: (view: View) => futureView === view || currentView === view,
   };
 };
 

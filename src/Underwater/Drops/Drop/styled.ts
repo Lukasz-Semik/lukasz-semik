@@ -4,7 +4,10 @@ import { size, rem } from 'polished';
 import { styleCircle } from 'src/styles/helpers';
 import styles from 'src/styles';
 
-export const SwimmingWrapper = styled.div`
+export const SwimmingWrapper = styled.div<{
+  dropSize: number;
+  leftPosition: number;
+}>`
   ${({ dropSize }) => size(rem(dropSize))};
   position: absolute;
   top: 80%;
@@ -12,7 +15,13 @@ export const SwimmingWrapper = styled.div`
   pointer-events: none;
 `;
 
-export const DropButton = styled.button`
+interface DropDownButtonProps {
+  dropSize: number;
+  isVisible?: boolean;
+  hasSparkle?: boolean;
+}
+
+export const DropButton = styled.button<DropDownButtonProps>`
   ${({ dropSize }) => styleCircle(dropSize)};
   visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
   opacity: 0;

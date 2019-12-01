@@ -9,7 +9,7 @@ export const styleOverlay = css`
   height: 100vh;
 `;
 
-export const styleCircle = size => css`
+export const styleCircle = (size: number) => css`
   width: ${rem(size)};
   height: ${rem(size)};
   border-radius: 50%;

@@ -1,11 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import gsap from 'gsap';
 import styled from 'styled-components';
 
 const topPosition = 20;
 
-const LetterStyled = styled.span`
+const LetterStyled = styled.span<{ hasMarginRight?: boolean }>`
   position: relative;
   top: -30px;
   display: inline-block;
@@ -14,11 +13,25 @@ const LetterStyled = styled.span`
   ${({ hasMarginRight }) => hasMarginRight && 'margin-right: 20px'};
 `;
 
-const Letter = ({ letter, index }) => {
+interface Letter {
+  value: string;
+  hasMarginRight: boolean;
+}
+
+interface Props {
+  letter: Letter;
+  index: number;
+}
+
+const Letter = ({ letter, index }: Props) => {
   const [isMounted, setIsMounted] = useState(false);
-  const ref = useRef();
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
+
     if (!isMounted) {
       gsap.to(ref.current, {
         opacity: 0.7,
@@ -30,7 +43,7 @@ const Letter = ({ letter, index }) => {
     } else {
       const tl = gsap.timeline({ repeat: -1 });
 
-      const getAnimationConfig = hasNegative => ({
+      const getAnimationConfig = (hasNegative?: boolean) => ({
         top: `${hasNegative ? '-' : ''}${topPosition}px`,
         duration: 1.8,
         ease: 'linear',
@@ -48,14 +61,6 @@ const Letter = ({ letter, index }) => {
       {letter.value}
     </LetterStyled>
   );
-};
-
-Letter.propTypes = {
-  index: PropTypes.number.isRequired,
-  letter: PropTypes.shape({
-    hasMarginRight: PropTypes.bool.isRequired,
-    value: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 export default Letter;

@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import gsap from 'gsap';
 import styled from 'styled-components';
 
@@ -13,11 +12,19 @@ const SmallDrop = styled(DropButton)`
   transform: translate(-50%, -50%) scale(1);
 `;
 
-const Satellite = ({ index }) => {
+interface Props {
+  index: number;
+}
+
+const Satellite = ({ index }: Props) => {
   const [isVisible, setIsVisible] = useState(true);
-  const ref = useRef();
+  const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
+
     const tl = gsap.timeline();
 
     const getPosition = () => {
@@ -50,10 +57,6 @@ const Satellite = ({ index }) => {
       isVisible
     />
   ) : null;
-};
-
-Satellite.propTypes = {
-  index: PropTypes.number.isRequired,
 };
 
 export default Satellite;

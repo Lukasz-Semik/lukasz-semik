@@ -1,11 +1,11 @@
 import { SET_GAME_STATE } from './actionTypes';
-import { gameState } from './constants';
+import { GameState } from './types';
 
 export const initialState = {
-  gameState: gameState.intro,
+  gameState: GameState.Intro,
 };
 
-export const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case SET_GAME_STATE:
       return {

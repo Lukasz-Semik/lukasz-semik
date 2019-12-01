@@ -4,7 +4,7 @@ import { times, random } from 'lodash';
 
 import Satellite from './Satellite';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ rotation: number }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -16,11 +16,13 @@ const Wrapper = styled.div`
 const Satellites = () => {
   const rotation = useMemo(() => random(0, 180), []);
 
-  return times(4, i => (
+  return (
     <Wrapper rotation={rotation}>
-      <Satellite key={`satellite-${i}`} index={i} />
+      {times(4, i => (
+        <Satellite key={`satellite-${i}`} index={i} />
+      ))}
     </Wrapper>
-  ));
+  );
 };
 
 export default Satellites;

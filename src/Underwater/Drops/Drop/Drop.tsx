@@ -1,18 +1,17 @@
 import React, { useEffect, useRef, useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
 import gsap from 'gsap';
 import { random } from 'lodash';
 
 import { SwimmingWrapper, DropButton } from './styled';
 import Satellites from './Satellites/Satellites';
 
-import DropContainer from './DropContainer';
+import DropContainer, { RenderProps } from './DropContainer';
 
-const Drop = ({ resetDrop }) => {
+const Drop = ({ resetDrop }: RenderProps) => {
   const [isClicked, setIsClicked] = useState(false);
 
-  const swimmingRef = useRef();
-  const dropRef = useRef();
+  const swimmingRef = useRef<HTMLDivElement>(null);
+  const dropRef = useRef<HTMLButtonElement>(null);
 
   const leftPosition = useMemo(() => random(5, 90), []);
   const delay = useMemo(() => random(0, 10, true), []);
@@ -20,6 +19,10 @@ const Drop = ({ resetDrop }) => {
   const maxOpacity = useMemo(() => (dropSize - 25) / 20, [dropSize]);
 
   useEffect(() => {
+    if (!swimmingRef.current || !dropRef.current) {
+      return;
+    }
+
     const tl = gsap.timeline();
 
     tl.to(swimmingRef.current, { top: '80%' })
@@ -33,7 +36,9 @@ const Drop = ({ resetDrop }) => {
         duration: 1,
         onComplete: resetDrop,
       });
-  }, [delay, dropSize, maxOpacity, resetDrop]);
+    // ONLY on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <SwimmingWrapper
@@ -41,22 +46,20 @@ const Drop = ({ resetDrop }) => {
       leftPosition={leftPosition}
       ref={swimmingRef}
     >
-      {isClicked && <Satellites />}
+      <>
+        {isClicked && <Satellites />}
 
-      <DropButton
-        dropSize={dropSize}
-        ref={dropRef}
-        onClick={() => setIsClicked(true)}
-        isVisible={!isClicked}
-        hasSparkle
-      />
+        <DropButton
+          dropSize={dropSize}
+          ref={dropRef}
+          onClick={() => setIsClicked(true)}
+          isVisible={!isClicked}
+          hasSparkle
+        />
+      </>
     </SwimmingWrapper>
   );
 };
 
-Drop.propTypes = {
-  resetDrop: PropTypes.func.isRequired,
-};
-
-const render = renderProps => <Drop {...renderProps} />;
-export default props => <DropContainer render={render} {...props} />;
+const render = (renderProps: RenderProps) => <Drop {...renderProps} />;
+export default () => <DropContainer render={render} />;

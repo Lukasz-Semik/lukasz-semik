@@ -20,6 +20,7 @@ const TitleStyled = styled.h1`
 
 const Title = () => {
   const intl = useIntl();
+
   const text = useMemo(() => {
     const letters = intl.formatMessage({ id: 'underwater.title' }).split('');
 
