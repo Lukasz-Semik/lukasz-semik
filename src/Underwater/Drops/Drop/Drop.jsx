@@ -1,62 +1,62 @@
 import React, { useEffect, useRef, useMemo, useState } from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import gsap from 'gsap';
 import { random } from 'lodash';
 
-import { styleCircle } from 'src/styles/helpers';
-import styles from 'src/styles';
+import { SwimmingWrapper, DropButton } from './styled';
+import Satellites from './Satellites/Satellites';
 
-const Wrapper = styled.button`
-  ${({ dropSize }) => styleCircle(dropSize)};
-  position: absolute;
-  top: 80%;
-  left: ${({ leftPosition }) => leftPosition}%;
-  opacity: 0;
-  background-color: ${styles.colors.dropDark};
-  border: 5px solid ${styles.colors.dropLight};
-  transform: scale(0);
+import DropContainer from './DropContainer';
 
-  &::after {
-    ${styleCircle(10)};
-    content: '';
-    position: absolute;
-    left: 30%;
-    bottom: 15%;
-    display: block;
-    background-color: ${styles.colors.dropLight};
-  }
-`;
+const Drop = ({ resetDrop }) => {
+  const [isClicked, setIsClicked] = useState(false);
 
-const Drop = () => {
-  const [isPreparing, setIsPreparing] = useState(false);
-  const ref = useRef();
-  /* eslint-disable react-hooks/exhaustive-deps */
-  const leftPosition = useMemo(() => random(5, 90), [isPreparing]);
-  const delay = useMemo(() => random(0, 10, true), [isPreparing]);
-  const dropSize = useMemo(() => random(25, 50), [isPreparing]);
-  /* eslint-enable */
+  const swimmingRef = useRef();
+  const dropRef = useRef();
+
+  const leftPosition = useMemo(() => random(5, 90), []);
+  const delay = useMemo(() => random(0, 10, true), []);
+  const dropSize = useMemo(() => random(25, 50), []);
   const maxOpacity = useMemo(() => (dropSize - 25) / 20, [dropSize]);
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      repeat: -1,
-      onComplete: () => setIsPreparing(true),
-    });
+    const tl = gsap.timeline();
 
-    tl.to(ref.current, { top: '80% ' })
-      .to(ref.current, { opacity: 0, scale: 1.5, duration: 0.3, delay })
-      .to(ref.current, { opacity: maxOpacity, scale: 1, duration: 0.3 })
-      .to(ref.current, { top: '10%', ease: 'linear', duration: 8 })
-      .to(ref.current, { top: 0, opacity: 0.3, ease: 'linear', duration: 1 });
-  }, [delay, maxOpacity]);
+    tl.to(swimmingRef.current, { top: '80%' })
+      .to(dropRef.current, { opacity: 0, scale: 1.5, duration: 0.3, delay })
+      .to(dropRef.current, { opacity: maxOpacity, scale: 1, duration: 0.3 })
+      .to(swimmingRef.current, { top: '10%', ease: 'linear', duration: 8 })
+      .to(swimmingRef.current, {
+        top: 0,
+        opacity: 0.3,
+        ease: 'linear',
+        duration: 1,
+        onComplete: resetDrop,
+      });
+  }, [delay, dropSize, maxOpacity, resetDrop]);
 
-  useEffect(() => {
-    if (isPreparing) {
-      setIsPreparing(false);
-    }
-  }, [isPreparing]);
+  return (
+    <SwimmingWrapper
+      dropSize={dropSize}
+      leftPosition={leftPosition}
+      ref={swimmingRef}
+    >
+      {isClicked && <Satellites />}
 
-  return <Wrapper dropSize={dropSize} leftPosition={leftPosition} ref={ref} />;
+      <DropButton
+        dropSize={dropSize}
+        ref={dropRef}
+        onClick={() => setIsClicked(true)}
+        isVisible={!isClicked}
+        hasSparkle
+      />
+    </SwimmingWrapper>
+  );
 };
 
-export default Drop;
+Drop.propTypes = {
+  resetDrop: PropTypes.func.isRequired,
+};
+
+const render = renderProps => <Drop {...renderProps} />;
+export default props => <DropContainer render={render} {...props} />;

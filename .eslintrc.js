@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  extends: 'airbnb',
+  extends: ['airbnb', 'prettier/react', 'plugin:prettier/recommended'],
   plugins: ['react-hooks'],
   parserOptions: {
     ecmaFeatures: {
@@ -20,6 +20,7 @@ module.exports = {
     'react/button-has-type': 0,
     'react-hooks/rules-of-hooks': 2,
     'react-hooks/exhaustive-deps': 2,
+    'react/jsx-props-no-spreading': 0,
   },
   env: {
     browser: true,

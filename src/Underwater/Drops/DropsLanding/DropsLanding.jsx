@@ -1,24 +1,37 @@
 import React from 'react';
 import styled from 'styled-components';
+import { times } from 'lodash';
 
 import { styleOverlay } from 'src/styles/helpers';
+import useUnderwaterState from 'src/Underwater/underwaterState/useUnderwaterState';
 
-import Drop from '../Drop/Drop';
 import Title from '../Title/Title';
+import Drop from '../Drop/Drop';
 
 const Wrapper = styled.div`
   ${styleOverlay}
 `;
 
-const DropsLanding = () => (
-  <Wrapper>
-    {new Array(40).fill(null).map((item, i) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <Drop key={`${item}-${i}`} />
-    ))}
+// TODO: temporary
+const Button = styled.button`
+  position: absolute;
+  top: 50px;
+`;
 
-    <Title />
-  </Wrapper>
-);
+const DropsLanding = () => {
+  const { setGameStateStarter } = useUnderwaterState();
+
+  return (
+    <Wrapper>
+      {times(40, i => (
+        <Drop key={`drop-${i}`} />
+      ))}
+
+      <Title />
+
+      <Button onClick={() => setGameStateStarter()}>Test state</Button>
+    </Wrapper>
+  );
+};
 
 export default DropsLanding;
