@@ -1,11 +1,11 @@
 import { SET_GAME_STATE } from './actionTypes';
+import { gameState } from './constants';
 
 export const initialState = {
-  gameState: 'intro',
+  gameState: gameState.intro,
 };
 
 export const reducer = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case SET_GAME_STATE:
       return {

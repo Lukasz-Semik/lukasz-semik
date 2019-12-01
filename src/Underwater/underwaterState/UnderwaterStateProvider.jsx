@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
+import PropTypes from 'prop-types';
 
 import { reducer, initialState } from './reducer';
 
@@ -11,3 +12,7 @@ export const UnderwaterStateProvider = ({ children }) => (
 );
 
 export const useStateValue = () => useContext(StateContext);
+
+UnderwaterStateProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

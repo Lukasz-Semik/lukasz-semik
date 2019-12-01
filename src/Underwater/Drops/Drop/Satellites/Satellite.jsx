@@ -1,4 +1,5 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import gsap from 'gsap';
 import styled from 'styled-components';
 
@@ -13,31 +14,46 @@ const SmallDrop = styled(DropButton)`
 `;
 
 const Satellite = ({ index }) => {
+  const [isVisible, setIsVisible] = useState(true);
   const ref = useRef();
 
   useEffect(() => {
     const tl = gsap.timeline();
+
     const getPosition = () => {
       switch (index) {
         case 1:
-          return { top: '200%' };
+          return { top: '300%' };
         case 2:
-          return { left: '-100%' };
+          return { left: '-200%' };
         case 3:
-          return { left: '200%' };
+          return { left: '300%' };
         default:
-          return { top: '-100%' };
+          return { top: '-200%' };
       }
     };
 
     tl.to(ref.current, {
       ...getPosition(),
       duration: 2,
+      opacity: 0.3,
       ease: 'linear',
+      onComplete: () => setIsVisible(false),
     });
   }, [index]);
 
-  return <SmallDrop ref={ref} dropSize={20} isVisible />;
+  return isVisible ? (
+    <SmallDrop
+      onClick={() => setIsVisible(false)}
+      ref={ref}
+      dropSize={20}
+      isVisible
+    />
+  ) : null;
+};
+
+Satellite.propTypes = {
+  index: PropTypes.number.isRequired,
 };
 
 export default Satellite;

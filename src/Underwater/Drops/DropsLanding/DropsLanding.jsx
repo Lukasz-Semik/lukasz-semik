@@ -6,11 +6,16 @@ import { styleOverlay } from 'src/styles/helpers';
 import useUnderwaterState from 'src/Underwater/underwaterState/useUnderwaterState';
 
 import Title from '../Title/Title';
-// import Drop from '../Drop/Drop';
-import Drop from '../Drop/Drop2';
+import Drop from '../Drop/Drop';
 
 const Wrapper = styled.div`
   ${styleOverlay}
+`;
+
+// TODO: temporary
+const Button = styled.button`
+  position: absolute;
+  top: 50px;
 `;
 
 const DropsLanding = () => {
@@ -24,7 +29,7 @@ const DropsLanding = () => {
 
       <Title />
 
-      <button onClick={() => setGameStateStarter()}>dasdas</button>
+      <Button onClick={() => setGameStateStarter()}>Test state</Button>
     </Wrapper>
   );
 };
