@@ -36,6 +36,8 @@ const Drop = ({ resetDrop }: RenderProps) => {
         duration: 1,
         onComplete: resetDrop,
       });
+    // ONLY on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

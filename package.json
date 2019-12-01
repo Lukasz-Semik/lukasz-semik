@@ -12,8 +12,8 @@
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "dev": "npm run develop",
-    "lint:js": "eslint --ext .jsx,.js src",
-    "lint:styles": "stylelint './src/**/*.(js|jsx)'",
+    "lint:js": "eslint --ext .tsx,.ts,.jsx,.js src",
+    "lint:styles": "stylelint './src/**/*.(ts|tsx|js|jsx)'",
     "lint": "yarn lint:js && yarn lint:styles",
     "type-check": "yarn tsc",
     "prepush": "yarn lint && yarn type-check"

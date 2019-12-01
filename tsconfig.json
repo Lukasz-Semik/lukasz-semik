@@ -11,7 +11,7 @@
     "sourceMap": true,
     "target": "es5",
     "jsx": "react",
-    "baseUrl": "",
+    "baseUrl": ".",
     "noEmit": true,
     "pretty": true,
     "skipLibCheck": true,
