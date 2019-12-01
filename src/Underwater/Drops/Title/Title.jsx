@@ -14,6 +14,7 @@ const TitleStyled = styled.h1`
   font-size: ${rem(150)};
   letter-spacing: 1px;
   text-align: center;
+  pointer-events: none;
   transform: translate(-50%, -50%);
 `;
 

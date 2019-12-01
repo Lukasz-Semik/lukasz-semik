@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  extends: 'airbnb',
+  extends: ['airbnb', 'prettier/react'],
   plugins: ['react-hooks'],
   parserOptions: {
     ecmaFeatures: {

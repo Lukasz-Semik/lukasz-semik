@@ -57,7 +57,7 @@ const Root = () => {
         onTransitionEnd={setView}
         startingPosition="100%"
       >
-        <Button onClick={goUp}>Move</Button>
+        {/* <Button onClick={goUp}>Move</Button> */}
 
         {getIsMounted(viewType.underwater) && <Underwater />}
       </ItemWrapper>
