@@ -2,21 +2,29 @@ import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import styled from 'styled-components';
 
+import { useUnderwaterState, GameState } from 'src/Underwater/underwaterState';
+
 import { DropButton } from '../styled';
 
-const SmallDrop = styled(DropButton)`
+interface DropProps {
+  maxOpacity?: number;
+}
+
+const SmallDrop = styled(DropButton)<DropProps>`
   position: absolute;
   top: 50%;
   left: 50%;
-  opacity: 1;
+  opacity: ${({ maxOpacity }) => maxOpacity || 1};
+  border-width: 3px;
   transform: translate(-50%, -50%) scale(1);
 `;
 
-interface Props {
+interface Props extends DropProps {
   index: number;
 }
 
-const Satellite = ({ index }: Props) => {
+const Satellite = ({ index, maxOpacity }: Props) => {
+  const { gameState } = useUnderwaterState();
   const [isVisible, setIsVisible] = useState(true);
   const ref = useRef<HTMLButtonElement>(null);
 
@@ -47,6 +55,10 @@ const Satellite = ({ index }: Props) => {
       ease: 'linear',
       onComplete: () => setIsVisible(false),
     });
+
+    return () => {
+      tl.kill();
+    };
   }, [index]);
 
   return isVisible ? (
@@ -54,6 +66,7 @@ const Satellite = ({ index }: Props) => {
       onClick={() => setIsVisible(false)}
       ref={ref}
       dropSize={20}
+      maxOpacity={gameState === GameState.Intro ? maxOpacity : undefined}
       isVisible
     />
   ) : null;

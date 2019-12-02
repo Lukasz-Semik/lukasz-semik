@@ -54,6 +54,10 @@ const Letter = ({ letter, index }: Props) => {
         getAnimationConfig()
       );
     }
+
+    const refToClear = ref.current;
+
+    return () => gsap.killTweensOf(refToClear || '');
   }, [isMounted, index]);
 
   return (

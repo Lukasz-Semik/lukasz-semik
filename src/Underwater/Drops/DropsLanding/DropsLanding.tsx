@@ -1,25 +1,25 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { times } from 'lodash';
 
 import { styleOverlay } from 'src/styles/helpers';
-import useUnderwaterState from 'src/Underwater/underwaterState/useUnderwaterState';
 
 import Title from '../Title/Title';
 import Drop from '../Drop/Drop';
+import Starter from '../../Starter/Starter';
+import { GameState, useUnderwaterState } from '../../underwaterState';
 
 const Wrapper = styled.div`
   ${styleOverlay}
 `;
 
-// TODO: temporary
-const Button = styled.button`
-  position: absolute;
-  top: 50px;
-`;
-
 const DropsLanding = () => {
-  const { setGameStateStarter } = useUnderwaterState();
+  const {
+    setGameStateIntro,
+    getIsGameStateIntro,
+    getIsGameStateStarter,
+    getIsGameStateLoader,
+  } = useUnderwaterState();
 
   return (
     <Wrapper>
@@ -27,9 +27,9 @@ const DropsLanding = () => {
         <Drop key={`drop-${i}`} />
       ))}
 
-      <Title />
+      {getIsGameStateIntro() && <Title />}
 
-      <Button onClick={() => setGameStateStarter()}>Test state</Button>
+      {(getIsGameStateStarter() || getIsGameStateLoader()) && <Starter />}
     </Wrapper>
   );
 };
