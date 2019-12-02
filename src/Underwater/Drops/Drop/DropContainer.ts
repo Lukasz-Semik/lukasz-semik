@@ -1,6 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 
-import { useUnderwaterState, GameState } from 'src/Underwater/underwaterState';
+import {
+  useUnderwaterState,
+  UnderwaterState,
+} from 'src/Underwater/underwaterState';
 
 export interface RenderProps {
   resetDrop: () => void;
@@ -9,17 +12,17 @@ export interface RenderProps {
 }
 
 const DropContainer = ({ render }: ContainerProps<RenderProps>) => {
-  const { getIsGameStateLoader } = useUnderwaterState();
-  const isGameLoading = getIsGameStateLoader();
+  const { getIsUnderwaterLoader } = useUnderwaterState();
+  const isGameLoading = getIsUnderwaterLoader();
 
-  const { setGameStateStarter, gameState } = useUnderwaterState();
+  const { setUnderwaterStarter, underwater } = useUnderwaterState();
   const [isPreparing, setIsPreparing] = useState(false);
 
   const handleDropClick = useCallback(() => {
-    if (gameState === GameState.Intro) {
-      setGameStateStarter();
+    if (underwater === UnderwaterState.Intro) {
+      setUnderwaterStarter();
     }
-  }, [gameState, setGameStateStarter]);
+  }, [underwater, setUnderwaterStarter]);
 
   useEffect(() => {
     if (isPreparing && !isGameLoading) {

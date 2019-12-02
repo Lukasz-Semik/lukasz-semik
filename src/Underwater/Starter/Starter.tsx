@@ -42,11 +42,12 @@ const CenterButton = styled.div`
 
 const Starter = () => {
   const {
-    setGameStateIntro,
-    setGameStateLoader,
-    getIsGameStateLoader,
+    setUnderwaterIntro,
+    setUnderwaterLoader,
+    getIsUnderwaterLoader,
   } = useUnderwaterState();
   const [isMounted, setIsMounted] = useState(false);
+  const isGameLoading = getIsUnderwaterLoader();
 
   useEffect(() => {
     setIsMounted(true);
@@ -56,11 +57,11 @@ const Starter = () => {
     <Wrapper isMounted={isMounted}>
       <CardWrapper>
         <PaperCardElement isMounted={isMounted}>
-          {getIsGameStateLoader() ? (
+          {isGameLoading ? (
             <span>Loader</span>
           ) : (
             <ButtonsWrapper>
-              <ButtonElement onClick={setGameStateLoader}>
+              <ButtonElement onClick={setUnderwaterLoader}>
                 <FormattedMessage id="underwater.startGame" />
               </ButtonElement>
 
@@ -69,7 +70,7 @@ const Starter = () => {
               </Text>
 
               <CenterButton>
-                <ButtonElement onClick={setGameStateIntro}>
+                <ButtonElement onClick={setUnderwaterIntro}>
                   <FormattedMessage id="shared.back" />
                 </ButtonElement>
               </CenterButton>

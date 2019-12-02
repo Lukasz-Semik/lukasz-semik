@@ -7,7 +7,7 @@ import { styleOverlay } from 'src/styles/helpers';
 import Title from '../Title/Title';
 import Drop from '../Drop/Drop';
 import Starter from '../../Starter/Starter';
-import { GameState, useUnderwaterState } from '../../underwaterState';
+import { UnderwaterState, useUnderwaterState } from '../../underwaterState';
 
 const Wrapper = styled.div`
   ${styleOverlay}
@@ -15,10 +15,10 @@ const Wrapper = styled.div`
 
 const DropsLanding = () => {
   const {
-    setGameStateIntro,
-    getIsGameStateIntro,
-    getIsGameStateStarter,
-    getIsGameStateLoader,
+    setUnderwaterIntro,
+    getIsUnderwaterIntro,
+    getIsUnderwaterStarter,
+    getIsUnderwaterLoader,
   } = useUnderwaterState();
 
   return (
@@ -27,9 +27,9 @@ const DropsLanding = () => {
         <Drop key={`drop-${i}`} />
       ))}
 
-      {getIsGameStateIntro() && <Title />}
+      {getIsUnderwaterIntro() && <Title />}
 
-      {(getIsGameStateStarter() || getIsGameStateLoader()) && <Starter />}
+      {(getIsUnderwaterStarter() || getIsUnderwaterLoader()) && <Starter />}
     </Wrapper>
   );
 };

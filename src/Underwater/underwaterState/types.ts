@@ -1,4 +1,4 @@
-export enum GameState {
+export enum UnderwaterState {
   Intro = 'intro',
   Starter = 'starter',
   Loader = 'loader',
@@ -7,5 +7,5 @@ export enum GameState {
 }
 
 export interface State {
-  gameState: GameState;
+  underwater: UnderwaterState;
 }

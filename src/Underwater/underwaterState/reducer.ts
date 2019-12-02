@@ -1,16 +1,16 @@
-import { SET_GAME_STATE } from './actionTypes';
-import { GameState } from './types';
+import { SET_UNDERWATER_STATE } from './actionTypes';
+import { UnderwaterState } from './types';
 
 export const initialState = {
-  gameState: GameState.Intro,
+  underwater: UnderwaterState.Intro,
 };
 
 export const reducer = (state = initialState, action: Action) => {
   switch (action.type) {
-    case SET_GAME_STATE:
+    case SET_UNDERWATER_STATE:
       return {
         ...state,
-        gameState: action.payload.newState,
+        underwater: action.payload.newState,
       };
     default:
       return state;
