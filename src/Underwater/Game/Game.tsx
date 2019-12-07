@@ -3,7 +3,7 @@ import { times } from 'lodash';
 
 import Drop from '../Drops/Drop/Drop';
 
-const DropsLanding = () => {
+const Game = () => {
   return (
     <>
       {times(40, i => (
@@ -13,4 +13,4 @@ const DropsLanding = () => {
   );
 };
 
-export default DropsLanding;
+export default Game;
