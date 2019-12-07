@@ -1,2 +1,3 @@
 export { default as useUnderwaterState } from './useUnderwaterState';
-export { GameState } from './types';
+export { UnderwaterState } from './types';
+export { UnderwaterStateProvider } from './UnderwaterStateProvider';

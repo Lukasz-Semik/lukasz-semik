@@ -1,5 +1,10 @@
 {
   "underwater": {
-    "title": "Hi! I'm Lukasz"
+    "title": "Hi! I'm Lukasz",
+    "startGame": "Start the game"
+  },
+  "shared": {
+    "or": "or",
+    "back": "Back"
   }
 }

@@ -1,19 +1,26 @@
 import { useStateValue } from './UnderwaterStateProvider';
-import { GameState } from './types';
-import { SET_GAME_STATE } from './actionTypes';
+import { UnderwaterState } from './types';
+import { SET_UNDERWATER_STATE } from './actionTypes';
 
 const useUnderwaterState = () => {
   // @ts-ignore TODO: resolve this place
   const [state, setState] = useStateValue();
 
-  const setGameState = (newState: GameState) => {
-    setState({ type: SET_GAME_STATE, payload: { newState } });
+  const setUnderwaterState = (newState: UnderwaterState) => {
+    setState({ type: SET_UNDERWATER_STATE, payload: { newState } });
   };
 
   return {
-    state,
-    setGameState,
-    setGameStateStarter: () => setGameState(GameState.Starter),
+    setUnderwaterState,
+    underwater: state.underwater,
+    setUnderwaterIntro: () => setUnderwaterState(UnderwaterState.Intro),
+    setUnderwaterStarter: () => setUnderwaterState(UnderwaterState.Starter),
+    setUnderwaterLoader: () => setUnderwaterState(UnderwaterState.Loader),
+    setUnderwaterGame: () => setUnderwaterState(UnderwaterState.Game),
+    getIsUnderwaterIntro: () => state.underwater === UnderwaterState.Intro,
+    getIsUnderwaterStarter: () => state.underwater === UnderwaterState.Starter,
+    getIsUnderwaterLoader: () => state.underwater === UnderwaterState.Loader,
+    getIsUnderwaterGame: () => state.underwater === UnderwaterState.Game,
   };
 };
 

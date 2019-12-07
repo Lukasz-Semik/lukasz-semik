@@ -1,3 +1,3 @@
 declare module 'gatsby-plugin-intl' {
-  export { useIntl } from 'react-intl';
+  export { useIntl, FormattedMessage } from 'react-intl';
 }

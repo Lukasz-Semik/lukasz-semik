@@ -13,13 +13,17 @@ const Wrapper = styled.div<{ rotation: number }>`
   ${({ rotation }) => `transform: rotateZ(${rotation}deg)`};
 `;
 
-const Satellites = () => {
+interface Props {
+  maxOpacity?: number;
+}
+
+const Satellites = ({ maxOpacity }: Props) => {
   const rotation = useMemo(() => random(0, 180), []);
 
   return (
     <Wrapper rotation={rotation}>
       {times(4, i => (
-        <Satellite key={`satellite-${i}`} index={i} />
+        <Satellite key={`satellite-${i}`} index={i} maxOpacity={maxOpacity} />
       ))}
     </Wrapper>
   );
