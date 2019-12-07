@@ -2,11 +2,6 @@ import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import styled from 'styled-components';
 
-import {
-  useUnderwaterState,
-  UnderwaterState,
-} from 'src/Underwater/underwaterState';
-
 import { DropButton } from '../styled';
 
 interface DropProps {
@@ -27,7 +22,6 @@ interface Props extends DropProps {
 }
 
 const Satellite = ({ index, maxOpacity }: Props) => {
-  const { underwater } = useUnderwaterState();
   const [isVisible, setIsVisible] = useState(true);
   const ref = useRef<HTMLButtonElement>(null);
 
@@ -53,8 +47,8 @@ const Satellite = ({ index, maxOpacity }: Props) => {
 
     tl.to(ref.current, {
       ...getPosition(),
-      duration: 2,
-      opacity: 0.3,
+      duration: 2.3,
+      opacity: 0,
       ease: 'linear',
       onComplete: () => setIsVisible(false),
     });
@@ -69,7 +63,7 @@ const Satellite = ({ index, maxOpacity }: Props) => {
       onClick={() => setIsVisible(false)}
       ref={ref}
       dropSize={20}
-      maxOpacity={underwater === UnderwaterState.Intro ? maxOpacity : undefined}
+      maxOpacity={maxOpacity}
       isVisible
     />
   ) : null;

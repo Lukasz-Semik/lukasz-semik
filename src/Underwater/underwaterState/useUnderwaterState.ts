@@ -16,9 +16,11 @@ const useUnderwaterState = () => {
     setUnderwaterIntro: () => setUnderwaterState(UnderwaterState.Intro),
     setUnderwaterStarter: () => setUnderwaterState(UnderwaterState.Starter),
     setUnderwaterLoader: () => setUnderwaterState(UnderwaterState.Loader),
+    setUnderwaterGame: () => setUnderwaterState(UnderwaterState.Game),
     getIsUnderwaterIntro: () => state.underwater === UnderwaterState.Intro,
     getIsUnderwaterStarter: () => state.underwater === UnderwaterState.Starter,
     getIsUnderwaterLoader: () => state.underwater === UnderwaterState.Loader,
+    getIsUnderwaterGame: () => state.underwater === UnderwaterState.Game,
   };
 };
 

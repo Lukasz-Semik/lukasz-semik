@@ -40,7 +40,11 @@ const CenterButton = styled.div`
   justify-content: center;
 `;
 
-const Starter = () => {
+interface Props {
+  setIsPreparing: () => void;
+}
+
+const Starter = ({ setIsPreparing }: Props) => {
   const {
     setUnderwaterIntro,
     setUnderwaterLoader,
@@ -52,6 +56,12 @@ const Starter = () => {
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (isGameLoading) {
+      setTimeout(setIsPreparing, 2500);
+    }
+  }, [isGameLoading, setIsPreparing]);
 
   return (
     <Wrapper isMounted={isMounted}>

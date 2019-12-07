@@ -1,17 +1,46 @@
 import React from 'react';
+import styled from 'styled-components';
+
+import { styleOverlay } from 'src/styles/helpers';
 
 import Background from './Background/Background';
-import DropsLanding from './Drops/DropsLanding/DropsLanding';
-import { UnderwaterStateProvider } from './underwaterState/UnderwaterStateProvider';
+import Landing from './Landing/Landing';
+import Game from './Game/Game';
+import { useUnderwaterState } from './underwaterState';
+import UnderwaterContainer from './UnderwaterContainer';
+
+const Wrapper = styled.div`
+  ${styleOverlay}
+`;
 
 const Underwater = () => {
+  const {
+    getIsUnderwaterIntro,
+    getIsUnderwaterStarter,
+    getIsUnderwaterLoader,
+    getIsUnderwaterGame,
+    setUnderwaterGame,
+  } = useUnderwaterState();
+
+  const isGameRunning = getIsUnderwaterGame();
+
   return (
-    <UnderwaterStateProvider>
-      <Background>
-        <DropsLanding />
-      </Background>
-    </UnderwaterStateProvider>
+    <Background>
+      <Wrapper>
+        {isGameRunning ? (
+          <Game />
+        ) : (
+          <Landing
+            setUnderwaterGame={setUnderwaterGame}
+            isIntro={getIsUnderwaterIntro()}
+            isStarter={getIsUnderwaterStarter()}
+            isLoader={getIsUnderwaterLoader()}
+          />
+        )}
+      </Wrapper>
+    </Background>
   );
 };
 
-export default Underwater;
+const render = () => <Underwater />;
+export default () => <UnderwaterContainer render={render} />;

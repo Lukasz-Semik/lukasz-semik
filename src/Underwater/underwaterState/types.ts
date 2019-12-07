@@ -3,7 +3,6 @@ export enum UnderwaterState {
   Starter = 'starter',
   Loader = 'loader',
   Game = 'game',
-  Pause = 'pause',
 }
 
 export interface State {

@@ -9,7 +9,12 @@ import DropContainer, { RenderProps } from './DropContainer';
 
 const BASE_ROAD_SPEED = 880;
 
-const Drop = ({ resetDrop, handleDropClick, isGameLoading }: RenderProps) => {
+const Drop = ({
+  resetDrop,
+  handleDropClick,
+  isGameLoading,
+  isGameRunning,
+}: RenderProps) => {
   const [isClicked, setIsClicked] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -19,7 +24,10 @@ const Drop = ({ resetDrop, handleDropClick, isGameLoading }: RenderProps) => {
   const leftPosition = useMemo(() => random(5, 90), []);
   const delay = useMemo(() => random(0, 10, true), []);
   const dropSize = useMemo(() => random(25, 50), []);
-  const maxOpacity = useMemo(() => (dropSize - 25) / 20, [dropSize]);
+  const maxOpacity = useMemo(() => (isGameRunning ? 1 : (dropSize - 25) / 20), [
+    isGameRunning,
+    dropSize,
+  ]);
   const mountingTl = useMemo(() => gsap.timeline(), []);
 
   const areSatellitesVisible = isGameLoading ? isMounted : isClicked;
@@ -74,6 +82,7 @@ const Drop = ({ resetDrop, handleDropClick, isGameLoading }: RenderProps) => {
     return () => {
       tl.kill();
     };
+
     // ONLY after mounting animation
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMounted]);
