@@ -1,13 +1,16 @@
 import React from 'react';
 import { times } from 'lodash';
 
-import Drop from '../Drops/Drop/Drop';
+import GameDrop from '../Drops/GameDrop/GameDrop';
+import MainPanel from './MainPanel/MainPanel';
 
 const Game = () => {
   return (
     <>
+      <MainPanel />
+
       {times(40, i => (
-        <Drop key={`drop-${i}`} />
+        <GameDrop key={`drop-${i}`} />
       ))}
     </>
   );
