@@ -6,6 +6,8 @@ import { rem } from 'polished';
 import Board from 'src/assets/board.svg';
 import { SlidingInElement } from 'src/components/Elements';
 
+import PauseButton from './PauseButton/PauseButton';
+
 const Wrapper = styled(SlidingInElement)`
   top: ${rem(10)};
 `;
@@ -20,10 +22,22 @@ const Panel = styled.div`
   }
 `;
 
+const InnerWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
 const MainPanel = () => (
   <Wrapper position="left">
     <Panel>
       <Board />
+
+      <InnerWrapper>
+        <PauseButton />
+      </InnerWrapper>
     </Panel>
   </Wrapper>
 );

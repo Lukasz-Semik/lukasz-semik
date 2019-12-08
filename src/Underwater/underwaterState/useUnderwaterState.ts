@@ -1,6 +1,6 @@
 import { useStateValue } from './UnderwaterStateProvider';
 import { UnderwaterState } from './types';
-import { SET_UNDERWATER_STATE } from './actionTypes';
+import { SET_UNDERWATER_STATE, SET_GAME_PAUSE } from './actionTypes';
 
 const useUnderwaterState = () => {
   // @ts-ignore TODO: resolve this place
@@ -8,6 +8,10 @@ const useUnderwaterState = () => {
 
   const setUnderwaterState = (newState: UnderwaterState) => {
     setState({ type: SET_UNDERWATER_STATE, payload: { newState } });
+  };
+
+  const setIsGamePaused = (isGamePaused?: boolean) => {
+    setState({ type: SET_GAME_PAUSE, payload: { isGamePaused } });
   };
 
   return {
@@ -21,6 +25,8 @@ const useUnderwaterState = () => {
     getIsUnderwaterStarter: () => state.underwater === UnderwaterState.Starter,
     getIsUnderwaterLoader: () => state.underwater === UnderwaterState.Loader,
     getIsUnderwaterGame: () => state.underwater === UnderwaterState.Game,
+    getIsGamePaused: () => state.isGamePaused,
+    setIsGamePaused: (isGamePaused: boolean) => setIsGamePaused(isGamePaused),
   };
 };
 

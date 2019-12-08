@@ -4,6 +4,7 @@ import { rgba, rem } from 'polished';
 
 import { styleOverlay } from 'src/styles/helpers';
 import { PaperCardElement } from 'src/components/Elements';
+import Modal from './Modal';
 
 const Wrapper = styled.div<{ isMounted: boolean }>`
   ${styleOverlay};
@@ -32,11 +33,13 @@ const PaperModal = ({ children }: Props) => {
   }, []);
 
   return (
-    <Wrapper isMounted={isMounted}>
-      <CardWrapper>
-        <PaperCardElement isMounted={isMounted}>{children}</PaperCardElement>
-      </CardWrapper>
-    </Wrapper>
+    <Modal>
+      <Wrapper isMounted={isMounted}>
+        <CardWrapper>
+          <PaperCardElement isMounted={isMounted}>{children}</PaperCardElement>
+        </CardWrapper>
+      </Wrapper>
+    </Modal>
   );
 };
 

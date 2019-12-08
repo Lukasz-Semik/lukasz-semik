@@ -4,6 +4,8 @@ import { size, rem } from 'polished';
 import { random, floor } from 'lodash';
 import gsap from 'gsap';
 
+import useGamePause from '../useGamePause';
+
 const BASE_SPEED_ROAD = 880;
 
 export const Wrapper = styled.div<{
@@ -32,10 +34,11 @@ const SwimmingWrapper = ({
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const leftPosition = useMemo(() => random(5, 90), []);
+  const tl = useMemo(() => gsap.timeline(), []);
+
+  useGamePause(tl);
 
   useEffect(() => {
-    const tl = gsap.timeline();
-
     if (isMounted && ref.current) {
       const windowHeight = window.innerHeight;
 
