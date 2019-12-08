@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { times } from 'lodash';
 
 import Title from '../Title/Title';
-import Drop from '../Drops/Drop/Drop';
+import IntroDrop from '../Drops/IntroDrop/IntroDrop';
 import Starter from '../Starter/Starter';
 
 interface Props {
@@ -21,17 +21,23 @@ const DropsLanding = ({
   const [isPreparing, setIsPreparing] = useState(false);
 
   useEffect(() => {
+    let timeoutRef: number;
+
     if (isPreparing) {
-      setTimeout(() => {
+      timeoutRef = setTimeout(() => {
         setIsPreparing(false);
         setUnderwaterGame();
       }, 1000);
     }
+
+    return () => {
+      clearTimeout(timeoutRef);
+    };
   }, [isPreparing, setIsPreparing, setUnderwaterGame]);
 
   return (
     <>
-      {!isPreparing && times(40, i => <Drop key={`drop-${i}`} />)}
+      {!isPreparing && times(40, i => <IntroDrop key={`drop-${i}`} />)}
 
       {isIntro && <Title />}
 
