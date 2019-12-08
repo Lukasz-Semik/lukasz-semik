@@ -1,27 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { rgba, rem } from 'polished';
+import { rem } from 'polished';
 import { FormattedMessage } from 'gatsby-plugin-intl';
 
-import { styleOverlay } from 'src/styles/helpers';
-import { PaperCardElement, ButtonElement } from 'src/components/Elements';
+import { ButtonElement } from 'src/components/Elements';
+import { PaperModal } from 'src/components/Modals';
 
 import { useUnderwaterState } from '../underwaterState';
-
-const Wrapper = styled.div<{ isMounted: boolean }>`
-  ${styleOverlay};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${({ isMounted }) =>
-    isMounted ? rgba(0, 0, 0, 0.3) : rgba(0, 0, 0, 0)};
-  transition: background-color 1s ease;
-`;
-
-const CardWrapper = styled.div`
-  width: ${rem(300)};
-  height: ${rem(400)};
-`;
 
 const ButtonsWrapper = styled.div`
   display: flex;
@@ -50,12 +35,7 @@ const Starter = ({ setIsPreparing }: Props) => {
     setUnderwaterLoader,
     getIsUnderwaterLoader,
   } = useUnderwaterState();
-  const [isMounted, setIsMounted] = useState(false);
   const isGameLoading = getIsUnderwaterLoader();
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
     if (isGameLoading) {
@@ -64,31 +44,27 @@ const Starter = ({ setIsPreparing }: Props) => {
   }, [isGameLoading, setIsPreparing]);
 
   return (
-    <Wrapper isMounted={isMounted}>
-      <CardWrapper>
-        <PaperCardElement isMounted={isMounted}>
-          {isGameLoading ? (
-            <span>Loader</span>
-          ) : (
-            <ButtonsWrapper>
-              <ButtonElement onClick={setUnderwaterLoader}>
-                <FormattedMessage id="underwater.startGame" />
-              </ButtonElement>
+    <PaperModal>
+      {isGameLoading ? (
+        <span>Loader</span>
+      ) : (
+        <ButtonsWrapper>
+          <ButtonElement onClick={setUnderwaterLoader}>
+            <FormattedMessage id="underwater.startGame" />
+          </ButtonElement>
 
-              <Text>
-                <FormattedMessage id="shared.or" />
-              </Text>
+          <Text>
+            <FormattedMessage id="shared.or" />
+          </Text>
 
-              <CenterButton>
-                <ButtonElement onClick={setUnderwaterIntro}>
-                  <FormattedMessage id="shared.back" />
-                </ButtonElement>
-              </CenterButton>
-            </ButtonsWrapper>
-          )}
-        </PaperCardElement>
-      </CardWrapper>
-    </Wrapper>
+          <CenterButton>
+            <ButtonElement onClick={setUnderwaterIntro}>
+              <FormattedMessage id="shared.back" />
+            </ButtonElement>
+          </CenterButton>
+        </ButtonsWrapper>
+      )}
+    </PaperModal>
   );
 };
 
