@@ -58,7 +58,7 @@ const Satellite = ({ index, maxOpacity }: Props) => {
     return () => {
       tl.kill();
     };
-  }, [index]);
+  }, [index, tl]);
 
   return isVisible ? (
     <SmallDrop
