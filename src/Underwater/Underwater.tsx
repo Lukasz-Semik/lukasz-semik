@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import { styleOverlay } from 'src/styles/helpers';
@@ -20,9 +20,22 @@ const Underwater = () => {
     getIsUnderwaterLoader,
     getIsUnderwaterGame,
     setUnderwaterGame,
+    setIsUndewaterWindowFocused,
   } = useUnderwaterState();
 
   const isGameRunning = getIsUnderwaterGame();
+
+  useEffect(() => {
+    if (window) {
+      window.onblur = () => {
+        setIsUndewaterWindowFocused(false);
+      };
+
+      window.onfocus = () => {
+        setIsUndewaterWindowFocused(true);
+      };
+    }
+  }, [setIsUndewaterWindowFocused]);
 
   return (
     <Background>

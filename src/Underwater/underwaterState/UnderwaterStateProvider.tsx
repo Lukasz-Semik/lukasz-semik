@@ -9,6 +9,7 @@ interface Props {
 }
 
 export const UnderwaterStateProvider = ({ children }: Props) => (
+  // @ts-ignore due to never in useReducer
   <StateContext.Provider value={useReducer(reducer, initialState)}>
     {children}
   </StateContext.Provider>

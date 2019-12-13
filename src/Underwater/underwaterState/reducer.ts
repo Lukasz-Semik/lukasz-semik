@@ -1,12 +1,26 @@
-import { SET_UNDERWATER_STATE, SET_GAME_PAUSE } from './actionTypes';
-import { UnderwaterState } from './types';
+import {
+  SET_UNDERWATER_STATE,
+  SET_GAME_PAUSE,
+  SET_UNDERWATER_WINDOW_FOCUS,
+} from './actionTypes';
+import { UnderwaterState, State } from './types';
 
-export const initialState = {
-  underwater: UnderwaterState.Intro,
+export const initialState: State = {
+  underwater: UnderwaterState.Game,
   isGamePaused: false,
+  isUnderwaterWindowFocused: true,
 };
 
-export const reducer = (state = initialState, action: Action) => {
+interface ActionPayload {
+  newState?: State;
+  isGamePaused?: boolean;
+  isFocused?: boolean;
+}
+
+export const reducer = (
+  state = initialState,
+  action: Action<ActionPayload>
+) => {
   switch (action.type) {
     case SET_UNDERWATER_STATE:
       return {
@@ -17,6 +31,11 @@ export const reducer = (state = initialState, action: Action) => {
       return {
         ...state,
         isGamePaused: action.payload.isGamePaused,
+      };
+    case SET_UNDERWATER_WINDOW_FOCUS:
+      return {
+        ...state,
+        isUnderwaterWindowFocused: action.payload.isFocused,
       };
     default:
       return state;
