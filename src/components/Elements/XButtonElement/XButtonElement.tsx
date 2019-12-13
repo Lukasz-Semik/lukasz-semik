@@ -12,8 +12,6 @@ interface ButtonProps {
 
 const Button = styled.button<ButtonProps>`
   position: absolute;
-  /* top: 0;
-  right: -${rem(25)}; */
   font-size: ${({ fontSize }) => rem(fontSize || 35)};
 
   ${({ top }) => top && `top: ${top}`};

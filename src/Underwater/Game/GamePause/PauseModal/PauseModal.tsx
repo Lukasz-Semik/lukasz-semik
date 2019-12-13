@@ -29,28 +29,26 @@ interface Props {
   setUnderwaterIntro: () => void;
 }
 
-const PuaseModal = ({ resumeGame, resetGame, setUnderwaterIntro }: Props) => {
-  return (
-    <PaperModal onClose={resumeGame}>
-      <Wrapper>
-        <Title>
-          <FormattedMessage id="underwater.game.pause" />
-        </Title>
+const PuaseModal = ({ resumeGame, resetGame, setUnderwaterIntro }: Props) => (
+  <PaperModal onClose={resumeGame}>
+    <Wrapper>
+      <Title>
+        <FormattedMessage id="underwater.game.pause" />
+      </Title>
 
-        <Button onClick={resumeGame}>
-          <FormattedMessage id="underwater.game.resume" />
-        </Button>
+      <Button onClick={resumeGame}>
+        <FormattedMessage id="underwater.game.resume" />
+      </Button>
 
-        <Button onClick={resetGame}>
-          <FormattedMessage id="underwater.game.restart" />
-        </Button>
+      <Button onClick={resetGame}>
+        <FormattedMessage id="underwater.game.restart" />
+      </Button>
 
-        <Button onClick={setUnderwaterIntro}>
-          <FormattedMessage id="underwater.game.backToIntro" />
-        </Button>
-      </Wrapper>
-    </PaperModal>
-  );
-};
+      <Button onClick={setUnderwaterIntro}>
+        <FormattedMessage id="underwater.game.backToIntro" />
+      </Button>
+    </Wrapper>
+  </PaperModal>
+);
 
 export default PuaseModal;
