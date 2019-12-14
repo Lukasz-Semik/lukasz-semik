@@ -7,4 +7,6 @@ export enum UnderwaterState {
 
 export interface State {
   underwater: UnderwaterState;
+  isGamePaused: boolean;
+  isUnderwaterWindowFocused: boolean;
 }

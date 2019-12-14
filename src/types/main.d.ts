@@ -2,8 +2,11 @@ interface ContainerProps<T> {
   render: (props: T) => React.ReactElement;
 }
 
-interface Action {
+interface WithRenderChildrenProps<T> {
+  children: (props: T) => React.ReactNode | React.RreactNode[];
+}
+
+interface Action<T> {
   type: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  payload: any;
+  payload: T;
 }

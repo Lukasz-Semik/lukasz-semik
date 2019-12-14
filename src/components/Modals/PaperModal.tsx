@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { rgba, rem } from 'polished';
 
 import { styleOverlay } from 'src/styles/helpers';
-import { PaperCardElement } from 'src/components/Elements';
+import { PaperCardElement, XButtonElement } from 'src/components/Elements';
+import Modal from './Modal';
 
 const Wrapper = styled.div<{ isMounted: boolean }>`
   ${styleOverlay};
@@ -21,10 +22,11 @@ const CardWrapper = styled.div`
 `;
 
 interface Props {
+  onClose: () => void;
   children: React.ReactNode | React.ReactNode[];
 }
 
-const PaperModal = ({ children }: Props) => {
+const PaperModal = ({ children, onClose }: Props) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -32,11 +34,17 @@ const PaperModal = ({ children }: Props) => {
   }, []);
 
   return (
-    <Wrapper isMounted={isMounted}>
-      <CardWrapper>
-        <PaperCardElement isMounted={isMounted}>{children}</PaperCardElement>
-      </CardWrapper>
-    </Wrapper>
+    <Modal>
+      <Wrapper isMounted={isMounted}>
+        <CardWrapper>
+          <PaperCardElement isMounted={isMounted}>
+            <XButtonElement top="0" right="0" onClick={onClose} />
+
+            {children}
+          </PaperCardElement>
+        </CardWrapper>
+      </Wrapper>
+    </Modal>
   );
 };
 

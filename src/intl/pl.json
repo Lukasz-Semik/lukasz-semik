@@ -1,7 +1,13 @@
 {
   "underwater": {
     "title": "Hi! I'm Lukasz",
-    "startGame": "Start the game"
+    "startGame": "Start the game",
+    "game": {
+      "pause": "Pause",
+      "restart": "Restart",
+      "backToIntro": "Back to intro",
+      "resume": "Resume"
+    }
   },
   "shared": {
     "or": "or",

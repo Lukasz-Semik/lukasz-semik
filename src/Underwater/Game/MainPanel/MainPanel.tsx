@@ -4,7 +4,9 @@ import { rem } from 'polished';
 
 // @ts-ignore TODO: resolve problem with imports of svg
 import Board from 'src/assets/board.svg';
-import { SlidingInElement } from 'src/components/Elements';
+import { SlidingInElement, XButtonElement } from 'src/components/Elements';
+
+import GamePause from '../GamePause/GamePause';
 
 const Wrapper = styled(SlidingInElement)`
   top: ${rem(10)};
@@ -20,10 +22,26 @@ const Panel = styled.div`
   }
 `;
 
+const InnerWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
 const MainPanel = () => (
   <Wrapper position="left">
     <Panel>
       <Board />
+
+      <InnerWrapper>
+        <GamePause>
+          {({ pauseGame }) => (
+            <XButtonElement onClick={pauseGame} top="0" right={`-${rem(25)}`} />
+          )}
+        </GamePause>
+      </InnerWrapper>
     </Panel>
   </Wrapper>
 );

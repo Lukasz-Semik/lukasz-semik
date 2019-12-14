@@ -1,8 +1,9 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
 import gsap from 'gsap';
 import styled from 'styled-components';
 
 import { DropButton } from '../styled';
+import useGamePause from '../useGamePause';
 
 interface DropProps {
   maxOpacity?: number;
@@ -24,13 +25,14 @@ interface Props extends DropProps {
 const Satellite = ({ index, maxOpacity }: Props) => {
   const [isVisible, setIsVisible] = useState(true);
   const ref = useRef<HTMLButtonElement>(null);
+  const tl = useMemo(() => gsap.timeline(), []);
+
+  useGamePause(tl);
 
   useEffect(() => {
     if (!ref.current) {
       return;
     }
-
-    const tl = gsap.timeline();
 
     const getPosition = () => {
       switch (index) {
@@ -56,7 +58,7 @@ const Satellite = ({ index, maxOpacity }: Props) => {
     return () => {
       tl.kill();
     };
-  }, [index]);
+  }, [index, tl]);
 
   return isVisible ? (
     <SmallDrop

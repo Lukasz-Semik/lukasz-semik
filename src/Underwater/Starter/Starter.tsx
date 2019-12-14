@@ -44,7 +44,7 @@ const Starter = ({ setIsPreparing }: Props) => {
   }, [isGameLoading, setIsPreparing]);
 
   return (
-    <PaperModal>
+    <PaperModal onClose={setUnderwaterIntro}>
       {isGameLoading ? (
         <span>Loader</span>
       ) : (

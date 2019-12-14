@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { random } from 'lodash';
 
 import { DropButton } from '../styled';
+import useGamePause from '../useGamePause';
 
 interface Props {
   onClick: () => void;
@@ -25,6 +26,8 @@ const DropMain = ({
 
   const delay = useMemo(() => random(0, 10, true), []);
   const tl = useMemo(() => gsap.timeline(), []);
+
+  useGamePause(tl);
 
   useEffect(() => {
     if (!dropRef.current) {
