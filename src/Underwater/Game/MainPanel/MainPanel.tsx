@@ -6,7 +6,8 @@ import { rem } from 'polished';
 import Board from 'src/assets/board.svg';
 import { SlidingInElement, XButtonElement } from 'src/components/Elements';
 
-import GamePause from '../GamePause/GamePause';
+import PauseModal from '../Pause/PauseModal';
+import useGamePause from '../Pause/useGamePause';
 
 const Wrapper = styled(SlidingInElement)`
   top: ${rem(10)};
@@ -30,20 +31,35 @@ const InnerWrapper = styled.div`
   height: 100%;
 `;
 
-const MainPanel = () => (
-  <Wrapper position="left">
-    <Panel>
-      <Board />
+interface Props {
+  resetDrops: () => void;
+}
 
-      <InnerWrapper>
-        <GamePause>
-          {({ pauseGame }) => (
-            <XButtonElement onClick={pauseGame} top="0" right={`-${rem(25)}`} />
+const MainPanel = ({ resetDrops }: Props) => {
+  const { pauseGame, resumeGame, backToIntro, isModalOpen } = useGamePause();
+
+  return (
+    <Wrapper position="left">
+      <Panel>
+        <Board />
+
+        <InnerWrapper>
+          <XButtonElement onClick={pauseGame} top="0" right={rem(-25)} />
+
+          {isModalOpen && (
+            <PauseModal
+              resumeGame={resumeGame}
+              backToIntro={backToIntro}
+              resetGame={() => {
+                resetDrops();
+                resumeGame();
+              }}
+            />
           )}
-        </GamePause>
-      </InnerWrapper>
-    </Panel>
-  </Wrapper>
-);
+        </InnerWrapper>
+      </Panel>
+    </Wrapper>
+  );
+};
 
 export default MainPanel;

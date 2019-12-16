@@ -26,10 +26,10 @@ const Title = styled.h2`
 interface Props {
   resetGame: () => void;
   resumeGame: () => void;
-  setUnderwaterIntro: () => void;
+  backToIntro: () => void;
 }
 
-const PuaseModal = ({ resumeGame, resetGame, setUnderwaterIntro }: Props) => (
+const PuaseModal = ({ resumeGame, resetGame, backToIntro }: Props) => (
   <PaperModal onClose={resumeGame}>
     <Wrapper>
       <Title>
@@ -44,7 +44,7 @@ const PuaseModal = ({ resumeGame, resetGame, setUnderwaterIntro }: Props) => (
         <FormattedMessage id="underwater.game.restart" />
       </Button>
 
-      <Button onClick={setUnderwaterIntro}>
+      <Button onClick={backToIntro}>
         <FormattedMessage id="underwater.game.backToIntro" />
       </Button>
     </Wrapper>

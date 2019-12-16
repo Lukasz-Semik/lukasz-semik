@@ -22,11 +22,6 @@ const useUnderwaterState = () => {
     setState({ type: SET_UNDERWATER_WINDOW_FOCUS, payload: { isFocused } });
   };
 
-  const resetGame = () => {
-    setUnderwaterState(UnderwaterState.Loader);
-    setIsGamePaused(false);
-  };
-
   return {
     setUnderwaterState,
     underwater: state.underwater,
@@ -40,22 +35,17 @@ const useUnderwaterState = () => {
     setUnderwaterStarter: () => {
       setUnderwaterState(UnderwaterState.Starter);
     },
-    setUnderwaterLoader: () => {
-      setUnderwaterState(UnderwaterState.Loader);
-    },
     setUnderwaterGame: () => {
       setUnderwaterState(UnderwaterState.Game);
     },
     getIsUnderwaterIntro: () => state.underwater === UnderwaterState.Intro,
     getIsUnderwaterStarter: () => state.underwater === UnderwaterState.Starter,
-    getIsUnderwaterLoader: () => state.underwater === UnderwaterState.Loader,
     getIsUnderwaterGame: () => state.underwater === UnderwaterState.Game,
     getIsGamePaused: () => state.isGamePaused,
     setIsGamePaused: (isPaused: boolean) => setIsGamePaused(isPaused),
     setIsUndewaterWindowFocused: (isFocused: boolean) =>
       setIsUndewaterWindowFocused(isFocused),
     getIsUnderwaterWindowFocused: () => state.isUnderwaterWindowFocused,
-    resetGame,
   };
 };
 

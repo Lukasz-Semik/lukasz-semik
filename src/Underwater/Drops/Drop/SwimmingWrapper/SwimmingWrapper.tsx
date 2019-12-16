@@ -4,7 +4,7 @@ import { size, rem } from 'polished';
 import { random, floor } from 'lodash';
 import gsap from 'gsap';
 
-import useGamePause from '../useGamePause';
+import useAnimationKill from '../useAnimationKill';
 
 const BASE_SPEED_ROAD = 880;
 
@@ -36,7 +36,7 @@ const SwimmingWrapper = ({
   const leftPosition = useMemo(() => random(5, 90), []);
   const tl = useMemo(() => gsap.timeline(), []);
 
-  useGamePause(tl);
+  useAnimationKill(tl);
 
   useEffect(() => {
     if (isMounted && ref.current) {
