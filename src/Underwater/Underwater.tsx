@@ -17,9 +17,7 @@ const Underwater = () => {
   const {
     getIsUnderwaterIntro,
     getIsUnderwaterStarter,
-    getIsUnderwaterLoader,
     getIsUnderwaterGame,
-    setUnderwaterGame,
     setIsUndewaterWindowFocused,
   } = useUnderwaterState();
 
@@ -44,10 +42,8 @@ const Underwater = () => {
           <Game />
         ) : (
           <Landing
-            setUnderwaterGame={setUnderwaterGame}
             isIntro={getIsUnderwaterIntro()}
             isStarter={getIsUnderwaterStarter()}
-            isLoader={getIsUnderwaterLoader()}
           />
         )}
       </Wrapper>

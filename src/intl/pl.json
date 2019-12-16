@@ -11,6 +11,7 @@
   },
   "shared": {
     "or": "or",
-    "back": "Back"
+    "back": "Back",
+    "loading": "Loading"
   }
 }

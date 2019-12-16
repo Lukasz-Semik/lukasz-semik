@@ -3,23 +3,16 @@ import gsap from 'gsap';
 import { random } from 'lodash';
 
 import { DropButton } from '../styled';
-import useGamePause from '../useGamePause';
+import useAnimationKill from '../useAnimationKill';
 
 interface Props {
   onClick: () => void;
   onShowEnd: () => void;
   dropSize: number;
   maxOpacity?: number;
-  isForcedToHide?: boolean;
 }
 
-const DropMain = ({
-  onClick,
-  onShowEnd,
-  dropSize,
-  maxOpacity,
-  isForcedToHide,
-}: Props) => {
+const DropMain = ({ onClick, onShowEnd, dropSize, maxOpacity }: Props) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const dropRef = useRef<HTMLButtonElement>(null);
@@ -27,7 +20,7 @@ const DropMain = ({
   const delay = useMemo(() => random(0, 10, true), []);
   const tl = useMemo(() => gsap.timeline(), []);
 
-  useGamePause(tl);
+  useAnimationKill(tl);
 
   useEffect(() => {
     if (!dropRef.current) {
@@ -52,12 +45,6 @@ const DropMain = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (isForcedToHide) {
-      tl.kill();
-    }
-  }, [isForcedToHide, tl]);
-
   return (
     <DropButton
       dropSize={dropSize}
@@ -66,7 +53,7 @@ const DropMain = ({
         setIsClicked(true);
         onClick();
       }}
-      isVisible={!isClicked && !isForcedToHide}
+      isVisible={!isClicked}
       hasSparkle
     />
   );

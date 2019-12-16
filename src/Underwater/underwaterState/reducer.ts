@@ -6,7 +6,7 @@ import {
 import { UnderwaterState, State } from './types';
 
 export const initialState: State = {
-  underwater: UnderwaterState.Game,
+  underwater: UnderwaterState.Intro,
   isGamePaused: false,
   isUnderwaterWindowFocused: true,
 };

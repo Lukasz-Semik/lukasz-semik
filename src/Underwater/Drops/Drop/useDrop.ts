@@ -1,17 +1,18 @@
 import { useState, useEffect, useMemo } from 'react';
 import { random } from 'lodash';
 
-const useDrop = (isPreparingBlocked?: boolean) => {
+const useDrop = () => {
   const [isPreparing, setIsPreparing] = useState(false);
 
   const dropSize = useMemo(() => random(25, 50), []);
   const maxOpacity = useMemo(() => (dropSize - 25) / 20, [dropSize]);
 
   useEffect(() => {
-    if (isPreparing && !isPreparingBlocked) {
+    if (isPreparing) {
       setIsPreparing(false);
     }
-  }, [isPreparing, isPreparingBlocked]);
+  }, [isPreparing]);
+
   return {
     isPreparingDrop: isPreparing,
     prepareDrop: () => setIsPreparing(true),

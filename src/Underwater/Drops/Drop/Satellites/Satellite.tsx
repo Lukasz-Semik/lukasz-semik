@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import styled from 'styled-components';
 
 import { DropButton } from '../styled';
-import useGamePause from '../useGamePause';
+import useAnimationKill from '../useAnimationKill';
 
 interface DropProps {
   maxOpacity?: number;
@@ -27,7 +27,7 @@ const Satellite = ({ index, maxOpacity }: Props) => {
   const ref = useRef<HTMLButtonElement>(null);
   const tl = useMemo(() => gsap.timeline(), []);
 
-  useGamePause(tl);
+  useAnimationKill(tl);
 
   useEffect(() => {
     if (!ref.current) {

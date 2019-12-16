@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 
 import Satellites from './Satellites/Satellites';
 import SwimmingWrapper from './SwimmingWrapper/SwimmingWrapper';
@@ -9,23 +9,11 @@ interface Props {
   onDropClick: () => void;
   dropSize: number;
   maxOpacity: number;
-  isForcedToHide?: boolean;
 }
 
-const Drop = ({
-  resetDrop,
-  onDropClick,
-  isForcedToHide,
-  dropSize,
-  maxOpacity,
-}: Props) => {
+const Drop = ({ resetDrop, onDropClick, dropSize, maxOpacity }: Props) => {
   const [isMounted, setIsMounted] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-
-  const areSatellitesVisible = useMemo(
-    () => (isForcedToHide ? isMounted : isClicked),
-    [isForcedToHide, isMounted, isClicked]
-  );
 
   return (
     <SwimmingWrapper
@@ -34,9 +22,7 @@ const Drop = ({
       onSwimEnd={resetDrop}
     >
       <>
-        {areSatellitesVisible && isMounted && (
-          <Satellites maxOpacity={maxOpacity} />
-        )}
+        {isClicked && isMounted && <Satellites maxOpacity={maxOpacity} />}
 
         <DropMain
           onClick={() => {
@@ -46,7 +32,6 @@ const Drop = ({
           onShowEnd={() => setIsMounted(true)}
           dropSize={dropSize}
           maxOpacity={maxOpacity}
-          isForcedToHide={isForcedToHide}
         />
       </>
     </SwimmingWrapper>

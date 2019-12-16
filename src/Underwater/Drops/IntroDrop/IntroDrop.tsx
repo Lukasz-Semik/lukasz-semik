@@ -5,12 +5,9 @@ import useDrop from '../Drop/useDrop';
 import Drop from '../Drop/Drop';
 
 const IntroDrop = () => {
-  const { getIsUnderwaterLoader, setUnderwaterStarter } = useUnderwaterState();
-  const isGameLoading = getIsUnderwaterLoader();
+  const { setUnderwaterStarter } = useUnderwaterState();
 
-  const { isPreparingDrop, prepareDrop, dropSize, maxOpacity } = useDrop(
-    isGameLoading
-  );
+  const { isPreparingDrop, prepareDrop, dropSize, maxOpacity } = useDrop();
 
   return !isPreparingDrop ? (
     <Drop
@@ -18,7 +15,6 @@ const IntroDrop = () => {
       onDropClick={() => {
         setUnderwaterStarter();
       }}
-      isForcedToHide={isGameLoading}
       dropSize={dropSize}
       maxOpacity={maxOpacity}
     />
