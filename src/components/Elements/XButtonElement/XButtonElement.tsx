@@ -10,7 +10,9 @@ interface ButtonProps {
   fontSize?: number;
 }
 
-const Button = styled.button<ButtonProps>`
+const Button = styled.button.attrs({ 'data-test': 'close-button' })<
+  ButtonProps
+>`
   position: absolute;
   font-size: ${({ fontSize }) => rem(fontSize || 35)};
 
