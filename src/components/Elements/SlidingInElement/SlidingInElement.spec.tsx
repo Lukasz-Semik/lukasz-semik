@@ -1,14 +1,14 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import PaperCardElement from './PaperCardElement';
+import SlidingInElement from './SlidingInElement';
 
-describe('<PaperCardElement />', () => {
+describe('<SlidingInElement />', () => {
   it('should render children', () => {
     const { getByTestId } = render(
-      <PaperCardElement isMounted>
+      <SlidingInElement position="left">
         <div data-test="content">Content</div>
-      </PaperCardElement>
+      </SlidingInElement>
     );
 
     expect(getByTestId('content')).toHaveTextContent('Content');

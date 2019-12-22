@@ -9,7 +9,9 @@ interface DropProps {
   maxOpacity?: number;
 }
 
-const SmallDrop = styled(DropButton)<DropProps>`
+const SmallDrop = styled(DropButton).attrs({ 'data-test': 'satellite' })<
+  DropProps
+>`
   position: absolute;
   top: 50%;
   left: 50%;

@@ -22,7 +22,7 @@ const Drop = ({ resetDrop, onDropClick, dropSize, maxOpacity }: Props) => {
       onSwimEnd={resetDrop}
     >
       <>
-        {isClicked && isMounted && <Satellites maxOpacity={maxOpacity} />}
+        {isClicked && <Satellites maxOpacity={maxOpacity} />}
 
         <DropMain
           onClick={() => {
