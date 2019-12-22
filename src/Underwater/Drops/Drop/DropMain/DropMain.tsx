@@ -54,6 +54,7 @@ const DropMain = ({ onClick, onShowEnd, dropSize, maxOpacity }: Props) => {
         onClick();
       }}
       isVisible={!isClicked}
+      disabled={isClicked}
       hasSparkle
     />
   );

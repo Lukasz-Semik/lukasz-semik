@@ -29,7 +29,7 @@ const Wrapper = styled.div<CircleProps>`
   position: relative;
 `;
 
-const Circle = styled.div<CircleProps>`
+const Circle = styled.div.attrs({ 'data-test': 'loader-circle' })<CircleProps>`
   ${({ circleSize }) => size(rem(circleSize))};
   position: absolute;
   top: 0;
@@ -58,18 +58,23 @@ const Text = styled.p`
 
 interface Props {
   size?: number;
+  hasText?: boolean;
+  isVisible?: boolean;
 }
 
-const LoaderElement = ({ size: circleSize = 50 }: Props) => (
-  <Wrapper circleSize={circleSize}>
-    <Circle circleSize={circleSize} />
-    <Circle circleSize={circleSize} />
-    <Circle circleSize={circleSize} />
+const LoaderElement = ({ size: circleSize = 50, hasText, isVisible }: Props) =>
+  isVisible ? (
+    <Wrapper circleSize={circleSize}>
+      <Circle circleSize={circleSize} />
+      <Circle circleSize={circleSize} />
+      <Circle circleSize={circleSize} />
 
-    <Text>
-      <FormattedMessage id="shared.loading" />
-    </Text>
-  </Wrapper>
-);
+      {hasText && (
+        <Text>
+          <FormattedMessage id="shared.loading" />
+        </Text>
+      )}
+    </Wrapper>
+  ) : null;
 
 export default LoaderElement;

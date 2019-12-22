@@ -21,7 +21,9 @@ interface DropDownButtonProps {
   hasSparkle?: boolean;
 }
 
-export const DropButton = styled.button<DropDownButtonProps>`
+export const DropButton = styled.button.attrs({ 'data-test': 'drop-button' })<
+  DropDownButtonProps
+>`
   ${({ dropSize }) => styleCircle(dropSize)};
   visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
   opacity: 0;

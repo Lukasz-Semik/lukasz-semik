@@ -88,7 +88,6 @@ module.exports = {
     browser: true,
     jest: true,
   },
-
   overrides: [
     {
       files: ['**/*.tsx'],
