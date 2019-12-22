@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import XButtonElement from './XButtonElement';
 
@@ -11,7 +12,7 @@ describe('<XButtonElement />', () => {
   it('should invoke passed function when clicked', () => {
     const button = getByTestId('close-button');
 
-    fireEvent.click(button);
+    userEvent.click(button);
     expect(onClickSpy).toHaveBeenCalled();
   });
 });
