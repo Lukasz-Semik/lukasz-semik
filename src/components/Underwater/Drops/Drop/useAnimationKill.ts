@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useUnderwaterState } from 'src/Underwater/underwaterState';
+import { useUnderwaterState } from 'src/components/Underwater/underwaterState';
 
 const useAnimationKill = (tl: gsap.core.Timeline) => {
   const { getIsGamePaused, getIsUnderwaterGame } = useUnderwaterState();
