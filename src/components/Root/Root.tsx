@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import styleOverlay from 'src/styles';
-import Underwater from 'src/Underwater/Underwater';
+import Underwater from 'src/components/Underwater/Underwater';
 
 import useView, { View } from './useView';
 

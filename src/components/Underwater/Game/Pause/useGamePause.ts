@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 
-import { useUnderwaterState } from 'src/Underwater/underwaterState';
+import { useUnderwaterState } from 'src/components/Underwater/underwaterState';
 
 const useGamePause = () => {
   const pauesGameRef = useRef<() => void>();

@@ -3,7 +3,7 @@ import { IntlProvider } from 'react-intl';
 
 // @ts-ignore usually we don't want to import json
 import messagess from 'src/intl/en.json';
-import { UnderwaterStateProvider } from 'src/Underwater/underwaterState';
+import { UnderwaterStateProvider } from 'src/components/Underwater/underwaterState';
 
 import { flattenMessages } from './intl';
 

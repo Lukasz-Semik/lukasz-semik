@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useUnderwaterState } from 'src/Underwater/underwaterState';
+import { useUnderwaterState } from 'src/components/Underwater/underwaterState';
 import useDrop from '../Drop/useDrop';
 import Drop from '../Drop/Drop';
 
