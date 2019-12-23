@@ -45,6 +45,9 @@ const useUnderwaterState = () => {
 
     setIsUndewaterWindowFocused,
     getIsUnderwaterWindowFocused: () => state.isUnderwaterWindowFocused,
+
+    // healthPoints: state.healthPoints,
+    // substractHealthPoints,
   };
 };
 

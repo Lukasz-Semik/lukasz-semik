@@ -1,0 +1,1 @@
+export const SET_HEALTH_POINTS = 'SET_HEALTH_POINTS';
