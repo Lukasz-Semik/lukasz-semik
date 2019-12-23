@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 
 import { useUnderwaterState } from 'src/components/Underwater/underwaterState';
 
-const useGamePause = () => {
+export const useGamePause = () => {
   const pauesGameRef = useRef<() => void>();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {
@@ -40,5 +40,3 @@ const useGamePause = () => {
     backToIntro: setUnderwaterIntro,
   };
 };
-
-export default useGamePause;

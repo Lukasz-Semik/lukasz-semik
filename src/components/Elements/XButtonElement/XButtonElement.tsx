@@ -26,7 +26,7 @@ interface Props extends ButtonProps {
   onClick: () => void;
 }
 
-const XButtonElement = ({
+export const XButtonElement = ({
   onClick,
   top,
   right,
@@ -45,5 +45,3 @@ const XButtonElement = ({
     x
   </Button>
 );
-
-export default XButtonElement;

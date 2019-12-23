@@ -3,17 +3,17 @@ import styled from 'styled-components';
 
 import { styleOverlay } from 'src/styles/helpers';
 
-import Background from './Background/Background';
-import Landing from './Landing/Landing';
-import Game from './Game/Game';
+import { Background } from './Background/Background';
+import { Landing } from './Landing/Landing';
+import { Game } from './Game/Game';
 import { useUnderwaterState } from './underwaterState';
-import UnderwaterContainer from './UnderwaterContainer';
+import { UnderwaterContainer } from './UnderwaterContainer';
 
 const Wrapper = styled.div`
   ${styleOverlay}
 `;
 
-const Underwater = () => {
+const UnderwaterUnwrapped = () => {
   const {
     getIsUnderwaterIntro,
     getIsUnderwaterStarter,
@@ -51,5 +51,5 @@ const Underwater = () => {
   );
 };
 
-const render = () => <Underwater />;
-export default () => <UnderwaterContainer render={render} />;
+const render = () => <UnderwaterUnwrapped />;
+export const Underwater = () => <UnderwaterContainer render={render} />;

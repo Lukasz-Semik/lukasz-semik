@@ -5,7 +5,7 @@ interface Props {
   children: React.ReactNode | React.ReactNode[];
 }
 
-class Modal extends Component<Props> {
+export class Modal extends Component<Props> {
   el: HTMLElement;
 
   constructor(props: Props) {
@@ -33,5 +33,3 @@ class Modal extends Component<Props> {
     return createPortal(this.props.children, this.el);
   }
 }
-
-export default Modal;

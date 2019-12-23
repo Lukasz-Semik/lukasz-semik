@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { random } from 'lodash';
 
 import { DropButton } from '../styled';
-import useAnimationKill from '../useAnimationKill';
+import { useAnimationKill } from '../useAnimationKill';
 
 interface Props {
   onClick: () => void;
@@ -12,7 +12,12 @@ interface Props {
   maxOpacity?: number;
 }
 
-const DropMain = ({ onClick, onShowEnd, dropSize, maxOpacity }: Props) => {
+export const DropMain = ({
+  onClick,
+  onShowEnd,
+  dropSize,
+  maxOpacity,
+}: Props) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const dropRef = useRef<HTMLButtonElement>(null);
@@ -59,5 +64,3 @@ const DropMain = ({ onClick, onShowEnd, dropSize, maxOpacity }: Props) => {
     />
   );
 };
-
-export default DropMain;

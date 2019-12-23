@@ -62,7 +62,11 @@ interface Props {
   isVisible?: boolean;
 }
 
-const LoaderElement = ({ size: circleSize = 50, hasText, isVisible }: Props) =>
+export const LoaderElement = ({
+  size: circleSize = 50,
+  hasText,
+  isVisible,
+}: Props) =>
   isVisible ? (
     <Wrapper circleSize={circleSize}>
       <Circle circleSize={circleSize} />
@@ -76,5 +80,3 @@ const LoaderElement = ({ size: circleSize = 50, hasText, isVisible }: Props) =>
       )}
     </Wrapper>
   ) : null;
-
-export default LoaderElement;

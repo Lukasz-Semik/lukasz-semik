@@ -7,7 +7,7 @@ export enum View {
 
 const views = [View.Underwater, View.Surface];
 
-const useView = () => {
+export const useView = () => {
   const [futureView, setFutureView] = useState<View>(View.Underwater);
   const [currentView, setCurrentView] = useState<View>(View.Underwater);
 
@@ -36,5 +36,3 @@ const useView = () => {
     getIsMounted: (view: View) => futureView === view || currentView === view,
   };
 };
-
-export default useView;

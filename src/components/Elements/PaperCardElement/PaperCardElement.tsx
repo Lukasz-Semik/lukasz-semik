@@ -36,7 +36,7 @@ interface Props {
   children: React.ReactNode | React.ReactNode[];
 }
 
-const PaperCardElement = ({ isMounted, children }: Props) => (
+export const PaperCardElement = ({ isMounted, children }: Props) => (
   <Card isMounted={isMounted}>
     <CardInnerOverlay>
       <PaperBackground />
@@ -47,5 +47,3 @@ const PaperCardElement = ({ isMounted, children }: Props) => (
     </CardInnerOverlay>
   </Card>
 );
-
-export default PaperCardElement;

@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import styleOverlay from 'src/styles';
-import Underwater from 'src/components/Underwater/Underwater';
+import { styleOverlay } from 'src/styles/helpers';
+import { Underwater } from 'src/components/Underwater/Underwater';
 
-import useView, { View } from './useView';
+import { useView, View } from './useView';
 
 const Wrapper = styled.div`
   ${styleOverlay};

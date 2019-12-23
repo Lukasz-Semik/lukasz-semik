@@ -23,8 +23,6 @@ const useUnderwaterState = () => {
   };
 
   return {
-    setUnderwaterState,
-    underwater: state.underwater,
     setUnderwaterIntro: () => {
       setUnderwaterState(UnderwaterState.Intro);
 
@@ -41,10 +39,11 @@ const useUnderwaterState = () => {
     getIsUnderwaterIntro: () => state.underwater === UnderwaterState.Intro,
     getIsUnderwaterStarter: () => state.underwater === UnderwaterState.Starter,
     getIsUnderwaterGame: () => state.underwater === UnderwaterState.Game,
+
     getIsGamePaused: () => state.isGamePaused,
     setIsGamePaused: (isPaused: boolean) => setIsGamePaused(isPaused),
-    setIsUndewaterWindowFocused: (isFocused: boolean) =>
-      setIsUndewaterWindowFocused(isFocused),
+
+    setIsUndewaterWindowFocused,
     getIsUnderwaterWindowFocused: () => state.isUnderwaterWindowFocused,
   };
 };

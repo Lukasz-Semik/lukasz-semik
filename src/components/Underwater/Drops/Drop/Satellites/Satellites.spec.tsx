@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 
 import { TesterWrapper } from 'src/helpers/tests';
 
-import Satellites from './Satellites';
+import { Satellites } from './Satellites';
 
 describe('<Satellites />', () => {
   it('should render 4 satellites', () => {

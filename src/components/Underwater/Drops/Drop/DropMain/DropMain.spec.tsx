@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { TesterWrapper } from 'src/helpers/tests';
 
-import DropMain from './DropMain';
+import { DropMain } from './DropMain';
 
 describe('<DropMain />', () => {
   it('should invoke passed function when clicked and set disabled properly', () => {

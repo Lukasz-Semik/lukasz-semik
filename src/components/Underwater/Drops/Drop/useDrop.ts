@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { random } from 'lodash';
 
-const useDrop = () => {
+export const useDrop = () => {
   const [isPreparing, setIsPreparing] = useState(false);
 
   const dropSize = useMemo(() => random(25, 50), []);
@@ -20,5 +20,3 @@ const useDrop = () => {
     maxOpacity,
   };
 };
-
-export default useDrop;

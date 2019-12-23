@@ -1,1 +1,1 @@
-export { default as PaperModal } from './PaperModal';
+export { PaperModal } from './PaperModal';

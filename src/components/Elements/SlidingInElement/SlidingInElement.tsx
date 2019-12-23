@@ -41,10 +41,8 @@ interface Props {
   className?: string;
 }
 
-const SlidingInElement = ({ children, className, position }: Props) => (
+export const SlidingInElement = ({ children, className, position }: Props) => (
   <Wrapper slidingPosition={position} className={className}>
     {children}
   </Wrapper>
 );
-
-export default SlidingInElement;

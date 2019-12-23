@@ -4,7 +4,7 @@ import { rgba, rem } from 'polished';
 
 import { styleOverlay } from 'src/styles/helpers';
 import { PaperCardElement, XButtonElement } from 'src/components/Elements';
-import Modal from './Modal';
+import { Modal } from './Modal';
 
 const Wrapper = styled.div<{ isMounted: boolean }>`
   ${styleOverlay};
@@ -26,7 +26,7 @@ interface Props {
   children: React.ReactNode | React.ReactNode[];
 }
 
-const PaperModal = ({ children, onClose }: Props) => {
+export const PaperModal = ({ children, onClose }: Props) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -47,5 +47,3 @@ const PaperModal = ({ children, onClose }: Props) => {
     </Modal>
   );
 };
-
-export default PaperModal;

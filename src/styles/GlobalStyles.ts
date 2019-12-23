@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 import styles from './index';
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   * {
     box-sizing: border-box;
     margin: 0;
@@ -27,5 +27,3 @@ const GlobalStyles = createGlobalStyle`
     background-color: transparent;
   }
 `;
-
-export default GlobalStyles;

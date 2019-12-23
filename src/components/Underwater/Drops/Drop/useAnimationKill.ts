@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useUnderwaterState } from 'src/components/Underwater/underwaterState';
 
-const useAnimationKill = (tl: gsap.core.Timeline) => {
+export const useAnimationKill = (tl: gsap.core.Timeline) => {
   const { getIsGamePaused, getIsUnderwaterGame } = useUnderwaterState();
   const isPaused = getIsGamePaused();
   const isGameRunning = getIsUnderwaterGame();
@@ -17,5 +17,3 @@ const useAnimationKill = (tl: gsap.core.Timeline) => {
     }
   }, [isGameRunning, isPaused, tl]);
 };
-
-export default useAnimationKill;

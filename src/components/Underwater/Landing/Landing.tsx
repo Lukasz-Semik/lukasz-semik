@@ -1,16 +1,16 @@
 import React from 'react';
 import { times } from 'lodash';
 
-import Title from '../Title/Title';
-import IntroDrop from '../Drops/IntroDrop/IntroDrop';
-import Starter from '../Starter/Starter';
+import { Title } from '../Title/Title';
+import { IntroDrop } from '../Drops/IntroDrop/IntroDrop';
+import { Starter } from '../Starter/Starter';
 
 interface Props {
   isIntro: boolean;
   isStarter: boolean;
 }
 
-const DropsLanding = ({ isIntro, isStarter }: Props) => (
+export const Landing = ({ isIntro, isStarter }: Props) => (
   <>
     {times(40, i => (
       <IntroDrop key={`drop-${i}`} />
@@ -21,5 +21,3 @@ const DropsLanding = ({ isIntro, isStarter }: Props) => (
     {isStarter && <Starter />}
   </>
 );
-
-export default DropsLanding;

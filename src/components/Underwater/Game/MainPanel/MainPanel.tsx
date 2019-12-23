@@ -4,10 +4,9 @@ import { rem } from 'polished';
 
 // @ts-ignore TODO: resolve problem with imports of svg
 import Board from 'src/assets/board.svg';
-import { SlidingInElement, XButtonElement } from 'src/components/Elements';
+import { SlidingInElement } from 'src/components/Elements';
 
-import PauseModal from '../Pause/PauseModal';
-import useGamePause from '../Pause/useGamePause';
+import { Pause } from '../Pause/Pause';
 
 const Wrapper = styled(SlidingInElement)`
   top: ${rem(10)};
@@ -35,31 +34,16 @@ interface Props {
   resetDrops: () => void;
 }
 
-const MainPanel = ({ resetDrops }: Props) => {
-  const { pauseGame, resumeGame, backToIntro, isModalOpen } = useGamePause();
-
+export const MainPanel = ({ resetDrops }: Props) => {
   return (
     <Wrapper position="left">
       <Panel>
         <Board />
 
         <InnerWrapper>
-          <XButtonElement onClick={pauseGame} top="0" right={rem(-25)} />
-
-          {isModalOpen && (
-            <PauseModal
-              resumeGame={resumeGame}
-              backToIntro={backToIntro}
-              resetGame={() => {
-                resetDrops();
-                resumeGame();
-              }}
-            />
-          )}
+          <Pause resetDrops={resetDrops} />
         </InnerWrapper>
       </Panel>
     </Wrapper>
   );
 };
-
-export default MainPanel;

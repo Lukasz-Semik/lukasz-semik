@@ -1,9 +1,9 @@
 import React from 'react';
 
-import useDrop from '../Drop/useDrop';
-import Drop from '../Drop/Drop';
+import { useDrop } from '../Drop/useDrop';
+import { Drop } from '../Drop/Drop';
 
-const GameDrop = () => {
+export const GameDrop = () => {
   const { isPreparingDrop, prepareDrop, dropSize } = useDrop();
 
   return !isPreparingDrop ? (
@@ -17,5 +17,3 @@ const GameDrop = () => {
     />
   ) : null;
 };
-
-export default GameDrop;

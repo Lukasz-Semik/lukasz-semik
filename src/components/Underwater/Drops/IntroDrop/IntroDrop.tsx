@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { useUnderwaterState } from 'src/components/Underwater/underwaterState';
-import useDrop from '../Drop/useDrop';
-import Drop from '../Drop/Drop';
+import { useDrop } from '../Drop/useDrop';
+import { Drop } from '../Drop/Drop';
 
-const IntroDrop = () => {
+export const IntroDrop = () => {
   const { setUnderwaterStarter } = useUnderwaterState();
 
   const { isPreparingDrop, prepareDrop, dropSize, maxOpacity } = useDrop();
@@ -20,5 +20,3 @@ const IntroDrop = () => {
     />
   ) : null;
 };
-
-export default IntroDrop;

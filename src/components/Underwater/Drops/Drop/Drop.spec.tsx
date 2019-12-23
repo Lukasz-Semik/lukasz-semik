@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { TesterWrapper } from 'src/helpers/tests';
 
-import Drop from './Drop';
+import { Drop } from './Drop';
 
 describe('<Drop />', () => {
   it('should invoke passed function when clicked and show 4 satellites', () => {

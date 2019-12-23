@@ -16,7 +16,8 @@
     "lint:styles": "stylelint './src/**/*.(ts|tsx|js|jsx)'",
     "lint": "yarn lint:js && yarn lint:styles",
     "type-check": "yarn tsc",
-    "prepush": "yarn lint && yarn type-check && yarn test"
+    "verify": "yarn lint && yarn type-check && yarn test",
+    "prepush": "yarn verify"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
