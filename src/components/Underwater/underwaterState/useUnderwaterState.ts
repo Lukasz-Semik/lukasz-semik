@@ -3,7 +3,7 @@ import { UnderwaterState } from './types';
 import {
   SET_UNDERWATER_STATE,
   SET_GAME_PAUSE,
-  SET_UNDERWATER_WINDOW_FOCUS,
+  // SET_UNDERWATER_WINDOW_FOCUS,
 } from './actionTypes';
 
 const useUnderwaterState = () => {
@@ -16,10 +16,6 @@ const useUnderwaterState = () => {
 
   const setIsGamePaused = (isGamePaused?: boolean) => {
     setState({ type: SET_GAME_PAUSE, payload: { isGamePaused } });
-  };
-
-  const setIsUndewaterWindowFocused = (isFocused: boolean) => {
-    setState({ type: SET_UNDERWATER_WINDOW_FOCUS, payload: { isFocused } });
   };
 
   return {
@@ -42,12 +38,6 @@ const useUnderwaterState = () => {
 
     getIsGamePaused: () => state.isGamePaused,
     setIsGamePaused: (isPaused: boolean) => setIsGamePaused(isPaused),
-
-    setIsUndewaterWindowFocused,
-    getIsUnderwaterWindowFocused: () => state.isUnderwaterWindowFocused,
-
-    // healthPoints: state.healthPoints,
-    // substractHealthPoints,
   };
 };
 

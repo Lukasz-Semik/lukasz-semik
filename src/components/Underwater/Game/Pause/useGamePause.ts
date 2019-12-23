@@ -1,17 +1,14 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 
 import { useUnderwaterState } from 'src/components/Underwater/underwaterState';
+import { useGetIsWindowFocused } from 'src/store/view/selectors';
 
 export const useGamePause = () => {
   const pauesGameRef = useRef<() => void>();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const {
-    setIsGamePaused,
-    getIsUnderwaterWindowFocused,
-    setUnderwaterIntro,
-  } = useUnderwaterState();
+  const { setIsGamePaused, setUnderwaterIntro } = useUnderwaterState();
 
-  const isWindowFocused = getIsUnderwaterWindowFocused();
+  const isWindowFocused = useGetIsWindowFocused();
 
   const pauseGame = useCallback(() => {
     setIsModalOpen(true);

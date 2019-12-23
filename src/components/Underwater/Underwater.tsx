@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 
 import { styleOverlay } from 'src/styles/helpers';
+import { setIsWindowFocused } from 'src/store/view/actions';
 
 import { Background } from './Background/Background';
 import { Landing } from './Landing/Landing';
@@ -18,22 +20,22 @@ const UnderwaterUnwrapped = () => {
     getIsUnderwaterIntro,
     getIsUnderwaterStarter,
     getIsUnderwaterGame,
-    setIsUndewaterWindowFocused,
   } = useUnderwaterState();
+  const dispatch = useDispatch();
 
   const isGameRunning = getIsUnderwaterGame();
 
   useEffect(() => {
     if (window) {
       window.onblur = () => {
-        setIsUndewaterWindowFocused(false);
+        dispatch(setIsWindowFocused(false));
       };
 
       window.onfocus = () => {
-        setIsUndewaterWindowFocused(true);
+        dispatch(setIsWindowFocused(true));
       };
     }
-  }, [setIsUndewaterWindowFocused]);
+  }, [dispatch]);
 
   return (
     <Background>
