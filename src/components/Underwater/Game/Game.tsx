@@ -15,9 +15,9 @@ const Game = () => {
 
   return (
     <>
-      <MainPanel resetDrops={() => setIsResetingDrops(true)} />
-
       {!isResetingDrops && times(40, i => <GameDrop key={`drop-${i}`} />)}
+
+      <MainPanel resetDrops={() => setIsResetingDrops(true)} />
     </>
   );
 };
