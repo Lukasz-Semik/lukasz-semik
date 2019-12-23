@@ -23,7 +23,7 @@ interface Props {
   index: number;
 }
 
-const Letter = ({ letter, index }: Props) => {
+export const Letter = ({ letter, index }: Props) => {
   const [isMounted, setIsMounted] = useState(false);
   const ref = useRef<HTMLElement>(null);
 
@@ -66,5 +66,3 @@ const Letter = ({ letter, index }: Props) => {
     </LetterStyled>
   );
 };
-
-export default Letter;

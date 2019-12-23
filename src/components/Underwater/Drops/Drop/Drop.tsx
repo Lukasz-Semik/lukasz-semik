@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import Satellites from './Satellites/Satellites';
-import SwimmingWrapper from './SwimmingWrapper/SwimmingWrapper';
-import DropMain from './DropMain/DropMain';
+import { Satellites } from './Satellites/Satellites';
+import { SwimmingWrapper } from './SwimmingWrapper/SwimmingWrapper';
+import { DropMain } from './DropMain/DropMain';
 
 interface Props {
   resetDrop: () => void;
@@ -11,7 +11,12 @@ interface Props {
   maxOpacity: number;
 }
 
-const Drop = ({ resetDrop, onDropClick, dropSize, maxOpacity }: Props) => {
+export const Drop = ({
+  resetDrop,
+  onDropClick,
+  dropSize,
+  maxOpacity,
+}: Props) => {
   const [isMounted, setIsMounted] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -37,5 +42,3 @@ const Drop = ({ resetDrop, onDropClick, dropSize, maxOpacity }: Props) => {
     </SwimmingWrapper>
   );
 };
-
-export default Drop;

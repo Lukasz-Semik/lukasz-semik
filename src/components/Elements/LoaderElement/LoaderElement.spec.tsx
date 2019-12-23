@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 
 import { TesterWrapper } from 'src/helpers/tests';
 
-import LoaderElement from './LoaderElement';
+import { LoaderElement } from './LoaderElement';
 
 describe('<LoaderElement />', () => {
   it('should render proeprly loader without text', () => {

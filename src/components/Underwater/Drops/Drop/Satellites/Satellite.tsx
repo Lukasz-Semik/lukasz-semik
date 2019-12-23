@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import styled from 'styled-components';
 
 import { DropButton } from '../styled';
-import useAnimationKill from '../useAnimationKill';
+import { useAnimationKill } from '../useAnimationKill';
 
 interface DropProps {
   maxOpacity?: number;
@@ -24,7 +24,7 @@ interface Props extends DropProps {
   index: number;
 }
 
-const Satellite = ({ index, maxOpacity }: Props) => {
+export const Satellite = ({ index, maxOpacity }: Props) => {
   const [isVisible, setIsVisible] = useState(true);
   const ref = useRef<HTMLButtonElement>(null);
   const tl = useMemo(() => gsap.timeline(), []);
@@ -72,5 +72,3 @@ const Satellite = ({ index, maxOpacity }: Props) => {
     />
   ) : null;
 };
-
-export default Satellite;

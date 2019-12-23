@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { rem } from 'polished';
 
-const ButtonElement = styled.button`
+export const ButtonElement = styled.button`
   font-size: ${rem(35)};
   color: grey;
   transition: color 0.3s ease;
@@ -25,5 +25,3 @@ const ButtonElement = styled.button`
     }
   }
 `;
-
-export default ButtonElement;

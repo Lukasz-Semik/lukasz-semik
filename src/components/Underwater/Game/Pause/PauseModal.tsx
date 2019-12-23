@@ -29,7 +29,7 @@ interface Props {
   backToIntro: () => void;
 }
 
-const PuaseModal = ({ resumeGame, resetGame, backToIntro }: Props) => (
+export const PauseModal = ({ resumeGame, resetGame, backToIntro }: Props) => (
   <PaperModal onClose={resumeGame}>
     <Wrapper>
       <Title>
@@ -50,5 +50,3 @@ const PuaseModal = ({ resumeGame, resetGame, backToIntro }: Props) => (
     </Wrapper>
   </PaperModal>
 );
-
-export default PuaseModal;

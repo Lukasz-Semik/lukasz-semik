@@ -26,11 +26,9 @@ interface Props {
   children: React.ReactNode | React.ReactNode[];
 }
 
-const Background = ({ children }: Props) => (
+export const Background = ({ children }: Props) => (
   <Wrapper>
     <BackgroundImage />
     {children}
   </Wrapper>
 );
-
-export default Background;

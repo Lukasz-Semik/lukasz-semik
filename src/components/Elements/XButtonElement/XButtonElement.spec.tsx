@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import XButtonElement from './XButtonElement';
+import { XButtonElement } from './XButtonElement';
 
 describe('<XButtonElement />', () => {
   const onClickSpy = jest.fn();

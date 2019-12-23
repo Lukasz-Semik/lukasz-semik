@@ -3,7 +3,7 @@ import { useIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
 import { rem } from 'polished';
 
-import Letter from './Letter';
+import { Letter } from './Letter';
 
 const TitleStyled = styled.h1`
   position: absolute;
@@ -18,7 +18,7 @@ const TitleStyled = styled.h1`
   transform: translate(-50%, -50%);
 `;
 
-const Title = () => {
+export const Title = () => {
   const intl = useIntl();
 
   const text = useMemo(() => {
@@ -48,5 +48,3 @@ const Title = () => {
     </TitleStyled>
   );
 };
-
-export default Title;

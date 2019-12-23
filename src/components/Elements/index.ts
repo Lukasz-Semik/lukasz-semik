@@ -1,5 +1,5 @@
-export { default as ButtonElement } from './ButtonElement/ButtonElement';
-export { default as LoaderElement } from './LoaderElement/LoaderElement';
-export { default as PaperCardElement } from './PaperCardElement/PaperCardElement';
-export { default as SlidingInElement } from './SlidingInElement/SlidingInElement';
-export { default as XButtonElement } from './XButtonElement/XButtonElement';
+export { ButtonElement } from './ButtonElement/ButtonElement';
+export { LoaderElement } from './LoaderElement/LoaderElement';
+export { PaperCardElement } from './PaperCardElement/PaperCardElement';
+export { SlidingInElement } from './SlidingInElement/SlidingInElement';
+export { XButtonElement } from './XButtonElement/XButtonElement';

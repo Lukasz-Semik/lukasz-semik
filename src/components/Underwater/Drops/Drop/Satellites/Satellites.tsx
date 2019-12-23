@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { times, random } from 'lodash';
 
-import Satellite from './Satellite';
+import { Satellite } from './Satellite';
 
 const Wrapper = styled.div<{ rotation: number }>`
   position: absolute;
@@ -17,7 +17,7 @@ interface Props {
   maxOpacity?: number;
 }
 
-const Satellites = ({ maxOpacity }: Props) => {
+export const Satellites = ({ maxOpacity }: Props) => {
   const rotation = useMemo(() => random(0, 180), []);
 
   return (
@@ -28,5 +28,3 @@ const Satellites = ({ maxOpacity }: Props) => {
     </Wrapper>
   );
 };
-
-export default Satellites;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import PaperCardElement from './PaperCardElement';
+import { PaperCardElement } from './PaperCardElement';
 
 describe('<PaperCardElement />', () => {
   it('should render children', () => {

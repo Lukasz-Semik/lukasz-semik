@@ -4,7 +4,7 @@ import { size, rem } from 'polished';
 import { random, floor } from 'lodash';
 import gsap from 'gsap';
 
-import useAnimationKill from '../useAnimationKill';
+import { useAnimationKill } from '../useAnimationKill';
 
 const BASE_SPEED_ROAD = 880;
 
@@ -26,7 +26,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const SwimmingWrapper = ({
+export const SwimmingWrapper = ({
   children,
   dropSize,
   isMounted,
@@ -72,5 +72,3 @@ const SwimmingWrapper = ({
     </Wrapper>
   );
 };
-
-export default SwimmingWrapper;

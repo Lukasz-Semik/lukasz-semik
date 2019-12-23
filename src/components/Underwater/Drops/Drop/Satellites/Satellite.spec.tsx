@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { TesterWrapper } from 'src/helpers/tests';
 
-import Satellite from './Satellite';
+import { Satellite } from './Satellite';
 
 describe('<Satellite />', () => {
   it('should remove satellite when clicked', () => {

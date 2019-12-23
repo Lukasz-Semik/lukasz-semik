@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import SlidingInElement from './SlidingInElement';
+import { SlidingInElement } from './SlidingInElement';
 
 describe('<SlidingInElement />', () => {
   it('should render children', () => {

@@ -25,7 +25,7 @@ const CenterButton = styled.div`
   justify-content: center;
 `;
 
-const Starter = () => {
+export const Starter = () => {
   const { setUnderwaterIntro, setUnderwaterGame } = useUnderwaterState();
 
   return (
@@ -48,5 +48,3 @@ const Starter = () => {
     </PaperModal>
   );
 };
-
-export default Starter;
