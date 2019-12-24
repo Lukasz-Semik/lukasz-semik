@@ -37,11 +37,7 @@ export const setUnderwaterStage = (stage: Stage): SetUnderwaterStageAction => ({
   },
 });
 
-export const setUnderwaterIntro = (): ThunkAction => (dispatch, getState) => {
-  if (getIsGamePaused(getState())) {
-    dispatch(setIsGamePaused(false));
-  }
-
+export const setUnderwaterIntro = (): ThunkAction => dispatch => {
   dispatch(setUnderwaterStage(Stage.Intro));
 };
 
