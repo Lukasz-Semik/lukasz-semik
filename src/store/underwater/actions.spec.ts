@@ -13,20 +13,12 @@ import {
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
 } from './actionTypes';
-import { Stage, UnderwaterState } from './types';
-
-const mockState = (state: Partial<UnderwaterState> = {}) => ({
-  underwater: {
-    healthPoints: 100,
-    stage: Stage.Intro,
-    isGamePaused: false,
-    ...state,
-  },
-});
+import { Stage } from './types';
+import { mockUnderwaterState } from './testHelpers';
 
 describe('underwater actions creators', () => {
   describe('basic actions creators', () => {
-    const store = mockStore(mockState());
+    const store = mockStore(mockUnderwaterState());
 
     afterEach(() => {
       store.clearActions();
@@ -62,7 +54,7 @@ describe('underwater actions creators', () => {
 
   describe('setUnderwaterIntro', () => {
     it('should dispatch proper actions', () => {
-      const store = mockStore(mockState());
+      const store = mockStore(mockUnderwaterState());
 
       store.dispatch(setUnderwaterIntro());
 
@@ -75,7 +67,7 @@ describe('underwater actions creators', () => {
 
   describe('setUnderwaterStarter', () => {
     it('should dispatch proper actions', () => {
-      const store = mockStore(mockState());
+      const store = mockStore(mockUnderwaterState());
 
       store.dispatch(setUnderwaterStarter());
 
@@ -88,7 +80,7 @@ describe('underwater actions creators', () => {
 
   describe('setUnderwaterGame', () => {
     it('should dispatch proper actions', () => {
-      const store = mockStore(mockState());
+      const store = mockStore(mockUnderwaterState());
 
       store.dispatch(setUnderwaterGame());
 

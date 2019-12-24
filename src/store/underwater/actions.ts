@@ -9,7 +9,6 @@ import {
   SetIsGamePausedAction,
   SetUnderwaterStageAction,
 } from './types';
-import { getIsGamePaused } from './selectors';
 import { ThunkAction } from '../types';
 
 export const substractHealthPoints = (
