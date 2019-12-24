@@ -1,27 +1,36 @@
 import {
-  SET_HEALTH_POINTS,
+  SUBSTRACT_HEALTH_POINTS,
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
 } from './actionTypes';
-import { Stage } from './types';
+import {
+  Stage,
+  SubstractHealthPointsAction,
+  SetIsGamePausedAction,
+  SetUnderwaterStageAction,
+} from './types';
 import { getIsGamePaused } from './selectors';
 import { ThunkAction } from '../types';
 
-export const substractHealthPoints = (value: number) => ({
-  type: SET_HEALTH_POINTS,
+export const substractHealthPoints = (
+  value: number
+): SubstractHealthPointsAction => ({
+  type: SUBSTRACT_HEALTH_POINTS,
   payload: {
     value,
   },
 });
 
-export const setIsGamePaused = (isGamePaused: boolean) => ({
+export const setIsGamePaused = (
+  isGamePaused: boolean
+): SetIsGamePausedAction => ({
   type: SET_IS_GAME_PAUSED,
   payload: {
     isGamePaused,
   },
 });
 
-export const setUnderwaterStage = (stage: Stage) => ({
+export const setUnderwaterStage = (stage: Stage): SetUnderwaterStageAction => ({
   type: SET_UNDERWATER_STAGE,
   payload: {
     stage,

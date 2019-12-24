@@ -1,6 +1,16 @@
 import { SET_IS_WINDOW_FOCUSED } from './actionTypes';
 import { setIsGamePaused } from '../underwater/actions';
 import { ThunkAction } from '../types';
+import { ToggleWindowFocusedAction } from './types';
+
+const toggleWindowFocused = (
+  isWindowFocused?: boolean
+): ToggleWindowFocusedAction => ({
+  type: SET_IS_WINDOW_FOCUSED,
+  payload: {
+    isWindowFocused: Boolean(isWindowFocused),
+  },
+});
 
 export const setIsWindowFocused = (
   isWindowFocused?: boolean
@@ -10,10 +20,5 @@ export const setIsWindowFocused = (
     dispatch(setIsGamePaused(true));
   }
 
-  dispatch({
-    type: SET_IS_WINDOW_FOCUSED,
-    payload: {
-      isWindowFocused,
-    },
-  });
+  dispatch(toggleWindowFocused(isWindowFocused));
 };

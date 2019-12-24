@@ -8,7 +8,7 @@ import { Satellites } from './Satellites';
 describe('<Satellites />', () => {
   it('should render 4 satellites', () => {
     const { queryAllByTestId } = render(
-      <TesterWrapper hasUnderwaterContext>
+      <TesterWrapper store={{ underwater: {} }}>
         <Satellites />
       </TesterWrapper>
     );

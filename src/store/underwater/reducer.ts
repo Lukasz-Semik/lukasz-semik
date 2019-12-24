@@ -1,11 +1,11 @@
 import { AnyAction } from 'redux';
 
 import {
-  SET_HEALTH_POINTS,
+  SUBSTRACT_HEALTH_POINTS,
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
 } from './actionTypes';
-import { UnderwaterState, Stage } from './types';
+import { UnderwaterState, Stage, UnderwaterActionType } from './types';
 
 export const initialState: UnderwaterState = {
   healthPoints: 100,
@@ -17,10 +17,10 @@ export default (
   state = initialState,
   incomingAction: AnyAction
 ): UnderwaterState => {
-  const action = incomingAction;
+  const action = incomingAction as UnderwaterActionType;
 
   switch (action.type) {
-    case SET_HEALTH_POINTS:
+    case SUBSTRACT_HEALTH_POINTS:
       return {
         ...state,
         healthPoints: state.healthPoints - action.payload.value,

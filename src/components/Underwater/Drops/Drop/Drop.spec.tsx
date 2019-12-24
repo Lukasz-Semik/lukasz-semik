@@ -11,7 +11,7 @@ describe('<Drop />', () => {
     const onDropClickSpy = jest.fn();
 
     const { getByTestId, queryAllByTestId } = render(
-      <TesterWrapper hasUnderwaterContext>
+      <TesterWrapper store={{ underwater: {} }}>
         <Drop
           resetDrop={jest.fn()}
           onDropClick={onDropClickSpy}

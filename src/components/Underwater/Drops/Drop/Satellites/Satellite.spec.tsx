@@ -9,7 +9,7 @@ import { Satellite } from './Satellite';
 describe('<Satellite />', () => {
   it('should remove satellite when clicked', () => {
     const { getByTestId, queryByTestId } = render(
-      <TesterWrapper hasUnderwaterContext>
+      <TesterWrapper store={{ underwater: {} }}>
         <Satellite index={0} />
       </TesterWrapper>
     );
