@@ -1,12 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { rem } from 'polished';
 import { FormattedMessage } from 'gatsby-plugin-intl';
 
+import {
+  setUnderwaterIntro,
+  setUnderwaterGame,
+} from 'src/store/underwater/actions';
 import { ButtonElement } from 'src/components/Elements';
 import { PaperModal } from 'src/components/Modals';
-
-import { useUnderwaterState } from '../underwaterState';
 
 const ButtonsWrapper = styled.div`
   display: flex;
@@ -26,12 +29,16 @@ const CenterButton = styled.div`
 `;
 
 export const Starter = () => {
-  const { setUnderwaterIntro, setUnderwaterGame } = useUnderwaterState();
+  const dispatch = useDispatch();
+
+  const backToIntro = () => {
+    dispatch(setUnderwaterIntro());
+  };
 
   return (
-    <PaperModal onClose={setUnderwaterIntro}>
+    <PaperModal onClose={backToIntro}>
       <ButtonsWrapper>
-        <ButtonElement onClick={setUnderwaterGame}>
+        <ButtonElement onClick={() => dispatch(setUnderwaterGame())}>
           <FormattedMessage id="underwater.startGame" />
         </ButtonElement>
 
@@ -40,7 +47,7 @@ export const Starter = () => {
         </Text>
 
         <CenterButton>
-          <ButtonElement onClick={setUnderwaterIntro}>
+          <ButtonElement onClick={backToIntro}>
             <FormattedMessage id="shared.back" />
           </ButtonElement>
         </CenterButton>

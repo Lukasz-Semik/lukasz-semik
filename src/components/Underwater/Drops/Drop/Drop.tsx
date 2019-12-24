@@ -5,7 +5,7 @@ import { SwimmingWrapper } from './SwimmingWrapper/SwimmingWrapper';
 import { DropMain } from './DropMain/DropMain';
 
 interface Props {
-  resetDrop: () => void;
+  resetDrop: (isClicked?: boolean) => void;
   onDropClick: () => void;
   dropSize: number;
   maxOpacity: number;
@@ -24,7 +24,7 @@ export const Drop = ({
     <SwimmingWrapper
       dropSize={dropSize}
       isMounted={isMounted}
-      onSwimEnd={resetDrop}
+      onSwimEnd={() => resetDrop(isClicked)}
     >
       <>
         {isClicked && <Satellites maxOpacity={maxOpacity} />}

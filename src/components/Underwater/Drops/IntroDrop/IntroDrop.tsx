@@ -1,11 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-import { useUnderwaterState } from 'src/components/Underwater/underwaterState';
+import { setUnderwaterStarter } from 'src/store/underwater/actions';
+
 import { useDrop } from '../Drop/useDrop';
 import { Drop } from '../Drop/Drop';
 
 export const IntroDrop = () => {
-  const { setUnderwaterStarter } = useUnderwaterState();
+  const dispatch = useDispatch();
 
   const { isPreparingDrop, prepareDrop, dropSize, maxOpacity } = useDrop();
 
@@ -13,7 +15,7 @@ export const IntroDrop = () => {
     <Drop
       resetDrop={prepareDrop}
       onDropClick={() => {
-        setUnderwaterStarter();
+        dispatch(setUnderwaterStarter());
       }}
       dropSize={dropSize}
       maxOpacity={maxOpacity}

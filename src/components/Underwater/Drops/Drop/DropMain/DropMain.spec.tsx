@@ -12,7 +12,7 @@ describe('<DropMain />', () => {
     const onShowEndSpy = jest.fn();
 
     const { getByTestId } = render(
-      <TesterWrapper hasUnderwaterContext>
+      <TesterWrapper store={{ underwater: {} }}>
         <DropMain onClick={onClickSpy} onShowEnd={onShowEndSpy} dropSize={30} />
       </TesterWrapper>
     );

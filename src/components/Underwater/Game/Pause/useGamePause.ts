@@ -1,42 +1,38 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { useUnderwaterState } from 'src/components/Underwater/underwaterState';
+import {
+  setIsGamePaused,
+  setUnderwaterIntro,
+} from 'src/store/underwater/actions';
+import { useGetIsGamePaused } from 'src/store/underwater/selectors';
 
 export const useGamePause = () => {
-  const pauesGameRef = useRef<() => void>();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const {
-    setIsGamePaused,
-    getIsUnderwaterWindowFocused,
-    setUnderwaterIntro,
-  } = useUnderwaterState();
+  const dispatch = useDispatch();
 
-  const isWindowFocused = getIsUnderwaterWindowFocused();
+  const isGamePaused = useGetIsGamePaused();
 
   const pauseGame = useCallback(() => {
     setIsModalOpen(true);
-    setIsGamePaused(true);
-  }, [setIsModalOpen, setIsGamePaused]);
+    dispatch(setIsGamePaused(true));
+  }, [setIsModalOpen, dispatch]);
 
   const resumeGame = useCallback(() => {
     setIsModalOpen(false);
-    setIsGamePaused(false);
-  }, [setIsModalOpen, setIsGamePaused]);
+    dispatch(setIsGamePaused(false));
+  }, [setIsModalOpen, dispatch]);
 
   useEffect(() => {
-    pauesGameRef.current = pauseGame;
-  }, [pauseGame]);
-
-  useEffect(() => {
-    if (!isWindowFocused && pauesGameRef.current) {
-      pauesGameRef.current();
+    if (isGamePaused) {
+      setIsModalOpen(true);
     }
-  }, [isWindowFocused]);
+  }, [isGamePaused]);
 
   return {
     pauseGame,
     resumeGame,
     isModalOpen,
-    backToIntro: setUnderwaterIntro,
+    backToIntro: () => dispatch(setUnderwaterIntro()),
   };
 };
