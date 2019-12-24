@@ -1,1 +1,2 @@
 export const SET_IS_WINDOW_FOCUSED = 'SET_IS_WINDOW_FOCUSED';
+export const SET_APP_VIEW = 'SET_APP_VIEW';
