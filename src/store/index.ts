@@ -1,4 +1,5 @@
-import { combineReducers, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import underwater from './underwater/reducer';
@@ -9,4 +10,7 @@ export const rootReducer = combineReducers({
   view,
 });
 
-export const store = createStore(rootReducer, composeWithDevTools());
+export const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);

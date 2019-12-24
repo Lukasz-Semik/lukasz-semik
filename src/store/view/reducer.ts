@@ -14,7 +14,7 @@ export default (state = initialState, incomingAction: AnyAction): ViewState => {
     case SET_IS_WINDOW_FOCUSED:
       return {
         ...state,
-        isWindowFocused: action.payload.isFocused,
+        isWindowFocused: action.payload.isWindowFocused,
       };
     default:
       return state;

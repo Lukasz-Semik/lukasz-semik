@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 
-import { useUnderwaterState } from 'src/components/Underwater/underwaterState';
+import {
+  useGetIsGamePaused,
+  useGetIsUnderwaterGame,
+} from 'src/store/underwater/selectors';
 
 export const useAnimationKill = (tl: gsap.core.Timeline) => {
-  const { getIsGamePaused, getIsUnderwaterGame } = useUnderwaterState();
-  const isPaused = getIsGamePaused();
-  const isGameRunning = getIsUnderwaterGame();
+  const isPaused = useGetIsGamePaused();
+  const isGameRunning = useGetIsUnderwaterGame();
 
   useEffect(() => {
     if (isGameRunning) {

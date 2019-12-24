@@ -4,26 +4,26 @@ import { useDispatch } from 'react-redux';
 
 import { styleOverlay } from 'src/styles/helpers';
 import { setIsWindowFocused } from 'src/store/view/actions';
+import {
+  useGetIsUnderwaterGame,
+  useGetIsUnderwaterIntro,
+  useGetIsUnderwaterStarter,
+} from 'src/store/underwater/selectors';
 
 import { Background } from './Background/Background';
 import { Landing } from './Landing/Landing';
 import { Game } from './Game/Game';
-import { useUnderwaterState } from './underwaterState';
-import { UnderwaterContainer } from './UnderwaterContainer';
 
 const Wrapper = styled.div`
   ${styleOverlay}
 `;
 
-const UnderwaterUnwrapped = () => {
-  const {
-    getIsUnderwaterIntro,
-    getIsUnderwaterStarter,
-    getIsUnderwaterGame,
-  } = useUnderwaterState();
+export const Underwater = () => {
   const dispatch = useDispatch();
 
-  const isGameRunning = getIsUnderwaterGame();
+  const isGameRunning = useGetIsUnderwaterGame();
+  const isIntro = useGetIsUnderwaterIntro();
+  const isStarter = useGetIsUnderwaterStarter();
 
   useEffect(() => {
     if (window) {
@@ -43,15 +43,9 @@ const UnderwaterUnwrapped = () => {
         {isGameRunning ? (
           <Game />
         ) : (
-          <Landing
-            isIntro={getIsUnderwaterIntro()}
-            isStarter={getIsUnderwaterStarter()}
-          />
+          <Landing isIntro={isIntro} isStarter={isStarter} />
         )}
       </Wrapper>
     </Background>
   );
 };
-
-const render = () => <UnderwaterUnwrapped />;
-export const Underwater = () => <UnderwaterContainer render={render} />;
