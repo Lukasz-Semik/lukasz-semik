@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { get } from 'lodash';
 
 import { styleOverlay } from 'src/styles/helpers';
 import { Underwater } from 'src/components/Underwater/Underwater';
@@ -52,7 +53,7 @@ const Root = () => {
       <ItemWrapper
         isVisible={futureView === View.Underwater}
         onTransitionEnd={(e: React.SyntheticEvent<HTMLDivElement>) => {
-          if (e.currentTarget.id === 'underwater-item') {
+          if (e.currentTarget.id === get(e, 'target.id')) {
             setView();
           }
         }}
