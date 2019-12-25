@@ -6,7 +6,7 @@ import { rem } from 'polished';
 import { PaperModal } from 'src/components/Modals';
 import { ButtonElement } from 'src/components/Elements';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs({ 'data-test': 'pause-modal' })`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +18,7 @@ const Button = styled(ButtonElement)`
   margin-bottom: ${rem(20)};
 `;
 
-const Title = styled.h2`
+const Title = styled.h2.attrs({ 'data-test': 'pause-modal-title' })`
   margin-bottom: ${rem(30)};
   font-size: ${rem(50)};
 `;

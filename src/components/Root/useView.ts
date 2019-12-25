@@ -27,10 +27,10 @@ export const useView = () => {
     }
   }, [futureView]);
 
-  const setView = () => {
+  const setView = useCallback(() => {
     dispatch(setAppView(futureView));
     setCurrentView(futureView);
-  };
+  }, [dispatch, futureView]);
 
   return {
     futureView,

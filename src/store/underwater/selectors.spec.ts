@@ -8,6 +8,7 @@ import {
   getIsUnderwaterIntro,
   getIsUnderwaterStarter,
   getIsUnderwaterGame,
+  getHealthPoints,
 } from './selectors';
 import { Stage } from './types';
 
@@ -77,6 +78,14 @@ describe('underwater selectors', () => {
           mockAppState(mockUnderwaterState({ stage: Stage.Intro }))
         )
       ).toBe(false);
+    });
+  });
+
+  describe('getHealthPoints', () => {
+    it('should return proper value from state', () => {
+      expect(
+        getHealthPoints(mockAppState(mockUnderwaterState({ healthPoints: 30 })))
+      ).toBe(30);
     });
   });
 });

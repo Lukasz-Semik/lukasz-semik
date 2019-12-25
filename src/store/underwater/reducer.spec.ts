@@ -2,6 +2,7 @@ import {
   SUBSTRACT_HEALTH_POINTS,
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
+  RESET_GAME,
 } from './actionTypes';
 
 import reducer, { initialState } from './reducer';
@@ -52,6 +53,25 @@ describe('underwater reducer', () => {
     ).toEqual({
       ...initialState,
       isGamePaused: true,
+    });
+  });
+
+  it(`should handle ${RESET_GAME} action type`, () => {
+    expect(
+      reducer(
+        {
+          ...initialState,
+          isGamePaused: true,
+          healthPoints: 30,
+        },
+        {
+          type: RESET_GAME,
+        }
+      )
+    ).toEqual({
+      ...initialState,
+      isGamePaused: false,
+      healthPoints: 100,
     });
   });
 });
