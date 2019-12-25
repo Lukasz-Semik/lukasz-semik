@@ -24,23 +24,33 @@ const Title = styled.h2`
 `;
 
 interface Props {
-  resetGame: () => void;
+  restartGame: () => void;
   resumeGame: () => void;
   backToIntro: () => void;
+  isGameOver: boolean;
 }
 
-export const PauseModal = ({ resumeGame, resetGame, backToIntro }: Props) => (
+export const PauseModal = ({
+  resumeGame,
+  restartGame,
+  backToIntro,
+  isGameOver,
+}: Props) => (
   <PaperModal onClose={resumeGame}>
     <Wrapper>
       <Title>
-        <FormattedMessage id="underwater.game.pause" />
+        <FormattedMessage
+          id={isGameOver ? 'underwater.game.over' : 'underwater.game.pause'}
+        />
       </Title>
 
-      <Button onClick={resumeGame}>
-        <FormattedMessage id="underwater.game.resume" />
-      </Button>
+      {!isGameOver && (
+        <Button onClick={resumeGame}>
+          <FormattedMessage id="underwater.game.resume" />
+        </Button>
+      )}
 
-      <Button onClick={resetGame}>
+      <Button onClick={restartGame}>
         <FormattedMessage id="underwater.game.restart" />
       </Button>
 

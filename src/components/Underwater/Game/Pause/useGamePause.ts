@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import {
   setIsGamePaused,
   setUnderwaterIntro,
+  resetGame,
 } from 'src/store/underwater/actions';
 import { useGetIsGamePaused } from 'src/store/underwater/selectors';
 
@@ -16,12 +17,17 @@ export const useGamePause = () => {
   const pauseGame = useCallback(() => {
     setIsModalOpen(true);
     dispatch(setIsGamePaused(true));
-  }, [setIsModalOpen, dispatch]);
+  }, [dispatch]);
 
   const resumeGame = useCallback(() => {
     setIsModalOpen(false);
     dispatch(setIsGamePaused(false));
-  }, [setIsModalOpen, dispatch]);
+  }, [dispatch]);
+
+  const restartGame = useCallback(() => {
+    setIsModalOpen(false);
+    dispatch(resetGame());
+  }, [dispatch]);
 
   useEffect(() => {
     if (isGamePaused) {
@@ -32,6 +38,7 @@ export const useGamePause = () => {
   return {
     pauseGame,
     resumeGame,
+    restartGame,
     isModalOpen,
     backToIntro: () => dispatch(setUnderwaterIntro()),
   };

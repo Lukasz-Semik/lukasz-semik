@@ -2,12 +2,14 @@ import {
   SUBSTRACT_HEALTH_POINTS,
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
+  RESET_GAME,
 } from './actionTypes';
 import {
   Stage,
   SubstractHealthPointsAction,
   SetIsGamePausedAction,
   SetUnderwaterStageAction,
+  ResetGameAction,
 } from './types';
 import { ThunkAction } from '../types';
 
@@ -48,3 +50,7 @@ export const setUnderwaterGame = (): ThunkAction => dispatch => {
   dispatch(setIsGamePaused(false));
   dispatch(setUnderwaterStage(Stage.Game));
 };
+
+export const resetGame = (): ResetGameAction => ({
+  type: RESET_GAME,
+});

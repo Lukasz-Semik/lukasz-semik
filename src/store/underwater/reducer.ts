@@ -1,14 +1,17 @@
 import { AnyAction } from 'redux';
 
+import { HEALTH_POINTS_STARTER } from 'src/constants/underwater';
+
 import {
   SUBSTRACT_HEALTH_POINTS,
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
+  RESET_GAME,
 } from './actionTypes';
 import { UnderwaterState, Stage, UnderwaterActionType } from './types';
 
 export const initialState: UnderwaterState = {
-  healthPoints: 100,
+  healthPoints: HEALTH_POINTS_STARTER,
   stage: Stage.Game,
   isGamePaused: false,
 };
@@ -20,6 +23,12 @@ export default (
   const action = incomingAction as UnderwaterActionType;
 
   switch (action.type) {
+    case RESET_GAME:
+      return {
+        ...state,
+        healthPoints: initialState.healthPoints,
+        isGamePaused: false,
+      };
     case SUBSTRACT_HEALTH_POINTS:
       return {
         ...state,
