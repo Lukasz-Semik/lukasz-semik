@@ -7,6 +7,7 @@ import Board from 'src/assets/board.svg';
 import { SlidingInElement } from 'src/components/Elements';
 
 import { Pause } from '../Pause/Pause';
+import { HealthBar } from './HealtBar/HealthBar';
 
 const Wrapper = styled(SlidingInElement)`
   top: ${rem(10)};
@@ -42,6 +43,8 @@ export const MainPanel = ({ resetDrops }: Props) => {
 
         <InnerWrapper>
           <Pause resetDrops={resetDrops} />
+
+          <HealthBar healthPoints={50} />
         </InnerWrapper>
       </Panel>
     </Wrapper>
