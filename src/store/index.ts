@@ -1,5 +1,9 @@
 import thunk from 'redux-thunk';
-import { combineReducers, createStore, applyMiddleware } from 'redux';
+import {
+  combineReducers,
+  createStore as createStoreBase,
+  applyMiddleware,
+} from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import underwater from './underwater/reducer';
@@ -10,7 +14,5 @@ export const rootReducer = combineReducers({
   view,
 });
 
-export const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
-);
+export const createStore = () =>
+  createStoreBase(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
