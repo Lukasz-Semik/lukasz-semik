@@ -12,7 +12,7 @@ import { UnderwaterState, Stage, UnderwaterActionType } from './types';
 
 export const initialState: UnderwaterState = {
   healthPoints: HEALTH_POINTS_STARTER,
-  stage: Stage.Game,
+  stage: Stage.Intro,
   isGamePaused: false,
 };
 
