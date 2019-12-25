@@ -39,3 +39,5 @@ export const TesterWrapper = ({ store, children }: Props) => {
 
   return wrapper;
 };
+
+export const mockAppState = (state: Partial<AppState>) => state as AppState;
