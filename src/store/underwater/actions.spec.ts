@@ -27,7 +27,7 @@ describe('underwater actions creators', () => {
     test('substractHealthPoints', () => {
       store.dispatch(substractHealthPoints(5));
 
-      expect(findAction(store, SUBSTRACT_HEALTH_POINTS)).toMatchObject({
+      expect(findAction(store, SUBSTRACT_HEALTH_POINTS)).toEqual({
         type: SUBSTRACT_HEALTH_POINTS,
         payload: { value: 5 },
       });
@@ -36,7 +36,7 @@ describe('underwater actions creators', () => {
     test('setIsGamePaused', () => {
       store.dispatch(setIsGamePaused(true));
 
-      expect(findAction(store, SET_IS_GAME_PAUSED)).toMatchObject({
+      expect(findAction(store, SET_IS_GAME_PAUSED)).toEqual({
         type: SET_IS_GAME_PAUSED,
         payload: { isGamePaused: true },
       });
@@ -45,7 +45,7 @@ describe('underwater actions creators', () => {
     test('setUnderwaterStage', () => {
       store.dispatch(setUnderwaterStage(Stage.Intro));
 
-      expect(findAction(store, SET_UNDERWATER_STAGE)).toMatchObject({
+      expect(findAction(store, SET_UNDERWATER_STAGE)).toEqual({
         type: SET_UNDERWATER_STAGE,
         payload: { stage: Stage.Intro },
       });
@@ -58,7 +58,7 @@ describe('underwater actions creators', () => {
 
       store.dispatch(setUnderwaterIntro());
 
-      expect(findAction(store, SET_UNDERWATER_STAGE)).toMatchObject({
+      expect(findAction(store, SET_UNDERWATER_STAGE)).toEqual({
         type: SET_UNDERWATER_STAGE,
         payload: { stage: Stage.Intro },
       });
@@ -71,7 +71,7 @@ describe('underwater actions creators', () => {
 
       store.dispatch(setUnderwaterStarter());
 
-      expect(findAction(store, SET_UNDERWATER_STAGE)).toMatchObject({
+      expect(findAction(store, SET_UNDERWATER_STAGE)).toEqual({
         type: SET_UNDERWATER_STAGE,
         payload: { stage: Stage.Starter },
       });
@@ -84,11 +84,11 @@ describe('underwater actions creators', () => {
 
       store.dispatch(setUnderwaterGame());
 
-      expect(findAction(store, SET_IS_GAME_PAUSED)).toMatchObject({
+      expect(findAction(store, SET_IS_GAME_PAUSED)).toEqual({
         type: SET_IS_GAME_PAUSED,
         payload: { isGamePaused: false },
       });
-      expect(findAction(store, SET_UNDERWATER_STAGE)).toMatchObject({
+      expect(findAction(store, SET_UNDERWATER_STAGE)).toEqual({
         type: SET_UNDERWATER_STAGE,
         payload: { stage: Stage.Game },
       });

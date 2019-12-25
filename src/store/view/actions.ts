@@ -4,7 +4,7 @@ import { ThunkAction } from '../types';
 import { ToggleWindowFocusedAction, View } from './types';
 import { getIsUnderwaterView } from './selectors';
 
-const toggleWindowFocused = (
+export const toggleWindowFocused = (
   isWindowFocused?: boolean
 ): ToggleWindowFocusedAction => ({
   type: SET_IS_WINDOW_FOCUSED,
