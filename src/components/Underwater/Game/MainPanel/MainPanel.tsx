@@ -4,9 +4,11 @@ import { rem } from 'polished';
 
 // @ts-ignore TODO: resolve problem with imports of svg
 import Board from 'src/assets/board.svg';
+import { useGetHealthPoints } from 'src/store/underwater/selectors';
 import { SlidingInElement } from 'src/components/Elements';
 
 import { Pause } from '../Pause/Pause';
+import { HealthBar } from './HealtBar/HealthBar';
 
 const Wrapper = styled(SlidingInElement)`
   top: ${rem(10)};
@@ -16,7 +18,7 @@ const Panel = styled.div`
   width: ${rem(300)};
   height: ${rem(100)};
 
-  svg {
+  > svg {
     width: 100% !important;
     height: 100% !important;
   }
@@ -35,13 +37,18 @@ interface Props {
 }
 
 export const MainPanel = ({ resetDrops }: Props) => {
+  const healthPoints = useGetHealthPoints();
+  const isGameOver = healthPoints <= 0;
+
   return (
     <Wrapper position="left">
       <Panel>
         <Board />
 
         <InnerWrapper>
-          <Pause resetDrops={resetDrops} />
+          <Pause resetDrops={resetDrops} isGameOver={isGameOver} />
+
+          <HealthBar healthPoints={healthPoints} />
         </InnerWrapper>
       </Panel>
     </Wrapper>

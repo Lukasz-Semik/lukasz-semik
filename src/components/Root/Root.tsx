@@ -26,7 +26,7 @@ const Button2 = styled.button`
   z-index: 1;
 `;
 
-const ItemWrapper = styled.div<{
+const ItemWrapper = styled.div.attrs({ id: 'underwater-item' })<{
   isVisible: boolean;
   startingPosition: string;
 }>`
@@ -51,7 +51,11 @@ const Root = () => {
     <Wrapper>
       <ItemWrapper
         isVisible={futureView === View.Underwater}
-        onTransitionEnd={setView}
+        onTransitionEnd={(e: React.SyntheticEvent<HTMLDivElement>) => {
+          if (e.currentTarget.id === 'underwater-item') {
+            setView();
+          }
+        }}
         startingPosition="100%"
       >
         <Button onClick={goUp}>Move</Button>

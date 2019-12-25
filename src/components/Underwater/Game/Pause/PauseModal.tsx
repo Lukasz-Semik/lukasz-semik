@@ -6,7 +6,7 @@ import { rem } from 'polished';
 import { PaperModal } from 'src/components/Modals';
 import { ButtonElement } from 'src/components/Elements';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs({ 'data-test': 'pause-modal' })`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,29 +18,39 @@ const Button = styled(ButtonElement)`
   margin-bottom: ${rem(20)};
 `;
 
-const Title = styled.h2`
+const Title = styled.h2.attrs({ 'data-test': 'pause-modal-title' })`
   margin-bottom: ${rem(30)};
   font-size: ${rem(50)};
 `;
 
 interface Props {
-  resetGame: () => void;
+  restartGame: () => void;
   resumeGame: () => void;
   backToIntro: () => void;
+  isGameOver: boolean;
 }
 
-export const PauseModal = ({ resumeGame, resetGame, backToIntro }: Props) => (
+export const PauseModal = ({
+  resumeGame,
+  restartGame,
+  backToIntro,
+  isGameOver,
+}: Props) => (
   <PaperModal onClose={resumeGame}>
     <Wrapper>
       <Title>
-        <FormattedMessage id="underwater.game.pause" />
+        <FormattedMessage
+          id={isGameOver ? 'underwater.game.over' : 'underwater.game.pause'}
+        />
       </Title>
 
-      <Button onClick={resumeGame}>
-        <FormattedMessage id="underwater.game.resume" />
-      </Button>
+      {!isGameOver && (
+        <Button onClick={resumeGame}>
+          <FormattedMessage id="underwater.game.resume" />
+        </Button>
+      )}
 
-      <Button onClick={resetGame}>
+      <Button onClick={restartGame}>
         <FormattedMessage id="underwater.game.restart" />
       </Button>
 

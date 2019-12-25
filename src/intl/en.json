@@ -3,6 +3,7 @@
     "title": "Hi! I'm Lukasz",
     "startGame": "Start the game",
     "game": {
+      "over": "Game over",
       "pause": "Pause",
       "restart": "Restart",
       "backToIntro": "Back to intro",

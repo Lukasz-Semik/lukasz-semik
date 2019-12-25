@@ -4,6 +4,7 @@ import {
   SUBSTRACT_HEALTH_POINTS,
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
+  RESET_GAME,
 } from './actionTypes';
 
 export enum Stage {
@@ -39,7 +40,10 @@ export interface SetUnderwaterStageAction
   };
 }
 
+export type ResetGameAction = Action<typeof RESET_GAME>;
+
 export type UnderwaterActionType =
   | SubstractHealthPointsAction
   | SetIsGamePausedAction
-  | SetUnderwaterStageAction;
+  | SetUnderwaterStageAction
+  | ResetGameAction;

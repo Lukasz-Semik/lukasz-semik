@@ -24,11 +24,14 @@ export const findAction = (store: MockStore, actionType: string) =>
 interface Props {
   store?: {};
   children: React.ReactNode | React.ReactNode[];
+  withModalRoot?: boolean;
 }
 
 export const TesterWrapper = ({ store, children }: Props) => {
   let wrapper = (
     <IntlProvider locale="en" messages={flattenMessages(messagess)}>
+      <div id="modal-root" />
+
       {children}
     </IntlProvider>
   );

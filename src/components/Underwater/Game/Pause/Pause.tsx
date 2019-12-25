@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { rem } from 'polished';
 
 import { XButtonElement } from 'src/components/Elements';
@@ -8,10 +8,23 @@ import { useGamePause } from '../Pause/useGamePause';
 
 interface Props {
   resetDrops: () => void;
+  isGameOver: boolean;
 }
 
-export const Pause = ({ resetDrops }: Props) => {
-  const { pauseGame, resumeGame, backToIntro, isModalOpen } = useGamePause();
+export const Pause = ({ resetDrops, isGameOver }: Props) => {
+  const {
+    pauseGame,
+    resumeGame,
+    restartGame,
+    backToIntro,
+    isModalOpen,
+  } = useGamePause();
+
+  useEffect(() => {
+    if (isGameOver) {
+      pauseGame();
+    }
+  }, [pauseGame, isGameOver]);
 
   return (
     <>
@@ -19,11 +32,12 @@ export const Pause = ({ resetDrops }: Props) => {
 
       {isModalOpen && (
         <PauseModal
+          isGameOver={isGameOver}
           resumeGame={resumeGame}
           backToIntro={backToIntro}
-          resetGame={() => {
+          restartGame={() => {
             resetDrops();
-            resumeGame();
+            restartGame();
           }}
         />
       )}

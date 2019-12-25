@@ -39,3 +39,10 @@ export const getIsUnderwaterGame = createSelector(
 );
 
 export const useGetIsUnderwaterGame = () => useSelector(getIsUnderwaterGame);
+
+export const getHealthPoints = createSelector(
+  getUnderwaterState,
+  underwater => underwater.healthPoints
+);
+
+export const useGetHealthPoints = () => useSelector(getHealthPoints);

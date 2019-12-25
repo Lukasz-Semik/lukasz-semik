@@ -7,11 +7,13 @@ import {
   setUnderwaterIntro,
   setUnderwaterStarter,
   setUnderwaterGame,
+  resetGame,
 } from './actions';
 import {
   SUBSTRACT_HEALTH_POINTS,
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
+  RESET_GAME,
 } from './actionTypes';
 import { Stage } from './types';
 import { mockUnderwaterState } from './testHelpers';
@@ -91,6 +93,18 @@ describe('underwater actions creators', () => {
       expect(findAction(store, SET_UNDERWATER_STAGE)).toEqual({
         type: SET_UNDERWATER_STAGE,
         payload: { stage: Stage.Game },
+      });
+    });
+  });
+
+  describe('resetGame', () => {
+    it('should dispatch proper actions', () => {
+      const store = mockStore(mockUnderwaterState());
+
+      store.dispatch(resetGame());
+
+      expect(findAction(store, RESET_GAME)).toEqual({
+        type: RESET_GAME,
       });
     });
   });
