@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { substractHealthPoints } from 'src/store/underwater/actions';
+import { substractHealthPoints, addScore } from 'src/store/underwater/actions';
 
 import { useDrop } from '../Drop/useDrop';
 import { Drop } from '../Drop/Drop';
@@ -21,7 +21,7 @@ export const GameDrop = () => {
     <Drop
       resetDrop={onResetDrop}
       onDropClick={() => {
-        console.log('clicked');
+        dispatch(addScore(1));
       }}
       dropSize={dropSize}
       maxOpacity={1}

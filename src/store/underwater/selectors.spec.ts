@@ -9,6 +9,7 @@ import {
   getIsUnderwaterStarter,
   getIsUnderwaterGame,
   getHealthPoints,
+  getScore,
 } from './selectors';
 import { Stage } from './types';
 
@@ -86,6 +87,12 @@ describe('underwater selectors', () => {
       expect(
         getHealthPoints(mockAppState(mockUnderwaterState({ healthPoints: 30 })))
       ).toBe(30);
+    });
+  });
+
+  describe('getScore', () => {
+    it('should return proper value from state', () => {
+      expect(getScore(mockAppState(mockUnderwaterState({ score: 2 })))).toBe(2);
     });
   });
 });

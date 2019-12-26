@@ -46,3 +46,10 @@ export const getHealthPoints = createSelector(
 );
 
 export const useGetHealthPoints = () => useSelector(getHealthPoints);
+
+export const getScore = createSelector(
+  getUnderwaterState,
+  underwater => underwater.score
+);
+
+export const useGetScore = () => useSelector(getScore);

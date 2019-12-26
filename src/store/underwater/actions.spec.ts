@@ -8,12 +8,14 @@ import {
   setUnderwaterStarter,
   setUnderwaterGame,
   resetGame,
+  addScore,
 } from './actions';
 import {
   SUBSTRACT_HEALTH_POINTS,
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
   RESET_GAME,
+  ADD_SCORE,
 } from './actionTypes';
 import { Stage } from './types';
 import { mockUnderwaterState } from './testHelpers';
@@ -31,6 +33,15 @@ describe('underwater actions creators', () => {
 
       expect(findAction(store, SUBSTRACT_HEALTH_POINTS)).toEqual({
         type: SUBSTRACT_HEALTH_POINTS,
+        payload: { value: 5 },
+      });
+    });
+
+    test('addScore', () => {
+      store.dispatch(addScore(5));
+
+      expect(findAction(store, ADD_SCORE)).toEqual({
+        type: ADD_SCORE,
         payload: { value: 5 },
       });
     });

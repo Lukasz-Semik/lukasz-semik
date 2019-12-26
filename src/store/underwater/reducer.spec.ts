@@ -3,6 +3,7 @@ import {
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
   RESET_GAME,
+  ADD_SCORE,
 } from './actionTypes';
 
 import reducer, { initialState } from './reducer';
@@ -25,6 +26,20 @@ describe('underwater reducer', () => {
     ).toEqual({
       ...initialState,
       healthPoints: 95,
+    });
+  });
+
+  it(`should handle ${ADD_SCORE} action type`, () => {
+    expect(
+      reducer(initialState, {
+        type: ADD_SCORE,
+        payload: {
+          value: 5,
+        },
+      })
+    ).toEqual({
+      ...initialState,
+      score: 5,
     });
   });
 
