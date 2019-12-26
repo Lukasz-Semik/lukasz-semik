@@ -5,6 +5,7 @@ import {
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
   RESET_GAME,
+  ADD_SCORE,
 } from './actionTypes';
 
 export enum Stage {
@@ -15,12 +16,19 @@ export enum Stage {
 
 export interface UnderwaterState {
   healthPoints: number;
+  score: number;
   stage: Stage;
   isGamePaused: boolean;
 }
 
 export interface SubstractHealthPointsAction
   extends Action<typeof SUBSTRACT_HEALTH_POINTS> {
+  payload: {
+    value: number;
+  };
+}
+
+export interface AddScore extends Action<typeof ADD_SCORE> {
   payload: {
     value: number;
   };
@@ -44,6 +52,7 @@ export type ResetGameAction = Action<typeof RESET_GAME>;
 
 export type UnderwaterActionType =
   | SubstractHealthPointsAction
+  | AddScore
   | SetIsGamePausedAction
   | SetUnderwaterStageAction
   | ResetGameAction;

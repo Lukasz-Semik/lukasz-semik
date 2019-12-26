@@ -9,6 +9,7 @@ import { SlidingInElement } from 'src/components/Elements';
 
 import { Pause } from '../Pause/Pause';
 import { HealthBar } from './HealtBar/HealthBar';
+import { GameStatistics } from './GameStatistics/GameStatistics';
 
 const Wrapper = styled(SlidingInElement)`
   top: ${rem(10)};
@@ -49,6 +50,8 @@ export const MainPanel = ({ resetDrops }: Props) => {
           <Pause resetDrops={resetDrops} isGameOver={isGameOver} />
 
           <HealthBar healthPoints={healthPoints} />
+
+          <GameStatistics />
         </InnerWrapper>
       </Panel>
     </Wrapper>

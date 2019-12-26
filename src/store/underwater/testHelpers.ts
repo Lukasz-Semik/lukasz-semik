@@ -1,10 +1,9 @@
-import { UnderwaterState, Stage } from './types';
+import { UnderwaterState } from './types';
+import { initialState } from './reducer';
 
 export const mockUnderwaterState = (state: Partial<UnderwaterState> = {}) => ({
   underwater: {
-    healthPoints: 100,
-    stage: Stage.Intro,
-    isGamePaused: false,
+    ...initialState,
     ...state,
   },
 });

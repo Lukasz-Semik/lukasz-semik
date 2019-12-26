@@ -3,6 +3,7 @@ import {
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
   RESET_GAME,
+  ADD_SCORE,
 } from './actionTypes';
 import {
   Stage,
@@ -10,6 +11,7 @@ import {
   SetIsGamePausedAction,
   SetUnderwaterStageAction,
   ResetGameAction,
+  AddScore,
 } from './types';
 import { ThunkAction } from '../types';
 
@@ -17,6 +19,13 @@ export const substractHealthPoints = (
   value: number
 ): SubstractHealthPointsAction => ({
   type: SUBSTRACT_HEALTH_POINTS,
+  payload: {
+    value,
+  },
+});
+
+export const addScore = (value: number): AddScore => ({
+  type: ADD_SCORE,
   payload: {
     value,
   },

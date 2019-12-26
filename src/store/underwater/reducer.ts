@@ -7,12 +7,14 @@ import {
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
   RESET_GAME,
+  ADD_SCORE,
 } from './actionTypes';
 import { UnderwaterState, Stage, UnderwaterActionType } from './types';
 
 export const initialState: UnderwaterState = {
   healthPoints: HEALTH_POINTS_STARTER,
-  stage: Stage.Intro,
+  score: 0,
+  stage: Stage.Game,
   isGamePaused: false,
 };
 
@@ -33,6 +35,11 @@ export default (
       return {
         ...state,
         healthPoints: state.healthPoints - action.payload.value,
+      };
+    case ADD_SCORE:
+      return {
+        ...state,
+        score: state.score + action.payload.value,
       };
     case SET_UNDERWATER_STAGE:
       return {
