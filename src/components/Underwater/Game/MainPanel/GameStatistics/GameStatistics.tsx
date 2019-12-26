@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { rem } from 'polished';
 
@@ -30,11 +30,29 @@ const Counter = styled.span`
   color: ${styles.colors.goldDark};
 `;
 
-export const GameStatistics = () => {
+const Value = styled.span<{ isAdding: boolean }>`
+  display: inline-block;
+  transform: ${({ isAdding }) => `scale(${isAdding ? 1.5 : 1})`};
+  transition: transform 0.2s ease;
+`;
+
+interface Props {
+  score: number;
+}
+
+export const GameStatistics = ({ score }: Props) => {
+  const [isAdding, setIsAdding] = useState(false);
+
+  useEffect(() => {
+    setIsAdding(true);
+  }, [score]);
+
   return (
     <Wrapper>
       <Diamond />
-      <Counter>x 1</Counter>
+      <Counter onTransitionEnd={() => setIsAdding(false)}>
+        x <Value isAdding={isAdding}>{score}</Value>
+      </Counter>
     </Wrapper>
   );
 };
