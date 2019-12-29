@@ -1,12 +1,13 @@
 import React, { useRef, useMemo, useEffect } from 'react';
 import styled from 'styled-components';
 import { size, rem } from 'polished';
-import { random, floor } from 'lodash';
+import { random } from 'lodash';
 import gsap from 'gsap';
 
 import { useAnimationKill } from '../useAnimationKill';
 
-const BASE_SPEED_ROAD = 880;
+// TODO: improve speed for different devices
+// const BASE_SPEED_ROAD = 880;
 
 export const Wrapper = styled.div<{
   dropSize: number;
@@ -42,18 +43,19 @@ export const SwimmingWrapper = ({
     if (isMounted && ref.current) {
       const windowHeight = window.innerHeight;
 
-      const firstStageDuration = floor((windowHeight * 8) / BASE_SPEED_ROAD, 2);
-      const secondStageDuration = floor(windowHeight / BASE_SPEED_ROAD, 2);
+      // TODO: improve speed for different devices
+      // const firstStageDuration = floor((windowHeight * 8) / BASE_SPEED_ROAD, 2);
+      // const secondStageDuration = floor(windowHeight / BASE_SPEED_ROAD, 2);
 
       tl.to(ref.current, {
-        top: '10%',
+        y: `${-windowHeight * 0.7}px`,
         ease: 'linear',
-        duration: firstStageDuration,
+        duration: 5,
       }).to(ref.current, {
-        top: 0,
+        y: `${-windowHeight}px`,
         opacity: 0.3,
         ease: 'linear',
-        duration: secondStageDuration,
+        duration: 2,
         onComplete: onSwimEnd,
       });
     }

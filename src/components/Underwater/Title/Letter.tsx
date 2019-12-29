@@ -1,16 +1,17 @@
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import styled from 'styled-components';
+import { rem } from 'polished';
 
 const topPosition = 20;
 
 const LetterStyled = styled.span<{ hasMarginRight?: boolean }>`
   position: relative;
-  top: -30px;
   display: inline-block;
   opacity: 0;
+  transform: translateY(-${rem(20)});
 
-  ${({ hasMarginRight }) => hasMarginRight && 'margin-right: 20px'};
+  ${({ hasMarginRight }) => hasMarginRight && `margin-right: ${rem(20)}`};
 `;
 
 interface Letter {
@@ -37,16 +38,16 @@ export const Letter = ({ letter, index }: Props) => {
         opacity: 0.7,
         delay: 0.2 * index,
         duration: 1,
-        top: topPosition,
+        y: rem(topPosition),
         onComplete: () => setIsMounted(true),
       });
     } else {
       const tl = gsap.timeline({ repeat: -1 });
 
       const getAnimationConfig = (hasNegative?: boolean) => ({
-        top: `${hasNegative ? '-' : ''}${topPosition}px`,
+        y: `${hasNegative ? '-' : ''}${rem(topPosition)}`,
         duration: 1.8,
-        ease: 'linear',
+        ease: 'cubic-bezier(.39,.58,.77,.74)',
       });
 
       tl.to(ref.current, getAnimationConfig(true)).to(
