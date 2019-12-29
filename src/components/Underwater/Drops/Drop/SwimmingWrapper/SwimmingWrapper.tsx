@@ -46,14 +46,14 @@ export const SwimmingWrapper = ({
       const secondStageDuration = floor(windowHeight / BASE_SPEED_ROAD, 2);
 
       tl.to(ref.current, {
-        top: '10%',
+        y: `${-windowHeight * 0.7}px`,
         ease: 'linear',
-        duration: firstStageDuration,
+        duration: 5,
       }).to(ref.current, {
-        top: 0,
+        y: `${-windowHeight}px`,
         opacity: 0.3,
         ease: 'linear',
-        duration: secondStageDuration,
+        duration: 2,
         onComplete: onSwimEnd,
       });
     }
