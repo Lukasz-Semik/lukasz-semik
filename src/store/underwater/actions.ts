@@ -47,6 +47,10 @@ export const setUnderwaterStage = (stage: Stage): SetUnderwaterStageAction => ({
   },
 });
 
+export const resetGame = (): ResetGameAction => ({
+  type: RESET_GAME,
+});
+
 export const setUnderwaterIntro = (): ThunkAction => dispatch => {
   dispatch(setUnderwaterStage(Stage.Intro));
 };
@@ -56,10 +60,6 @@ export const setUnderwaterStarter = (): ThunkAction => dispatch => {
 };
 
 export const setUnderwaterGame = (): ThunkAction => dispatch => {
-  dispatch(setIsGamePaused(false));
+  dispatch(resetGame());
   dispatch(setUnderwaterStage(Stage.Game));
 };
-
-export const resetGame = (): ResetGameAction => ({
-  type: RESET_GAME,
-});

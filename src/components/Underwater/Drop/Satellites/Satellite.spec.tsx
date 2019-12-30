@@ -18,6 +18,6 @@ describe('<Satellite />', () => {
 
     expect(satellite).toBeDefined();
     userEvent.click(satellite);
-    expect(queryByTestId('satellite')).toBeNull();
+    expect(queryByTestId('satellite')).not.toBeVisible();
   });
 });

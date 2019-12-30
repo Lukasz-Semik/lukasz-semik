@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import styled from 'styled-components';
 
 import { DropButton } from '../styled';
-import { useAnimationKill } from '../useAnimationKill';
+import { useAnimationPause } from '../useAnimationPause';
 
 interface DropProps {
   maxOpacity?: number;
@@ -29,7 +29,7 @@ export const Satellite = ({ index, maxOpacity }: Props) => {
   const ref = useRef<HTMLButtonElement>(null);
   const tl = useMemo(() => gsap.timeline(), []);
 
-  useAnimationKill(tl);
+  useAnimationPause(tl);
 
   useEffect(() => {
     if (!ref.current) {
@@ -39,13 +39,13 @@ export const Satellite = ({ index, maxOpacity }: Props) => {
     const getPosition = () => {
       switch (index) {
         case 1:
-          return { top: '300%' };
+          return { y: '400%' };
         case 2:
-          return { left: '-200%' };
+          return { x: '-400%' };
         case 3:
-          return { left: '300%' };
+          return { x: '400%' };
         default:
-          return { top: '-200%' };
+          return { y: '-400%' };
       }
     };
 
@@ -62,13 +62,13 @@ export const Satellite = ({ index, maxOpacity }: Props) => {
     };
   }, [index, tl]);
 
-  return isVisible ? (
+  return (
     <SmallDrop
       onClick={() => setIsVisible(false)}
       ref={ref}
       dropSize={20}
       maxOpacity={maxOpacity}
-      isVisible
+      isVisible={isVisible}
     />
-  ) : null;
+  );
 };
