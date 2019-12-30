@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { size, rem } from 'polished';
 import gsap from 'gsap';
 
-import { getWindowHeight } from 'src/helpers/utils';
+import { useWindow } from 'src/hooks/useWindow';
 
 import { useAnimationPause } from '../useAnimationPause';
 
@@ -39,8 +39,8 @@ export const SwimmingWrapper = ({
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const tl = useMemo(() => gsap.timeline(), []);
+  const { windowHeight } = useWindow();
 
-  const windowHeight = getWindowHeight();
   const startingY = windowHeight * 0.8;
 
   useAnimationPause(tl);
