@@ -1,10 +1,8 @@
-import React, { useRef, useMemo, useEffect, useState } from 'react';
+import React, { useRef, useMemo, useEffect } from 'react';
 import styled from 'styled-components';
 import { size, rem } from 'polished';
-import { random } from 'lodash';
 import gsap from 'gsap';
 
-import { useAnimationKill } from '../useAnimationKill';
 import { useAnimationPause } from '../useAnimationPause';
 
 // TODO: improve speed for different devices
@@ -24,8 +22,9 @@ export const Wrapper = styled.div<{
 
 interface Props {
   dropSize: number;
-  isMounted: boolean;
+  isSwimming: boolean;
   onSwimEnd: () => void;
+  positionX: number;
   children: React.ReactNode;
 }
 

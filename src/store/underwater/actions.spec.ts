@@ -97,7 +97,7 @@ describe('underwater actions creators', () => {
 
       store.dispatch(setUnderwaterGame());
 
-      expect(findAction(store, SET_IS_GAME_PAUSED)).toEqual({
+      expect(findAction(store, RESET_GAME)).toEqual({
         type: RESET_GAME,
       });
       expect(findAction(store, SET_UNDERWATER_STAGE)).toEqual({

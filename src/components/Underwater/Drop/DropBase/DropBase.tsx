@@ -3,6 +3,7 @@ import { random } from 'lodash';
 
 import { SwimmingWrapper } from '../SwimmingWrapper/SwimmingWrapper';
 import { DropElement } from '../DropElement/DropElement';
+import { Satellites } from '../Satellites/Satellites';
 
 interface Attributes {
   positionX: number;
@@ -22,7 +23,13 @@ const generateAttributes = (isFullyVisible?: boolean) => {
   };
 };
 
-export const DropBase = ({ onClick, isFullyVisible, onSwimEnd }) => {
+interface Props {
+  onClick: () => void;
+  onSwimEnd?: (isClicked?: boolean) => void;
+  isFullyVisible?: boolean;
+}
+
+export const DropBase = ({ onClick, isFullyVisible, onSwimEnd }: Props) => {
   const [isSwimming, setIsSwimming] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [attributes, setAttributes] = useState<Attributes>(
@@ -42,9 +49,11 @@ export const DropBase = ({ onClick, isFullyVisible, onSwimEnd }) => {
           onSwimEnd(isClicked);
         }
 
-        setAttributes(generateAttributes());
+        setAttributes(generateAttributes(isFullyVisible));
       }}
     >
+      {isClicked && <Satellites maxOpacity={attributes.maxOpacity} />}
+
       <DropElement
         isSwimming={isSwimming}
         onShowEnd={() => setIsSwimming(true)}

@@ -4,6 +4,16 @@ import gsap from 'gsap';
 import { DropButton } from '../styled';
 import { useAnimationPause } from '../useAnimationPause';
 
+interface Props {
+  onShowEnd: () => void;
+  isSwimming: boolean;
+  delay: number;
+  dropSize: number;
+  maxOpacity: number;
+  isVisible: boolean;
+  onClick: () => void;
+}
+
 export const DropElement = ({
   onShowEnd,
   isSwimming,
@@ -12,7 +22,7 @@ export const DropElement = ({
   maxOpacity,
   isVisible,
   onClick,
-}) => {
+}: Props) => {
   const ref = useRef<HTMLButtonElement>(null);
   const tl = useMemo(() => gsap.timeline(), []);
 
