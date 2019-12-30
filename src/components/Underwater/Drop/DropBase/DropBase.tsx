@@ -22,7 +22,7 @@ const generateAttributes = (isFullyVisible?: boolean) => {
   };
 };
 
-export const DropBase = ({ onClick, isFullyVisible }) => {
+export const DropBase = ({ onClick, isFullyVisible, onSwimEnd }) => {
   const [isSwimming, setIsSwimming] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [attributes, setAttributes] = useState<Attributes>(
@@ -37,6 +37,11 @@ export const DropBase = ({ onClick, isFullyVisible }) => {
       onSwimEnd={() => {
         setIsSwimming(false);
         setIsClicked(false);
+
+        if (onSwimEnd) {
+          onSwimEnd(isClicked);
+        }
+
         setAttributes(generateAttributes());
       }}
     >

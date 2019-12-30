@@ -8,5 +8,17 @@ import { DropBase } from '../DropBase/DropBase';
 export const GameDrop = () => {
   const dispatch = useDispatch();
 
-  return <DropBase onClick={() => dispatch(addScore(1))} />;
+  const onSwimEnd = (isClicked?: boolean) => {
+    if (!isClicked) {
+      dispatch(substractHealthPoints(1));
+    }
+  };
+
+  return (
+    <DropBase
+      onSwimEnd={onSwimEnd}
+      onClick={() => dispatch(addScore(1))}
+      isFullyVisible
+    />
+  );
 };
