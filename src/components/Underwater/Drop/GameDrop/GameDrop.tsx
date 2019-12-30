@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { substractHealthPoints, addScore } from 'src/store/underwater/actions';
 
 import { DropBase } from '../DropBase/DropBase';
+import { PointsIndicator } from '../PointsIndicator/PointsIndicator';
 
 export const GameDrop = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ export const GameDrop = () => {
       onSwimEnd={onSwimEnd}
       onClick={() => dispatch(addScore(1))}
       onSateliteClick={onAddBonusScore}
+      renderIndicator={(value: number) => (
+        <PointsIndicator value={`+${value}`} />
+      )}
       isFullyVisible
     />
   );

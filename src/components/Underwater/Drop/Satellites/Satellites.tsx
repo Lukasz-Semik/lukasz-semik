@@ -16,15 +16,20 @@ const Wrapper = styled.div<{ rotation: number }>`
 interface Props {
   maxOpacity?: number;
   onSateliteClick: (points: number) => void;
+  renderIndicator?: (points: number) => React.ReactElement;
 }
 
-export const Satellites = ({ maxOpacity, onSateliteClick }: Props) => {
+export const Satellites = ({
+  maxOpacity,
+  onSateliteClick,
+  renderIndicator,
+}: Props) => {
   const [counter, setCounter] = useState(1);
   const rotation = useMemo(() => random(0, 180), []);
 
   const onClick = () => {
     if (onSateliteClick) {
-      onSateliteClick(counter);
+      onSateliteClick(counter + 1);
       setCounter(counter + 1);
     }
   };
@@ -37,6 +42,10 @@ export const Satellites = ({ maxOpacity, onSateliteClick }: Props) => {
           index={i}
           maxOpacity={maxOpacity}
           onClick={onClick}
+          counterRotation={-rotation}
+          renderIndicator={() =>
+            renderIndicator ? renderIndicator(counter) : null
+          }
         />
       ))}
     </Wrapper>

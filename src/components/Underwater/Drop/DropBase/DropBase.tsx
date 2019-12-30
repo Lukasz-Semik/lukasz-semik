@@ -28,6 +28,7 @@ interface Props {
   onSwimEnd?: (isClicked?: boolean) => void;
   onSateliteClick: (points: number) => void;
   isFullyVisible?: boolean;
+  renderIndicator: (value: number) => React.ReactElement;
 }
 
 export const DropBase = ({
@@ -35,6 +36,7 @@ export const DropBase = ({
   onSateliteClick,
   onSwimEnd,
   isFullyVisible,
+  renderIndicator,
 }: Props) => {
   const [isSwimming, setIsSwimming] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -62,6 +64,7 @@ export const DropBase = ({
         <Satellites
           maxOpacity={attributes.maxOpacity}
           onSateliteClick={onSateliteClick}
+          renderIndicator={renderIndicator}
         />
       )}
 
@@ -77,6 +80,8 @@ export const DropBase = ({
           setIsClicked(true);
         }}
       />
+
+      {isClicked && renderIndicator && renderIndicator(1)}
     </SwimmingWrapper>
   );
 };
