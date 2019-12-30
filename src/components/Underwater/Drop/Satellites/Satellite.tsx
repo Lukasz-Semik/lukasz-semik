@@ -22,9 +22,10 @@ const SmallDrop = styled(DropButton).attrs({ 'data-test': 'satellite' })<
 
 interface Props extends DropProps {
   index: number;
+  onClick: () => void;
 }
 
-export const Satellite = ({ index, maxOpacity }: Props) => {
+export const Satellite = ({ index, maxOpacity, onClick }: Props) => {
   const [isVisible, setIsVisible] = useState(true);
   const ref = useRef<HTMLButtonElement>(null);
   const tl = useMemo(() => gsap.timeline(), []);
@@ -64,7 +65,10 @@ export const Satellite = ({ index, maxOpacity }: Props) => {
 
   return (
     <SmallDrop
-      onClick={() => setIsVisible(false)}
+      onClick={() => {
+        setIsVisible(false);
+        onClick();
+      }}
       ref={ref}
       dropSize={20}
       maxOpacity={maxOpacity}

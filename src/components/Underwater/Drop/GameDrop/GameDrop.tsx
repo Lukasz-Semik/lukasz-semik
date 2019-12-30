@@ -14,10 +14,15 @@ export const GameDrop = () => {
     }
   };
 
+  const onAddBonusScore = (points: number) => {
+    dispatch(addScore(points));
+  };
+
   return (
     <DropBase
       onSwimEnd={onSwimEnd}
       onClick={() => dispatch(addScore(1))}
+      onSateliteClick={onAddBonusScore}
       isFullyVisible
     />
   );

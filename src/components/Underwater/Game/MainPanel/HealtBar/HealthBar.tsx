@@ -14,7 +14,7 @@ const getPosition = (position?: number) => {
     return 0;
   }
 
-  if (position < 90) {
+  if (position < 98) {
     return `${position}%`;
   }
 
