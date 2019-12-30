@@ -44,7 +44,9 @@ export const GameStatistics = ({ score }: Props) => {
   const [isAdding, setIsAdding] = useState(false);
 
   useEffect(() => {
-    setIsAdding(true);
+    if (score) {
+      setIsAdding(true);
+    }
   }, [score]);
 
   return (
