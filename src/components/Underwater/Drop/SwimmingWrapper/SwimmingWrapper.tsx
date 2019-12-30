@@ -79,12 +79,3 @@ export const SwimmingWrapper = ({
     </Wrapper>
   );
 };
-
-/* 
-  Drop:
-  - isMounted
-  - isSwimming
-  - left
-  - dropSize
-  - maxOpacity
-*/
