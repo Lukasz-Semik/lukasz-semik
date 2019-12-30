@@ -38,7 +38,7 @@ export const SwimmingWrapper = ({
   const ref = useRef<HTMLDivElement>(null);
   const tl = useMemo(() => gsap.timeline(), []);
 
-  const windowHeight = window.innerHeight;
+  const windowHeight = window ? window.innerHeight : 880;
   const startingY = windowHeight * 0.8;
 
   useAnimationPause(tl);
