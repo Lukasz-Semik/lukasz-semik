@@ -26,9 +26,9 @@ const generateAttributes = (isFullyVisible?: boolean) => {
 interface Props {
   onClick: () => void;
   onSwimEnd?: (isClicked?: boolean) => void;
-  onSateliteClick: (points: number) => void;
+  onSateliteClick?: (points: number) => void;
   isFullyVisible?: boolean;
-  renderIndicator: (value: number) => React.ReactElement;
+  renderIndicator?: (value: number) => React.ReactElement;
 }
 
 export const DropBase = ({

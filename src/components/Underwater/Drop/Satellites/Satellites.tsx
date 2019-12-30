@@ -15,7 +15,7 @@ const Wrapper = styled.div<{ rotation: number }>`
 
 interface Props {
   maxOpacity?: number;
-  onSateliteClick: (points: number) => void;
+  onSateliteClick?: (points: number) => void;
   renderIndicator?: (points: number) => React.ReactElement;
 }
 
