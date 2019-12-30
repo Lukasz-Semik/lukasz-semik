@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { size, rem } from 'polished';
 import gsap from 'gsap';
 
+import { getWindowHeight } from 'src/helpers/utils';
+
 import { useAnimationPause } from '../useAnimationPause';
 
 // TODO: improve speed for different devices
@@ -38,7 +40,7 @@ export const SwimmingWrapper = ({
   const ref = useRef<HTMLDivElement>(null);
   const tl = useMemo(() => gsap.timeline(), []);
 
-  const windowHeight = window ? window.innerHeight : 880;
+  const windowHeight = getWindowHeight();
   const startingY = windowHeight * 0.8;
 
   useAnimationPause(tl);
