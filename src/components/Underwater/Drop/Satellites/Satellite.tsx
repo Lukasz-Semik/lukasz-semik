@@ -20,9 +20,6 @@ const Wrapper = styled.div<{ counterRotation: number }>`
 const SmallDrop = styled(DropButton).attrs({ 'data-test': 'satellite' })<
   DropProps
 >`
-  /* position: absolute;
-  top: 50%;
-  left: 50%; */
   opacity: ${({ maxOpacity }) => maxOpacity || 1};
   border-width: 3px;
   transform: scale(1);
