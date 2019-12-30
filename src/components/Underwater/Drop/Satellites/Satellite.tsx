@@ -9,24 +9,38 @@ interface DropProps {
   maxOpacity?: number;
 }
 
-const SmallDrop = styled(DropButton).attrs({ 'data-test': 'satellite' })<
-  DropProps
->`
+const Wrapper = styled.div<{ counterRotation: number }>`
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%)
+    rotateZ(${({ counterRotation }) => counterRotation}deg);
+`;
+
+const SmallDrop = styled(DropButton).attrs({ 'data-test': 'satellite' })<
+  DropProps
+>`
   opacity: ${({ maxOpacity }) => maxOpacity || 1};
   border-width: 3px;
-  transform: translate(-50%, -50%) scale(1);
+  transform: scale(1);
 `;
 
 interface Props extends DropProps {
   index: number;
+  onClick: () => void;
+  renderIndicator: () => React.ReactElement | null;
+  counterRotation: number;
 }
 
-export const Satellite = ({ index, maxOpacity }: Props) => {
+export const Satellite = ({
+  index,
+  maxOpacity,
+  onClick,
+  renderIndicator,
+  counterRotation,
+}: Props) => {
   const [isVisible, setIsVisible] = useState(true);
-  const ref = useRef<HTMLButtonElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const tl = useMemo(() => gsap.timeline(), []);
 
   useAnimationPause(tl);
@@ -63,12 +77,18 @@ export const Satellite = ({ index, maxOpacity }: Props) => {
   }, [index, tl]);
 
   return (
-    <SmallDrop
-      onClick={() => setIsVisible(false)}
-      ref={ref}
-      dropSize={20}
-      maxOpacity={maxOpacity}
-      isVisible={isVisible}
-    />
+    <Wrapper ref={ref} counterRotation={counterRotation}>
+      <SmallDrop
+        onClick={() => {
+          setIsVisible(false);
+          onClick();
+        }}
+        dropSize={20}
+        maxOpacity={maxOpacity}
+        isVisible={isVisible}
+      />
+
+      {!isVisible && renderIndicator()}
+    </Wrapper>
   );
 };
