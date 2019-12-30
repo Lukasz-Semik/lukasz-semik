@@ -13,7 +13,7 @@ interface Props {
 
 export const Landing = ({ isIntro, isStarter }: Props) => (
   <>
-    {times(20, i => (
+    {times(40, i => (
       <IntroDrop key={`drop-${i}`} />
     ))}
 

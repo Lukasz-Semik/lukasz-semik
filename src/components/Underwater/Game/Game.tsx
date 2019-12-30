@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { times } from 'lodash';
 
-import { GameDrop } from '../Drops/GameDrop/GameDrop';
+import { GameDrop } from '../Drop/GameDrop/GameDrop';
 import { MainPanel } from './MainPanel/MainPanel';
 
 export const Game = () => {
