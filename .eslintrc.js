@@ -14,6 +14,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier', 'react', 'react-hooks'],
   rules: {
+    'no-useless-constructor': 0,
     'react/jsx-filename-extension': [
       1,
       {

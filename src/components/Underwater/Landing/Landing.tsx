@@ -4,9 +4,12 @@ import { Stage, Layer, Rect } from 'react-konva';
 import Konva from 'konva';
 
 import { Title } from '../Title/Title';
+import { IntroDrop } from '../Drops/IntroDrop/IntroDrop';
+import { DropsStage } from '../Drops2/DropsStage/DropsStage';
 import { Starter } from '../Starter/Starter';
 // import { IntroDrop } from '../Drop/IntroDrop/IntroDrop';
 import { Tester } from './Tester';
+import { Drop } from '../Drops2/Drop/Drop';
 
 interface Props {
   isIntro: boolean;
@@ -16,20 +19,15 @@ interface Props {
 export const Landing = ({ isIntro, isStarter }: Props) => {
   return (
     <>
-      {/* {times(1, i => (
-        <IntroDrop key={`drop-${i}`} />
-      ))}
-      
+      <DropsStage>
+        {times(40, index => (
+          <Drop key={index} />
+        ))}
+      </DropsStage>
+
       {isIntro && <Title />}
-  
-      {isStarter && <Starter />} */}
-      <Stage width={window.innerWidth} height={window.innerHeight}>
-        <Layer>
-          {times(40, index => (
-            <Tester key={index} />
-          ))}
-        </Layer>
-      </Stage>
+
+      {isStarter && <Starter />}
     </>
   );
 };

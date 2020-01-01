@@ -19,15 +19,15 @@ export const Tester = ({ isIntro, isStarter }: Props) => {
   const ref = useRef();
   const ref2 = useRef();
 
-  const a = async () => {
+  const a = () => {
     const x = new Konva.Tween({
       node: ref.current,
       y: 0,
       duration: 5,
-      onFinish: s => console.log('dsa', s),
+      onFinish: s => console.log('dsa', ref),
     });
 
-    x.play();
+    return x.play();
   };
 
   const b = () => {
@@ -46,16 +46,18 @@ export const Tester = ({ isIntro, isStarter }: Props) => {
       node: ref2.current,
       x: 100,
       duration: 5,
-      onFinish: s => console.log('dsa', s),
     });
 
     x.play();
   };
 
   useEffect(() => {
-    a();
+    setTimeout(() => {
+      a();
+    }, random(1, 11, true) * 1000);
     b();
   }, []);
+
   return (
     <>
       <Rect
