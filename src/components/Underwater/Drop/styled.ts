@@ -1,19 +1,7 @@
 import styled, { css } from 'styled-components';
-import { size, rem } from 'polished';
 
 import { styleCircle } from 'src/styles/helpers';
 import styles from 'src/styles';
-
-export const SwimmingWrapper = styled.div<{
-  dropSize: number;
-  leftPosition: number;
-}>`
-  ${({ dropSize }) => size(rem(dropSize))};
-  position: absolute;
-  top: 80%;
-  left: ${({ leftPosition }) => leftPosition}%;
-  pointer-events: none;
-`;
 
 interface DropDownButtonProps {
   dropSize: number;

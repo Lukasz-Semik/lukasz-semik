@@ -4,7 +4,6 @@ import { Stage, Layer, Rect } from 'react-konva';
 import Konva from 'konva';
 
 import { Title } from '../Title/Title';
-import { IntroDrop } from '../Drops/IntroDrop/IntroDrop';
 import { Starter } from '../Starter/Starter';
 // import { IntroDrop } from '../Drop/IntroDrop/IntroDrop';
 import { Tester } from './Tester';

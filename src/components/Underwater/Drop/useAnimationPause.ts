@@ -5,7 +5,7 @@ import {
   useGetIsUnderwaterGame,
 } from 'src/store/underwater/selectors';
 
-export const useAnimationKill = (tl: gsap.core.Timeline) => {
+export const useAnimationPause = (tl: gsap.core.Timeline) => {
   const isPaused = useGetIsGamePaused();
   const isGameRunning = useGetIsUnderwaterGame();
 
