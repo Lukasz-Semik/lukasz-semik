@@ -1,20 +1,15 @@
-import React, {
-  PureComponent,
-  useRef,
-  RefObject,
-  useEffect,
-  useState,
-} from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Circle, Group } from 'react-konva';
 import Konva from 'konva';
 import { random } from 'lodash';
 
+// import { useWindow } from 'src/hooks/useWindow';
 import styles from 'src/styles';
 
 import { DropAnimation } from './dropAnimation';
 import { DropContainer } from './DropContainer';
 
-export const DropUnwrapped = ({ windowWidth, windowHeight }) => {
+export const DropUnwrapped = ({ windowHeight, windowWidth }) => {
   const [attribtues, setAttributes] = useState({
     positionX: random(30, windowWidth - 30),
     cycle: 0,
@@ -35,7 +30,7 @@ export const DropUnwrapped = ({ windowWidth, windowHeight }) => {
         const animation = new DropAnimation(ref, onSwimEnd);
         animation.animate();
       }
-    }, random(1, 11, true) * 1000);
+    }, random(1, 1, true) * 1000);
   }, [attribtues.cycle]);
 
   return (
@@ -50,6 +45,7 @@ export const DropUnwrapped = ({ windowWidth, windowHeight }) => {
       scaleX={0}
       scaleY={0}
       opacity={0}
+      fill="#000"
     >
       <Circle fill={styles.colors.dropLight} radius={25} />
 
@@ -60,5 +56,5 @@ export const DropUnwrapped = ({ windowWidth, windowHeight }) => {
   );
 };
 
-export const render = props => <DropUnwrapped {...props} />;
+export const render = renderProps => <DropUnwrapped {...renderProps} />;
 export const Drop = () => <DropContainer render={render} />;
