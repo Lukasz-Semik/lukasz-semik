@@ -32,16 +32,25 @@ interface Props {
   windowWidth: number;
   windowHeight: number;
   isFullyVisible?: boolean;
+  onClick: () => void;
+  onSwimEnd?: (isClicked: boolean) => void;
 }
 
-export const Drop = ({ windowWidth, windowHeight, isFullyVisible }: Props) => {
+export const Drop = ({
+  windowWidth,
+  windowHeight,
+  isFullyVisible,
+  onClick,
+  onSwimEnd,
+}: Props) => {
+  const [isClicked, setIsClicked] = useState(false);
   const [attributes, setAttributes] = useState(
     generateAttributes({ windowWidth, isFullyVisible, cycle: 0 })
   );
 
   const ref = useRef<Konva.Group>(null);
 
-  const onSwimEnd = () => {
+  const onDropSwimEnd = () => {
     setAttributes(
       generateAttributes({
         windowWidth,
@@ -49,6 +58,16 @@ export const Drop = ({ windowWidth, windowHeight, isFullyVisible }: Props) => {
         cycle: attributes.cycle + 1,
       })
     );
+    if (onSwimEnd) {
+      onSwimEnd(isClicked);
+    }
+
+    setIsClicked(false);
+  };
+
+  const onDropClick = () => {
+    onClick();
+    setIsClicked(true);
   };
 
   const { cycle, scale, maxOpacity } = attributes;
@@ -57,7 +76,12 @@ export const Drop = ({ windowWidth, windowHeight, isFullyVisible }: Props) => {
   useEffect(() => {
     if (ref.current) {
       setTimeout(() => {
-        const animation = new DropAnimation(ref, onSwimEnd, maxOpacity, scale);
+        const animation = new DropAnimation(
+          ref,
+          onDropSwimEnd,
+          maxOpacity,
+          scale
+        );
         animation.animate();
       }, random(1, 11, true) * 1000);
     }
@@ -77,6 +101,8 @@ export const Drop = ({ windowWidth, windowHeight, isFullyVisible }: Props) => {
       scaleX={0}
       scaleY={0}
       opacity={0}
+      visible={!isClicked}
+      onClick={onDropClick}
     >
       <Circle fill={styles.colors.dropLight} radius={25} />
       <Circle fill={styles.colors.dropDark} radius={20} />

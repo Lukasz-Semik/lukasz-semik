@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { times } from 'lodash';
 
-import { GameDrop } from '../Drop/GameDrop/GameDrop';
 import { MainPanel } from './MainPanel/MainPanel';
+import { GameDrops } from '../Drops2/GameDrops/GameDrops';
 
 export const Game = () => {
   const [isResetingDrops, setIsResetingDrops] = useState(false);
@@ -15,7 +14,7 @@ export const Game = () => {
 
   return (
     <>
-      {!isResetingDrops && times(40, i => <GameDrop key={`drop-${i}`} />)}
+      {!isResetingDrops && <GameDrops />}
 
       <MainPanel resetDrops={() => setIsResetingDrops(true)} />
     </>

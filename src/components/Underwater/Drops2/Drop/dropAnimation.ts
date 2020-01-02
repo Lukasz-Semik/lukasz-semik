@@ -35,7 +35,7 @@ export class DropAnimation {
     return new Konva.Tween({
       node: this.ref.current,
       y: 0,
-      duration: 5,
+      duration: 8,
       onFinish: () => this.resetTween.play(),
     });
   }
