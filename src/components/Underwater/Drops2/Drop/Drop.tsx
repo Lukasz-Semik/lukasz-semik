@@ -3,58 +3,84 @@ import { Circle, Group } from 'react-konva';
 import Konva from 'konva';
 import { random } from 'lodash';
 
-// import { useWindow } from 'src/hooks/useWindow';
 import styles from 'src/styles';
 
 import { DropAnimation } from './dropAnimation';
-import { DropContainer } from './DropContainer';
 
-export const DropUnwrapped = ({ windowHeight, windowWidth }) => {
-  const [attribtues, setAttributes] = useState({
-    positionX: random(30, windowWidth - 30),
-    cycle: 0,
-  });
+interface Args {
+  isFullyVisible?: boolean;
+  cycle: number;
+  windowWidth: number;
+}
 
-  const ref = useRef<Konva.Group>((undefined as unknown) as null);
+const maxDropSize = 50;
+
+const generateAttributes = ({ isFullyVisible, cycle, windowWidth }: Args) => {
+  const dropSize = random(25, maxDropSize);
+  const scale = dropSize / maxDropSize;
+
+  return {
+    positionX: random(maxDropSize, windowWidth - maxDropSize),
+    maxOpacity: isFullyVisible ? 1 : (dropSize - 25) / 20,
+    cycle,
+    dropSize,
+    scale,
+  };
+};
+
+interface Props {
+  windowWidth: number;
+  windowHeight: number;
+  isFullyVisible?: boolean;
+}
+
+export const Drop = ({ windowWidth, windowHeight, isFullyVisible }: Props) => {
+  const [attributes, setAttributes] = useState(
+    generateAttributes({ windowWidth, isFullyVisible, cycle: 0 })
+  );
+
+  const ref = useRef<Konva.Group>(null);
 
   const onSwimEnd = () => {
-    setAttributes({
-      positionX: random(30, windowWidth - 30),
-      cycle: attribtues.cycle + 1,
-    });
+    setAttributes(
+      generateAttributes({
+        windowWidth,
+        isFullyVisible,
+        cycle: attributes.cycle + 1,
+      })
+    );
   };
 
+  const { cycle, scale, maxOpacity } = attributes;
+  const offset = attributes.dropSize / 2;
+
   useEffect(() => {
-    setTimeout(() => {
-      if (ref.current) {
-        const animation = new DropAnimation(ref, onSwimEnd);
+    if (ref.current) {
+      setTimeout(() => {
+        const animation = new DropAnimation(ref, onSwimEnd, maxOpacity, scale);
         animation.animate();
-      }
-    }, random(1, 1, true) * 1000);
-  }, [attribtues.cycle]);
+      }, random(1, 11, true) * 1000);
+    }
+    // effect only when cycle changed and on didMount
+    // eslint-disable-next-line
+  }, [cycle]);
 
   return (
     <Group
       ref={ref}
-      offsetX={25 / 2}
-      offsetY={25 / 2}
+      offsetX={offset}
+      offsetY={offset}
       width={50}
       height={50}
-      y={windowHeight - 50}
-      x={attribtues.positionX}
+      y={windowHeight - 60}
+      x={attributes.positionX}
       scaleX={0}
       scaleY={0}
       opacity={0}
-      fill="#000"
     >
       <Circle fill={styles.colors.dropLight} radius={25} />
-
       <Circle fill={styles.colors.dropDark} radius={20} />
-
       <Circle fill={styles.colors.dropLight} radius={5} x={10} y={-10} />
     </Group>
   );
 };
-
-export const render = renderProps => <DropUnwrapped {...renderProps} />;
-export const Drop = () => <DropContainer render={render} />;

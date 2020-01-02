@@ -1,9 +1,9 @@
-import { ViewState, View } from './types';
+import { ViewState } from './types';
+import { initialState } from './reducer';
 
 export const mockViewState = (state: Partial<ViewState> = {}) => ({
   view: {
-    isWindowFocused: true,
-    appView: View.Underwater,
+    ...initialState,
     ...state,
   },
 });

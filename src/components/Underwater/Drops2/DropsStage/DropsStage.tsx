@@ -1,18 +1,26 @@
 import React from 'react';
 import { Stage, Layer } from 'react-konva';
 
-import { useWindow } from 'src/hooks/useWindow';
+import { useGetWindowContext } from 'src/store/view/selectors';
 
-interface Props {
-  children: React.ReactElement | React.ReactElement[];
+interface RenderProps {
+  windowWidth: number;
+  windowHeight: number;
 }
 
-export const DropsStage = ({ children }: Props) => {
-  const { isBrowser, windowHeight, windowWidth } = useWindow();
+export const DropsStage = ({
+  children,
+}: WithRenderChildrenProps<RenderProps>) => {
+  const { width, height, isBrowser } = useGetWindowContext();
 
   return isBrowser ? (
-    <Stage width={windowWidth} height={windowHeight}>
-      <Layer>{children}</Layer>
+    <Stage width={width} height={height}>
+      <Layer>
+        {children({
+          windowWidth: width,
+          windowHeight: height,
+        })}
+      </Layer>
     </Stage>
   ) : null;
 };

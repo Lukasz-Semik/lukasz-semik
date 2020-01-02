@@ -4,16 +4,18 @@ import Konva from 'konva';
 export class DropAnimation {
   public constructor(
     private ref: React.RefObject<Konva.Group>,
-    private onSwimEnd: () => void
+    private onSwimEnd: () => void,
+    private maxOpacity: number,
+    private scale: number
   ) {}
 
   private get showFirstHalfTween() {
     return new Konva.Tween({
       node: this.ref.current,
-      opacity: 0.5,
+      opacity: this.maxOpacity / 2,
       duration: 0.2,
-      scaleX: 1.5,
-      scaleY: 1.5,
+      scaleX: this.scale + 0.5,
+      scaleY: this.scale + 0.5,
       onFinish: () => this.showSecondHalfTween.play(),
     });
   }
@@ -21,10 +23,10 @@ export class DropAnimation {
   private get showSecondHalfTween() {
     return new Konva.Tween({
       node: this.ref.current,
-      opacity: 1,
+      opacity: this.maxOpacity,
       duration: 0.2,
-      scaleX: 1,
-      scaleY: 1,
+      scaleX: this.scale,
+      scaleY: this.scale,
       onFinish: () => this.swimTween.play(),
     });
   }
