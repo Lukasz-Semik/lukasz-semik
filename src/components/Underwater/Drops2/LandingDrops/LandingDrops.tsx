@@ -12,13 +12,15 @@ export const LandingDrops = () => {
 
   return (
     <DropsStage>
-      {({ windowWidth, windowHeight }) =>
+      {({ windowWidth, windowHeight, isWindowFocused }) =>
         times(40, index => (
           <Drop
             key={index}
+            index={index}
             windowWidth={windowWidth}
             windowHeight={windowHeight}
             onClick={() => dispatch(setUnderwaterStarter())}
+            isWindowFocused={isWindowFocused}
           />
         ))
       }

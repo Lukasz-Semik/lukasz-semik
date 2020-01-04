@@ -2,31 +2,13 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Circle, Group } from 'react-konva';
 import Konva from 'konva';
 import { random } from 'lodash';
+import Timeout from 'smart-timeout';
 
 import styles from 'src/styles';
 
+// import { DropAnimation } from './dropAnimation';
+import { useDropAnimation } from './useDropAnimation';
 import { DropAnimation } from './dropAnimation';
-
-interface Args {
-  isFullyVisible?: boolean;
-  cycle: number;
-  windowWidth: number;
-}
-
-const maxDropSize = 50;
-
-const generateAttributes = ({ isFullyVisible, cycle, windowWidth }: Args) => {
-  const dropSize = random(25, maxDropSize);
-  const scale = dropSize / maxDropSize;
-
-  return {
-    positionX: random(maxDropSize, windowWidth - maxDropSize),
-    maxOpacity: isFullyVisible ? 1 : (dropSize - 25) / 20,
-    cycle,
-    dropSize,
-    scale,
-  };
-};
 
 interface Props {
   windowWidth: number;
@@ -34,6 +16,8 @@ interface Props {
   isFullyVisible?: boolean;
   onClick: () => void;
   onSwimEnd?: (isClicked: boolean) => void;
+  index: number;
+  isWindowFocused: boolean;
 }
 
 export const Drop = ({
@@ -42,62 +26,32 @@ export const Drop = ({
   isFullyVisible,
   onClick,
   onSwimEnd,
+  index,
+  isWindowFocused,
 }: Props) => {
   const [isClicked, setIsClicked] = useState(false);
-  const [attributes, setAttributes] = useState(
-    generateAttributes({ windowWidth, isFullyVisible, cycle: 0 })
-  );
-
+  const dropId = `drop-${index}`;
   const ref = useRef<Konva.Group>(null);
-
-  const onDropSwimEnd = () => {
-    setAttributes(
-      generateAttributes({
-        windowWidth,
-        isFullyVisible,
-        cycle: attributes.cycle + 1,
-      })
-    );
-    if (onSwimEnd) {
-      onSwimEnd(isClicked);
-    }
-
-    setIsClicked(false);
-  };
 
   const onDropClick = () => {
     onClick();
     setIsClicked(true);
   };
 
-  const { cycle, scale, maxOpacity } = attributes;
-  const offset = attributes.dropSize / 2;
-
-  useEffect(() => {
-    if (ref.current) {
-      setTimeout(() => {
-        const animation = new DropAnimation(
-          ref,
-          onDropSwimEnd,
-          maxOpacity,
-          scale
-        );
-        animation.animate();
-      }, random(1, 11, true) * 1000);
-    }
-    // effect only when cycle changed and on didMount
-    // eslint-disable-next-line
-  }, [cycle]);
+  useDropAnimation({
+    ref,
+    windowWidth,
+    windowHeight,
+    isWindowFocused,
+    dropId,
+    isFullyVisible,
+  });
 
   return (
     <Group
       ref={ref}
-      offsetX={offset}
-      offsetY={offset}
       width={50}
       height={50}
-      y={windowHeight - 60}
-      x={attributes.positionX}
       scaleX={0}
       scaleY={0}
       opacity={0}

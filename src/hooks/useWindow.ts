@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setWindowContext } from 'src/store/view/actions';
+import { setWindowContext, setIsWindowFocused } from 'src/store/view/actions';
 
 interface WindowState {
   height: number;
@@ -28,6 +28,14 @@ export const useWindow = () => {
 
       setWindowState(windowContext);
       dispatch(setWindowContext(windowContext));
+
+      window.onblur = () => {
+        dispatch(setIsWindowFocused(false));
+      };
+
+      window.onfocus = () => {
+        dispatch(setIsWindowFocused(true));
+      };
     }
   }, [dispatch]);
 

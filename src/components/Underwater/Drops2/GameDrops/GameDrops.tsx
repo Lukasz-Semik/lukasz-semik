@@ -18,14 +18,17 @@ export const GameDrops = () => {
 
   return (
     <DropsStage>
-      {({ windowWidth, windowHeight }) =>
+      {({ windowWidth, windowHeight, isWindowFocused }) =>
         times(40, index => (
           <Drop
             key={index}
+            index={index}
             windowWidth={windowWidth}
             windowHeight={windowHeight}
             onClick={() => dispatch(addScore(1))}
             onSwimEnd={onSwimEnd}
+            isWindowFocused={isWindowFocused}
+            isFullyVisible
           />
         ))
       }
