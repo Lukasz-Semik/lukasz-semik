@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { MainPanel } from './MainPanel/MainPanel';
-import { GameDrops } from '../Drops2/GameDrops/GameDrops';
+import { GameDrops } from '../Drops/GameDrops/GameDrops';
 
 export const Game = () => {
   const [isResetingDrops, setIsResetingDrops] = useState(false);

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Title } from '../Title/Title';
 import { Starter } from '../Starter/Starter';
-import { LandingDrops } from '../Drops2/LandingDrops/LandingDrops';
+import { LandingDrops } from '../Drops/LandingDrops/LandingDrops';
 
 interface Props {
   isIntro: boolean;

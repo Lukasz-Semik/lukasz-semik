@@ -5,7 +5,6 @@ import Konva from 'konva';
 
 import { generateAttributes } from './dropAttributes';
 import { DropAnimation } from './dropAnimation';
-import { DropTween } from './types';
 
 interface Props {
   ref: React.RefObject<Konva.Group>;
@@ -24,11 +23,10 @@ export const useDropAnimation = ({
   dropId,
   isFullyVisible,
 }: Props) => {
-  const [animation, setAnimation] = useState<DropAnimation>();
-  const [currentTween, setCurrentTween] = useState<DropTween>(DropTween.None);
+  const [currentTween, setCurrentTween] = useState<Konva.Tween>();
 
   useEffect(() => {
-    if (ref && ref.current != null && currentTween === DropTween.None) {
+    if (ref && ref.current != null && !currentTween) {
       const attributes = generateAttributes({
         windowWidth,
         windowHeight,
@@ -37,28 +35,23 @@ export const useDropAnimation = ({
 
       Timeout.set(
         dropId,
-        () => {
-          setAnimation(new DropAnimation(ref, attributes, setCurrentTween));
-          setCurrentTween(DropTween.Initialize);
-        },
-        random(1, 1, true) * 1000
+        () => new DropAnimation(ref, attributes, setCurrentTween),
+        random(1, 11, true) * 1000
       );
     }
     // we don't want to react on window size changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref, currentTween, dropId]);
 
-  const tween = animation?.currentTween;
-
   useEffect(() => {
-    if (tween && currentTween !== DropTween.None) {
+    if (currentTween) {
       if (isWindowFocused) {
-        tween.play();
+        currentTween.play();
       } else {
-        tween.pause();
+        currentTween.pause();
       }
     }
-  }, [currentTween, tween, isWindowFocused]);
+  }, [currentTween, isWindowFocused]);
 
   useEffect(() => {
     if (isWindowFocused) {
@@ -70,14 +63,14 @@ export const useDropAnimation = ({
 
   useEffect(
     () => () => {
-      if (tween) {
-        tween.destroy();
+      if (currentTween) {
+        currentTween.destroy();
       }
 
       if (Timeout.exists(dropId)) {
         Timeout.clear(dropId);
       }
     },
-    [dropId, tween]
+    [dropId, currentTween]
   );
 };

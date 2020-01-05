@@ -1,6 +1,5 @@
 import React from 'react';
 import Konva from 'konva';
-import { DropTween } from './types';
 import { Attributes } from './dropAttributes';
 
 export class DropAnimation {
@@ -9,7 +8,7 @@ export class DropAnimation {
   constructor(
     private ref: React.RefObject<Konva.Group>,
     private attributes: Attributes,
-    private changeTween: (currentTween: DropTween) => void
+    private changeTween: (currentTween: Konva.Tween | undefined) => void
   ) {
     const offset = attributes.dropSize / 2;
     if (!this.ref.current) return;
@@ -25,9 +24,10 @@ export class DropAnimation {
       opacity: 0,
       onFinish: () => {
         this.setShowHaflTween();
-        changeTween(DropTween.ShowHalf);
       },
     });
+
+    changeTween(this.currentTween);
   }
 
   private setShowHaflTween() {
@@ -41,9 +41,10 @@ export class DropAnimation {
       scaleY: this.attributes.scale + 0.5,
       onFinish: () => {
         this.setShowCompleteTween();
-        this.changeTween(DropTween.ShowComplete);
       },
     });
+
+    this.changeTween(this.currentTween);
   }
 
   private setShowCompleteTween() {
@@ -57,9 +58,10 @@ export class DropAnimation {
       scaleY: this.attributes.scale,
       onFinish: () => {
         this.setSwimTween();
-        this.changeTween(DropTween.Swim);
       },
     });
+
+    this.changeTween(this.currentTween);
   }
 
   private setSwimTween() {
@@ -71,9 +73,10 @@ export class DropAnimation {
       duration: 6,
       onFinish: () => {
         this.setHideTween();
-        this.changeTween(DropTween.Hide);
       },
     });
+
+    this.changeTween(this.currentTween);
   }
 
   private setHideTween() {
@@ -85,8 +88,10 @@ export class DropAnimation {
       opacity: 0,
       duration: 0.5,
       onFinish: () => {
-        this.changeTween(DropTween.None);
+        this.changeTween(undefined);
       },
     });
+
+    this.changeTween(this.currentTween);
   }
 }
