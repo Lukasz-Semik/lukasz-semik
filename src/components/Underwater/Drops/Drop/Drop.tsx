@@ -1,14 +1,10 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Circle, Group } from 'react-konva';
 import Konva from 'konva';
-import { random } from 'lodash';
-import Timeout from 'smart-timeout';
 
 import styles from 'src/styles';
 
-// import { DropAnimation } from './dropAnimation';
 import { useDropAnimation } from './useDropAnimation';
-import { DropAnimation } from './dropAnimation';
 
 interface Props {
   windowWidth: number;
@@ -25,7 +21,6 @@ export const Drop = ({
   windowHeight,
   isFullyVisible,
   onClick,
-  onSwimEnd,
   index,
   isWindowFocused,
 }: Props) => {
@@ -33,6 +28,7 @@ export const Drop = ({
   const dropId = `drop-${index}`;
   const ref = useRef<Konva.Group>(null);
 
+  // TODO: handle onSwimEnd
   const onDropClick = () => {
     onClick();
     setIsClicked(true);
