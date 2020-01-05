@@ -9,6 +9,7 @@ import {
   useGetIsUnderwaterIntro,
   useGetIsUnderwaterStarter,
 } from 'src/store/underwater/selectors';
+import { useWindow } from 'src/hooks/useWindow';
 
 import { Background } from './Background/Background';
 import { Landing } from './Landing/Landing';
@@ -25,8 +26,10 @@ export const Underwater = () => {
   const isIntro = useGetIsUnderwaterIntro();
   const isStarter = useGetIsUnderwaterStarter();
 
+  const { isBrowser } = useWindow();
+
   useEffect(() => {
-    if (window) {
+    if (isBrowser) {
       window.onblur = () => {
         dispatch(setIsWindowFocused(false));
       };
@@ -35,17 +38,19 @@ export const Underwater = () => {
         dispatch(setIsWindowFocused(true));
       };
     }
-  }, [dispatch]);
+  }, [dispatch, isBrowser]);
 
   return (
     <Background>
-      <Wrapper>
-        {isGameRunning ? (
-          <Game />
-        ) : (
-          <Landing isIntro={isIntro} isStarter={isStarter} />
-        )}
-      </Wrapper>
+      {isBrowser && (
+        <Wrapper>
+          {isGameRunning ? (
+            <Game />
+          ) : (
+            <Landing isIntro={isIntro} isStarter={isStarter} />
+          )}
+        </Wrapper>
+      )}
     </Background>
   );
 };

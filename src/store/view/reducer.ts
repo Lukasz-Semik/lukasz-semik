@@ -1,11 +1,20 @@
 import { AnyAction } from 'redux';
 
-import { SET_IS_WINDOW_FOCUSED, SET_APP_VIEW } from './actionTypes';
+import {
+  SET_IS_WINDOW_FOCUSED,
+  SET_APP_VIEW,
+  SET_WINDOW_CONTEXT,
+} from './actionTypes';
 import { ViewState, ViewActionType, View } from './types';
 
 export const initialState: ViewState = {
   isWindowFocused: true,
   appView: View.Underwater,
+  windowContext: {
+    width: 0,
+    height: 0,
+    isBrowser: false,
+  },
 };
 
 export default (state = initialState, incomingAction: AnyAction): ViewState => {
@@ -21,6 +30,11 @@ export default (state = initialState, incomingAction: AnyAction): ViewState => {
       return {
         ...state,
         appView: action.payload.appView,
+      };
+    case SET_WINDOW_CONTEXT:
+      return {
+        ...state,
+        windowContext: action.payload.windowContext,
       };
     default:
       return state;

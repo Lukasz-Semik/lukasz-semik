@@ -1,16 +1,47 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setWindowContext, setIsWindowFocused } from 'src/store/view/actions';
+
+interface WindowState {
+  height: number;
+  width: number;
+  isBrowser: boolean;
+}
 
 // ssr safe window usage
 export const useWindow = () => {
-  const [windowHeight, setWindowHeigth] = useState(880);
+  const [windowState, setWindowState] = useState<WindowState>({
+    height: 0,
+    width: 0,
+    isBrowser: false,
+  });
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (window) {
-      setWindowHeigth(window.innerHeight);
+      const windowContext = {
+        height: window.innerHeight,
+        width: window.innerWidth,
+        isBrowser: true,
+      };
+
+      setWindowState(windowContext);
+      dispatch(setWindowContext(windowContext));
+
+      window.onblur = () => {
+        dispatch(setIsWindowFocused(false));
+      };
+
+      window.onfocus = () => {
+        dispatch(setIsWindowFocused(true));
+      };
     }
-  }, []);
+  }, [dispatch]);
 
   return {
-    windowHeight,
+    windowHeight: windowState.height,
+    windowWidth: windowState.width,
+    isBrowser: windowState.isBrowser,
   };
 };

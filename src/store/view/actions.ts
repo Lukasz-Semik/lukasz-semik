@@ -1,7 +1,17 @@
-import { SET_IS_WINDOW_FOCUSED, SET_APP_VIEW } from './actionTypes';
+import {
+  SET_IS_WINDOW_FOCUSED,
+  SET_APP_VIEW,
+  SET_WINDOW_CONTEXT,
+} from './actionTypes';
 import { setIsGamePaused } from '../underwater/actions';
 import { ThunkAction } from '../types';
-import { ToggleWindowFocusedAction, View } from './types';
+import {
+  ToggleWindowFocusedAction,
+  View,
+  WindowContext,
+  SetAppViewAction,
+  SetWindowContextAction,
+} from './types';
 import { getIsUnderwaterView } from './selectors';
 
 export const toggleWindowFocused = (
@@ -24,9 +34,18 @@ export const setIsWindowFocused = (isWindowFocused?: boolean): ThunkAction => (
   dispatch(toggleWindowFocused(isWindowFocused));
 };
 
-export const setAppView = (appView: View) => ({
+export const setAppView = (appView: View): SetAppViewAction => ({
   type: SET_APP_VIEW,
   payload: {
     appView,
+  },
+});
+
+export const setWindowContext = (
+  windowContext: WindowContext
+): SetWindowContextAction => ({
+  type: SET_WINDOW_CONTEXT,
+  payload: {
+    windowContext,
   },
 });

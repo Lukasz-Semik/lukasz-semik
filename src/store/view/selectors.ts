@@ -24,3 +24,10 @@ export const getIsUnderwaterView = createSelector(
   getAppView,
   view => view === View.Underwater
 );
+
+export const getWindowContext = createSelector(
+  getViewState,
+  viewState => viewState.windowContext
+);
+
+export const useGetWindowContext = () => useSelector(getWindowContext);
