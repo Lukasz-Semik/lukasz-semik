@@ -41,26 +41,24 @@ export const useDropAnimation = ({
           setAnimation(new DropAnimation(ref, attributes, setCurrentTween));
           setCurrentTween(DropTween.Initialize);
         },
-        random(1, 11, true) * 1000
+        random(1, 1, true) * 1000
       );
     }
     // we don't want to react on window size changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref, currentTween, dropId]);
 
+  const tween = animation?.currentTween;
+
   useEffect(() => {
-    if (currentTween !== DropTween.None && animation) {
-      const tween = animation.getCurrentTween(currentTween);
-
-      if (!tween) return;
-
+    if (tween && currentTween !== DropTween.None) {
       if (isWindowFocused) {
         tween.play();
       } else {
         tween.pause();
       }
     }
-  }, [animation, currentTween, isWindowFocused]);
+  }, [currentTween, tween, isWindowFocused]);
 
   useEffect(() => {
     if (isWindowFocused) {
@@ -72,10 +70,14 @@ export const useDropAnimation = ({
 
   useEffect(
     () => () => {
+      if (tween) {
+        tween.destroy();
+      }
+
       if (Timeout.exists(dropId)) {
         Timeout.clear(dropId);
       }
     },
-    [dropId]
+    [dropId, tween]
   );
 };
