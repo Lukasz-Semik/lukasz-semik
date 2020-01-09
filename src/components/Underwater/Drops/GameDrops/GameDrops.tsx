@@ -7,6 +7,7 @@ import { useGetIsGamePaused } from 'src/store/underwater/selectors';
 
 import { DropsStage } from '../DropsStage/DropsStage';
 import { Drop } from '../Drop/Drop';
+import { Satellites } from '../Satellites/Satellites';
 
 export const GameDrops = () => {
   const dispatch = useDispatch();
@@ -22,21 +23,31 @@ export const GameDrops = () => {
 
   return (
     <DropsStage>
-      {({ windowWidth, windowHeight, isWindowFocused }) => (
-        <>
-          {times(40, index => (
-            <Drop
-              key={index}
-              onClick={() => dispatch(addScore(1))}
-              windowWidth={windowWidth}
-              windowHeight={windowHeight}
-              isPaused={!isWindowFocused || isGamePaused}
-              onSwimEnd={onSwimEnd}
-              isFullyVisible
-            />
-          ))}
-        </>
-      )}
+      {({ windowWidth, windowHeight, isWindowFocused }) => {
+        const isPaused = !isWindowFocused || isGamePaused;
+
+        return (
+          <>
+            {times(40, index => (
+              <Drop
+                key={index}
+                onClick={() => dispatch(addScore(1))}
+                windowWidth={windowWidth}
+                windowHeight={windowHeight}
+                isPaused={isPaused}
+                onSwimEnd={onSwimEnd}
+                isFullyVisible
+                satellites={
+                  <Satellites
+                    isPaused={isPaused}
+                    onClick={(value: number) => dispatch(addScore(value))}
+                  />
+                }
+              />
+            ))}
+          </>
+        );
+      }}
     </DropsStage>
   );
 };

@@ -6,6 +6,7 @@ import { setUnderwaterStarter } from 'src/store/underwater/actions';
 
 import { DropsStage } from '../DropsStage/DropsStage';
 import { Drop } from '../Drop/Drop';
+import { Satellites } from '../Satellites/Satellites';
 
 export const LandingDrops = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export const LandingDrops = () => {
               onClick={() => dispatch(setUnderwaterStarter())}
               windowWidth={windowWidth}
               windowHeight={windowHeight}
+              satellites={<Satellites isPaused={false} />}
             />
           ))}
         </>

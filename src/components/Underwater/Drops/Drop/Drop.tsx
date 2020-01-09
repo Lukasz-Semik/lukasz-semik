@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Sprite, Container } from '@inlet/react-pixi';
 import gsap from 'gsap';
 
-import { generateAttributes } from './dropAttributes';
+import { animateDrop } from './animateDrop';
 
 interface Props {
   windowWidth: number;
@@ -11,6 +11,7 @@ interface Props {
   onSwimEnd?: (isClicked: boolean) => void;
   isPaused?: boolean;
   isFullyVisible?: boolean;
+  satellites: React.ReactElement;
 }
 
 interface State {
@@ -46,68 +47,26 @@ export class Drop extends PureComponent<Props, State> {
       this.tl.resume();
     }
 
-    if (!prevState.isReady && this.state.isReady) {
-      const { windowHeight, windowWidth, isFullyVisible } = this.props;
+    const { windowHeight, windowWidth, isFullyVisible } = this.props;
 
-      const attributes = generateAttributes({
+    const isReady = !prevState.isReady && this.state.isReady;
+
+    if (isReady && this.dropRef && this.containerRef) {
+      animateDrop({
         windowHeight,
         windowWidth,
         isFullyVisible,
+        tl: this.tl,
+        dropRef: this.dropRef,
+        containerRef: this.containerRef,
+        onComplete: () => {
+          this.onSwimEnd();
+          this.setState({
+            isClicked: false,
+            isReady: false,
+          });
+        },
       });
-
-      const maxSize = attributes.dropSize * 1.5;
-
-      this.tl
-        .to(this.dropRef, {
-          width: 0,
-          height: 0,
-          alpha: 0,
-        })
-        .to(this.containerRef, {
-          x: attributes.x,
-          y: this.props.windowHeight - 60,
-        })
-        .to(this.dropRef, {
-          width: maxSize,
-          height: maxSize,
-          alpha: attributes.maxAlpha / 2,
-          delay: attributes.delay,
-          ease: 'linear',
-          duration: 0.2,
-        })
-        .to(this.dropRef, {
-          width: attributes.dropSize,
-          height: attributes.dropSize,
-          alpha: attributes.maxAlpha,
-          ease: 'linear',
-          duration: 0.2,
-        })
-        .to(this.containerRef, {
-          y: 100,
-          ease: 'linear',
-          duration: 6,
-        })
-        .to(this.containerRef, {
-          y: 0,
-          ease: 'linear',
-          duration: 0.5,
-        })
-        .to(
-          this.dropRef,
-          {
-            alpha: 0,
-            ease: 'linear',
-            duration: 1,
-            onComplete: () => {
-              this.onSwimEnd();
-              this.setState({
-                isClicked: false,
-                isReady: false,
-              });
-            },
-          },
-          '-=1'
-        );
     }
   }
 
@@ -119,12 +78,8 @@ export class Drop extends PureComponent<Props, State> {
     const { onSwimEnd } = this.props;
 
     if (onSwimEnd) {
-      onSwimEnd(this.isClicked);
+      onSwimEnd(this.state.isClicked);
     }
-  }
-
-  private get isClicked() {
-    return this.state.isClicked;
   }
 
   private handeClick = () => {
@@ -146,6 +101,8 @@ export class Drop extends PureComponent<Props, State> {
           pointerdown={this.handeClick}
           cursor="pointer"
         />
+
+        {isClicked && this.props.satellites}
       </Container>
     );
   }
