@@ -1,6 +1,6 @@
 import React from 'react';
-import { times } from 'lodash';
 import { useDispatch } from 'react-redux';
+import { times } from 'lodash';
 
 import { setUnderwaterStarter } from 'src/store/underwater/actions';
 
@@ -12,18 +12,18 @@ export const LandingDrops = () => {
 
   return (
     <DropsStage>
-      {({ windowWidth, windowHeight, isWindowFocused }) =>
-        times(40, index => (
-          <Drop
-            key={index}
-            index={index}
-            windowWidth={windowWidth}
-            windowHeight={windowHeight}
-            onClick={() => dispatch(setUnderwaterStarter())}
-            isWindowFocused={isWindowFocused}
-          />
-        ))
-      }
+      {({ windowWidth, windowHeight }) => (
+        <>
+          {times(40, index => (
+            <Drop
+              key={index}
+              onClick={() => dispatch(setUnderwaterStarter())}
+              windowWidth={windowWidth}
+              windowHeight={windowHeight}
+            />
+          ))}
+        </>
+      )}
     </DropsStage>
   );
 };

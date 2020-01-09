@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stage, Layer } from 'react-konva';
+import { Stage } from '@inlet/react-pixi';
 
 import {
   useGetWindowContext,
@@ -19,14 +19,12 @@ export const DropsStage = ({
   const isWindowFocused = useGetIsWindowFocused();
 
   return isBrowser ? (
-    <Stage width={width} height={height}>
-      <Layer>
-        {children({
-          windowWidth: width,
-          windowHeight: height,
-          isWindowFocused,
-        })}
-      </Layer>
+    <Stage width={width} height={height} options={{ transparent: true }}>
+      {children({
+        windowWidth: width,
+        windowHeight: height,
+        isWindowFocused,
+      })}
     </Stage>
   ) : null;
 };

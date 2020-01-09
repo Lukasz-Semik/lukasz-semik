@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import { get } from 'lodash';
+import gsap from 'gsap';
+import PixiPlugin from 'gsap/PixiPlugin';
 
 import { styleOverlay } from 'src/styles/helpers';
 import { Underwater } from 'src/components/Underwater/Underwater';
 import { View } from 'src/store/view/types';
 
 import { useView } from './useView';
+
+gsap.registerPlugin(PixiPlugin);
 
 const Wrapper = styled.div`
   ${styleOverlay};

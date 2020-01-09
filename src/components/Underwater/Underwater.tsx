@@ -42,15 +42,13 @@ export const Underwater = () => {
 
   return (
     <Background>
-      {isBrowser && (
-        <Wrapper>
-          {isGameRunning ? (
-            <Game />
-          ) : (
-            <Landing isIntro={isIntro} isStarter={isStarter} />
-          )}
-        </Wrapper>
-      )}
+      <Wrapper>
+        {isGameRunning ? (
+          <Game />
+        ) : (
+          <Landing isIntro={isIntro} isStarter={isStarter} />
+        )}
+      </Wrapper>
     </Background>
   );
 };

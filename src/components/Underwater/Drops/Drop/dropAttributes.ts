@@ -13,14 +13,13 @@ export const generateAttributes = ({
   windowHeight,
 }: Args) => {
   const dropSize = random(25, maxDropSize);
-  const scale = dropSize / maxDropSize;
 
   return {
-    positionX: random(maxDropSize, windowWidth - maxDropSize),
-    positionY: windowHeight - 60,
-    maxOpacity: isFullyVisible ? 1 : (dropSize - 25) / 20,
+    x: random(60, windowWidth - 60),
+    y: windowHeight - 60,
+    maxAlpha: isFullyVisible ? 1 : (dropSize - 25) / 20,
+    delay: random(1, 11, true),
     dropSize,
-    scale,
   };
 };
 
