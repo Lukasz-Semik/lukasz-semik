@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { times } from 'lodash';
+import { times, random } from 'lodash';
+import { Container } from '@inlet/react-pixi';
 
 import { Satellite } from './Satellite';
+import { PointsIndicator } from '../../PointsIndicator/PointsIndicator';
 
 interface Props {
   isPaused: boolean;
+  hasIndicator?: boolean;
   onClick?: (value: number) => void;
 }
 
@@ -13,6 +16,8 @@ interface State {
 }
 
 export class Satellites extends Component<Props, State> {
+  private rotation = random(0, 360);
+
   public state = {
     counter: 1,
   };
@@ -29,20 +34,29 @@ export class Satellites extends Component<Props, State> {
     }
   };
 
+  private renderIndicator = () => (
+    <PointsIndicator
+      value={`+${this.state.counter}`}
+      isPaused={this.props.isPaused}
+    />
+  );
+
   public render() {
-    const { isPaused } = this.props;
+    const { isPaused, hasIndicator } = this.props;
 
     return (
-      <>
+      <Container rotation={this.rotation}>
         {times(4, index => (
           <Satellite
             index={index}
             key={`satellite-${index}`}
             isPaused={isPaused}
             onClick={this.onClick}
+            rotation={-this.rotation}
+            renderIndicator={hasIndicator ? this.renderIndicator : undefined}
           />
         ))}
-      </>
+      </Container>
     );
   }
 }

@@ -37,10 +37,12 @@ export const GameDrops = () => {
                 isPaused={isPaused}
                 onSwimEnd={onSwimEnd}
                 isFullyVisible
+                hasIndicator
                 satellites={
                   <Satellites
                     isPaused={isPaused}
                     onClick={(value: number) => dispatch(addScore(value))}
+                    hasIndicator
                   />
                 }
               />

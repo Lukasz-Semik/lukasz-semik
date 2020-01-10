@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState, useMemo } from 'react';
 import { Sprite, Container } from '@inlet/react-pixi';
 import gsap from 'gsap';
+import { useAnimationPause } from 'src/hooks/useAnimationPause';
 
 const getNewPosition = (index: number) => {
   switch (index) {
@@ -19,9 +20,17 @@ interface Props {
   index: number;
   isPaused: boolean;
   onClick: () => void;
+  rotation: number;
+  renderIndicator?: () => React.ReactElement;
 }
 
-export const Satellite = ({ index, isPaused, onClick }: Props) => {
+export const Satellite = ({
+  index,
+  isPaused,
+  onClick,
+  renderIndicator,
+  rotation,
+}: Props) => {
   const ref = useRef<Sprite>(null);
   const [isClicked, setIsClicked] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -45,26 +54,24 @@ export const Satellite = ({ index, isPaused, onClick }: Props) => {
     };
   }, [index, tl]);
 
-  useEffect(() => {
-    if (isPaused) {
-      tl.pause();
-    } else if (tl.paused()) {
-      tl.resume();
-    }
-  }, [isPaused, tl]);
+  useAnimationPause(tl, isPaused);
 
-  return isClicked || isCompleted ? null : (
-    <Container ref={ref}>
-      <Sprite
-        image="satellite.png"
-        cursor="pointer"
-        pointerdown={() => {
-          onClick();
-          setIsClicked(true);
-          tl.kill();
-        }}
-        interactive
-      />
+  return isCompleted ? null : (
+    <Container ref={ref} rotation={rotation}>
+      {!isClicked && (
+        <Sprite
+          image="satellite.png"
+          cursor="pointer"
+          pointerdown={() => {
+            onClick();
+            setIsClicked(true);
+            tl.kill();
+          }}
+          interactive
+        />
+      )}
+
+      {renderIndicator && isClicked && renderIndicator()}
     </Container>
   );
 };

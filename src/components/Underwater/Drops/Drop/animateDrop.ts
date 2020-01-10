@@ -33,11 +33,11 @@ export const animateDrop = ({
     width: 0,
     height: 0,
     alpha: 0,
+    rotation: attributes.rotation,
   })
     .to(containerRef, {
       x: attributes.x,
       y: windowHeight - 60,
-      rotation: attributes.rotation,
     })
     .to(dropRef, {
       width: maxSize,

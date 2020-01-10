@@ -3,15 +3,17 @@ import { Sprite, Container } from '@inlet/react-pixi';
 import gsap from 'gsap';
 
 import { animateDrop } from './animateDrop';
+import { PointsIndicator } from '../../PointsIndicator/PointsIndicator';
 
 interface Props {
   windowWidth: number;
   windowHeight: number;
   onClick: () => void;
-  onSwimEnd?: (isClicked: boolean) => void;
-  isPaused?: boolean;
-  isFullyVisible?: boolean;
   satellites: React.ReactElement;
+  onSwimEnd?: (isClicked: boolean) => void;
+  isPaused: boolean;
+  isFullyVisible?: boolean;
+  hasIndicator?: boolean;
 }
 
 interface State {
@@ -89,6 +91,7 @@ export class Drop extends PureComponent<Props, State> {
 
   public render() {
     const { isClicked, isReady } = this.state;
+    const { hasIndicator, satellites, isPaused } = this.props;
 
     return (
       <Container ref={ref => (this.containerRef = ref)}>
@@ -102,7 +105,15 @@ export class Drop extends PureComponent<Props, State> {
           cursor="pointer"
         />
 
-        {isClicked && this.props.satellites}
+        {isClicked && (
+          <>
+            {hasIndicator && (
+              <PointsIndicator value="+1" x={-15} y={-15} isPaused={isPaused} />
+            )}
+
+            {satellites}
+          </>
+        )}
       </Container>
     );
   }
