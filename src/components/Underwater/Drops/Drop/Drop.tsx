@@ -11,7 +11,7 @@ interface Props {
   onClick: () => void;
   satellites: React.ReactElement;
   onSwimEnd?: (isClicked: boolean) => void;
-  isPaused: boolean;
+  isPaused?: boolean;
   isFullyVisible?: boolean;
   hasIndicator?: boolean;
 }
@@ -108,7 +108,12 @@ export class Drop extends PureComponent<Props, State> {
         {isClicked && (
           <>
             {hasIndicator && (
-              <PointsIndicator value="+1" x={-15} y={-15} isPaused={isPaused} />
+              <PointsIndicator
+                value="+1"
+                x={-15}
+                y={-15}
+                isPaused={Boolean(isPaused)}
+              />
             )}
 
             {satellites}
