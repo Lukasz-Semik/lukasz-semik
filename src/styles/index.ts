@@ -16,4 +16,7 @@ export default {
     goldLight: '#facc6b',
     goldDark: darken('0.1', '#ad7f00'),
   },
+  fonts: {
+    caveatBrush: `'Caveat Brush', cursive`,
+  },
 };

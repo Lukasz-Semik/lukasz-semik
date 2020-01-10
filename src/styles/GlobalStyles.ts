@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     overflow: hidden;
     max-height: 100vh;
-    font-family: 'Caveat Brush', cursive;
+    font-family: ${styles.fonts.caveatBrush};
     background-color: ${styles.colors.bgUnderwaterLight};
   }
 
