@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
 import { rem } from 'polished';
+import styles from 'src/styles';
 
 import { Letter } from './Letter';
 
@@ -11,11 +12,23 @@ const TitleStyled = styled.h1`
   left: 50%;
   width: 100%;
   margin: 0;
-  font-size: ${rem(150)};
+  font-size: ${rem(70)};
   letter-spacing: 1px;
   text-align: center;
   pointer-events: none;
   transform: translate(-50%, -50%);
+
+  @media ${styles.breakpoints.xsUp} {
+    font-size: ${rem(93)};
+  }
+
+  @media ${styles.breakpoints.mdUp} {
+    font-size: ${rem(120)};
+  }
+
+  @media ${styles.breakpoints.lgUp} {
+    font-size: ${rem(150)};
+  }
 `;
 
 export const Title = () => {

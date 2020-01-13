@@ -17,16 +17,23 @@ const Wrapper = styled.div<{ isMounted: boolean }>`
 `;
 
 const CardWrapper = styled.div`
-  width: ${rem(300)};
-  height: ${rem(400)};
+  width: ${rem(400)};
+  max-width: 95%;
+  height: ${rem(500)};
+  max-height: 95%;
 `;
 
 interface Props {
   onClose: () => void;
   children: React.ReactNode | React.ReactNode[];
+  isCloseButtonHidden?: boolean;
 }
 
-export const PaperModal = ({ children, onClose }: Props) => {
+export const PaperModal = ({
+  children,
+  onClose,
+  isCloseButtonHidden,
+}: Props) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -38,7 +45,9 @@ export const PaperModal = ({ children, onClose }: Props) => {
       <Wrapper isMounted={isMounted}>
         <CardWrapper>
           <PaperCardElement isMounted={isMounted}>
-            <XButtonElement top="0" right="0" onClick={onClose} />
+            {!isCloseButtonHidden && (
+              <XButtonElement top="0" right="0" onClick={onClose} />
+            )}
 
             {children}
           </PaperCardElement>

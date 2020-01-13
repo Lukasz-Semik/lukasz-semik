@@ -1,5 +1,7 @@
 import { darken } from 'polished';
 
+import { breakpoints } from './constants';
+
 export default {
   colors: {
     bgUnderwaterDark: '#0ed2f7',
@@ -15,8 +17,10 @@ export default {
     gold: '#ad7f00',
     goldLight: '#facc6b',
     goldDark: darken('0.1', '#ad7f00'),
+    grey: 'grey',
   },
   fonts: {
     caveatBrush: `'Caveat Brush', cursive`,
   },
+  breakpoints,
 };

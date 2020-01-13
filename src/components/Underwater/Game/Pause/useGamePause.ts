@@ -7,10 +7,13 @@ import {
   resetGame,
 } from 'src/store/underwater/actions';
 import { useGetIsGamePaused } from 'src/store/underwater/selectors';
+import { useGetIsWindowResized } from 'src/store/view/selectors';
+import { setIsWindowResized } from 'src/store/view/actions';
 
 export const useGamePause = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
+  const isWindowResized = useGetIsWindowResized();
 
   const isGamePaused = useGetIsGamePaused();
 
@@ -27,7 +30,11 @@ export const useGamePause = () => {
   const restartGame = useCallback(() => {
     setIsModalOpen(false);
     dispatch(resetGame());
-  }, [dispatch]);
+
+    if (isWindowResized) {
+      dispatch(setIsWindowResized(false));
+    }
+  }, [dispatch, isWindowResized]);
 
   useEffect(() => {
     if (isGamePaused) {
@@ -35,11 +42,18 @@ export const useGamePause = () => {
     }
   }, [isGamePaused]);
 
+  useEffect(() => {
+    if (isWindowResized) {
+      pauseGame();
+    }
+  }, [isWindowResized, pauseGame]);
+
   return {
     pauseGame,
     resumeGame,
     restartGame,
     isModalOpen,
+    isWindowResized,
     backToIntro: () => dispatch(setUnderwaterIntro()),
   };
 };

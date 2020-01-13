@@ -9,6 +9,7 @@ import { Underwater } from 'src/components/Underwater/Underwater';
 import { View } from 'src/store/view/types';
 
 import { useView } from './useView';
+import { useWindow } from './useWindow';
 
 gsap.registerPlugin(PixiPlugin);
 
@@ -51,6 +52,7 @@ const SurfacePlaceholder = styled.div`
 
 const Root = () => {
   const { futureView, goUp, goDown, setView, getIsMounted } = useView();
+  useWindow();
 
   return (
     <Wrapper>

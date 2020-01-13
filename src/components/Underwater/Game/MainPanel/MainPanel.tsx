@@ -9,6 +9,7 @@ import {
   useGetScore,
 } from 'src/store/underwater/selectors';
 import { SlidingInElement } from 'src/components/Elements';
+import styles from 'src/styles';
 
 import { Pause } from '../Pause/Pause';
 import { HealthBar } from './HealtBar/HealthBar';
@@ -19,8 +20,12 @@ const Wrapper = styled(SlidingInElement)`
 `;
 
 const Panel = styled.div`
-  width: ${rem(300)};
+  width: ${rem(250)};
   height: ${rem(100)};
+
+  @media ${styles.breakpoints.smUp} {
+    width: ${rem(300)};
+  }
 
   > svg {
     width: 100% !important;

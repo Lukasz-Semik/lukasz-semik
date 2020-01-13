@@ -3,6 +3,7 @@ import {
   SET_IS_WINDOW_FOCUSED,
   SET_APP_VIEW,
   SET_WINDOW_CONTEXT,
+  SET_IS_WINDOW_RESIZED,
 } from './actionTypes';
 
 export enum View {
@@ -10,16 +11,11 @@ export enum View {
   Surface = 'surface',
 }
 
-export interface WindowContext {
-  width: number;
-  height: number;
-  isBrowser: boolean;
-}
-
 export interface ViewState {
-  isWindowFocused: boolean;
   appView: View;
-  windowContext: WindowContext;
+  isWindowFocused: boolean;
+  windowContext: Window | undefined;
+  isWindowResized: boolean;
 }
 
 export interface ToggleWindowFocusedAction
@@ -38,11 +34,19 @@ export interface SetAppViewAction extends Action<typeof SET_APP_VIEW> {
 export interface SetWindowContextAction
   extends Action<typeof SET_WINDOW_CONTEXT> {
   payload: {
-    windowContext: WindowContext;
+    windowContext: Window;
+  };
+}
+
+export interface SetIsWindowResizedAction
+  extends Action<typeof SET_IS_WINDOW_RESIZED> {
+  payload: {
+    isWindowResized: boolean;
   };
 }
 
 export type ViewActionType =
   | ToggleWindowFocusedAction
   | SetAppViewAction
-  | SetWindowContextAction;
+  | SetWindowContextAction
+  | SetIsWindowResizedAction;

@@ -1,24 +1,39 @@
-import React from 'react';
-import gsap from 'gsap';
-import PixiPlugin from 'gsap/PixiPlugin';
+import React, { useState, useEffect } from 'react';
 
-import { Title } from '../Title/Title';
-import { Starter } from '../Starter/Starter';
+import {
+  useGetIsUnderwaterIntro,
+  useGetIsUnderwaterStarter,
+} from 'src/store/underwater/selectors';
+import { useGetIsWindowResized } from 'src/store/view/selectors';
+
+import { Title } from './Title/Title';
+import { Starter } from './Modals/Starter/Starter';
+import { WindowResizedInfo } from './Modals/WindowResizedInfo/WindowResizedInfo';
 import { LandingDrops } from '../Drops/LandingDrops/LandingDrops';
 
-gsap.registerPlugin(PixiPlugin);
+export const Landing = () => {
+  const [isPreparingDrops, setIsPreparingDrops] = useState(false);
+  const isIntro = useGetIsUnderwaterIntro();
+  const isStarter = useGetIsUnderwaterStarter();
+  const isWindowResized = useGetIsWindowResized();
 
-interface Props {
-  isIntro: boolean;
-  isStarter: boolean;
-}
+  useEffect(() => {
+    if (isPreparingDrops) {
+      setIsPreparingDrops(false);
+    }
+  }, [isPreparingDrops]);
 
-export const Landing = ({ isIntro, isStarter }: Props) => (
-  <>
-    <LandingDrops />
+  return (
+    <>
+      {!isPreparingDrops && <LandingDrops />}
 
-    {isIntro && <Title />}
+      {isIntro && !isWindowResized && <Title />}
 
-    {isStarter && <Starter />}
-  </>
-);
+      {isStarter && !isWindowResized && <Starter />}
+
+      {isWindowResized && (
+        <WindowResizedInfo resetDrops={() => setIsPreparingDrops(true)} />
+      )}
+    </>
+  );
+};

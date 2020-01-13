@@ -31,3 +31,10 @@ export const getWindowContext = createSelector(
 );
 
 export const useGetWindowContext = () => useSelector(getWindowContext);
+
+export const getIsWindowResized = createSelector(
+  getViewState,
+  viewState => viewState.isWindowResized
+);
+
+export const useGetIsWindowResized = () => useSelector(getIsWindowResized);

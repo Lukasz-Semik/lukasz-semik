@@ -7,10 +7,16 @@
       "pause": "Pause",
       "restart": "Restart",
       "backToIntro": "Back to intro",
-      "resume": "Resume"
+      "resume": "Resume",
+      "windowResized": {
+        "title": "Window has been resized",
+        "descriptionGame": "Your window has been resized. If you want to play, game has to be restarted.",
+        "descriptionLanding": "Your window has been resized. Drops will be reset."
+      }
     }
   },
   "shared": {
+    "ok": "Ok",
     "or": "or",
     "back": "Back",
     "loading": "Loading"

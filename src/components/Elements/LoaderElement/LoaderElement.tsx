@@ -1,8 +1,9 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-
 import { size, rem } from 'polished';
 import { FormattedMessage } from 'gatsby-plugin-intl';
+
+import styles from 'src/styles';
 
 const sizeAnimation = keyframes`
   0% {
@@ -36,7 +37,7 @@ const Circle = styled.div.attrs({ 'data-test': 'loader-circle' })<CircleProps>`
   left: 0;
   opacity: 0;
   border-radius: 50%;
-  border: 5px solid grey;
+  border: 5px solid ${styles.colors.grey};
   animation: ${sizeAnimation} cubic-bezier(0, 0.2, 0.8, 1) 3s infinite;
 
   &:nth-of-type(1) {
