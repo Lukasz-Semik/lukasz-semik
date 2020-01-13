@@ -27,7 +27,11 @@ export const Landing = () => {
     <>
       {!isPreparingDrops && <LandingDrops />}
 
-      {isIntro && !isWindowResized && <Title />}
+      {isIntro && !isWindowResized && (
+        <>
+          <Title />
+        </>
+      )}
 
       {isStarter && !isWindowResized && <Starter />}
 

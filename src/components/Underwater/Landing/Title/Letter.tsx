@@ -30,7 +30,7 @@ export const Letter = ({ letter, index }: Props) => {
   const [isMounted, setIsMounted] = useState(false);
   const ref = useRef<HTMLElement>(null);
   const { isMediaMd } = useRwdQuery();
-  const topPosition = isMediaMd ? 10 : 20;
+  const topPosition = isMediaMd ? 8 : 20;
 
   useEffect(() => {
     if (!ref.current) {

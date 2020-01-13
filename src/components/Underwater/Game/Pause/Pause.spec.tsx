@@ -11,7 +11,7 @@ describe('<Pause />', () => {
     const resetDropsSpy = jest.fn();
 
     const { getByText, queryByTestId, rerender } = render(
-      <TesterWrapper store={{ underwater: {} }}>
+      <TesterWrapper store={{ underwater: {}, view: {} }}>
         <Pause isGameOver={false} resetDrops={resetDropsSpy} />
       </TesterWrapper>
     );
@@ -19,7 +19,7 @@ describe('<Pause />', () => {
     expect(queryByTestId('pause-modal-title')).toBeNull();
 
     rerender(
-      <TesterWrapper store={{ underwater: {} }}>
+      <TesterWrapper store={{ underwater: {}, view: {} }}>
         <Pause isGameOver resetDrops={resetDropsSpy} />
       </TesterWrapper>
     );

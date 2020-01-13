@@ -18,7 +18,7 @@ const Wrapper = styled.div<{ isMounted: boolean }>`
 
 const CardWrapper = styled.div`
   width: ${rem(400)};
-  max-width: 95%;
+  max-width: 85%;
   height: ${rem(500)};
   max-height: 95%;
 `;

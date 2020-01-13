@@ -21,6 +21,7 @@ export default {
   },
   fonts: {
     caveatBrush: `'Caveat Brush', cursive`,
+    cairo: `'Cairo', sans-serif`,
   },
   breakpoints,
 };
