@@ -19,6 +19,7 @@ describe('<PauseModal />', () => {
           restartGame={restartGameSpy}
           backToIntro={backToIntroSpy}
           isGameOver={false}
+          isWindowResized={false}
         />
       </TesterWrapper>
     );
@@ -46,6 +47,7 @@ describe('<PauseModal />', () => {
           resumeGame={resumeGameSpy}
           restartGame={restartGameSpy}
           backToIntro={backToIntroSpy}
+          isWindowResized={false}
           isGameOver
         />
       </TesterWrapper>

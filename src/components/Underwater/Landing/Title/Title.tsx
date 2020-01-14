@@ -2,20 +2,38 @@ import React, { useMemo } from 'react';
 import { useIntl } from 'gatsby-plugin-intl';
 import styled from 'styled-components';
 import { rem } from 'polished';
+import styles from 'src/styles';
 
 import { Letter } from './Letter';
+import { Subtitle } from './Subtitle';
 
-const TitleStyled = styled.h1`
+const Wrapper = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
   width: 100%;
-  margin: 0;
-  font-size: ${rem(150)};
-  letter-spacing: 1px;
-  text-align: center;
   pointer-events: none;
   transform: translate(-50%, -50%);
+`;
+
+const WavingTitle = styled.h2`
+  margin: 0;
+  margin-bottom: ${rem(100)};
+  letter-spacing: 1px;
+  text-align: center;
+  font-size: ${rem(57)};
+
+  @media ${styles.breakpoints.xsUp} {
+    font-size: ${rem(93)};
+  }
+
+  @media ${styles.breakpoints.mdUp} {
+    font-size: ${rem(120)};
+  }
+
+  @media ${styles.breakpoints.lgUp} {
+    font-size: ${rem(150)};
+  }
 `;
 
 export const Title = () => {
@@ -40,11 +58,15 @@ export const Title = () => {
   }, [intl]);
 
   return (
-    <TitleStyled>
-      {text.map((letter, i) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <Letter key={`${letter}-${i}`} index={i} letter={letter} />
-      ))}
-    </TitleStyled>
+    <Wrapper>
+      <WavingTitle>
+        {text.map((letter, i) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <Letter key={`${letter}-${i}`} index={i} letter={letter} />
+        ))}
+      </WavingTitle>
+
+      <Subtitle />
+    </Wrapper>
   );
 };

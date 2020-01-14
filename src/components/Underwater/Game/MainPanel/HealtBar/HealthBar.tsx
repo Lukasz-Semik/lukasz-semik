@@ -11,8 +11,12 @@ const Wrapper = styled.div<{ fishPosition: number }>`
   position: absolute;
   top: ${rem(20)};
   left: ${rem(68)};
-  width: 70%;
+  width: 60%;
   pointer-events: none;
+
+  @media ${styles.breakpoints.smUp} {
+    width: 70%;
+  }
 
   svg {
     position: absolute;

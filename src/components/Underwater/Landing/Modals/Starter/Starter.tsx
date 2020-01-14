@@ -1,7 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
-import { rem } from 'polished';
 import { FormattedMessage } from 'gatsby-plugin-intl';
 
 import {
@@ -11,22 +9,7 @@ import {
 import { ButtonElement } from 'src/components/Elements';
 import { PaperModal } from 'src/components/Modals';
 
-const ButtonsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: ${rem(25)};
-`;
-
-const Text = styled.div`
-  margin: ${rem(15)} 0;
-  text-align: center;
-  color: grey;
-`;
-
-const CenterButton = styled.div`
-  display: flex;
-  justify-content: center;
-`;
+import { ButtonsWrapper, Text, CenterButton } from '../styled';
 
 export const Starter = () => {
   const dispatch = useDispatch();

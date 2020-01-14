@@ -18,6 +18,7 @@ export const Pause = ({ resetDrops, isGameOver }: Props) => {
     restartGame,
     backToIntro,
     isModalOpen,
+    isWindowResized,
   } = useGamePause();
 
   useEffect(() => {
@@ -33,6 +34,7 @@ export const Pause = ({ resetDrops, isGameOver }: Props) => {
       {isModalOpen && (
         <PauseModal
           isGameOver={isGameOver}
+          isWindowResized={isWindowResized}
           resumeGame={resumeGame}
           backToIntro={backToIntro}
           restartGame={() => {

@@ -2,15 +2,16 @@ import {
   SET_IS_WINDOW_FOCUSED,
   SET_APP_VIEW,
   SET_WINDOW_CONTEXT,
+  SET_IS_WINDOW_RESIZED,
 } from './actionTypes';
 import { setIsGamePaused } from '../underwater/actions';
 import { ThunkAction } from '../types';
 import {
   ToggleWindowFocusedAction,
   View,
-  WindowContext,
   SetAppViewAction,
   SetWindowContextAction,
+  SetIsWindowResizedAction,
 } from './types';
 import { getIsUnderwaterView } from './selectors';
 
@@ -42,10 +43,19 @@ export const setAppView = (appView: View): SetAppViewAction => ({
 });
 
 export const setWindowContext = (
-  windowContext: WindowContext
+  windowContext: Window
 ): SetWindowContextAction => ({
   type: SET_WINDOW_CONTEXT,
   payload: {
     windowContext,
+  },
+});
+
+export const setIsWindowResized = (
+  isWindowResized: boolean
+): SetIsWindowResizedAction => ({
+  type: SET_IS_WINDOW_RESIZED,
+  payload: {
+    isWindowResized,
   },
 });

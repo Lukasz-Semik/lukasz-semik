@@ -15,14 +15,14 @@ interface RenderProps {
 export const DropsStage = ({
   children,
 }: WithRenderChildrenProps<RenderProps>) => {
-  const { width, height, isBrowser } = useGetWindowContext();
+  const windowContext = useGetWindowContext();
   const isWindowFocused = useGetIsWindowFocused();
 
-  return isBrowser ? (
-    <Stage width={width} height={height} options={{ transparent: true }}>
+  return windowContext ? (
+    <Stage options={{ transparent: true, resizeTo: windowContext }}>
       {children({
-        windowWidth: width,
-        windowHeight: height,
+        windowWidth: windowContext?.innerWidth || 0,
+        windowHeight: windowContext?.innerHeight || 0,
         isWindowFocused,
       })}
     </Stage>

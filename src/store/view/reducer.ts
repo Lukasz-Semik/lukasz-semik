@@ -4,17 +4,15 @@ import {
   SET_IS_WINDOW_FOCUSED,
   SET_APP_VIEW,
   SET_WINDOW_CONTEXT,
+  SET_IS_WINDOW_RESIZED,
 } from './actionTypes';
 import { ViewState, ViewActionType, View } from './types';
 
 export const initialState: ViewState = {
-  isWindowFocused: true,
   appView: View.Underwater,
-  windowContext: {
-    width: 0,
-    height: 0,
-    isBrowser: false,
-  },
+  windowContext: undefined,
+  isWindowFocused: true,
+  isWindowResized: false,
 };
 
 export default (state = initialState, incomingAction: AnyAction): ViewState => {
@@ -35,6 +33,11 @@ export default (state = initialState, incomingAction: AnyAction): ViewState => {
       return {
         ...state,
         windowContext: action.payload.windowContext,
+      };
+    case SET_IS_WINDOW_RESIZED:
+      return {
+        ...state,
+        isWindowResized: action.payload.isWindowResized,
       };
     default:
       return state;
