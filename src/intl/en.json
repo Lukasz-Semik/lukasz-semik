@@ -2,6 +2,7 @@
   "underwater": {
     "title": "Hi! I'm Lukasz",
     "startGame": "Start the game",
+    "letsMeet": "Let's meet",
     "game": {
       "over": "Game over",
       "pause": "Pause",

@@ -12,12 +12,18 @@ const Wrapper = styled.div`
   ${styleOverlay}
 `;
 
-export const Underwater = () => {
+interface Props {
+  onViewGoUp: () => void;
+}
+
+export const Underwater = ({ onViewGoUp }: Props) => {
   const isGameRunning = useGetIsUnderwaterGame();
 
   return (
     <Background>
-      <Wrapper>{isGameRunning ? <Game /> : <Landing />}</Wrapper>
+      <Wrapper>
+        {isGameRunning ? <Game /> : <Landing onViewGoUp={onViewGoUp} />}
+      </Wrapper>
     </Background>
   );
 };

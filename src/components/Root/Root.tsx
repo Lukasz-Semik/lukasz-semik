@@ -20,12 +20,6 @@ const Wrapper = styled.div`
 `;
 
 // TODO: move and finish buttons
-const Button = styled.button`
-  position: absolute;
-  top: 0;
-  z-index: 1;
-`;
-
 const Button2 = styled.button`
   position: absolute;
   bottom: 0;
@@ -65,9 +59,9 @@ const Root = () => {
         }}
         startingPosition="100%"
       >
-        <Button onClick={goUp}>Move</Button>
+        {/* <Button onClick={goUp}>Move</Button> */}
 
-        {getIsMounted(View.Underwater) && <Underwater />}
+        {getIsMounted(View.Underwater) && <Underwater onViewGoUp={goUp} />}
       </ItemWrapper>
 
       <ItemWrapper
