@@ -16,12 +16,10 @@ const Wrapper = styled.header`
   padding: 0 ${rem(10)};
 `;
 
-export const Header = () => {
-  return (
-    <Wrapper>
-      <Logo />
+export const Header = () => (
+  <Wrapper>
+    <Logo />
 
-      <Hamburger />
-    </Wrapper>
-  );
-};
+    <Hamburger />
+  </Wrapper>
+);

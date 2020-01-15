@@ -11,6 +11,11 @@ export const ButtonsWrapper = styled.div`
 
 export const Button = styled(ButtonElement)`
   font-weight: 700;
+  font-size: ${rem(27)};
+
+  @media ${styles.breakpoints.smUp} {
+    font-size: ${rem(35)};
+  }
 `;
 
 export const Text = styled.div`

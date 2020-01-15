@@ -60,7 +60,7 @@ export const LinkIcon = ({ children, index, href }: Props) => {
   }, [mountingTl, index]);
 
   useEffect(() => {
-    if (isMounted) {
+    if (isMounted && ref.current) {
       mountedTl
         .to(ref.current, {
           y: -10,

@@ -32,7 +32,12 @@ export const Logo = () => {
   const tl = useMemo(() => gsap.timeline(), []);
 
   useEffect(() => {
-    if (letterRef1.current) {
+    if (
+      letterRef1.current &&
+      letterRef2.current &&
+      braceRef1.current &&
+      braceRef2.current
+    ) {
       tl.to(letterRef1.current, {
         opacity: 1,
         duration: 0.5,

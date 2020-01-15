@@ -76,28 +76,27 @@ export const Hamburger = () => {
 
   const showHamburger = useCallback(
     (withDelay: boolean) => {
+      const commonAttrs = { opacity: 1, duration: 0.5 };
+
       if (line1Ref.current && line2Ref.current && line3Ref.current) {
         tl.to(line1Ref.current, {
-          opacity: 1,
+          ...commonAttrs,
           x: 0,
-          duration: 0.5,
           delay: withDelay ? 2 : undefined,
         })
           .to(
             line2Ref.current,
             {
-              opacity: 1,
+              ...commonAttrs,
               scale: 1,
-              duration: 0.5,
             },
             '-=0.5'
           )
           .to(
             line3Ref.current,
             {
-              opacity: 1,
+              ...commonAttrs,
               x: 0,
-              duration: 0.5,
               onComplete: () => setIsMounted(true),
             },
             '-=0.5'
@@ -109,26 +108,25 @@ export const Hamburger = () => {
 
   const hideHamburger = useCallback(() => {
     if (line1Ref.current && line2Ref.current && line3Ref.current) {
+      const commonAttrs = { opacity: 0, duration: 0.5 };
+
       tl.to(line1Ref.current, {
-        opacity: 0,
+        ...commonAttrs,
         x: `-${rem(30)}`,
-        duration: 0.5,
       })
         .to(
           line2Ref.current,
           {
-            opacity: 0,
+            ...commonAttrs,
             scale: 0,
-            duration: 0.5,
           },
           '-=0.5'
         )
         .to(
           line3Ref.current,
           {
-            opacity: 0,
+            ...commonAttrs,
             x: rem(30),
-            duration: 0.5,
           },
           '-=0.5'
         );
