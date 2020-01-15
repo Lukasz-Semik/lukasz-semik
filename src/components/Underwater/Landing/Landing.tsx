@@ -37,11 +37,7 @@ export const Landing = ({ onViewGoUp }: Props) => {
 
       {!isPreparingDrops && <LandingDrops />}
 
-      {isIntro && (
-        <>
-          <Title />
-        </>
-      )}
+      {isIntro && <Title />}
 
       {isStarter && <Starter />}
 

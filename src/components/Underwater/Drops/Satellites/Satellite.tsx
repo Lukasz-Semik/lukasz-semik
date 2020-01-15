@@ -31,22 +31,29 @@ export const Satellite = ({
   renderIndicator,
   rotation,
 }: Props) => {
-  const ref = useRef<Sprite>(null);
+  const containerRef = useRef<Container>(null);
+  const spriteRef = useRef<Sprite>(null);
   const [isClicked, setIsClicked] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const tl = useMemo(() => gsap.timeline(), []);
 
   useEffect(() => {
-    if (ref.current) {
-      tl.to(ref.current, {
+    if (containerRef.current && spriteRef.current) {
+      tl.to(containerRef.current, {
         ...getNewPosition(index),
-        alpha: 0,
         duration: 3,
-        onComplete: () => {
-          gsap.killTweensOf(ref.current);
-          setIsCompleted(true);
+      }).to(
+        spriteRef.current,
+        {
+          alpha: 0,
+          duration: 3,
+          onComplete: () => {
+            tl.kill();
+            setIsCompleted(true);
+          },
         },
-      });
+        '-=3'
+      );
     }
 
     return () => {
@@ -57,9 +64,10 @@ export const Satellite = ({
   useAnimationPause(tl, isPaused);
 
   return isCompleted ? null : (
-    <Container ref={ref} rotation={rotation}>
+    <Container ref={containerRef} rotation={rotation}>
       {!isClicked && (
         <Sprite
+          ref={spriteRef}
           image="satellite.png"
           cursor="pointer"
           pointerdown={() => {

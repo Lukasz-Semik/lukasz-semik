@@ -56,7 +56,7 @@ export const PointsIndicator = ({
           dropShadowBlur: 4,
           dropShadowDistance: 1,
           fill: styles.colors.hpGreen,
-          fontFamily: styles.fonts.caveatBrush,
+          fontFamily: styles.fonts.uniq,
         })
       }
       isSprite
