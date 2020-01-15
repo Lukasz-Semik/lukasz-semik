@@ -3,14 +3,14 @@ import styled from 'styled-components';
 
 import { useGetIsUnderwaterGame } from 'src/store/underwater/selectors';
 import styles from 'src/styles';
+import { styleOverlay } from 'src/styles/helpers';
 
 import { Background } from './Background/Background';
 import { Landing } from './Landing/Landing';
 import { Game } from './Game/Game';
 
 const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  ${styleOverlay};
   font-family: ${styles.fonts.uniq};
 `;
 

@@ -7,8 +7,8 @@ import styles from 'src/styles';
 
 const Wrapper = styled.div`
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: ${styles.colors.bgUnderwaterDark};
   background: linear-gradient(
     to top,
