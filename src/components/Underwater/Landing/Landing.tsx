@@ -11,7 +11,6 @@ import { Starter } from './Modals/Starter/Starter';
 import { WindowResizedInfo } from './Modals/WindowResizedInfo/WindowResizedInfo';
 import { LandingDrops } from '../Drops/LandingDrops/LandingDrops';
 import { Footer } from './Footer/Footer';
-import { GoUpButton } from './GoUpButton/GoUpButton';
 import { Header } from './Header/Header';
 
 interface Props {

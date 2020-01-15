@@ -5,7 +5,7 @@ import { rem } from 'polished';
 import styles from 'src/styles';
 
 import { Letter } from './Letter';
-import { Subtitle } from './Subtitle';
+// import { Subtitle } from './Subtitle';
 import { GoUpButton } from '../GoUpButton/GoUpButton';
 
 const Wrapper = styled.div`
@@ -50,7 +50,11 @@ const WavingTitle = styled.h2`
   }
 `;
 
-export const Title = ({ onViewGoUp }) => {
+interface Props {
+  onViewGoUp: () => void;
+}
+
+export const Title = ({ onViewGoUp }: Props) => {
   const intl = useIntl();
 
   const text = useMemo(() => {
