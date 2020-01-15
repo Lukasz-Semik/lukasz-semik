@@ -7,10 +7,8 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 import gsap from 'gsap';
 
 const Button = styled.button`
-  position: absolute;
-  top: ${rem(70)};
-  left: 50%;
-  width: ${rem(250)};
+  position: relative;
+  width: ${rem(200)};
   padding: ${rem(5)} 0;
   font-size: ${rem(20)};
   font-family: ${styles.fonts.standard};
@@ -22,11 +20,11 @@ const Button = styled.button`
   background-color: rgba(84, 87, 255, 0.1);
   border-radius: 3px;
   box-shadow: 2px 2px 15px rgba(84, 87, 255, 0.5);
-  transform: translateX(-50%);
   transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
   @media ${styles.breakpoints.smUp} {
-    top: ${rem(33)};
+    width: ${rem(250)};
+    font-size: ${rem(25)};
   }
 
   &:hover {
