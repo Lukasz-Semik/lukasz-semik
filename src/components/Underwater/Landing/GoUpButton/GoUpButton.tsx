@@ -15,6 +15,7 @@ const Button = styled.button`
   font-size: ${rem(20)};
   font-family: ${styles.fonts.standard};
   font-weight: 700;
+  letter-spacing: 1px;
   text-align: center;
   opacity: 0;
   color: #5457ff;

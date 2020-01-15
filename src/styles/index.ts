@@ -24,7 +24,7 @@ export default {
     textBasic: '1px 1px rgba(0, 0, 0, 0.3)',
   },
   fonts: {
-    standard: `'Roboto Mono', monospace`,
+    standard: `'Nunito', sans-serif`,
     uniq: `'Caveat Brush', cursive`,
   },
   breakpoints,
