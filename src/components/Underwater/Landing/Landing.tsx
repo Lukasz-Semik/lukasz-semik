@@ -10,8 +10,15 @@ import { Title } from './Title/Title';
 import { Starter } from './Modals/Starter/Starter';
 import { WindowResizedInfo } from './Modals/WindowResizedInfo/WindowResizedInfo';
 import { LandingDrops } from '../Drops/LandingDrops/LandingDrops';
+import { Footer } from './Footer/Footer';
+import { GoUpButton } from './GoUpButton/GoUpButton';
+import { Header } from './Header/Header';
 
-export const Landing = () => {
+interface Props {
+  onViewGoUp: () => void;
+}
+
+export const Landing = ({ onViewGoUp }: Props) => {
   const [isPreparingDrops, setIsPreparingDrops] = useState(false);
   const isIntro = useGetIsUnderwaterIntro();
   const isStarter = useGetIsUnderwaterStarter();
@@ -23,21 +30,21 @@ export const Landing = () => {
     }
   }, [isPreparingDrops]);
 
-  return (
+  return isWindowResized ? (
+    <WindowResizedInfo resetDrops={() => setIsPreparingDrops(true)} />
+  ) : (
     <>
+      <Header />
+
+      <GoUpButton onViewGoUp={onViewGoUp} />
+
       {!isPreparingDrops && <LandingDrops />}
 
-      {isIntro && !isWindowResized && (
-        <>
-          <Title />
-        </>
-      )}
+      {isIntro && <Title />}
 
-      {isStarter && !isWindowResized && <Starter />}
+      {isStarter && <Starter />}
 
-      {isWindowResized && (
-        <WindowResizedInfo resetDrops={() => setIsPreparingDrops(true)} />
-      )}
+      <Footer />
     </>
   );
 };

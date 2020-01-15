@@ -18,10 +18,14 @@ export default {
     goldLight: '#facc6b',
     goldDark: darken('0.1', '#ad7f00'),
     grey: 'grey',
+    black: '#000',
+  },
+  shadows: {
+    textBasic: '1px 1px rgba(0, 0, 0, 0.3)',
   },
   fonts: {
-    caveatBrush: `'Caveat Brush', cursive`,
-    cairo: `'Cairo', sans-serif`,
+    standard: `'Nunito', sans-serif`,
+    uniq: `'Caveat Brush', cursive`,
   },
   breakpoints,
 };

@@ -16,16 +16,9 @@ gsap.registerPlugin(PixiPlugin);
 const Wrapper = styled.div`
   ${styleOverlay};
   overflow: hidden;
-  max-height: 100vh;
 `;
 
 // TODO: move and finish buttons
-const Button = styled.button`
-  position: absolute;
-  top: 0;
-  z-index: 1;
-`;
-
 const Button2 = styled.button`
   position: absolute;
   bottom: 0;
@@ -40,13 +33,15 @@ const ItemWrapper = styled.div.attrs({ id: 'underwater-item' })<{
   top: ${({ isVisible, startingPosition }) =>
     isVisible ? 0 : startingPosition};
   left: 0;
+  width: 100%;
+  height: 100%;
   transition: top 2s ease;
 `;
 
 const SurfacePlaceholder = styled.div`
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: red;
 `;
 
@@ -65,9 +60,7 @@ const Root = () => {
         }}
         startingPosition="100%"
       >
-        <Button onClick={goUp}>Move</Button>
-
-        {getIsMounted(View.Underwater) && <Underwater />}
+        {getIsMounted(View.Underwater) && <Underwater onViewGoUp={goUp} />}
       </ItemWrapper>
 
       <ItemWrapper

@@ -11,8 +11,7 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     overflow: hidden;
-    max-height: 100vh;
-    font-family: ${styles.fonts.caveatBrush};
+    font-family: ${styles.fonts.standard};
     background-color: ${styles.colors.bgUnderwaterLight};
   }
 

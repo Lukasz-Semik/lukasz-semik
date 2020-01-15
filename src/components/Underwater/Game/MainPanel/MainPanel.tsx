@@ -8,14 +8,14 @@ import {
   useGetHealthPoints,
   useGetScore,
 } from 'src/store/underwater/selectors';
-import { SlidingInElement } from 'src/components/Elements';
+import { SlidingInBouncingElement } from 'src/components/Elements';
 import styles from 'src/styles';
 
 import { Pause } from '../Pause/Pause';
 import { HealthBar } from './HealtBar/HealthBar';
 import { GameStatistics } from './GameStatistics/GameStatistics';
 
-const Wrapper = styled(SlidingInElement)`
+const Wrapper = styled(SlidingInBouncingElement)`
   top: ${rem(10)};
 `;
 
