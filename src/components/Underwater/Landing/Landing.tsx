@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 
 import {
   useGetIsUnderwaterIntro,
   useGetIsUnderwaterStarter,
 } from 'src/store/underwater/selectors';
 import { useGetIsWindowResized } from 'src/store/view/selectors';
-import { styleOverlay } from 'src/styles/helpers';
 
 import { Title } from './Title/Title';
 import { Starter } from './Modals/Starter/Starter';
@@ -15,10 +13,6 @@ import { LandingDrops } from '../Drops/LandingDrops/LandingDrops';
 import { Footer } from './Footer/Footer';
 import { GoUpButton } from './GoUpButton/GoUpButton';
 import { Header } from './Header/Header';
-
-const Wrapper = styled.div`
-  ${styleOverlay};
-`;
 
 interface Props {
   onViewGoUp: () => void;
@@ -39,7 +33,7 @@ export const Landing = ({ onViewGoUp }: Props) => {
   return isWindowResized ? (
     <WindowResizedInfo resetDrops={() => setIsPreparingDrops(true)} />
   ) : (
-    <Wrapper>
+    <>
       <Header />
 
       <GoUpButton onViewGoUp={onViewGoUp} />
@@ -51,6 +45,6 @@ export const Landing = ({ onViewGoUp }: Props) => {
       {isStarter && <Starter />}
 
       <Footer />
-    </Wrapper>
+    </>
   );
 };
