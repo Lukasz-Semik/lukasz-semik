@@ -12,6 +12,7 @@ import { WindowResizedInfo } from './Modals/WindowResizedInfo/WindowResizedInfo'
 import { LandingDrops } from '../Drops/LandingDrops/LandingDrops';
 import { Footer } from './Footer/Footer';
 import { GoUpButton } from './GoUpButton/GoUpButton';
+import { Header } from './Header/Header';
 
 interface Props {
   onViewGoUp: () => void;
@@ -33,6 +34,8 @@ export const Landing = ({ onViewGoUp }: Props) => {
     <WindowResizedInfo resetDrops={() => setIsPreparingDrops(true)} />
   ) : (
     <>
+      <Header />
+
       <GoUpButton onViewGoUp={onViewGoUp} />
 
       {!isPreparingDrops && <LandingDrops />}

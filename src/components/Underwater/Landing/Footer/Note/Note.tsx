@@ -37,5 +37,5 @@ export const Note = () => {
     }
   }, [tl]);
 
-  return <Text ref={ref}>Lukasz Semik&#174; {new Date().getFullYear()}</Text>;
+  return <Text ref={ref}>Łukasz Semik&#174; {new Date().getFullYear()}</Text>;
 };

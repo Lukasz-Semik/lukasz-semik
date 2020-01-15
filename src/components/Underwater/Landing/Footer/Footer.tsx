@@ -6,7 +6,7 @@ import { Social } from './Social/Social';
 import { Note } from './Note/Note';
 
 const FooterStyled = styled.footer`
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   display: flex;

@@ -8,7 +8,7 @@ import gsap from 'gsap';
 
 const Button = styled.button`
   position: absolute;
-  top: ${rem(30)};
+  top: ${rem(70)};
   left: 50%;
   width: ${rem(250)};
   padding: ${rem(5)} 0;
@@ -23,6 +23,10 @@ const Button = styled.button`
   box-shadow: 2px 2px 15px rgba(84, 87, 255, 0.5);
   transform: translateX(-50%);
   transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+  @media ${styles.breakpoints.smUp} {
+    top: ${rem(33)};
+  }
 
   &:hover {
     box-shadow: 2px 2px 15px rgba(150, 150, 150, 0.8);
