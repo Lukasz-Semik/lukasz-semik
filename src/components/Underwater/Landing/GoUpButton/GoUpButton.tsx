@@ -16,15 +16,17 @@ const Button = styled.button`
   letter-spacing: 1px;
   text-align: center;
   opacity: 0;
-  color: #5457ff;
-  background-color: rgba(84, 87, 255, 0.1);
+  color: ${styles.colors.blue};
+  background-color: rgba(84, 87, 255, 0.2);
   border-radius: 3px;
   box-shadow: 2px 2px 15px rgba(84, 87, 255, 0.5);
+  transform: translateY(100%);
   transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
   @media ${styles.breakpoints.smUp} {
     width: ${rem(250)};
     font-size: ${rem(25)};
+    background-color: rgba(84, 87, 255, 0.1);
   }
 
   &:hover {
@@ -44,9 +46,10 @@ export const GoUpButton = ({ onViewGoUp }: Props) => {
   useEffect(() => {
     if (ref.current) {
       tl.to(ref.current, {
-        duration: 2,
+        duration: 1,
         opacity: 1,
-        delay: 3,
+        y: 0,
+        delay: 2,
       });
     }
   }, [tl]);

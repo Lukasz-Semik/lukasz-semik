@@ -5,7 +5,6 @@ import { rem } from 'polished';
 import styles from 'src/styles';
 
 import { Letter } from './Letter';
-// import { Subtitle } from './Subtitle';
 import { GoUpButton } from '../GoUpButton/GoUpButton';
 
 const Wrapper = styled.div`
@@ -85,8 +84,6 @@ export const Title = ({ onViewGoUp }: Props) => {
       </WavingTitle>
 
       <GoUpButton onViewGoUp={onViewGoUp} />
-
-      {/* <Subtitle /> */}
     </Wrapper>
   );
 };
