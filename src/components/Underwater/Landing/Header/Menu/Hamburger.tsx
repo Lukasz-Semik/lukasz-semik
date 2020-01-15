@@ -51,7 +51,7 @@ const XElement = styled.span<{ isVisible: boolean }>`
   top: 50%;
   left: 50%;
   display: inline-block;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+  text-shadow: ${styles.shadows.textBasic};
   font-family: ${styles.fonts.uniq};
   font-size: ${rem(30)};
   opacity: 0;

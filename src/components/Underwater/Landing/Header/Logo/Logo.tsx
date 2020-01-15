@@ -3,10 +3,12 @@ import styled from 'styled-components';
 import { rem } from 'polished';
 import gsap from 'gsap';
 
+import styles from 'src/styles';
+
 const Wrapper = styled.p`
   padding: 0;
   font-size: ${rem(30)};
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+  text-shadow: ${styles.shadows.textBasic};
   opacity: 0.8;
 `;
 

@@ -16,12 +16,10 @@ const FooterStyled = styled.footer`
   padding: ${rem(10)};
 `;
 
-export const Footer = () => {
-  return (
-    <FooterStyled>
-      <Social />
+export const Footer = () => (
+  <FooterStyled>
+    <Social />
 
-      <Note />
-    </FooterStyled>
-  );
-};
+    <Note />
+  </FooterStyled>
+);

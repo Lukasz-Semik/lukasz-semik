@@ -20,6 +20,9 @@ export default {
     grey: 'grey',
     black: '#000',
   },
+  shadows: {
+    textBasic: '1px 1px rgba(0, 0, 0, 0.3)',
+  },
   fonts: {
     standard: `'Roboto Mono', monospace`,
     uniq: `'Caveat Brush', cursive`,

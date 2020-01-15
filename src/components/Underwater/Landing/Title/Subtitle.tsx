@@ -9,7 +9,7 @@ const TitleText = styled.h2`
   font-size: ${rem(20)};
   letter-spacing: 1px;
   text-align: center;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+  text-shadow: ${styles.shadows.textBasic};
   color: ${styles.colors.grey};
   opacity: 0;
   transform: translateY(100%);

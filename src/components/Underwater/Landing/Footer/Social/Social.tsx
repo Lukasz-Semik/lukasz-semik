@@ -16,20 +16,18 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-export const Social = () => {
-  return (
-    <Wrapper>
-      <LinkIcon index={0} href="https://www.linkedin.com/in/lukasz-semik">
-        <LinkedinIcon />
-      </LinkIcon>
+export const Social = () => (
+  <Wrapper>
+    <LinkIcon index={0} href="https://www.linkedin.com/in/lukasz-semik">
+      <LinkedinIcon />
+    </LinkIcon>
 
-      <LinkIcon index={1} href="https://www.facebook.com/luki.djpluki">
-        <FacebookIcon />
-      </LinkIcon>
+    <LinkIcon index={1} href="https://www.facebook.com/luki.djpluki">
+      <FacebookIcon />
+    </LinkIcon>
 
-      <LinkIcon index={2} href="https://github.com/Lukasz-Semik">
-        <GithubIcon />
-      </LinkIcon>
-    </Wrapper>
-  );
-};
+    <LinkIcon index={2} href="https://github.com/Lukasz-Semik">
+      <GithubIcon />
+    </LinkIcon>
+  </Wrapper>
+);

@@ -2,7 +2,9 @@ import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import styled from 'styled-components';
 import { rem } from 'polished';
+
 import { useRwdQuery } from 'src/hooks/useMediaQuery';
+import styles from 'src/styles';
 
 const LetterStyled = styled.span<{
   hasMarginRight?: boolean;
@@ -10,7 +12,7 @@ const LetterStyled = styled.span<{
 }>`
   position: relative;
   display: inline-block;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+  text-shadow: ${styles.shadows.textBasic};
   opacity: 0;
   transform: translateY(-${({ topPosition }) => topPosition}%);
 
