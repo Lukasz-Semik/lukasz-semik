@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { rem } from 'polished';
+import styles from 'src/styles';
 
 interface ButtonProps {
   top?: string;
@@ -15,6 +16,7 @@ const Button = styled.button.attrs({ 'data-test': 'close-button' })<
 >`
   position: absolute;
   font-size: ${({ fontSize }) => rem(fontSize || 35)};
+  font-family: ${styles.fonts.uniq};
 
   ${({ top }) => top && `top: ${top}`};
   ${({ right }) => right && `right: ${right}`};

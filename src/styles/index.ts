@@ -21,8 +21,8 @@ export default {
     black: '#000',
   },
   fonts: {
-    caveatBrush: `'Caveat Brush', cursive`,
-    cairo: `'Cairo', sans-serif`,
+    standard: `'Roboto Mono', monospace`,
+    uniq: `'Caveat Brush', cursive`,
   },
   breakpoints,
 };

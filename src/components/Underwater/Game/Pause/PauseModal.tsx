@@ -17,12 +17,15 @@ const Wrapper = styled.div.attrs({ 'data-test': 'pause-modal' })`
 
 const Button = styled(ButtonElement)`
   margin-bottom: ${rem(20)};
+  font-size: ${rem(25)};
+  font-weight: 700;
 `;
 
 const Title = styled.h2.attrs({ 'data-test': 'pause-modal-title' })`
   margin-bottom: ${rem(30)};
   text-align: center;
   font-size: ${rem(50)};
+  font-family: ${styles.fonts.uniq};
 `;
 
 const Text = styled.p`

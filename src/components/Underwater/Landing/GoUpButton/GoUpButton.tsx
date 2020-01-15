@@ -13,8 +13,8 @@ const Button = styled.button`
   width: ${rem(250)};
   padding: ${rem(5)} 0;
   font-size: ${rem(20)};
-  font-family: ${styles.fonts.cairo};
-  font-weight: 600;
+  font-family: ${styles.fonts.standard};
+  font-weight: 700;
   text-align: center;
   opacity: 0;
   color: #5457ff;

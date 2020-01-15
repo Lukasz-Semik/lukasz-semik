@@ -3,10 +3,9 @@ import { useDispatch } from 'react-redux';
 import { FormattedMessage } from 'gatsby-plugin-intl';
 
 import { setIsWindowResized } from 'src/store/view/actions';
-import { ButtonElement } from 'src/components/Elements';
 import { PaperModal } from 'src/components/Modals';
 
-import { ButtonsWrapper, Text, CenterButton } from '../styled';
+import { ButtonsWrapper, Text, CenterButton, Button } from '../styled';
 
 interface Props {
   resetDrops: () => void;
@@ -23,14 +22,14 @@ export const WindowResizedInfo = ({ resetDrops }: Props) => {
   return (
     <PaperModal onClose={onClose}>
       <ButtonsWrapper>
-        <Text as="h2">
+        <Text as="h4">
           <FormattedMessage id="underwater.game.windowResized.descriptionLanding" />
         </Text>
 
         <CenterButton>
-          <ButtonElement onClick={onClose}>
+          <Button onClick={onClose}>
             <FormattedMessage id="shared.ok" />
-          </ButtonElement>
+          </Button>
         </CenterButton>
       </ButtonsWrapper>
     </PaperModal>
