@@ -14,7 +14,7 @@ const LinkStyled = styled.a`
   transform: translateY(100%);
 
   svg {
-    ${size(rem(25))};
+    ${size(rem(32))};
     color: ${styles.colors.black};
     transition: color 0.3s ease;
 
