@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // @ts-ignore TODO: resolve problem with imports of svg
-import BackgroundImage from 'src/assets/bg-underwater.svg';
+import BackgroundImage from 'src/assets/underwater/bg-underwater.svg';
 import styles from 'src/styles';
 
 const Wrapper = styled.div`
