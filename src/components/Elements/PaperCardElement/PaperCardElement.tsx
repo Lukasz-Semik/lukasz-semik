@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { rem } from 'polished';
 
-// @ts-ignore TODO: resolve problem with imports of svg
 import PaperBackground from 'src/assets/paper.svg';
 
 const Card = styled.div<{ isMounted: boolean }>`

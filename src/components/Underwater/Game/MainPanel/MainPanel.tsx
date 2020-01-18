@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { rem } from 'polished';
 
-// @ts-ignore TODO: resolve problem with imports of svg
 import Board from 'src/assets/underwater/board.svg';
 import {
   useGetHealthPoints,

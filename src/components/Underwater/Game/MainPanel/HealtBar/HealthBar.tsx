@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { rem } from 'polished';
 
-// @ts-ignore TODO: resolve problem with imports of svg
 import Fish from 'src/assets/underwater/fish.svg';
 import styles from 'src/styles';
 import { HEALTH_POINTS_STARTER } from 'src/constants/underwater';
