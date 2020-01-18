@@ -21,7 +21,7 @@ const Wrapper = styled.button`
 const Line = styled.div`
   height: ${rem(4)};
   width: 100%;
-  margin-bottom: ${rem(6)};
+  margin-bottom: ${rem(5)};
   background-color: ${styles.colors.black};
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: 2px;

@@ -9,7 +9,7 @@ import { GoUpButton } from '../GoUpButton/GoUpButton';
 
 const Wrapper = styled.div`
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   display: flex;
   justify-content: center;
@@ -22,15 +22,11 @@ const Wrapper = styled.div`
   button {
     pointer-events: all;
   }
-
-  @media ${styles.breakpoints.xsUp} {
-    top: 50%;
-  }
 `;
 
 const WavingTitle = styled.h2`
   margin: 0;
-  margin-bottom: ${rem(70)};
+  margin-bottom: ${rem(120)};
   letter-spacing: 1px;
   text-align: center;
   font-size: ${rem(57)};
