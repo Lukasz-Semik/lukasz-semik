@@ -37,7 +37,7 @@ export const animateDrop = ({
   })
     .to(containerRef, {
       x: attributes.x,
-      y: windowHeight - 60,
+      y: attributes.y,
     })
     .to(dropRef, {
       width: maxSize,

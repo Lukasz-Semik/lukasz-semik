@@ -12,6 +12,7 @@ import { WindowResizedInfo } from './Modals/WindowResizedInfo/WindowResizedInfo'
 import { LandingDrops } from '../Drops/LandingDrops/LandingDrops';
 import { Footer } from './Footer/Footer';
 import { Header } from './Header/Header';
+import { BottomGroup } from './BottomGroup/BottomGroup';
 
 interface Props {
   onViewGoUp: () => void;
@@ -42,6 +43,8 @@ export const Landing = ({ onViewGoUp }: Props) => {
       {isIntro && <Title onViewGoUp={onViewGoUp} />}
 
       {isStarter && <Starter />}
+
+      <BottomGroup />
 
       <Footer />
     </>

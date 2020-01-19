@@ -19,8 +19,8 @@ const CardInnerOverlay = styled.div`
   height: 100%;
 
   > svg {
-    width: 100% !important;
-    height: 100% !important;
+    width: 100%;
+    height: 100%;
   }
 `;
 

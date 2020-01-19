@@ -1,15 +1,15 @@
 // TODO: clean this place, values left as reference.
 // const screenUsMin = 0;
 // const screenUsMax = 479;
-const screenXsMin = 480;
+export const screenXsMin = 480;
 // const screenXsMax = 767;
-const screenSmMin = 768;
+export const screenSmMin = 768;
 // const screenSmMax = 1023;
-const screenMdMin = 1024;
+export const screenMdMin = 1024;
 // const screenMdMax = 1279;
-const screenLgMin = 1280;
+export const screenLgMin = 1280;
 // const screenLgMax = 1479;
-const screenXlMin = 1480;
+export const screenXlMin = 1480;
 
 export const breakpoints = {
   xsUp: `(min-width: ${screenXsMin}px)`,
