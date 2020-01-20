@@ -4,9 +4,11 @@
     "startGame": "Start the game",
     "letsMeet": "Let's meet",
     "game": {
+      "new": "New game",
       "over": "Game over",
       "pause": "Pause",
       "restart": "Restart",
+      "start": "Start",
       "backToIntro": "Back to intro",
       "resume": "Resume",
       "windowResized": {
@@ -18,7 +20,6 @@
   },
   "shared": {
     "ok": "Ok",
-    "or": "or",
     "back": "Back",
     "loading": "Loading"
   }

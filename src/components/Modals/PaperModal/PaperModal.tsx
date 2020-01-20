@@ -4,7 +4,9 @@ import { rgba, rem } from 'polished';
 
 import { styleOverlay } from 'src/styles/helpers';
 import { PaperCardElement, XButtonElement } from 'src/components/Elements';
-import { Modal } from './Modal';
+
+import { Modal } from '../Modal';
+import { Button, Title } from './styled';
 
 const Wrapper = styled.div<{ isMounted: boolean }>`
   ${styleOverlay};
@@ -21,6 +23,14 @@ const CardWrapper = styled.div`
   max-width: 85%;
   height: ${rem(500)};
   max-height: 95%;
+`;
+
+const InnerWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
 `;
 
 interface Props {
@@ -49,10 +59,13 @@ export const PaperModal = ({
               <XButtonElement top="0" right="0" onClick={onClose} />
             )}
 
-            {children}
+            <InnerWrapper>{children}</InnerWrapper>
           </PaperCardElement>
         </CardWrapper>
       </Wrapper>
     </Modal>
   );
 };
+
+PaperModal.Title = Title;
+PaperModal.ButtonItem = Button;
