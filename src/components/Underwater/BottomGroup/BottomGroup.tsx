@@ -8,21 +8,19 @@ import { Coral } from './Coral/Coral';
 import { ShellGroup } from './Shell/ShellGroup';
 import { Star } from './Star/Star';
 
-export const BottomGroup = () => {
-  return (
-    <BottomStage>
-      {({ groupsQty, groupWidth }) => (
-        <>
-          {times(groupsQty, i => (
-            <Container x={i * groupWidth} key={`stage-${i}`} width={groupWidth}>
-              <ShellGroup stageWidth={groupWidth} />
-              <Star stageWidth={groupWidth} />
-              <Coral stageWidth={groupWidth} />
-              <GrassGroup stageWidth={groupWidth} />
-            </Container>
-          ))}
-        </>
-      )}
-    </BottomStage>
-  );
-};
+export const BottomGroup = () => (
+  <BottomStage>
+    {({ groupsQty, groupWidth }) => (
+      <>
+        {times(groupsQty, i => (
+          <Container x={i * groupWidth} key={`stage-${i}`} width={groupWidth}>
+            <ShellGroup stageWidth={groupWidth} />
+            <Star stageWidth={groupWidth} />
+            <Coral stageWidth={groupWidth} />
+            <GrassGroup stageWidth={groupWidth} />
+          </Container>
+        ))}
+      </>
+    )}
+  </BottomStage>
+);
