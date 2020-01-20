@@ -12,7 +12,7 @@ import { WindowResizedInfo } from './Modals/WindowResizedInfo/WindowResizedInfo'
 import { LandingDrops } from '../Drops/LandingDrops/LandingDrops';
 import { Footer } from './Footer/Footer';
 import { Header } from './Header/Header';
-import { BottomGroup } from './BottomGroup/BottomGroup';
+import { BottomGroup } from '../BottomGroup/BottomGroup';
 
 interface Props {
   onViewGoUp: () => void;
