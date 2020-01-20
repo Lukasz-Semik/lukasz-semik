@@ -6,10 +6,10 @@ import { Props } from '../types';
 
 export const Shell = ({ stageWidth }: Props) => {
   const index = useMemo(() => random(1, 5), []);
-  const x = useMemo(() => random(0, stageWidth), [stageWidth]);
-  const y = useMemo(() => random(200, 250), []);
   const width = useMemo(() => random(35, 40), []);
   const height = useMemo(() => random(35, 40), []);
+  const x = useMemo(() => random(0, stageWidth - width), [stageWidth, width]);
+  const y = useMemo(() => random(200, 250), []);
   const rotation = useMemo(() => random(0, 180), []);
 
   return (

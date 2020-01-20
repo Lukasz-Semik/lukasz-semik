@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Stage } from '@inlet/react-pixi';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { useGetWindowContext } from 'src/store/view/selectors';
 import { screenXsMin, screenMdMin, screenXlMin } from 'src/styles/constants';
@@ -10,6 +10,15 @@ interface RenderProps {
   groupWidth: number;
 }
 
+const animation = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 const Wrapper = styled.div`
   position: absolute;
   bottom: 0;
@@ -17,6 +26,8 @@ const Wrapper = styled.div`
   width: 100%;
   height: 300px;
   pointer-events: none;
+  opacity: 0;
+  animation: ${animation} 2s forwards;
 `;
 
 export const BottomStage = ({

@@ -5,10 +5,10 @@ import { random } from 'lodash';
 import { Props } from '../types';
 
 export const Coral = ({ stageWidth }: Props) => {
-  const x = useMemo(() => random(0, stageWidth), [stageWidth]);
-  const y = useMemo(() => random(210, 300), []);
   const width = useMemo(() => random(90, 110), []);
   const height = useMemo(() => random(60, 80), []);
+  const x = useMemo(() => random(0, stageWidth - width), [stageWidth, width]);
+  const y = useMemo(() => random(210, 300), []);
 
   return (
     <Sprite

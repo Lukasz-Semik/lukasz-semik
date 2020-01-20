@@ -17,8 +17,8 @@ export const BottomGroup = () => {
             <Container x={i * groupWidth} key={`stage-${i}`} width={groupWidth}>
               <ShellGroup stageWidth={groupWidth} />
               <Star stageWidth={groupWidth} />
-              <GrassGroup stageWidth={groupWidth} />
               <Coral stageWidth={groupWidth} />
+              <GrassGroup stageWidth={groupWidth} />
             </Container>
           ))}
         </>
