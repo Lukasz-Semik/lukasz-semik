@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   left: 0;
   width: 100%;
   height: 300px;
+  pointer-events: none;
 `;
 
 export const BottomStage = ({
