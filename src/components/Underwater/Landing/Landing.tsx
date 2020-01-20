@@ -36,15 +36,13 @@ export const Landing = ({ onViewGoUp }: Props) => {
     <>
       <Header />
 
-      {/* <GoUpButton onViewGoUp={onViewGoUp} /> */}
-
       {!isPreparingDrops && <LandingDrops />}
+
+      <BottomGroup />
 
       {isIntro && <Title onViewGoUp={onViewGoUp} />}
 
       {isStarter && <Starter />}
-
-      <BottomGroup />
 
       <Footer />
     </>

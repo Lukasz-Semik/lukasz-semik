@@ -2,12 +2,13 @@ import React from 'react';
 import { times } from 'lodash';
 
 import { Grass } from './Grass';
+import { Props } from '../types';
 
-export const GrassGroup = () => {
+export const GrassGroup = ({ stageWidth }: Props) => {
   return (
     <>
       {times(3, i => (
-        <Grass key={`grass-${i}`} />
+        <Grass stageWidth={stageWidth} key={`grass-${i}`} />
       ))}
     </>
   );

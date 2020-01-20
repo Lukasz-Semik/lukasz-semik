@@ -21,8 +21,8 @@ export const DropsStage = ({
   return windowContext ? (
     <Stage options={{ transparent: true, resizeTo: windowContext }}>
       {children({
-        windowWidth: windowContext?.innerWidth || 0,
-        windowHeight: windowContext?.innerHeight || 0,
+        windowWidth: windowContext.innerWidth || 0,
+        windowHeight: windowContext.innerHeight || 0,
         isWindowFocused,
       })}
     </Stage>
