@@ -5,7 +5,7 @@ import { random } from 'lodash';
 import { Props } from '../types';
 
 export const Star = ({ stageWidth }: Props) => {
-  const x = useMemo(() => random(5, stageWidth), [stageWidth]);
+  const x = useMemo(() => random(0, stageWidth), [stageWidth]);
   const y = useMemo(() => random(200, 250), []);
   const width = useMemo(() => random(30, 50), []);
   const height = useMemo(() => random(30, 50), []);

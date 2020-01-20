@@ -6,7 +6,7 @@ import { Props } from '../types';
 
 export const Shell = ({ stageWidth }: Props) => {
   const index = useMemo(() => random(1, 5), []);
-  const x = useMemo(() => random(5, stageWidth), [stageWidth]);
+  const x = useMemo(() => random(0, stageWidth), [stageWidth]);
   const y = useMemo(() => random(200, 250), []);
   const width = useMemo(() => random(35, 40), []);
   const height = useMemo(() => random(35, 40), []);
