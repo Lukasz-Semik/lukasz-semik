@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Container } from '@inlet/react-pixi';
 import { times } from 'lodash';
 
 import { BottomStage } from './BottomStage/BottomStage';
 import { Items } from './Items/Items';
 
-export const BottomGroup = () => (
+export const BottomGroup = memo(() => (
   <BottomStage>
     {({ groupsQty, groupWidth, groupHeight }) => (
       <>
@@ -21,4 +21,4 @@ export const BottomGroup = () => (
       </>
     )}
   </BottomStage>
-);
+));
