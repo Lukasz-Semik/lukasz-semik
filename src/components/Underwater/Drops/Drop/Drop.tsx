@@ -97,7 +97,7 @@ export class Drop extends PureComponent<Props, State> {
       <Container ref={ref => (this.containerRef = ref)}>
         <Sprite
           ref={ref => (this.dropRef = ref)}
-          image="drop.png"
+          image="underwater/drop.png"
           anchor={0.5}
           visible={isReady && !isClicked}
           interactive={isReady && !isClicked}

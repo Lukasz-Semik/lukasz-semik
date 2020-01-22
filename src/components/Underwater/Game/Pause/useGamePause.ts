@@ -36,6 +36,14 @@ export const useGamePause = () => {
     }
   }, [dispatch, isWindowResized]);
 
+  const backToIntro = useCallback(() => {
+    if (isWindowResized) {
+      dispatch(setIsWindowResized(false));
+    }
+
+    dispatch(setUnderwaterIntro());
+  }, [dispatch, isWindowResized]);
+
   useEffect(() => {
     if (isGamePaused) {
       setIsModalOpen(true);
@@ -54,6 +62,6 @@ export const useGamePause = () => {
     restartGame,
     isModalOpen,
     isWindowResized,
-    backToIntro: () => dispatch(setUnderwaterIntro()),
+    backToIntro,
   };
 };

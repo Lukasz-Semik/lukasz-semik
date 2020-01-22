@@ -8,8 +8,6 @@ import {
 } from 'src/store/underwater/actions';
 import { PaperModal } from 'src/components/Modals';
 
-import { ButtonsWrapper, Text, CenterButton, Button } from '../styled';
-
 export const Starter = () => {
   const dispatch = useDispatch();
 
@@ -19,21 +17,17 @@ export const Starter = () => {
 
   return (
     <PaperModal onClose={backToIntro}>
-      <ButtonsWrapper>
-        <Button onClick={() => dispatch(setUnderwaterGame())}>
-          <FormattedMessage id="underwater.startGame" />
-        </Button>
+      <PaperModal.Title>
+        <FormattedMessage id="underwater.game.new" />
+      </PaperModal.Title>
 
-        <Text>
-          <FormattedMessage id="shared.or" />
-        </Text>
+      <PaperModal.ButtonItem onClick={() => dispatch(setUnderwaterGame())}>
+        <FormattedMessage id="underwater.game.start" />
+      </PaperModal.ButtonItem>
 
-        <CenterButton>
-          <Button onClick={backToIntro}>
-            <FormattedMessage id="shared.back" />
-          </Button>
-        </CenterButton>
-      </ButtonsWrapper>
+      <PaperModal.ButtonItem onClick={backToIntro}>
+        <FormattedMessage id="shared.back" />
+      </PaperModal.ButtonItem>
     </PaperModal>
   );
 };

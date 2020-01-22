@@ -5,25 +5,34 @@ import { rem } from 'polished';
 import styles from 'src/styles';
 
 import { Letter } from './Letter';
-import { Subtitle } from './Subtitle';
+import { GoUpButton } from '../GoUpButton/GoUpButton';
 
 const Wrapper = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
   pointer-events: none;
   transform: translate(-50%, -50%);
+
+  button {
+    pointer-events: all;
+  }
 `;
 
 const WavingTitle = styled.h2`
   margin: 0;
-  margin-bottom: ${rem(100)};
+  margin-bottom: ${rem(120)};
   letter-spacing: 1px;
   text-align: center;
   font-size: ${rem(57)};
 
   @media ${styles.breakpoints.xsUp} {
+    margin-bottom: ${rem(100)};
     font-size: ${rem(93)};
   }
 
@@ -36,7 +45,11 @@ const WavingTitle = styled.h2`
   }
 `;
 
-export const Title = () => {
+interface Props {
+  onViewGoUp: () => void;
+}
+
+export const Title = ({ onViewGoUp }: Props) => {
   const intl = useIntl();
 
   const text = useMemo(() => {
@@ -66,7 +79,7 @@ export const Title = () => {
         ))}
       </WavingTitle>
 
-      <Subtitle />
+      <GoUpButton onViewGoUp={onViewGoUp} />
     </Wrapper>
   );
 };

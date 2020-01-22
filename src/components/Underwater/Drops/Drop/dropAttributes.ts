@@ -17,7 +17,7 @@ export const generateAttributes = ({
 
   return {
     x: random(xOffset, windowWidth - xOffset),
-    y: windowHeight - 60,
+    y: windowHeight - 150,
     maxAlpha: isFullyVisible ? 1 : (dropSize - 25) / 20,
     delay: random(1, 11, true),
     rotation: random(0, 360),

@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { rem } from 'polished';
 
-// @ts-ignore TODO: resolve problem with imports of svg
-import Board from 'src/assets/board.svg';
+import Board from 'src/assets/underwater/board.svg';
 import {
   useGetHealthPoints,
   useGetScore,
@@ -28,8 +27,8 @@ const Panel = styled.div`
   }
 
   > svg {
-    width: 100% !important;
-    height: 100% !important;
+    width: 100%;
+    height: 100%;
   }
 `;
 

@@ -11,8 +11,8 @@ import { Starter } from './Modals/Starter/Starter';
 import { WindowResizedInfo } from './Modals/WindowResizedInfo/WindowResizedInfo';
 import { LandingDrops } from '../Drops/LandingDrops/LandingDrops';
 import { Footer } from './Footer/Footer';
-import { GoUpButton } from './GoUpButton/GoUpButton';
 import { Header } from './Header/Header';
+import { BottomGroup } from '../BottomGroup/BottomGroup';
 
 interface Props {
   onViewGoUp: () => void;
@@ -36,11 +36,11 @@ export const Landing = ({ onViewGoUp }: Props) => {
     <>
       <Header />
 
-      <GoUpButton onViewGoUp={onViewGoUp} />
-
       {!isPreparingDrops && <LandingDrops />}
 
-      {isIntro && <Title />}
+      <BottomGroup />
+
+      {isIntro && <Title onViewGoUp={onViewGoUp} />}
 
       {isStarter && <Starter />}
 

@@ -68,7 +68,7 @@ export const Satellite = ({
       {!isClicked && (
         <Sprite
           ref={spriteRef}
-          image="satellite.png"
+          image="underwater/satellite.png"
           cursor="pointer"
           pointerdown={() => {
             onClick();

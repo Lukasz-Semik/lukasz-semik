@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { rem } from 'polished';
 
-// @ts-ignore TODO: resolve problem with imports of svg
 import PaperBackground from 'src/assets/paper.svg';
 
 const Card = styled.div<{ isMounted: boolean }>`
@@ -20,8 +19,8 @@ const CardInnerOverlay = styled.div`
   height: 100%;
 
   > svg {
-    width: 100% !important;
-    height: 100% !important;
+    width: 100%;
+    height: 100%;
   }
 `;
 

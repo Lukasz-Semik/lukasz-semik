@@ -5,28 +5,6 @@ import { rem } from 'polished';
 
 import styles from 'src/styles';
 import { PaperModal } from 'src/components/Modals';
-import { ButtonElement } from 'src/components/Elements';
-
-const Wrapper = styled.div.attrs({ 'data-test': 'pause-modal' })`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100%;
-`;
-
-const Button = styled(ButtonElement)`
-  margin-bottom: ${rem(20)};
-  font-size: ${rem(25)};
-  font-weight: 700;
-`;
-
-const Title = styled.h2.attrs({ 'data-test': 'pause-modal-title' })`
-  margin-bottom: ${rem(30)};
-  text-align: center;
-  font-size: ${rem(50)};
-  font-family: ${styles.fonts.uniq};
-`;
 
 const Text = styled.p`
   margin: ${rem(10)} 0;
@@ -62,30 +40,28 @@ export const PauseModal = ({
   isWindowResized,
 }: Props) => (
   <PaperModal onClose={resumeGame} isCloseButtonHidden={isWindowResized}>
-    <Wrapper>
-      <Title>
-        <FormattedMessage id={getModalTitle(isGameOver, isWindowResized)} />
-      </Title>
+    <PaperModal.Title>
+      <FormattedMessage id={getModalTitle(isGameOver, isWindowResized)} />
+    </PaperModal.Title>
 
-      {!isGameOver && !isWindowResized && (
-        <Button onClick={resumeGame}>
-          <FormattedMessage id="underwater.game.resume" />
-        </Button>
-      )}
+    {!isGameOver && !isWindowResized && (
+      <PaperModal.ButtonItem onClick={resumeGame}>
+        <FormattedMessage id="underwater.game.resume" />
+      </PaperModal.ButtonItem>
+    )}
 
-      <Button onClick={restartGame}>
-        <FormattedMessage id="underwater.game.restart" />
-      </Button>
+    <PaperModal.ButtonItem onClick={restartGame}>
+      <FormattedMessage id="underwater.game.restart" />
+    </PaperModal.ButtonItem>
 
-      <Button onClick={backToIntro}>
-        <FormattedMessage id="underwater.game.backToIntro" />
-      </Button>
+    <PaperModal.ButtonItem onClick={backToIntro}>
+      <FormattedMessage id="underwater.game.backToIntro" />
+    </PaperModal.ButtonItem>
 
-      {isWindowResized && (
-        <Text>
-          <FormattedMessage id="underwater.game.windowResized.descriptionGame" />
-        </Text>
-      )}
-    </Wrapper>
+    {isWindowResized && (
+      <Text>
+        <FormattedMessage id="underwater.game.windowResized.descriptionGame" />
+      </Text>
+    )}
   </PaperModal>
 );

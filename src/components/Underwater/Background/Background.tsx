@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// @ts-ignore TODO: resolve problem with imports of svg
-import BackgroundImage from 'src/assets/bg-underwater.svg';
+import BackgroundImage from 'src/assets/underwater/bg-underwater.svg';
 import styles from 'src/styles';
 
 const Wrapper = styled.div`
@@ -17,8 +16,8 @@ const Wrapper = styled.div`
   );
 
   > svg {
-    width: 100% !important;
-    height: 100% !important;
+    width: 100%;
+    height: 100%;
   }
 `;
 

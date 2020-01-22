@@ -1,1 +1,1 @@
-export { PaperModal } from './PaperModal';
+export { PaperModal } from './PaperModal/PaperModal';
