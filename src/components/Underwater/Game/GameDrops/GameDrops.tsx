@@ -5,9 +5,9 @@ import { times } from 'lodash';
 import { addScore, substractHealthPoints } from 'src/store/underwater/actions';
 import { useGetIsGamePaused } from 'src/store/underwater/selectors';
 
-import { DropsStage } from '../DropsStage/DropsStage';
-import { Drop } from '../Drop/Drop';
-import { Satellites } from '../Satellites/Satellites';
+import { DropsStage } from '../../Drop/DropsStage/DropsStage';
+import { Drop } from '../../Drop/Drop';
+import { Satellites } from '../../Drop/Satellites/Satellites';
 
 export const GameDrops = () => {
   const dispatch = useDispatch();

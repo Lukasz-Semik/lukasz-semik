@@ -3,7 +3,7 @@ import { Sprite, Container } from '@inlet/react-pixi';
 import gsap from 'gsap';
 
 import { animateDrop } from './animateDrop';
-import { PointsIndicator } from '../../PointsIndicator/PointsIndicator';
+import { PointsIndicator } from '../PointsIndicator/PointsIndicator';
 
 interface Props {
   windowWidth: number;
