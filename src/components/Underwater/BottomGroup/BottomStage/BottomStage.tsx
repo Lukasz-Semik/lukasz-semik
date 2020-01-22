@@ -5,11 +5,6 @@ import styled, { keyframes } from 'styled-components';
 import { useGetWindowContext } from 'src/store/view/selectors';
 import { screenXsMin, screenMdMin, screenXlMin } from 'src/styles/constants';
 
-interface RenderProps {
-  groupsQty: number;
-  groupWidth: number;
-}
-
 const animation = keyframes`
   from {
     opacity: 0;
@@ -19,16 +14,25 @@ const animation = keyframes`
   }
 `;
 
-const Wrapper = styled.div`
+const BASE_STAGING_HEIGHT = 200;
+const BASE_WINDOW_HEIGHT = 897;
+
+const Wrapper = styled.div<{ stageHeight: number }>`
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 300px;
+  height: ${({ stageHeight }) => stageHeight}px;
   pointer-events: none;
   opacity: 0;
   animation: ${animation} 2s forwards;
 `;
+
+interface RenderProps {
+  groupsQty: number;
+  groupWidth: number;
+  groupHeight: number;
+}
 
 export const BottomStage = ({
   children,
@@ -59,12 +63,20 @@ export const BottomStage = ({
   const windowWidth = windowContext?.innerWidth || 0;
   const groupWidth = windowWidth / groupsQty;
 
+  const windowHeight = windowContext?.innerHeight || 0;
+  const groupHeight = (windowHeight * BASE_STAGING_HEIGHT) / BASE_WINDOW_HEIGHT;
+
   return windowWidth ? (
-    <Wrapper>
-      <Stage width={windowWidth} height={300} options={{ transparent: true }}>
+    <Wrapper stageHeight={groupHeight}>
+      <Stage
+        width={windowWidth}
+        height={groupHeight}
+        options={{ transparent: true }}
+      >
         {children({
           groupsQty,
           groupWidth,
+          groupHeight,
         })}
       </Stage>
     </Wrapper>

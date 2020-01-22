@@ -3,21 +3,19 @@ import { Container } from '@inlet/react-pixi';
 import { times } from 'lodash';
 
 import { BottomStage } from './BottomStage/BottomStage';
-import { GrassGroup } from './Grass/GrassGroup';
-import { Coral } from './Coral/Coral';
-import { ShellGroup } from './Shell/ShellGroup';
-import { Star } from './Star/Star';
+import { Items } from './Items/Items';
 
 export const BottomGroup = () => (
   <BottomStage>
-    {({ groupsQty, groupWidth }) => (
+    {({ groupsQty, groupWidth, groupHeight }) => (
       <>
         {times(groupsQty, i => (
           <Container x={i * groupWidth} key={`stage-${i}`} width={groupWidth}>
-            <ShellGroup stageWidth={groupWidth} />
-            <Star stageWidth={groupWidth} />
-            <Coral stageWidth={groupWidth} />
-            <GrassGroup stageWidth={groupWidth} />
+            <Items
+              groupWidth={groupWidth}
+              groupHeight={groupHeight}
+              groupIndex={i}
+            />
           </Container>
         ))}
       </>
