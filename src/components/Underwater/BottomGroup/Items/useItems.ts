@@ -26,7 +26,7 @@ const generateAttributes = ({
     width,
     height,
     x: random(0, groupWidth - width),
-    y: random(hasDoubledY ? height * 2 : height, groupHeight + 10),
+    y: random(hasDoubledY ? height * 2 : height + 10, groupHeight + 10),
   };
 };
 

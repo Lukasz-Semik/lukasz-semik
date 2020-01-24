@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 
 import {
-  SUBSTRACT_HEALTH_POINTS,
+  CHANGE_HEALTH_POINTS,
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
   RESET_GAME,
@@ -21,8 +21,8 @@ export interface UnderwaterState {
   isGamePaused: boolean;
 }
 
-export interface SubstractHealthPointsAction
-  extends Action<typeof SUBSTRACT_HEALTH_POINTS> {
+export interface ChangeHealthPointsAction
+  extends Action<typeof CHANGE_HEALTH_POINTS> {
   payload: {
     value: number;
   };
@@ -51,7 +51,7 @@ export interface SetUnderwaterStageAction
 export type ResetGameAction = Action<typeof RESET_GAME>;
 
 export type UnderwaterActionType =
-  | SubstractHealthPointsAction
+  | ChangeHealthPointsAction
   | AddScore
   | SetIsGamePausedAction
   | SetUnderwaterStageAction

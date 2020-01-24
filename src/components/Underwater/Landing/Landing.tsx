@@ -9,7 +9,7 @@ import { useGetIsWindowResized } from 'src/store/view/selectors';
 import { Title } from './Title/Title';
 import { Starter } from './Modals/Starter/Starter';
 import { WindowResizedInfo } from './Modals/WindowResizedInfo/WindowResizedInfo';
-import { LandingDrops } from '../Drops/LandingDrops/LandingDrops';
+import { LandingDrops } from './LandingDrops/LandingDrops';
 import { Footer } from './Footer/Footer';
 import { Header } from './Header/Header';
 import { BottomGroup } from '../BottomGroup/BottomGroup';

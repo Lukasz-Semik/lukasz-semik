@@ -1,5 +1,5 @@
 import {
-  SUBSTRACT_HEALTH_POINTS,
+  CHANGE_HEALTH_POINTS,
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
   RESET_GAME,
@@ -7,7 +7,7 @@ import {
 } from './actionTypes';
 import {
   Stage,
-  SubstractHealthPointsAction,
+  ChangeHealthPointsAction,
   SetIsGamePausedAction,
   SetUnderwaterStageAction,
   ResetGameAction,
@@ -15,10 +15,10 @@ import {
 } from './types';
 import { ThunkAction } from '../types';
 
-export const substractHealthPoints = (
+export const changeHealthPoints = (
   value: number
-): SubstractHealthPointsAction => ({
-  type: SUBSTRACT_HEALTH_POINTS,
+): ChangeHealthPointsAction => ({
+  type: CHANGE_HEALTH_POINTS,
   payload: {
     value,
   },

@@ -1,7 +1,7 @@
 import { mockStore, findAction } from 'src/helpers/tests';
 
 import {
-  substractHealthPoints,
+  changeHealthPoints,
   setIsGamePaused,
   setUnderwaterStage,
   setUnderwaterIntro,
@@ -11,7 +11,7 @@ import {
   addScore,
 } from './actions';
 import {
-  SUBSTRACT_HEALTH_POINTS,
+  CHANGE_HEALTH_POINTS,
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
   RESET_GAME,
@@ -28,11 +28,11 @@ describe('underwater actions creators', () => {
       store.clearActions();
     });
 
-    test('substractHealthPoints', () => {
-      store.dispatch(substractHealthPoints(5));
+    test('changeHealthPoints', () => {
+      store.dispatch(changeHealthPoints(5));
 
-      expect(findAction(store, SUBSTRACT_HEALTH_POINTS)).toEqual({
-        type: SUBSTRACT_HEALTH_POINTS,
+      expect(findAction(store, CHANGE_HEALTH_POINTS)).toEqual({
+        type: CHANGE_HEALTH_POINTS,
         payload: { value: 5 },
       });
     });
