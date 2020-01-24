@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 import { Sprite } from '@inlet/react-pixi';
 import { sortBy, random } from 'lodash';
 
+import { useRwdQuery } from 'src/hooks/useMediaQuery';
+
 import { useItems } from './useItems';
 
 interface Props {
@@ -11,13 +13,16 @@ interface Props {
 }
 
 export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
+  const { isMediaMd } = useRwdQuery();
+  const isSmall = !isMediaMd;
+
   const commonAttrs = { groupWidth, groupHeight };
   const corals = useItems({
     ...commonAttrs,
     min: 1,
     max: 2,
-    widths: [90, 110],
-    heights: [60, 80],
+    widths: isSmall ? [50, 80] : [90, 110],
+    heights: isSmall ? [30, 50] : [60, 80],
     getImage: () => 'underwater/coral.png',
   });
 
@@ -25,8 +30,8 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
     ...commonAttrs,
     min: 8,
     max: 12,
-    widths: [80, 120],
-    heights: [40, 80],
+    widths: isSmall ? [40, 80] : [80, 120],
+    heights: isSmall ? [30, 60] : [40, 80],
     getImage: () => 'underwater/grass.png',
   });
 
@@ -34,8 +39,8 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
     ...commonAttrs,
     min: 1,
     max: 2,
-    widths: [30, 50],
-    heights: [30, 50],
+    widths: isSmall ? [20, 40] : [30, 50],
+    heights: isSmall ? [20, 40] : [30, 50],
     getImage: () => 'underwater/star.png',
     hasDoubledY: true,
   });
@@ -44,8 +49,8 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
     ...commonAttrs,
     min: 1,
     max: 5,
-    widths: [25, 35],
-    heights: [25, 35],
+    widths: isSmall ? [20, 30] : [25, 35],
+    heights: isSmall ? [20, 30] : [25, 35],
     hasDoubledY: true,
     getImage: () => `underwater/shell_${random(1, 4)}.png`,
   });

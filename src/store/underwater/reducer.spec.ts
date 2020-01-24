@@ -1,5 +1,5 @@
 import {
-  SUBSTRACT_HEALTH_POINTS,
+  CHANGE_HEALTH_POINTS,
   SET_UNDERWATER_STAGE,
   SET_IS_GAME_PAUSED,
   RESET_GAME,
@@ -15,12 +15,12 @@ describe('underwater reducer', () => {
     expect(reducer(undefined, {})).toEqual(initialState);
   });
 
-  it(`should handle ${SUBSTRACT_HEALTH_POINTS} action type`, () => {
+  it(`should handle ${CHANGE_HEALTH_POINTS} action type`, () => {
     expect(
       reducer(initialState, {
-        type: SUBSTRACT_HEALTH_POINTS,
+        type: CHANGE_HEALTH_POINTS,
         payload: {
-          value: 5,
+          value: -5,
         },
       })
     ).toEqual({

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { MainPanel } from './MainPanel/MainPanel';
-import { GameDrops } from './GameDrops/GameDrops';
+import { GameScene } from './GameScene/GameScene';
 import { BottomGroup } from '../BottomGroup/BottomGroup';
 
 export const Game = () => {
@@ -17,8 +17,8 @@ export const Game = () => {
     <>
       {!isResetingDrops && (
         <>
-          <GameDrops />
           <BottomGroup />
+          <GameScene />
         </>
       )}
 
