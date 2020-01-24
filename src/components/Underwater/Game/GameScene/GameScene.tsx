@@ -63,7 +63,7 @@ export const GameScene = () => {
               />
             ))}
 
-            {healthPoints <= HEALTH_POINTS_STARTER - 20 && (
+            {healthPoints <= HEALTH_POINTS_STARTER - 10 && (
               <HealthPointAdder
                 windowWidth={windowWidth}
                 windowHeight={windowHeight}
