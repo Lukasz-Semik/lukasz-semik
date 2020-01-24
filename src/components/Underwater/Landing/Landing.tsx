@@ -34,11 +34,11 @@ export const Landing = ({ onViewGoUp }: Props) => {
     <WindowResizedInfo resetDrops={() => setIsPreparingDrops(true)} />
   ) : (
     <>
-      <Header />
+      <BottomGroup />
 
       {!isPreparingDrops && <LandingDrops />}
 
-      <BottomGroup />
+      <Header />
 
       {isIntro && <Title onViewGoUp={onViewGoUp} />}
 
