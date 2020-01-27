@@ -28,11 +28,31 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
 
   const grass = useItems({
     ...commonAttrs,
-    min: 8,
-    max: 12,
+    min: 5,
+    max: 8,
+    // min: 8,
+    // max: 12
     widths: isSmall ? [40, 80] : [80, 120],
     heights: isSmall ? [30, 60] : [40, 80],
     getImage: () => 'underwater/grass.png',
+  });
+
+  const ice = useItems({
+    ...commonAttrs,
+    min: 1,
+    max: 2,
+    widths: isSmall ? [40, 60] : [60, 80],
+    heights: isSmall ? [40, 60] : [60, 80],
+    getImage: () => `underwater/ice_${random(1, 3)}.png`,
+  });
+
+  const stones = useItems({
+    ...commonAttrs,
+    min: 1,
+    max: 2,
+    widths: isSmall ? [40, 60] : [50, 70],
+    heights: isSmall ? [40, 60] : [50, 70],
+    getImage: () => `underwater/stone_${random(1, 2)}.png`,
   });
 
   const stars = useItems({
@@ -55,7 +75,14 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
     getImage: () => `underwater/shell_${random(1, 4)}.png`,
   });
 
-  const itemsRaw = [...corals, ...grass, ...stars, ...shells];
+  const itemsRaw = [
+    ...corals,
+    ...grass,
+    ...ice,
+    ...stones,
+    ...stars,
+    ...shells,
+  ];
 
   const items = useMemo(() => sortBy(itemsRaw, item => item.y), [itemsRaw]);
 

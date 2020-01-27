@@ -2,18 +2,20 @@ import React, { useRef, useEffect, useMemo, useState, memo } from 'react';
 import { Sprite } from '@inlet/react-pixi';
 import gsap from 'gsap';
 import { random } from 'lodash';
+import { useAnimationPause } from 'src/hooks/useAnimationPause';
 
 interface Props {
   windowWidth: number;
   windowHeight: number;
+  isGamePaused: boolean;
   onClick: () => void;
 }
 
 export const HealthPointAdder = memo(
-  ({ windowWidth, windowHeight, onClick }: Props) => {
+  ({ windowWidth, windowHeight, isGamePaused, onClick }: Props) => {
     const [counter, setCounter] = useState(0);
     const [isClicked, setIsClicked] = useState(false);
-    const ref = useRef(null);
+    const ref = useRef<Sprite>(null);
     const tl = useMemo(() => gsap.timeline(), []);
 
     useEffect(() => {
@@ -47,6 +49,8 @@ export const HealthPointAdder = memo(
           });
       }
     }, [counter, tl, windowHeight, windowWidth]);
+
+    useAnimationPause(tl, isGamePaused);
 
     return (
       <Sprite

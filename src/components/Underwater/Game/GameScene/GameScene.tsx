@@ -67,6 +67,7 @@ export const GameScene = () => {
               <HealthPointAdder
                 windowWidth={windowWidth}
                 windowHeight={windowHeight}
+                isGamePaused={isGamePaused}
                 onClick={onHealthClick}
               />
             )}
