@@ -11,4 +11,11 @@ export const useAnimationPause = (
       tl.resume();
     }
   }, [isPaused, tl]);
+
+  useEffect(
+    () => () => {
+      tl.kill();
+    },
+    [tl]
+  );
 };

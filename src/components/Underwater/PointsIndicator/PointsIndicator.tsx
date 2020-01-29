@@ -36,10 +36,6 @@ export const PointsIndicator = ({
         ease: 'linear',
       });
     }
-
-    return () => {
-      tl.kill();
-    };
   }, [tl, x, y]);
 
   useAnimationPause(tl, isPaused);

@@ -7,7 +7,7 @@ import {
   useGetIsGamePaused,
   useGetHealthPoints,
 } from 'src/store/underwater/selectors';
-import { HEALTH_POINTS_STARTER } from 'src/constants/underwater';
+import { gameParameters } from 'src/constants/game';
 
 import { DropsStage } from '../../Drop/DropsStage/DropsStage';
 import { Drop } from '../../Drop/Drop';
@@ -23,7 +23,9 @@ export const GameScene = () => {
     (isClicked?: boolean) => {
       if (!isClicked) {
         setTimeout(() => {
-          dispatch(changeHealthPoints(-1));
+          dispatch(
+            changeHealthPoints(gameParameters.health.dropSubstractions.easy)
+          );
         }, 0);
       }
     },
@@ -32,7 +34,7 @@ export const GameScene = () => {
 
   const onHealthClick = useCallback(() => {
     setTimeout(() => {
-      dispatch(changeHealthPoints(10));
+      dispatch(changeHealthPoints(gameParameters.health.heartAddings.easy));
     }, 0);
   }, [dispatch]);
 
@@ -63,10 +65,12 @@ export const GameScene = () => {
               />
             ))}
 
-            {healthPoints <= HEALTH_POINTS_STARTER - 10 && (
+            {healthPoints <=
+              gameParameters.health.heartAdderVisibilityLevel && (
               <HealthPointAdder
                 windowWidth={windowWidth}
                 windowHeight={windowHeight}
+                isGamePaused={isGamePaused}
                 onClick={onHealthClick}
               />
             )}

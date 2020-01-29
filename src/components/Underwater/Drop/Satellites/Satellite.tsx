@@ -55,10 +55,6 @@ export const Satellite = ({
         '-=3'
       );
     }
-
-    return () => {
-      tl.kill();
-    };
   }, [index, tl]);
 
   useAnimationPause(tl, isPaused);
