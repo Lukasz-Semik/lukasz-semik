@@ -14,17 +14,22 @@ interface Props {
 export const HealthPointAdder = memo(
   ({ windowWidth, windowHeight, isGamePaused, onClick }: Props) => {
     const [counter, setCounter] = useState(0);
+    const [isReady, setIsReady] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
     const ref = useRef<Sprite>(null);
     const tl = useMemo(() => gsap.timeline(), []);
 
     useEffect(() => {
-      if (ref.current) {
+      if (ref.current && isReady) {
         tl.to(ref.current, {
-          x: random(60, windowWidth - 60),
-          y: random(200, windowHeight - 60),
-          delay: random(0, 20),
+          width: 0,
+          height: 0,
         })
+          .to(ref.current, {
+            x: random(60, windowWidth - 60),
+            y: random(200, windowHeight - 60),
+            delay: random(0, 20),
+          })
           .to(ref.current, {
             visible: true,
             width: 40,
@@ -48,17 +53,21 @@ export const HealthPointAdder = memo(
             },
           });
       }
-    }, [counter, tl, windowHeight, windowWidth]);
+    }, [counter, tl, windowHeight, windowWidth, isReady]);
+
+    useEffect(() => {
+      if (!isReady) {
+        setIsReady(true);
+      }
+    }, [isReady]);
 
     useAnimationPause(tl, isGamePaused);
 
     return (
       <Sprite
         ref={ref}
-        visible={false && !isClicked}
+        visible={isReady && !isClicked}
         image="underwater/heart.png"
-        width={0}
-        height={0}
         alpha={0.8}
         anchor={0.5}
         cursor="pointer"
