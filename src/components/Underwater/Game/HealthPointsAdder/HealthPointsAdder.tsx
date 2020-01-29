@@ -50,6 +50,7 @@ export const HealthPointAdder = memo(
             onComplete: () => {
               setCounter(counter + 1);
               setIsClicked(false);
+              setIsReady(false);
             },
           });
       }

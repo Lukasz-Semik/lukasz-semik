@@ -4,7 +4,7 @@ import { rem } from 'polished';
 
 import Fish from 'src/assets/underwater/fish.svg';
 import styles from 'src/styles';
-import { HEALTH_POINTS_STARTER } from 'src/constants/underwater';
+import { gameParameters } from 'src/constants/game';
 
 const Wrapper = styled.div<{ fishPosition: number }>`
   position: absolute;
@@ -48,9 +48,9 @@ interface Props {
 }
 
 export const HealthBar = ({ healthPoints }: Props) => {
-  const healthDiff = HEALTH_POINTS_STARTER - healthPoints;
+  const healthDiff = gameParameters.health.startingPoints - healthPoints;
 
-  const position = (healthDiff * 100) / HEALTH_POINTS_STARTER;
+  const position = (healthDiff * 100) / gameParameters.health.startingPoints;
   const isDanger = healthDiff >= 60;
   const isWarning = healthDiff >= 30;
 
