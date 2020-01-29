@@ -28,10 +28,10 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
 
   const grass = useItems({
     ...commonAttrs,
-    min: 5,
-    max: 8,
-    // min: 8,
-    // max: 12
+    // min: 5,
+    // max: 8,
+    min: 8,
+    max: 12,
     widths: isSmall ? [40, 80] : [80, 120],
     heights: isSmall ? [30, 60] : [40, 80],
     getImage: () => 'underwater/grass.png',
@@ -50,9 +50,9 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
     ...commonAttrs,
     min: 1,
     max: 2,
-    widths: isSmall ? [40, 60] : [50, 70],
-    heights: isSmall ? [40, 60] : [50, 70],
-    getImage: () => `underwater/stone_${random(1, 2)}.png`,
+    widths: isSmall ? [60, 60] : [70, 70],
+    heights: isSmall ? [40, 40] : [50, 50],
+    getImage: () => `underwater/stone_${random(1, 3)}.png`,
   });
 
   const stars = useItems({
