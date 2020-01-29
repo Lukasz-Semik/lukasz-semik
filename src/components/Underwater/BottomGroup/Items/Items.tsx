@@ -28,8 +28,6 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
 
   const grass = useItems({
     ...commonAttrs,
-    // min: 5,
-    // max: 8,
     min: 8,
     max: 12,
     widths: isSmall ? [40, 80] : [80, 120],
