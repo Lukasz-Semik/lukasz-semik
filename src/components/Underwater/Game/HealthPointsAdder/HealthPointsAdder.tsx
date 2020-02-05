@@ -2,7 +2,8 @@ import React, { useRef, useEffect, useMemo, useState, memo } from 'react';
 import { Sprite } from '@inlet/react-pixi';
 import gsap from 'gsap';
 import { random } from 'lodash';
-import { useAnimationPause } from 'src/hooks/useAnimationPause';
+
+import { useAnimation } from 'src/hooks/useAnimation';
 
 interface Props {
   windowWidth: number;
@@ -13,11 +14,12 @@ interface Props {
 
 export const HealthPointAdder = memo(
   ({ windowWidth, windowHeight, isGamePaused, onClick }: Props) => {
-    const [counter, setCounter] = useState(0);
-    const [isReady, setIsReady] = useState(false);
-    const [isClicked, setIsClicked] = useState(false);
     const ref = useRef<Sprite>(null);
     const tl = useMemo(() => gsap.timeline(), []);
+    const { isReady, resetItem, isClicked, setIsClicked } = useAnimation(
+      tl,
+      isGamePaused
+    );
 
     useEffect(() => {
       if (ref.current && isReady) {
@@ -48,21 +50,11 @@ export const HealthPointAdder = memo(
           .to(ref.current, {
             visible: false,
             onComplete: () => {
-              setCounter(counter + 1);
-              setIsClicked(false);
-              setIsReady(false);
+              resetItem();
             },
           });
       }
-    }, [counter, tl, windowHeight, windowWidth, isReady]);
-
-    useEffect(() => {
-      if (!isReady) {
-        setIsReady(true);
-      }
-    }, [isReady]);
-
-    useAnimationPause(tl, isGamePaused);
+    }, [tl, windowHeight, windowWidth, isReady]);
 
     return (
       <Sprite

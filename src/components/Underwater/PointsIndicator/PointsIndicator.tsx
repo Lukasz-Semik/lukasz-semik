@@ -4,7 +4,7 @@ import { TextStyle } from 'pixi.js';
 import gsap from 'gsap';
 
 import styles from 'src/styles';
-import { useAnimationPause } from 'src/hooks/useAnimationPause';
+import { useAnimation } from 'src/hooks/useAnimation';
 
 interface Props {
   value: string;
@@ -38,7 +38,7 @@ export const PointsIndicator = ({
     }
   }, [tl, x, y]);
 
-  useAnimationPause(tl, isPaused);
+  useAnimation(tl, isPaused);
 
   return (
     <Text

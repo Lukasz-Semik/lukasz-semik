@@ -13,6 +13,7 @@ import { DropsStage } from '../../Drop/DropsStage/DropsStage';
 import { Drop } from '../../Drop/Drop';
 import { Satellites } from '../../Drop/Satellites/Satellites';
 import { HealthPointAdder } from '../HealthPointsAdder/HealthPointsAdder';
+import { Obstacles } from '../Obstacles/Obstacles';
 
 export const GameScene = () => {
   const dispatch = useDispatch();
@@ -74,6 +75,43 @@ export const GameScene = () => {
                 onClick={onHealthClick}
               />
             )}
+
+            <HealthPointAdder
+              windowWidth={windowWidth}
+              windowHeight={windowHeight}
+              isGamePaused={isGamePaused}
+              onClick={onHealthClick}
+            />
+
+            <Obstacles
+              windowWidth={windowWidth}
+              windowHeight={windowHeight}
+              isGamePaused={isGamePaused}
+            />
+
+            {/* <Obstacles
+              windowWidth={windowWidth}
+              windowHeight={windowHeight}
+              isGamePaused={isGamePaused}
+            />
+
+            <Obstacles
+              windowWidth={windowWidth}
+              windowHeight={windowHeight}
+              isGamePaused={isGamePaused}
+            />
+
+            <Obstacles
+              windowWidth={windowWidth}
+              windowHeight={windowHeight}
+              isGamePaused={isGamePaused}
+            />
+
+            <Obstacles
+              windowWidth={windowWidth}
+              windowHeight={windowHeight}
+              isGamePaused={isGamePaused}
+            /> */}
           </>
         );
       }}
