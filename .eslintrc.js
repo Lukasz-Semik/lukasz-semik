@@ -33,6 +33,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 1,
     'react/jsx-props-no-spreading': 0,
     'react/state-in-constructor': 0,
+    'react/no-array-index-key': 0,
     'react/jsx-curly-brace-presence': [
       1,
       { props: 'never', children: 'ignore' },

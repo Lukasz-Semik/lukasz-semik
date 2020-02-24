@@ -12,6 +12,7 @@ interface Props {
   size?: number;
   x?: number;
   y?: number;
+  isDanger?: boolean;
 }
 
 export const PointsIndicator = ({
@@ -20,6 +21,7 @@ export const PointsIndicator = ({
   size = 25,
   x = 0,
   y = 0,
+  isDanger,
 }: Props) => {
   const ref = useRef<Text>(null);
   const tl = useMemo(() => gsap.timeline(), []);
@@ -51,7 +53,7 @@ export const PointsIndicator = ({
           dropShadowColor: '#000',
           dropShadowBlur: 4,
           dropShadowDistance: 1,
-          fill: styles.colors.hpGreen,
+          fill: isDanger ? styles.colors.hpRed : styles.colors.hpGreen,
           fontFamily: styles.fonts.uniq,
         })
       }

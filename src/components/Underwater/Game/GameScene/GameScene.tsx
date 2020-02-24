@@ -39,6 +39,14 @@ export const GameScene = () => {
     }, 0);
   }, [dispatch]);
 
+  const onObstacleClick = useCallback(() => {
+    setTimeout(() => {
+      dispatch(
+        changeHealthPoints(gameParameters.health.obstacleSubstractions.easy)
+      );
+    }, 0);
+  }, [dispatch]);
+
   return (
     <DropsStage>
       {({ windowWidth, windowHeight, isWindowFocused }) => {
@@ -68,50 +76,29 @@ export const GameScene = () => {
 
             {healthPoints <=
               gameParameters.health.heartAdderVisibilityLevel && (
-              <HealthPointAdder
-                windowWidth={windowWidth}
-                windowHeight={windowHeight}
-                isGamePaused={isGamePaused}
-                onClick={onHealthClick}
-              />
+              <>
+                <HealthPointAdder
+                  windowWidth={windowWidth}
+                  windowHeight={windowHeight}
+                  isGamePaused={isGamePaused}
+                  onClick={onHealthClick}
+                />
+
+                <HealthPointAdder
+                  windowWidth={windowWidth}
+                  windowHeight={windowHeight}
+                  isGamePaused={isGamePaused}
+                  onClick={onHealthClick}
+                />
+              </>
             )}
 
-            <HealthPointAdder
-              windowWidth={windowWidth}
-              windowHeight={windowHeight}
-              isGamePaused={isGamePaused}
-              onClick={onHealthClick}
-            />
-
             <Obstacles
               windowWidth={windowWidth}
               windowHeight={windowHeight}
               isGamePaused={isGamePaused}
+              onClick={onObstacleClick}
             />
-
-            {/* <Obstacles
-              windowWidth={windowWidth}
-              windowHeight={windowHeight}
-              isGamePaused={isGamePaused}
-            />
-
-            <Obstacles
-              windowWidth={windowWidth}
-              windowHeight={windowHeight}
-              isGamePaused={isGamePaused}
-            />
-
-            <Obstacles
-              windowWidth={windowWidth}
-              windowHeight={windowHeight}
-              isGamePaused={isGamePaused}
-            />
-
-            <Obstacles
-              windowWidth={windowWidth}
-              windowHeight={windowHeight}
-              isGamePaused={isGamePaused}
-            /> */}
           </>
         );
       }}

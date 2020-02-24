@@ -74,7 +74,6 @@ export const Title = ({ onViewGoUp }: Props) => {
     <Wrapper>
       <WavingTitle>
         {text.map((letter, i) => (
-          // eslint-disable-next-line react/no-array-index-key
           <Letter key={`${letter}-${i}`} index={i} letter={letter} />
         ))}
       </WavingTitle>

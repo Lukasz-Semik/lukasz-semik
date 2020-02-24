@@ -4,67 +4,97 @@ import gsap from 'gsap';
 import { random, times } from 'lodash';
 
 import { useAnimation } from 'src/hooks/useAnimation';
-import { Portal } from './Portal';
+import { PointsIndicator } from '../../PointsIndicator/PointsIndicator';
 
-export const Obstacle = ({
-  windowWidth,
-  windowHeight,
-  isGamePaused,
-  onClick,
-}) => {
-  const containerRef = useRef<Container>(null);
-  const spriteRef = useRef<Sprite>(null);
-  const tl = useMemo(() => gsap.timeline(), []);
-  const [showPortal, setShowPortal] = useState(false);
-  const { isReady, resetItem } = useAnimation(tl, isGamePaused);
+const sides = ['l', 'r'];
 
-  useEffect(() => {
-    if (containerRef.current && isReady) {
-      tl.to(containerRef.current, {
-        x: windowWidth + 200,
-        y: random(100, windowHeight - 100),
-        // width: 0,
-        // height: 0,
-      })
-        .to(containerRef.current, {
-          // width: 70,
-          // height: 50,
-          // delay: random(2, 6),
-        })
-        .to(containerRef.current, {
-          x: random(200, windowWidth - 200),
-          duration: 2,
-          ease: 'linear',
-        })
-        .to(containerRef.current, {
-          duration: 2,
-          rotateY: 90,
-          onComplete: () => {
-            // resetItem();
-            setShowPortal(true);
-          },
-        })
-        .to(spriteRef.current, {
-          duration: 2,
-          alpha: 0,
-          onComplete: () => {
-            setShowPortal(false);
-            resetItem();
-          },
-        });
-    }
-  }, [isReady, tl]);
+interface Props {
+  windowWidth: number;
+  windowHeight: number;
+  isGamePaused: boolean;
+  onClick: () => void;
+  name: string;
+  width: number;
+  height: number;
+}
 
-  return (
-    <Container ref={containerRef} width={120} height={70}>
-      <Sprite
-        ref={spriteRef}
-        image="underwater/shark_1.png"
-        width={120}
-        height={70}
-      />
+export const Obstacle = memo(
+  ({
+    windowWidth,
+    windowHeight,
+    isGamePaused,
+    name,
+    width,
+    height,
+    onClick,
+  }: Props) => {
+    const [clicks, setClicks] = useState(0);
+    const containerRef = useRef<Container>(null);
+    const spriteRef = useRef<Sprite>(null);
+    const tl = useMemo(() => gsap.timeline(), []);
+    const { isReady, resetItem } = useAnimation(tl, isGamePaused);
+    const side = useMemo(() => sides[random(0, 1)], []);
+    const path = `underwater/obstacles/${name}_${side}.png`;
 
-      {/* {showPortal && times(30, i => <Portal key={`portal-${i}`} />)} */}
-    </Container>
-  );
-};
+    useEffect(() => {
+      const xStartPosition = width / 2;
+
+      if (containerRef.current) {
+        if (isReady) {
+          tl.to(containerRef.current, {
+            alpha: 0,
+            duration: 0,
+          })
+            .to(containerRef.current, {
+              x: random(xStartPosition, windowWidth - xStartPosition),
+              y: random(180, windowHeight - 150),
+              delay: random(0, 20, true),
+              ease: 'linear',
+              alpha: 1,
+              visible: true,
+              duration: 0,
+            })
+            .to(containerRef.current, {
+              duration: 8,
+              onComplete: () => {
+                resetItem();
+              },
+            });
+        } else {
+          gsap.to(containerRef.current, {
+            visible: false,
+            duration: 0,
+          });
+        }
+      }
+    }, [isReady, tl, resetItem]);
+
+    return (
+      <Container ref={containerRef} width={120} height={70}>
+        <Sprite
+          ref={spriteRef}
+          image={path}
+          width={width}
+          height={height}
+          anchor={0.5}
+          interactive
+          pointerdown={() => {
+            setClicks(clicks + 1);
+            setTimeout(() => {
+              onClick();
+            }, 100);
+          }}
+        />
+
+        {times(clicks, index => (
+          <PointsIndicator
+            key={`obstacle-indicator-${index}`}
+            value="-5"
+            isPaused={isGamePaused}
+            isDanger
+          />
+        ))}
+      </Container>
+    );
+  }
+);

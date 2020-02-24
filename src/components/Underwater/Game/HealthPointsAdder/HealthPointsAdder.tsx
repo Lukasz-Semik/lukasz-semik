@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useMemo, useState, memo } from 'react';
+import React, { useRef, useEffect, useMemo, memo } from 'react';
 import { Sprite } from '@inlet/react-pixi';
 import gsap from 'gsap';
 import { random } from 'lodash';
@@ -26,10 +26,12 @@ export const HealthPointAdder = memo(
         tl.to(ref.current, {
           width: 0,
           height: 0,
+          duration: 0,
         })
           .to(ref.current, {
             x: random(60, windowWidth - 60),
             y: random(200, windowHeight - 60),
+            duration: 0,
             delay: random(0, 20),
           })
           .to(ref.current, {
@@ -49,12 +51,13 @@ export const HealthPointAdder = memo(
           })
           .to(ref.current, {
             visible: false,
+            duration: 0,
             onComplete: () => {
               resetItem();
             },
           });
       }
-    }, [tl, windowHeight, windowWidth, isReady]);
+    }, [tl, windowHeight, windowWidth, isReady, resetItem]);
 
     return (
       <Sprite

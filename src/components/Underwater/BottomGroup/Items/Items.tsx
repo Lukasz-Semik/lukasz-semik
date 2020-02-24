@@ -23,7 +23,7 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
     max: 2,
     widths: isSmall ? [50, 80] : [90, 110],
     heights: isSmall ? [30, 50] : [60, 80],
-    getImage: () => 'underwater/coral.png',
+    getImage: () => 'underwater/bottom-group/coral.png',
   });
 
   const grass = useItems({
@@ -32,7 +32,7 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
     max: 12,
     widths: isSmall ? [40, 80] : [80, 120],
     heights: isSmall ? [30, 60] : [40, 80],
-    getImage: () => 'underwater/grass.png',
+    getImage: () => 'underwater/bottom-group/grass.png',
   });
 
   const ice = useItems({
@@ -41,7 +41,7 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
     max: 2,
     widths: isSmall ? [40, 60] : [60, 80],
     heights: isSmall ? [40, 60] : [60, 80],
-    getImage: () => `underwater/ice_${random(1, 3)}.png`,
+    getImage: () => `underwater/bottom-group/ice_${random(1, 3)}.png`,
   });
 
   const stones = useItems({
@@ -50,7 +50,7 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
     max: 2,
     widths: isSmall ? [60, 60] : [70, 70],
     heights: isSmall ? [40, 40] : [50, 50],
-    getImage: () => `underwater/stone_${random(1, 3)}.png`,
+    getImage: () => `underwater/bottom-group/stone_${random(1, 3)}.png`,
   });
 
   const stars = useItems({
@@ -59,7 +59,7 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
     max: 2,
     widths: isSmall ? [20, 40] : [30, 50],
     heights: isSmall ? [20, 40] : [30, 50],
-    getImage: () => 'underwater/star.png',
+    getImage: () => 'underwater/bottom-group/star.png',
     hasDoubledY: true,
   });
 
@@ -70,7 +70,7 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
     widths: isSmall ? [20, 30] : [25, 35],
     heights: isSmall ? [20, 30] : [25, 35],
     hasDoubledY: true,
-    getImage: () => `underwater/shell_${random(1, 4)}.png`,
+    getImage: () => `underwater/bottom-group/shell_${random(1, 4)}.png`,
   });
 
   const itemsRaw = [
@@ -88,7 +88,6 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
     <>
       {items.map((item, index) => (
         <Sprite
-          // eslint-disable-next-line react/no-array-index-key
           key={`bottom-item-${groupIndex}-${index}`}
           anchor={[0, 1]}
           interactive={false}
