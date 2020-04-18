@@ -42,7 +42,7 @@ export const Obstacles = ({
   onClick,
 }: Props) => (
   <>
-    {obstacles.map((obstacle, i) => (
+    {[...obstacles, ...obstacles, ...obstacles].map((obstacle, i) => (
       <Obstacle
         key={`obstacle-${i}`}
         windowWidth={windowWidth}

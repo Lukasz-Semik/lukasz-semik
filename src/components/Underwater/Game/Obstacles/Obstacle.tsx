@@ -50,12 +50,19 @@ export const Obstacle = memo(
               y: random(180, windowHeight - 150),
               delay: random(0, 20, true),
               ease: 'linear',
-              alpha: 1,
               visible: true,
               duration: 0,
             })
             .to(containerRef.current, {
-              duration: 8,
+              duration: 0.4,
+              alpha: 1,
+            })
+            .to(containerRef.current, {
+              duration: 4,
+            })
+            .to(containerRef.current, {
+              alpha: 0,
+              duration: 0.4,
               onComplete: () => {
                 resetItem();
               },
