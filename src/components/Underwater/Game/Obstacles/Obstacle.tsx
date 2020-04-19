@@ -6,14 +6,12 @@ import { random, times } from 'lodash';
 import { useAnimation } from 'src/hooks/useAnimation';
 import { PointsIndicator } from '../../PointsIndicator/PointsIndicator';
 
-const sides = ['l', 'r'];
-
 interface Props {
   windowWidth: number;
   windowHeight: number;
   isGamePaused: boolean;
   onClick: () => void;
-  name: string;
+  path: string;
   width: number;
   height: number;
 }
@@ -23,7 +21,7 @@ export const Obstacle = memo(
     windowWidth,
     windowHeight,
     isGamePaused,
-    name,
+    path,
     width,
     height,
     onClick,
@@ -33,8 +31,6 @@ export const Obstacle = memo(
     const spriteRef = useRef<Sprite>(null);
     const tl = useMemo(() => gsap.timeline(), []);
     const { isReady, resetItem } = useAnimation(tl, isGamePaused);
-    const side = useMemo(() => sides[random(0, 1)], []);
-    const path = `underwater/obstacles/${name}_${side}.png`;
 
     useEffect(() => {
       const xStartPosition = width / 2;
