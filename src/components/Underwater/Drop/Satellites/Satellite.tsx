@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useMemo } from 'react';
 import { Sprite, Container } from '@inlet/react-pixi';
 import gsap from 'gsap';
-import { useAnimationPause } from 'src/hooks/useAnimationPause';
+import { useAnimation } from 'src/hooks/useAnimation';
 
 const getNewPosition = (index: number) => {
   switch (index) {
@@ -57,7 +57,7 @@ export const Satellite = ({
     }
   }, [index, tl]);
 
-  useAnimationPause(tl, isPaused);
+  useAnimation(tl, isPaused);
 
   return isCompleted ? null : (
     <Container ref={containerRef} rotation={rotation}>

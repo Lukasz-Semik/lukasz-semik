@@ -13,6 +13,7 @@ import { DropsStage } from '../../Drop/DropsStage/DropsStage';
 import { Drop } from '../../Drop/Drop';
 import { Satellites } from '../../Drop/Satellites/Satellites';
 import { HealthPointAdder } from '../HealthPointsAdder/HealthPointsAdder';
+import { Obstacles } from '../Obstacles/Obstacles';
 
 export const GameScene = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,14 @@ export const GameScene = () => {
   const onHealthClick = useCallback(() => {
     setTimeout(() => {
       dispatch(changeHealthPoints(gameParameters.health.heartAddings.easy));
+    }, 0);
+  }, [dispatch]);
+
+  const onObstacleClick = useCallback(() => {
+    setTimeout(() => {
+      dispatch(
+        changeHealthPoints(gameParameters.health.obstacleSubstractions.easy)
+      );
     }, 0);
   }, [dispatch]);
 
@@ -67,13 +76,29 @@ export const GameScene = () => {
 
             {healthPoints <=
               gameParameters.health.heartAdderVisibilityLevel && (
-              <HealthPointAdder
-                windowWidth={windowWidth}
-                windowHeight={windowHeight}
-                isGamePaused={isGamePaused}
-                onClick={onHealthClick}
-              />
+              <>
+                <HealthPointAdder
+                  windowWidth={windowWidth}
+                  windowHeight={windowHeight}
+                  isGamePaused={isGamePaused}
+                  onClick={onHealthClick}
+                />
+
+                <HealthPointAdder
+                  windowWidth={windowWidth}
+                  windowHeight={windowHeight}
+                  isGamePaused={isGamePaused}
+                  onClick={onHealthClick}
+                />
+              </>
             )}
+
+            <Obstacles
+              windowWidth={windowWidth}
+              windowHeight={windowHeight}
+              isGamePaused={isGamePaused}
+              onClick={onObstacleClick}
+            />
           </>
         );
       }}

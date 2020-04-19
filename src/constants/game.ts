@@ -5,6 +5,10 @@ class Health {
     easy: -1,
   };
 
+  public obstacleSubstractions = {
+    easy: -5,
+  };
+
   public heartAddings = {
     easy: 10,
   };
