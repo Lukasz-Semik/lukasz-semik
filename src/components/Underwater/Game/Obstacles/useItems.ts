@@ -1,7 +1,5 @@
 import { useMemo } from 'react';
 
-import { useRwdQuery } from 'src/hooks/useMediaQuery';
-
 import { useItem } from './useItem';
 
 const getName = (prefix: string, suffix: string) => `${prefix}_${suffix}`;
@@ -17,8 +15,6 @@ const fishSizes = [
 ];
 
 export const useItems = () => {
-  const { isMediaMd } = useRwdQuery();
-
   const shark1 = useItem({
     name: getName('shark', '1'),
     sizes: sharkSizes,
@@ -61,8 +57,8 @@ export const useItems = () => {
   const obstacles = [shark1, shark2, shark3, fish1, fish2, squid, fishWide];
 
   const preparedObstacles = useMemo(
-    () => [...obstacles, ...obstacles, ...(isMediaMd ? obstacles : [])],
-    [obstacles, isMediaMd]
+    () => [...obstacles, ...obstacles, ...obstacles],
+    [obstacles]
   );
   return preparedObstacles;
 };
