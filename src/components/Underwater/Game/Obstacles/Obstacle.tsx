@@ -30,6 +30,7 @@ export const Obstacle = memo(
     const containerRef = useRef<Container>(null);
     const spriteRef = useRef<Sprite>(null);
     const tl = useMemo(() => gsap.timeline(), []);
+    const tl2 = useMemo(() => gsap.timeline(), []);
     const { isReady, resetItem } = useAnimation(tl, isGamePaused);
 
     useEffect(() => {
@@ -86,6 +87,20 @@ export const Obstacle = memo(
             setTimeout(() => {
               onClick();
             }, 100);
+
+            tl2
+              .to(spriteRef.current, {
+                angle: 30,
+                duration: 0.05,
+              })
+              .to(spriteRef.current, {
+                angle: -30,
+                duration: 0.05,
+              })
+              .to(spriteRef.current, {
+                angle: 0,
+                duration: 0.05,
+              });
           }}
         />
 
