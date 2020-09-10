@@ -1,3 +1,5 @@
+import { AnyAction } from 'redux';
+
 import {
   CHANGE_HEALTH_POINTS,
   SET_UNDERWATER_STAGE,
@@ -5,14 +7,12 @@ import {
   RESET_GAME,
   ADD_SCORE,
 } from './actionTypes';
-
 import reducer, { initialState } from './reducer';
 import { Stage } from './types';
 
 describe('underwater reducer', () => {
   it('should return initial state', () => {
-    // @ts-ignore
-    expect(reducer(undefined, {})).toEqual(initialState);
+    expect(reducer(undefined, {} as AnyAction)).toEqual(initialState);
   });
 
   it(`should handle ${CHANGE_HEALTH_POINTS} action type`, () => {

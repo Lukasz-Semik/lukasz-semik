@@ -6,6 +6,7 @@ import {
   SET_IS_WINDOW_RESIZED,
 } from './actionTypes';
 
+// eslint-disable-next-line no-shadow
 export enum View {
   Underwater = 'underwater',
   Surface = 'surface',

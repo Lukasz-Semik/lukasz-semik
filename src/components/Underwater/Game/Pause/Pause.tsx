@@ -3,8 +3,8 @@ import { rem } from 'polished';
 
 import { XButtonElement } from 'src/components/Elements';
 
-import { PauseModal } from '../Pause/PauseModal';
-import { useGamePause } from '../Pause/useGamePause';
+import { PauseModal } from './PauseModal';
+import { useGamePause } from './useGamePause';
 
 interface Props {
   resetDrops: () => void;
