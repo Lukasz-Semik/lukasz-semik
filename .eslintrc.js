@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
 
 module.exports = {
@@ -14,6 +15,10 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier', 'react', 'react-hooks'],
   rules: {
+    '@typescript-eslint/no-use-before-define': [1],
+    '@typescript-eslint/explicit-module-boundary-types': 0,
+    'react/require-default-props': 0,
+    'no-use-before-define': [0],
     'no-useless-constructor': 0,
     'max-classes-per-file': 0,
     'class-methods-use-this': 0,
@@ -77,11 +82,17 @@ module.exports = {
     ],
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/ban-ts-ignore': 0,
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      { js: 'never', jsx: 'never', ts: 'never', tsx: 'never' },
+    ],
   },
   settings: {
     'import/resolver': {
       node: {
         paths: [path.resolve(__dirname)],
+        extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
       },
     },
     react: {

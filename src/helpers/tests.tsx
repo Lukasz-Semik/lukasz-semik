@@ -5,13 +5,14 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { find } from 'lodash';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore usually we don't want to import json
 import messagess from 'src/intl/en.json';
 import { AppState, ThunkDispatch } from 'src/store/types';
 
 import { flattenMessages } from './intl';
 
-export const mockStore = (data?: {}) => {
+export const mockStore = (data?: Record<string, unknown>) => {
   const middlewares = [thunk];
   return configureMockStore<AppState, ThunkDispatch>(middlewares)(
     data as AppState
@@ -22,7 +23,7 @@ export const findAction = (store: MockStore, actionType: string) =>
   find(store.getActions(), action => action.type === actionType);
 
 interface Props {
-  store?: {};
+  store?: Record<string, unknown>;
   children: React.ReactNode | React.ReactNode[];
   withModalRoot?: boolean;
 }

@@ -54,7 +54,10 @@ export const useItems = () => {
     ],
   });
 
-  const obstacles = [shark1, shark2, shark3, fish1, fish2, squid, fishWide];
+  const obstacles = useMemo(
+    () => [shark1, shark2, shark3, fish1, fish2, squid, fishWide],
+    [shark1, shark2, shark3, fish1, fish2, squid, fishWide]
+  );
 
   const preparedObstacles = useMemo(
     () => [...obstacles, ...obstacles, ...obstacles],

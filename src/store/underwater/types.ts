@@ -8,6 +8,7 @@ import {
   ADD_SCORE,
 } from './actionTypes';
 
+// eslint-disable-next-line no-shadow
 export enum Stage {
   Intro = 'intro',
   Starter = 'starter',

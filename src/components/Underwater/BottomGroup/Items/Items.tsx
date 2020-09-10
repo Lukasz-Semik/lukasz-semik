@@ -73,14 +73,10 @@ export const Items = ({ groupIndex, groupWidth, groupHeight }: Props) => {
     getImage: () => `underwater/bottom-group/shell_${random(1, 4)}.png`,
   });
 
-  const itemsRaw = [
-    ...corals,
-    ...grass,
-    ...ice,
-    ...stones,
-    ...stars,
-    ...shells,
-  ];
+  const itemsRaw = useMemo(
+    () => [...corals, ...grass, ...ice, ...stones, ...stars, ...shells],
+    [corals, grass, ice, stones, stars, shells]
+  );
 
   const items = useMemo(() => sortBy(itemsRaw, item => item.y), [itemsRaw]);
 
