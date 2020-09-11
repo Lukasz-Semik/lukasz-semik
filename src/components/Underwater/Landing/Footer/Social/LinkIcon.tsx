@@ -1,11 +1,11 @@
-import React, { useRef, useEffect, useMemo, useState } from 'react';
-import styled from 'styled-components';
-import { size, rem } from 'polished';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { rem, size } from 'polished';
+import styled from 'styled-components';
 
 import styles from 'src/styles';
 
-import { OPACITY, DELAY } from '../constants';
+import { DELAY, OPACITY } from '../constants';
 
 const LinkStyled = styled.a`
   margin-right: ${rem(10)};

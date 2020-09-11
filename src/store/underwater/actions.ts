@@ -1,19 +1,19 @@
+import { ThunkAction } from '../types';
 import {
-  CHANGE_HEALTH_POINTS,
-  SET_UNDERWATER_STAGE,
-  SET_IS_GAME_PAUSED,
-  RESET_GAME,
   ADD_SCORE,
+  CHANGE_HEALTH_POINTS,
+  RESET_GAME,
+  SET_IS_GAME_PAUSED,
+  SET_UNDERWATER_STAGE,
 } from './actionTypes';
 import {
-  Stage,
+  AddScore,
   ChangeHealthPointsAction,
+  ResetGameAction,
   SetIsGamePausedAction,
   SetUnderwaterStageAction,
-  ResetGameAction,
-  AddScore,
+  Stage,
 } from './types';
-import { ThunkAction } from '../types';
 
 export const changeHealthPoints = (
   value: number

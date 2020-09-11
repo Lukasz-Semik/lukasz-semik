@@ -1,11 +1,11 @@
 import { Action } from 'redux';
 
 import {
-  CHANGE_HEALTH_POINTS,
-  SET_UNDERWATER_STAGE,
-  SET_IS_GAME_PAUSED,
-  RESET_GAME,
   ADD_SCORE,
+  CHANGE_HEALTH_POINTS,
+  RESET_GAME,
+  SET_IS_GAME_PAUSED,
+  SET_UNDERWATER_STAGE,
 } from './actionTypes';
 
 // eslint-disable-next-line no-shadow

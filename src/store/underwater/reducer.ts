@@ -3,13 +3,13 @@ import { AnyAction } from 'redux';
 import { gameParameters } from 'src/constants/game';
 
 import {
-  CHANGE_HEALTH_POINTS,
-  SET_UNDERWATER_STAGE,
-  SET_IS_GAME_PAUSED,
-  RESET_GAME,
   ADD_SCORE,
+  CHANGE_HEALTH_POINTS,
+  RESET_GAME,
+  SET_IS_GAME_PAUSED,
+  SET_UNDERWATER_STAGE,
 } from './actionTypes';
-import { UnderwaterState, Stage, UnderwaterActionType } from './types';
+import { Stage, UnderwaterActionType, UnderwaterState } from './types';
 
 export const initialState: UnderwaterState = {
   healthPoints: gameParameters.health.startingPoints,

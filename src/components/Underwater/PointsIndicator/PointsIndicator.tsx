@@ -1,10 +1,10 @@
-import React, { useRef, useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { Text } from '@inlet/react-pixi';
-import { TextStyle } from 'pixi.js';
 import gsap from 'gsap';
+import { TextStyle } from 'pixi.js';
 
-import styles from 'src/styles';
 import { useAnimation } from 'src/hooks/useAnimation';
+import styles from 'src/styles';
 
 interface Props {
   value: string;

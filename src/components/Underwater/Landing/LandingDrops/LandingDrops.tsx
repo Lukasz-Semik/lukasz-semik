@@ -4,8 +4,8 @@ import { times } from 'lodash';
 
 import { setUnderwaterStarter } from 'src/store/underwater/actions';
 
-import { DropsStage } from '../../Drop/DropsStage/DropsStage';
 import { Drop } from '../../Drop/Drop';
+import { DropsStage } from '../../Drop/DropsStage/DropsStage';
 import { Satellites } from '../../Drop/Satellites/Satellites';
 
 export const LandingDrops = () => {

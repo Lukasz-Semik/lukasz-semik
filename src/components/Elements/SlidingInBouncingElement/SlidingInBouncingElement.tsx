@@ -1,6 +1,6 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
 import { rem } from 'polished';
+import styled, { keyframes } from 'styled-components';
 
 const slideIn = (position: string) => keyframes`
     0% {

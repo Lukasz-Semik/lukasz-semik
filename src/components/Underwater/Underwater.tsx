@@ -6,8 +6,8 @@ import styles from 'src/styles';
 import { styleOverlay } from 'src/styles/helpers';
 
 import { Background } from './Background/Background';
-import { Landing } from './Landing/Landing';
 import { Game } from './Game/Game';
+import { Landing } from './Landing/Landing';
 
 const Wrapper = styled.div`
   ${styleOverlay};

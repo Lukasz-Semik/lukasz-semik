@@ -3,8 +3,8 @@ import { Stage } from '@inlet/react-pixi';
 import styled from 'styled-components';
 
 import {
-  useGetWindowContext,
   useGetIsWindowFocused,
+  useGetWindowContext,
 } from 'src/store/view/selectors';
 import { styleOverlay } from 'src/styles/helpers';
 

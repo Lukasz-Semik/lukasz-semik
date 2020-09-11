@@ -3,7 +3,7 @@ import { Stage } from '@inlet/react-pixi';
 import styled, { keyframes } from 'styled-components';
 
 import { useGetWindowContext } from 'src/store/view/selectors';
-import { screenXsMin, screenMdMin, screenXlMin } from 'src/styles/constants';
+import { screenMdMin, screenXlMin, screenXsMin } from 'src/styles/constants';
 
 const animation = keyframes`
   from {

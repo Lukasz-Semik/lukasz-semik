@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
 import { rem } from 'polished';
+import styled from 'styled-components';
 
 import styles from 'src/styles';
 

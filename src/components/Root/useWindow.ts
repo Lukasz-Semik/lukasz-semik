@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 import {
-  setWindowContext,
   setIsWindowFocused,
   setIsWindowResized,
+  setWindowContext,
 } from 'src/store/view/actions';
 import { useGetIsWindowResized } from 'src/store/view/selectors';
 

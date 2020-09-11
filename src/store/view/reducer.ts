@@ -1,12 +1,12 @@
 import { AnyAction } from 'redux';
 
 import {
-  SET_IS_WINDOW_FOCUSED,
   SET_APP_VIEW,
-  SET_WINDOW_CONTEXT,
+  SET_IS_WINDOW_FOCUSED,
   SET_IS_WINDOW_RESIZED,
+  SET_WINDOW_CONTEXT,
 } from './actionTypes';
-import { ViewState, ViewActionType, View } from './types';
+import { View, ViewActionType, ViewState } from './types';
 
 export const initialState: ViewState = {
   appView: View.Underwater,

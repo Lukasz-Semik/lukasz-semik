@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import { rem } from 'polished';
+import styled from 'styled-components';
 
-import { Social } from './Social/Social';
 import { Note } from './Note/Note';
+import { Social } from './Social/Social';
 
 const FooterStyled = styled.footer`
   position: absolute;

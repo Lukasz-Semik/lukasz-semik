@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useMemo, memo } from 'react';
+import React, { memo, useEffect, useMemo, useRef } from 'react';
 import { Sprite } from '@inlet/react-pixi';
 import gsap from 'gsap';
 import { random } from 'lodash';

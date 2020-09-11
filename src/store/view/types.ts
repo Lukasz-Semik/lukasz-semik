@@ -1,9 +1,10 @@
 import { Action } from 'redux';
+
 import {
-  SET_IS_WINDOW_FOCUSED,
   SET_APP_VIEW,
-  SET_WINDOW_CONTEXT,
+  SET_IS_WINDOW_FOCUSED,
   SET_IS_WINDOW_RESIZED,
+  SET_WINDOW_CONTEXT,
 } from './actionTypes';
 
 // eslint-disable-next-line no-shadow

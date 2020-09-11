@@ -1,13 +1,13 @@
 import React, {
-  useRef,
+  useCallback,
   useEffect,
   useMemo,
-  useCallback,
+  useRef,
   useState,
 } from 'react';
-import styled, { css } from 'styled-components';
 import gsap from 'gsap';
 import { rem } from 'polished';
+import styled, { css } from 'styled-components';
 
 import styles from 'src/styles';
 

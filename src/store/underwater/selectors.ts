@@ -1,5 +1,5 @@
-import { createSelector } from 'reselect';
 import { useSelector } from 'react-redux';
+import { createSelector } from 'reselect';
 
 import { AppState } from '../types';
 import { Stage } from './types';

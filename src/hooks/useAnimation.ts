@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export const useAnimation = (tl: gsap.core.Timeline, isPaused: boolean) => {
   const [isReady, setIsReady] = useState(false);

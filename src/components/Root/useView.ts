@@ -1,8 +1,8 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { View } from 'src/store/view/types';
 import { setAppView } from 'src/store/view/actions';
+import { View } from 'src/store/view/types';
 
 const views = [View.Underwater, View.Surface];
 

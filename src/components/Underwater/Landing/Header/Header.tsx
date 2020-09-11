@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { rem } from 'polished';
+import styled from 'styled-components';
 
 import { Logo } from './Logo/Logo';
 import { Hamburger } from './Menu/Hamburger';

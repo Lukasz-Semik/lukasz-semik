@@ -1,16 +1,15 @@
 import { mockAppState } from 'src/helpers/tests';
 
-import { mockUnderwaterState } from './testHelpers';
-
 import {
+  getHealthPoints,
   getIsGamePaused,
-  getUnderwaterStage,
+  getIsUnderwaterGame,
   getIsUnderwaterIntro,
   getIsUnderwaterStarter,
-  getIsUnderwaterGame,
-  getHealthPoints,
   getScore,
+  getUnderwaterStage,
 } from './selectors';
+import { mockUnderwaterState } from './testHelpers';
 import { Stage } from './types';
 
 describe('underwater selectors', () => {

@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import { Sprite, Container } from '@inlet/react-pixi';
+import { Container, Sprite } from '@inlet/react-pixi';
 import gsap from 'gsap';
 
-import { animateDrop } from './animateDrop';
 import { PointsIndicator } from '../PointsIndicator/PointsIndicator';
+import { animateDrop } from './animateDrop';
 
 interface Props {
   windowWidth: number;

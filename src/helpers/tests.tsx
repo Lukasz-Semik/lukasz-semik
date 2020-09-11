@@ -1,13 +1,13 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import configureMockStore, { MockStore } from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
 import { find } from 'lodash';
-
+import configureMockStore, { MockStore } from 'redux-mock-store';
+import thunk from 'redux-thunk';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore usually we don't want to import json
 import messagess from 'src/intl/en.json';
+
 import { AppState, ThunkDispatch } from 'src/store/types';
 
 import { flattenMessages } from './intl';

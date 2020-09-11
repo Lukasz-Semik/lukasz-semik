@@ -1,18 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
 import { rem } from 'polished';
+import styled from 'styled-components';
 
 import Board from 'src/assets/underwater/board.svg';
 import {
   useGetHealthPoints,
   useGetScore,
 } from 'src/store/underwater/selectors';
-import { SlidingInBouncingElement } from 'src/components/Elements';
 import styles from 'src/styles';
+import { SlidingInBouncingElement } from 'src/components/Elements';
 
 import { Pause } from '../Pause/Pause';
-import { HealthBar } from './HealtBar/HealthBar';
 import { GameStatistics } from './GameStatistics/GameStatistics';
+import { HealthBar } from './HealtBar/HealthBar';
 
 const Wrapper = styled(SlidingInBouncingElement)`
   top: ${rem(10)};

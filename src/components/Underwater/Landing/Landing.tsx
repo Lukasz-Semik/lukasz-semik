@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   useGetIsUnderwaterIntro,
@@ -6,13 +6,13 @@ import {
 } from 'src/store/underwater/selectors';
 import { useGetIsWindowResized } from 'src/store/view/selectors';
 
-import { Title } from './Title/Title';
-import { Starter } from './Modals/Starter/Starter';
-import { WindowResizedInfo } from './Modals/WindowResizedInfo/WindowResizedInfo';
-import { LandingDrops } from './LandingDrops/LandingDrops';
+import { BottomGroup } from '../BottomGroup/BottomGroup';
 import { Footer } from './Footer/Footer';
 import { Header } from './Header/Header';
-import { BottomGroup } from '../BottomGroup/BottomGroup';
+import { LandingDrops } from './LandingDrops/LandingDrops';
+import { Starter } from './Modals/Starter/Starter';
+import { WindowResizedInfo } from './Modals/WindowResizedInfo/WindowResizedInfo';
+import { Title } from './Title/Title';
 
 interface Props {
   onViewGoUp: () => void;

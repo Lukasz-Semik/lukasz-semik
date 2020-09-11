@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import { rem } from 'polished';
+import styled from 'styled-components';
 
 import Fish from 'src/assets/underwater/fish.svg';
-import styles from 'src/styles';
 import { gameParameters } from 'src/constants/game';
+import styles from 'src/styles';
 
 const Wrapper = styled.div<{ fishPosition: number }>`
   position: absolute;

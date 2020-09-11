@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import LinkedinIcon from 'src/assets/social/linkedin.svg';
 import FacebookIcon from 'src/assets/social/facebook.svg';
 import GithubIcon from 'src/assets/social/github.svg';
+import LinkedinIcon from 'src/assets/social/linkedin.svg';
 
 import { LinkIcon } from './LinkIcon';
 

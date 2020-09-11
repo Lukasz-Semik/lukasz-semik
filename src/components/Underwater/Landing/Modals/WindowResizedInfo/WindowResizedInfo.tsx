@@ -5,7 +5,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 import { setIsWindowResized } from 'src/store/view/actions';
 import { PaperModal } from 'src/components/Modals';
 
-import { ButtonsWrapper, Text, CenterButton, Button } from '../styled';
+import { Button, ButtonsWrapper, CenterButton, Text } from '../styled';
 
 interface Props {
   resetDrops: () => void;

@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { FormattedMessage } from 'gatsby-plugin-intl';
 
 import {
-  setUnderwaterIntro,
   setUnderwaterGame,
+  setUnderwaterIntro,
 } from 'src/store/underwater/actions';
 import { PaperModal } from 'src/components/Modals';
 
