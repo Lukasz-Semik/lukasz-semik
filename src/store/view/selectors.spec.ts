@@ -1,13 +1,12 @@
 import { mockAppState } from 'src/helpers/tests';
 
-import { mockViewState } from './testHelpers';
-
 import {
-  getIsWindowFocused,
   getAppView,
   getIsSurfaceView,
   getIsUnderwaterView,
+  getIsWindowFocused,
 } from './selectors';
+import { mockViewState } from './testHelpers';
 import { View } from './types';
 
 describe('view selectors', () => {

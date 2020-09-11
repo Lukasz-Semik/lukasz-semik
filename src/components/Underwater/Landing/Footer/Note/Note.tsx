@@ -1,11 +1,11 @@
-import React, { useRef, useEffect, useMemo } from 'react';
-import styled from 'styled-components';
-import { rem } from 'polished';
+import React, { useEffect, useMemo, useRef } from 'react';
 import gsap from 'gsap';
+import { rem } from 'polished';
+import styled from 'styled-components';
 
 import styles from 'src/styles';
 
-import { OPACITY, DELAY } from '../constants';
+import { DELAY, OPACITY } from '../constants';
 
 const Text = styled.p`
   padding: 0;

@@ -1,10 +1,10 @@
-import { mockStore, findAction } from 'src/helpers/tests';
+import { findAction, mockStore } from 'src/helpers/tests';
 
-import { toggleWindowFocused, setIsWindowFocused, setAppView } from './actions';
-import { SET_IS_WINDOW_FOCUSED, SET_APP_VIEW } from './actionTypes';
-import { View } from './types';
-import { mockViewState } from './testHelpers';
 import { SET_IS_GAME_PAUSED } from '../underwater/actionTypes';
+import { setAppView, setIsWindowFocused, toggleWindowFocused } from './actions';
+import { SET_APP_VIEW, SET_IS_WINDOW_FOCUSED } from './actionTypes';
+import { mockViewState } from './testHelpers';
+import { View } from './types';
 
 describe('view actions creators', () => {
   test('toggleWindowFocused', () => {

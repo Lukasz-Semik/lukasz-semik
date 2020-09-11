@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { rem } from 'polished';
+import styled from 'styled-components';
 
 import styles from 'src/styles';
 import { ButtonElement } from 'src/components/Elements';

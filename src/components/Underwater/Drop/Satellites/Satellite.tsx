@@ -1,6 +1,7 @@
-import React, { useRef, useEffect, useState, useMemo } from 'react';
-import { Sprite, Container } from '@inlet/react-pixi';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { Container, Sprite } from '@inlet/react-pixi';
 import gsap from 'gsap';
+
 import { useAnimation } from 'src/hooks/useAnimation';
 
 const getNewPosition = (index: number) => {

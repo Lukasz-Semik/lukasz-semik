@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react';
 import { useIntl } from 'gatsby-plugin-intl';
-import styled from 'styled-components';
 import { rem } from 'polished';
+import styled from 'styled-components';
+
 import styles from 'src/styles';
 
-import { Letter } from './Letter';
 import { GoUpButton } from '../GoUpButton/GoUpButton';
+import { Letter } from './Letter';
 
 const Wrapper = styled.div`
   position: absolute;

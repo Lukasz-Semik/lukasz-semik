@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { rem, rgba } from 'polished';
 import styled from 'styled-components';
-import { rgba, rem } from 'polished';
 
 import { styleOverlay } from 'src/styles/helpers';
 import { PaperCardElement, XButtonElement } from 'src/components/Elements';

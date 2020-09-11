@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
-import { get } from 'lodash';
 import gsap from 'gsap';
 import PixiPlugin from 'gsap/PixiPlugin';
+import { get } from 'lodash';
+import styled from 'styled-components';
 
+import { View } from 'src/store/view/types';
 import { styleOverlay } from 'src/styles/helpers';
 import { Underwater } from 'src/components/Underwater/Underwater';
-import { View } from 'src/store/view/types';
 
 import { useView } from './useView';
 import { useWindow } from './useWindow';

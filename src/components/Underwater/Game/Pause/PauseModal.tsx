@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'gatsby-plugin-intl';
-import styled from 'styled-components';
 import { rem } from 'polished';
+import styled from 'styled-components';
 
 import styles from 'src/styles';
 import { PaperModal } from 'src/components/Modals';

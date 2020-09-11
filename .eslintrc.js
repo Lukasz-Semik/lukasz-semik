@@ -13,7 +13,13 @@ module.exports = {
   parserOptions: {
     project: null,
   },
-  plugins: ['@typescript-eslint', 'prettier', 'react', 'react-hooks'],
+  plugins: [
+    '@typescript-eslint',
+    'prettier',
+    'react',
+    'react-hooks',
+    'simple-import-sort',
+  ],
   rules: {
     '@typescript-eslint/no-use-before-define': [1],
     '@typescript-eslint/explicit-module-boundary-types': 0,
@@ -48,6 +54,34 @@ module.exports = {
     'import/no-unresolved': 0,
     'import/prefer-default-export': 0,
     'import/no-extraneous-dependencies': 0,
+    'simple-import-sort/sort': [
+      1, // as warning for now
+      {
+        groups: [
+          // Side effect imports.
+          ['^\\u0000'],
+          // Packages. `react` related packages come first.
+          ['^react', '^@?\\w'],
+          // Internal packages.
+          // Absolute imports and other imports such as Vue-style `@/foo`.
+          // Anything that does not start with a dot.
+          [
+            '^(src/assets)(/.*|$)',
+            '^(src/constants)(/.*|$)',
+            '^(src/helpers)(/.*|$)',
+            '^(src/hooks)(/.*|$)',
+            '^(src/store)(/.*|$)',
+            '^(src/types)(/.*|$)',
+            '^(src/styles)(/.*|$)',
+            '^(src/components)(/.*|$)',
+            '^[^.]',
+          ],
+          // Relative imports.
+          // Anything that starts with a dot.
+          ['^\\.'],
+        ],
+      },
+    ],
     'jsx-a11y/label-has-for': [
       1,
       {

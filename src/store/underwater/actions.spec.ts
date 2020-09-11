@@ -1,24 +1,24 @@
-import { mockStore, findAction } from 'src/helpers/tests';
+import { findAction, mockStore } from 'src/helpers/tests';
 
 import {
-  changeHealthPoints,
-  setIsGamePaused,
-  setUnderwaterStage,
-  setUnderwaterIntro,
-  setUnderwaterStarter,
-  setUnderwaterGame,
-  resetGame,
   addScore,
+  changeHealthPoints,
+  resetGame,
+  setIsGamePaused,
+  setUnderwaterGame,
+  setUnderwaterIntro,
+  setUnderwaterStage,
+  setUnderwaterStarter,
 } from './actions';
 import {
-  CHANGE_HEALTH_POINTS,
-  SET_UNDERWATER_STAGE,
-  SET_IS_GAME_PAUSED,
-  RESET_GAME,
   ADD_SCORE,
+  CHANGE_HEALTH_POINTS,
+  RESET_GAME,
+  SET_IS_GAME_PAUSED,
+  SET_UNDERWATER_STAGE,
 } from './actionTypes';
-import { Stage } from './types';
 import { mockUnderwaterState } from './testHelpers';
+import { Stage } from './types';
 
 describe('underwater actions creators', () => {
   describe('basic actions creators', () => {

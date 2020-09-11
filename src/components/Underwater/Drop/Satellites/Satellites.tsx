@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { times, random } from 'lodash';
 import { Container } from '@inlet/react-pixi';
+import { random, times } from 'lodash';
 
-import { Satellite } from './Satellite';
 import { PointsIndicator } from '../../PointsIndicator/PointsIndicator';
+import { Satellite } from './Satellite';
 
 interface Props {
   isPaused: boolean;

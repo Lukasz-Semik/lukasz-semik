@@ -1,9 +1,10 @@
-import React, { useRef, useEffect, useMemo, useState, memo } from 'react';
-import { Sprite, Container } from '@inlet/react-pixi';
+import React, { memo, useEffect, useMemo, useRef, useState } from 'react';
+import { Container, Sprite } from '@inlet/react-pixi';
 import gsap from 'gsap';
 import { random, times } from 'lodash';
 
 import { useAnimation } from 'src/hooks/useAnimation';
+
 import { PointsIndicator } from '../../PointsIndicator/PointsIndicator';
 
 interface Props {

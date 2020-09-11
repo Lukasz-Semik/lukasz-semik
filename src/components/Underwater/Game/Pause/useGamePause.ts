@@ -1,14 +1,14 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import {
+  resetGame,
   setIsGamePaused,
   setUnderwaterIntro,
-  resetGame,
 } from 'src/store/underwater/actions';
 import { useGetIsGamePaused } from 'src/store/underwater/selectors';
-import { useGetIsWindowResized } from 'src/store/view/selectors';
 import { setIsWindowResized } from 'src/store/view/actions';
+import { useGetIsWindowResized } from 'src/store/view/selectors';
 
 export const useGamePause = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

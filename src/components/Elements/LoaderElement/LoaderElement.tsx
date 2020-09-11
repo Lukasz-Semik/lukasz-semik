@@ -1,7 +1,7 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { size, rem } from 'polished';
 import { FormattedMessage } from 'gatsby-plugin-intl';
+import { rem, size } from 'polished';
+import styled, { keyframes } from 'styled-components';
 
 import styles from 'src/styles';
 

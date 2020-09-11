@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import styled from 'styled-components';
 import { rem } from 'polished';
+import styled from 'styled-components';
 
 import { useRwdQuery } from 'src/hooks/useMediaQuery';
 import styles from 'src/styles';

@@ -1,9 +1,10 @@
-import React, { useRef, useEffect, useMemo } from 'react';
-import styled from 'styled-components';
-import { rem } from 'polished';
-import gsap from 'gsap';
-import styles from 'src/styles';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { FormattedMessage } from 'gatsby-plugin-intl';
+import gsap from 'gsap';
+import { rem } from 'polished';
+import styled from 'styled-components';
+
+import styles from 'src/styles';
 
 const Button = styled.button`
   position: relative;

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Sprite } from '@inlet/react-pixi';
-import { sortBy, random } from 'lodash';
+import { random, sortBy } from 'lodash';
 
 import { useRwdQuery } from 'src/hooks/useMediaQuery';
 

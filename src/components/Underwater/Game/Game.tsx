@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { MainPanel } from './MainPanel/MainPanel';
-import { GameScene } from './GameScene/GameScene';
 import { BottomGroup } from '../BottomGroup/BottomGroup';
+import { GameScene } from './GameScene/GameScene';
+import { MainPanel } from './MainPanel/MainPanel';
 
 export const Game = () => {
   const [isResetingDrops, setIsResetingDrops] = useState(false);

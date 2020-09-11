@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
 
-import { SET_IS_WINDOW_FOCUSED, SET_APP_VIEW } from './actionTypes';
+import { SET_APP_VIEW, SET_IS_WINDOW_FOCUSED } from './actionTypes';
 import reducer, { initialState } from './reducer';
 import { View } from './types';
 

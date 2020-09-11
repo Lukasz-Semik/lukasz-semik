@@ -2,15 +2,15 @@ import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { times } from 'lodash';
 
+import { gameParameters } from 'src/constants/game';
 import { addScore, changeHealthPoints } from 'src/store/underwater/actions';
 import {
-  useGetIsGamePaused,
   useGetHealthPoints,
+  useGetIsGamePaused,
 } from 'src/store/underwater/selectors';
-import { gameParameters } from 'src/constants/game';
 
-import { DropsStage } from '../../Drop/DropsStage/DropsStage';
 import { Drop } from '../../Drop/Drop';
+import { DropsStage } from '../../Drop/DropsStage/DropsStage';
 import { Satellites } from '../../Drop/Satellites/Satellites';
 import { HealthPointAdder } from '../HealthPointsAdder/HealthPointsAdder';
 import { Obstacles } from '../Obstacles/Obstacles';
