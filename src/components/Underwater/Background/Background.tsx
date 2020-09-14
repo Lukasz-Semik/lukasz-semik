@@ -9,10 +9,9 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   background: ${styles.colors.bgUnderwaterDark};
-  background: linear-gradient(
-    to top,
-    ${styles.colors.bgUnderwaterDark},
-    ${styles.colors.bgUnderwaterLight}
+  background: radial-gradient(
+    ${styles.colors.bgUnderwaterLight},
+    ${styles.colors.bgUnderwaterDark} 60%
   );
 
   > svg {
