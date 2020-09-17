@@ -9,6 +9,9 @@ import thunk from 'redux-thunk';
 import messagess from 'src/intl/en.json';
 
 import type { AppState, ThunkDispatch } from 'src/store/types';
+import { mockUnderwaterState } from 'src/store/underwater/testHelpers';
+import { mockViewState } from 'src/store/view/testHelpers';
+import { mockWindowContextState } from 'src/store/windowContext/testHelpers';
 
 import { flattenMessages } from './intl';
 
@@ -44,4 +47,10 @@ export const TesterWrapper = ({ store, children }: Props) => {
   return wrapper;
 };
 
-export const mockAppState = (state: Partial<AppState>) => state as AppState;
+export const mockAppState = (state: Partial<AppState>) =>
+  ({
+    ...mockUnderwaterState({}),
+    ...mockViewState({}),
+    ...mockWindowContextState({}),
+    ...state,
+  } as AppState);

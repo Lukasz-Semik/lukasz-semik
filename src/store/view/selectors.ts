@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import type { AppState } from '../types';
-import { View } from './types';
+import type { View } from './types';
 
 export const getViewState = (state: AppState) => state.view;
 
@@ -15,19 +15,10 @@ export const getAppFutureView = createSelector(
 export const useGetAppView = () => useSelector(getAppFutureView);
 export const useGetAppFutureView = () => useSelector(getAppFutureView);
 
-export const getIsSurfaceView = createSelector(
-  getAppView,
-  view => view === View.Surface
-);
-
-export const useGetIsSurfaceView = () => useSelector(getIsSurfaceView);
-
-export const getIsUnderwaterView = createSelector(
-  getAppView,
-  view => view === View.Underwater
-);
-
-export const useGetIsUnderwaterView = () => useSelector(getIsUnderwaterView);
+export const getIsViewSet = (view: View, state: AppState) =>
+  view === getAppView(state);
+export const useGetIsViewSet = (view: View) =>
+  useSelector(state => getIsViewSet(view, state as AppState));
 
 export const getIsViewMounted = (view: View, state: AppState) => {
   const appView = getAppView(state);

@@ -15,12 +15,10 @@ export const getWindowData = createSelector(
   getWindowContextState,
   windowContext => windowContext.windowData
 );
-
 export const useGetWindowData = () => useSelector(getWindowData);
 
 export const getIsWindowResized = createSelector(
   getWindowContextState,
   windowContext => windowContext.isWindowResized
 );
-
 export const useGetIsWindowResized = () => useSelector(getIsWindowResized);

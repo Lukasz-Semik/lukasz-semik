@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { useGetIsUnderwaterIntro } from 'src/store/underwater/selectors';
-import { useGetIsSurfaceView } from 'src/store/view/selectors';
+import { useGetIsViewSet } from 'src/store/view/selectors';
+import { View } from 'src/store/view/types';
 import styles from 'src/styles';
 import { styleOverlay } from 'src/styles/helpers';
 
@@ -17,7 +18,7 @@ const Wrapper = styled.div`
 
 export const MainControlsLayer = () => {
   const isUnderwaterIntro = useGetIsUnderwaterIntro();
-  const isSurfaceView = useGetIsSurfaceView();
+  const isSurfaceView = useGetIsViewSet(View.Surface);
 
   return isUnderwaterIntro || isSurfaceView ? (
     <Wrapper>

@@ -1,52 +1,55 @@
 import { mockAppState } from 'src/helpers/tests';
 
 import {
+  getAppFutureView,
   getAppView,
-  getIsSurfaceView,
-  getIsUnderwaterView,
-  getIsWindowFocused,
+  getIsViewMounted,
+  getIsViewSet,
 } from './selectors';
 import { mockViewState } from './testHelpers';
 import { View } from './types';
 
-describe('view selectors', () => {
-  describe('getIsWindowFocused', () => {
-    it('should return proper value', () => {
-      expect(getIsWindowFocused(mockAppState(mockViewState()))).toBe(true);
-    });
-  });
+const state = mockAppState(mockViewState());
 
+describe('view selectors', () => {
   describe('getAppView', () => {
     it('should return proper value', () => {
-      expect(getAppView(mockAppState(mockViewState()))).toBe(View.Underwater);
+      expect(getAppView(state)).toBe(View.Underwater);
     });
   });
 
-  describe('getIsSurfaceView', () => {
+  describe('getAppFutureView', () => {
     it('should return proper value', () => {
-      expect(
-        getIsSurfaceView(
-          mockAppState(mockViewState({ appView: View.Underwater }))
-        )
-      ).toBe(false);
-
-      expect(
-        getIsSurfaceView(mockAppState(mockViewState({ appView: View.Surface })))
-      ).toBe(true);
+      expect(getAppFutureView(state)).toBe(View.Underwater);
     });
   });
 
-  describe('getIsUnderwaterView', () => {
+  describe('getIsViewSet', () => {
     it('should return proper value', () => {
-      expect(
-        getIsUnderwaterView(
-          mockAppState(mockViewState({ appView: View.Surface }))
-        )
-      ).toBe(false);
+      expect(getIsViewSet(View.Underwater, state)).toBe(true);
+      expect(getIsViewSet(View.Surface, state)).toBe(false);
+    });
+  });
 
+  describe('getIsViewMounted', () => {
+    it('should return false if provided view is not a current on or future one', () => {
+      expect(getIsViewMounted(View.Surface, state)).toBe(false);
+    });
+
+    it('should return true if provided view is current one', () => {
+      expect(getIsViewMounted(View.Underwater, state)).toBe(true);
+    });
+
+    it('should return true if provided view is future one', () => {
       expect(
-        getIsUnderwaterView(
-          mockAppState(mockViewState({ appView: View.Underwater }))
+        getIsViewMounted(
+          View.Underwater,
+          mockAppState(
+            mockViewState({
+              appView: View.Surface,
+              appFutureView: View.Underwater,
+            })
+          )
         )
       ).toBe(true);
     });

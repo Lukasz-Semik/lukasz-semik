@@ -1,25 +1,24 @@
 import type { AnyAction } from 'redux';
 
-import { SET_APP_VIEW } from './actionTypes';
+import { SET_IS_WINDOW_FOCUSED } from './actionTypes';
 import reducer, { initialState } from './reducer';
-import { View } from './types';
 
 describe('underwater reducer', () => {
   it('should return initial state', () => {
     expect(reducer(undefined, {} as AnyAction)).toEqual(initialState);
   });
 
-  it(`should handle ${SET_APP_VIEW} action type`, () => {
+  it(`should handle ${SET_IS_WINDOW_FOCUSED} action type`, () => {
     expect(
       reducer(initialState, {
-        type: SET_APP_VIEW,
+        type: SET_IS_WINDOW_FOCUSED,
         payload: {
-          appView: View.Surface,
+          isWindowFocused: true,
         },
       })
     ).toEqual({
       ...initialState,
-      appView: View.Surface,
+      isWindowFocused: true,
     });
   });
 });

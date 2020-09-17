@@ -1,6 +1,7 @@
 import type { ThunkAction } from '../types';
 import { setIsGamePaused } from '../underwater/actions';
-import { getIsUnderwaterView } from '../view/selectors';
+import { getIsViewSet } from '../view/selectors';
+import { View } from '../view/types';
 import {
   SET_IS_WINDOW_FOCUSED,
   SET_IS_WINDOW_RESIZED,
@@ -21,7 +22,7 @@ export const setIsWindowFocused = (isWindowFocused?: boolean): ThunkAction => (
   dispatch,
   getState
 ) => {
-  if (!isWindowFocused && getIsUnderwaterView(getState())) {
+  if (!isWindowFocused && getIsViewSet(View.Underwater, getState())) {
     dispatch(setIsGamePaused(true));
   }
 
@@ -42,7 +43,8 @@ export const setIsWindowResized = (isWindowResized: boolean): ThunkAction => (
   dispatch({
     type: SET_IS_WINDOW_RESIZED,
     payload: {
-      isWindowResized: isWindowResized && getIsUnderwaterView(getState()),
+      isWindowResized:
+        isWindowResized && getIsViewSet(View.Underwater, getState()),
     },
   });
 };
