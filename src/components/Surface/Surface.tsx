@@ -1,3 +1,5 @@
+// TEMPORARY FILE TO MAKE SOME TRIALS
+/* eslint-disable */
 import React, { useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import styles from 'src/styles';
@@ -5,7 +7,7 @@ import Island from 'src/assets/surface/island-base.svg';
 import Sands from 'src/assets/surface/sands.svg';
 import PalmTrunk from 'src/assets/surface/palm-trunk.svg';
 import PalmLeaves from 'src/assets/surface/palm-leaves.svg';
-import { rem, rgba } from 'polished';
+// import { rem, rgba } from 'polished';
 
 // const b = keyframes`
 //   0%{
@@ -30,17 +32,16 @@ enum DayPeriod {
 
 const SurfacePlaceholder = styled.div`
   position: relative;
+  z-index: 10000;
   width: 100%;
   height: 100%;
-  background-color: ${styles.colors.bgUnderwaterLight};
-  /* background-color: ${styles.colors.white}; */
-  background-color: #80deea;
-  background-color: #14e3fa;
+  /* background-color: ${styles.colors.bgUnderwaterLight}; */
+
+  /* background-color: #80deea; */
+  /* background-color: #14e3fa; */
   background: radial-gradient(#80deea, #14e3fa 60%);
-  /* animation: ${b} linear 5s forwards; */
 
   /* background: linear-gradient(180deg, #14E3FA 0%, #80DEEA  47%, #14E3FA 100%); */
-  z-index: 10000;
 `;
 
 const a = keyframes`
@@ -127,7 +128,6 @@ const Overlay = styled.div<{ period: DayPeriod }>`
   /* landing, stack, bio, about, contact */
 
   /* animation: ${a} linear 3s forwards; */
-  /* ${({ isVisible }) => `background-color: orange`}; */
 `;
 const WaterWrapper = styled.div`
   position: absolute;
@@ -135,7 +135,7 @@ const WaterWrapper = styled.div`
   left: 0;
   height: 50px;
   width: 100%;
-  background-color: ${styles.colors.bgUnderwaterDark};
+  /* background-color: ${styles.colors.bgUnderwaterDark}; */
   /*
   background: linear-gradient(
     to top,
@@ -189,61 +189,61 @@ const PalmLeavesWrapper = styled.div`
   }
 `;
 
-const Example = styled.div`
-  position: absolute;
-  top: 50px;
-  left: 50px;
-  width: 300px;
-  height: 400px;
-  /* background-color: ${rgba(100, 100, 100, 0.1)}; */
-  /* box-shadow: 3px 3px 10px ${rgba(0, 0, 0, 0.6)}; */
+// const Example = styled.div`
+//   position: absolute;
+//   top: 50px;
+//   left: 50px;
+//   width: 300px;
+//   height: 400px;
+//   /* background-color: ${rgba(100, 100, 100, 0.1)}; */
+//   /* box-shadow: 3px 3px 10px ${rgba(0, 0, 0, 0.6)}; */
 
-  font-family: ${styles.fonts.standard};
-  font-weight: 600;
-  letter-spacing: 1px;
+//   font-family: ${styles.fonts.standard};
+//   font-weight: 600;
+//   letter-spacing: 1px;
 
-  color: #888;
-  /* border: 2px solid rgba(170, 170, 170, 0.4); */
-  border: 1px solid black;
+//   color: #888;
+//   /* border: 2px solid rgba(170, 170, 170, 0.4); */
+//   border: 1px solid black;
 
-  /* border-radius: 5px; */
-  background-color: ${rgba('#fcba03', 0.6)};
-  transform: translateY(100%);
-  transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  padding: 10px;
-  @media ${styles.breakpoints.smUp} {
-    width: ${rem(250)};
-    font-size: ${rem(25)};
-  }
+//   /* border-radius: 5px; */
+//   background-color: ${rgba('#fcba03', 0.6)};
+//   transform: translateY(100%);
+//   transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+//   padding: 10px;
+//   @media ${styles.breakpoints.smUp} {
+//     width: ${rem(250)};
+//     font-size: ${rem(25)};
+//   }
 
-  /* box-shadow: 2px 2px 15px rgba(120, 255, 87, 0.2); */
-`;
+//   /* box-shadow: 2px 2px 15px rgba(120, 255, 87, 0.2); */
+// `;
 
-const PalmWrapper2 = styled.div`
-  position: absolute;
-  bottom: 105px;
-  left: 640px;
-  width: 100px;
-  height: 250px;
-  transform: translateX(-50%);
-  > svg {
-    width: 100%;
-    height: 100%;
-  }
-`;
-const PalmLeavesWrapper2 = styled.div`
-  /* background-color: blue; */
-  position: absolute;
-  bottom: 200px;
-  left: 640px;
-  width: 200px;
-  height: 200px;
-  transform: translateX(-50%);
-  > svg {
-    width: 100%;
-    height: 100%;
-  }
-`;
+// const PalmWrapper2 = styled.div`
+//   position: absolute;
+//   bottom: 105px;
+//   left: 640px;
+//   width: 100px;
+//   height: 250px;
+//   transform: translateX(-50%);
+//   > svg {
+//     width: 100%;
+//     height: 100%;
+//   }
+// `;
+// const PalmLeavesWrapper2 = styled.div`
+//   /* background-color: blue; */
+//   position: absolute;
+//   bottom: 200px;
+//   left: 640px;
+//   width: 200px;
+//   height: 200px;
+//   transform: translateX(-50%);
+//   > svg {
+//     width: 100%;
+//     height: 100%;
+//   }
+// `;
 
 const ButtonsWrapper = styled.div`
   position: absolute;
@@ -293,5 +293,4 @@ export const Surface = () => {
   );
 };
 
-// Layers:
-//
+/* eslint-enable */
