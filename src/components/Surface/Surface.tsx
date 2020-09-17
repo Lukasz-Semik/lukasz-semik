@@ -7,6 +7,7 @@ import Island from 'src/assets/surface/island-base.svg';
 import Sands from 'src/assets/surface/sands.svg';
 import PalmTrunk from 'src/assets/surface/palm-trunk.svg';
 import PalmLeaves from 'src/assets/surface/palm-leaves.svg';
+import { useView } from 'src/hooks/useView';
 // import { rem, rgba } from 'polished';
 
 // const b = keyframes`
@@ -253,7 +254,7 @@ const ButtonsWrapper = styled.div`
 
 export const Surface = () => {
   const [dayPeriod, setDayPeriod] = useState<DayPeriod>(DayPeriod.Day);
-
+  const { goDown } = useView();
   return (
     <SurfacePlaceholder>
       <WaterWrapper>
@@ -288,6 +289,7 @@ export const Surface = () => {
         <button onClick={() => setDayPeriod(DayPeriod.Evening)}>Evening</button>
         <button onClick={() => setDayPeriod(DayPeriod.Morning)}>Morning</button>
         <button onClick={() => setDayPeriod(DayPeriod.Afternoon)}>After</button>
+        <button onClick={goDown}>goDown</button>
       </ButtonsWrapper>
     </SurfacePlaceholder>
   );

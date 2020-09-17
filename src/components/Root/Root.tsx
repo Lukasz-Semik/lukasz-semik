@@ -5,10 +5,9 @@ import styled from 'styled-components';
 
 import { styleOverlay } from 'src/styles/helpers';
 
+import { useWindow } from '../../hooks/useWindow';
+import { LevelsLayer } from './Layers/LevelsLayer/LevelsLayer';
 import { MainControlsLayer } from './Layers/MainControlsLayer/MainControlsLayer';
-import { LevelsLayer } from './LevelsLayer/LevelsLayer';
-import { useView } from './useView';
-import { useWindow } from './useWindow';
 
 gsap.registerPlugin(PixiPlugin);
 
@@ -18,17 +17,11 @@ const Wrapper = styled.div`
 `;
 
 const Root = () => {
-  const { futureView, goUp, setView, getIsMounted } = useView();
   useWindow();
 
   return (
     <Wrapper>
-      <LevelsLayer
-        futureView={futureView}
-        onViewGoUp={goUp}
-        setView={setView}
-        getIsMounted={getIsMounted}
-      />
+      <LevelsLayer />
 
       <MainControlsLayer />
     </Wrapper>

@@ -1,6 +1,7 @@
 import type { ThunkAction } from '../types';
 import { setIsGamePaused } from '../underwater/actions';
 import {
+  SET_APP_FUTURE_VIEW,
   SET_APP_VIEW,
   SET_IS_WINDOW_FOCUSED,
   SET_IS_WINDOW_RESIZED,
@@ -8,8 +9,8 @@ import {
 } from './actionTypes';
 import { getIsUnderwaterView } from './selectors';
 import type {
+  SetAppFutureViewAction,
   SetAppViewAction,
-  SetIsWindowResizedAction,
   SetWindowContextAction,
   ToggleWindowFocusedAction,
   View,
@@ -35,13 +36,6 @@ export const setIsWindowFocused = (isWindowFocused?: boolean): ThunkAction => (
   dispatch(toggleWindowFocused(isWindowFocused));
 };
 
-export const setAppView = (appView: View): SetAppViewAction => ({
-  type: SET_APP_VIEW,
-  payload: {
-    appView,
-  },
-});
-
 export const setWindowContext = (
   windowContext: Window
 ): SetWindowContextAction => ({
@@ -51,11 +45,28 @@ export const setWindowContext = (
   },
 });
 
-export const setIsWindowResized = (
-  isWindowResized: boolean
-): SetIsWindowResizedAction => ({
-  type: SET_IS_WINDOW_RESIZED,
+export const setIsWindowResized = (isWindowResized: boolean): ThunkAction => (
+  dispatch,
+  getState
+) => {
+  dispatch({
+    type: SET_IS_WINDOW_RESIZED,
+    payload: {
+      isWindowResized: isWindowResized && getIsUnderwaterView(getState()),
+    },
+  });
+};
+
+export const setAppView = (appView: View): SetAppViewAction => ({
+  type: SET_APP_VIEW,
   payload: {
-    isWindowResized,
+    appView,
+  },
+});
+
+export const setAppFutureView = (appView: View): SetAppFutureViewAction => ({
+  type: SET_APP_FUTURE_VIEW,
+  payload: {
+    appView,
   },
 });

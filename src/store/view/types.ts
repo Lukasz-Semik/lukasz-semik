@@ -1,6 +1,7 @@
 import type { Action } from 'redux';
 
 import type {
+  SET_APP_FUTURE_VIEW,
   SET_APP_VIEW,
   SET_IS_WINDOW_FOCUSED,
   SET_IS_WINDOW_RESIZED,
@@ -14,6 +15,8 @@ export enum View {
 
 export interface ViewState {
   appView: View;
+  appFutureView: View;
+  isChangingView: boolean;
   isWindowFocused: boolean;
   windowContext: Window | undefined;
   isWindowResized: boolean;
@@ -27,6 +30,13 @@ export interface ToggleWindowFocusedAction
 }
 
 export interface SetAppViewAction extends Action<typeof SET_APP_VIEW> {
+  payload: {
+    appView: View;
+  };
+}
+
+export interface SetAppFutureViewAction
+  extends Action<typeof SET_APP_FUTURE_VIEW> {
   payload: {
     appView: View;
   };
@@ -49,5 +59,6 @@ export interface SetIsWindowResizedAction
 export type ViewActionType =
   | ToggleWindowFocusedAction
   | SetAppViewAction
+  | SetAppFutureViewAction
   | SetWindowContextAction
   | SetIsWindowResizedAction;

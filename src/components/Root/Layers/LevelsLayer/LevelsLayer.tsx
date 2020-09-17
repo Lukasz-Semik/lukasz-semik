@@ -6,6 +6,8 @@ import { View } from 'src/store/view/types';
 import { Surface } from 'src/components/Surface/Surface';
 import { Underwater } from 'src/components/Underwater/Underwater';
 
+import { useView } from '../../../../hooks/useView';
+
 const ItemWrapper = styled.div.attrs({ id: 'underwater-item' })<{
   isVisible: boolean;
   startingPosition: string;
@@ -19,19 +21,14 @@ const ItemWrapper = styled.div.attrs({ id: 'underwater-item' })<{
   transition: top 2s ease;
 `;
 
-interface Props {
-  futureView: View;
-  onViewGoUp: () => void;
-  setView: () => void;
-  getIsMounted: (view: View) => boolean;
-}
+export const LevelsLayer = () => {
+  const {
+    futureView,
+    isUnderwaterViewMounted,
+    isSurfaceViewMounted,
+    setView,
+  } = useView();
 
-export const LevelsLayer = ({
-  futureView,
-  onViewGoUp,
-  setView,
-  getIsMounted,
-}: Props) => {
   return (
     <>
       <ItemWrapper
@@ -43,16 +40,14 @@ export const LevelsLayer = ({
         }}
         startingPosition="100%"
       >
-        {getIsMounted(View.Underwater) && (
-          <Underwater onViewGoUp={onViewGoUp} />
-        )}
+        {isUnderwaterViewMounted && <Underwater />}
       </ItemWrapper>
 
       <ItemWrapper
         isVisible={futureView === View.Surface}
         startingPosition="-100%"
       >
-        {getIsMounted(View.Surface) && <Surface />}
+        {isSurfaceViewMounted && <Surface />}
       </ItemWrapper>
     </>
   );

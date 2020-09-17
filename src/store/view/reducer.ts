@@ -1,6 +1,7 @@
 import type { AnyAction } from 'redux';
 
 import {
+  SET_APP_FUTURE_VIEW,
   SET_APP_VIEW,
   SET_IS_WINDOW_FOCUSED,
   SET_IS_WINDOW_RESIZED,
@@ -10,6 +11,7 @@ import { View, ViewActionType, ViewState } from './types';
 
 export const initialState: ViewState = {
   appView: View.Underwater,
+  appFutureView: View.Underwater,
   windowContext: undefined,
   isWindowFocused: true,
   isWindowResized: false,
@@ -28,6 +30,11 @@ export default (state = initialState, incomingAction: AnyAction): ViewState => {
       return {
         ...state,
         appView: action.payload.appView,
+      };
+    case SET_APP_FUTURE_VIEW:
+      return {
+        ...state,
+        appFutureView: action.payload.appView,
       };
     case SET_WINDOW_CONTEXT:
       return {
