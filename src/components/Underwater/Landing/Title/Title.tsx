@@ -3,6 +3,7 @@ import { useIntl } from 'gatsby-plugin-intl';
 import { rem } from 'polished';
 import styled from 'styled-components';
 
+import { useView } from 'src/hooks/useView';
 import styles from 'src/styles';
 
 import { GoUpButton } from '../GoUpButton/GoUpButton';
@@ -46,12 +47,9 @@ const WavingTitle = styled.h2`
   }
 `;
 
-interface Props {
-  onViewGoUp: () => void;
-}
-
-export const Title = ({ onViewGoUp }: Props) => {
+export const Title = () => {
   const intl = useIntl();
+  const { goUp } = useView();
 
   const text = useMemo(() => {
     const letters = intl.formatMessage({ id: 'underwater.title' }).split('');
@@ -79,7 +77,7 @@ export const Title = ({ onViewGoUp }: Props) => {
         ))}
       </WavingTitle>
 
-      <GoUpButton onViewGoUp={onViewGoUp} />
+      <GoUpButton onViewGoUp={goUp} />
     </Wrapper>
   );
 };

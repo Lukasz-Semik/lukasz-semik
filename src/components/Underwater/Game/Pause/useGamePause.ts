@@ -7,8 +7,8 @@ import {
   setUnderwaterIntro,
 } from 'src/store/underwater/actions';
 import { useGetIsGamePaused } from 'src/store/underwater/selectors';
-import { setIsWindowResized } from 'src/store/view/actions';
-import { useGetIsWindowResized } from 'src/store/view/selectors';
+import { setIsWindowResized } from 'src/store/windowContext/actions';
+import { useGetIsWindowResized } from 'src/store/windowContext/selectors';
 
 export const useGamePause = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

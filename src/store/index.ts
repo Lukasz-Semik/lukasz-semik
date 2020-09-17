@@ -8,10 +8,12 @@ import thunk from 'redux-thunk';
 
 import underwater from './underwater/reducer';
 import view from './view/reducer';
+import windowContext from './windowContext/reducer';
 
 export const rootReducer = combineReducers({
   underwater,
   view,
+  windowContext,
 });
 
 export const createStore = () =>

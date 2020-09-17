@@ -2,39 +2,30 @@ import { useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import type { AppState } from '../types';
-import { View } from './types';
+import type { View } from './types';
 
 export const getViewState = (state: AppState) => state.view;
 
-export const getIsWindowFocused = createSelector(
-  getViewState,
-  view => view.isWindowFocused
-);
-
-export const useGetIsWindowFocused = () => useSelector(getIsWindowFocused);
-
 export const getAppView = createSelector(getViewState, view => view.appView);
-
-export const getIsSurfaceView = createSelector(
-  getAppView,
-  view => view === View.Surface
-);
-
-export const getIsUnderwaterView = createSelector(
-  getAppView,
-  view => view === View.Underwater
-);
-
-export const getWindowContext = createSelector(
+export const getAppFutureView = createSelector(
   getViewState,
-  viewState => viewState.windowContext
+  view => view.appFutureView
 );
 
-export const useGetWindowContext = () => useSelector(getWindowContext);
+export const useGetAppView = () => useSelector(getAppFutureView);
+export const useGetAppFutureView = () => useSelector(getAppFutureView);
 
-export const getIsWindowResized = createSelector(
-  getViewState,
-  viewState => viewState.isWindowResized
-);
+export const getIsViewSet = (view: View, state: AppState) =>
+  view === getAppView(state);
+export const useGetIsViewSet = (view: View) =>
+  useSelector(state => getIsViewSet(view, state as AppState));
 
-export const useGetIsWindowResized = () => useSelector(getIsWindowResized);
+export const getIsViewMounted = (view: View, state: AppState) => {
+  const appView = getAppView(state);
+  const appFutureView = getAppFutureView(state);
+
+  return appView === view || appFutureView === view;
+};
+
+export const useGetIsViewMounted = (view: View) =>
+  useSelector(state => getIsViewMounted(view, state as AppState));

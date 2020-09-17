@@ -1,27 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-import {
-  useGetIsUnderwaterIntro,
-  useGetIsUnderwaterStarter,
-} from 'src/store/underwater/selectors';
-import { useGetIsWindowResized } from 'src/store/view/selectors';
+import { useGetIsWindowResized } from 'src/store/windowContext/selectors';
 
-import { BottomGroup } from '../BottomGroup/BottomGroup';
-import { Footer } from './Footer/Footer';
-import { Header } from './Header/Header';
-import { LandingDrops } from './LandingDrops/LandingDrops';
-import { Starter } from './Modals/Starter/Starter';
+import { LandingContent } from './LandingContent/LandingContent';
 import { WindowResizedInfo } from './Modals/WindowResizedInfo/WindowResizedInfo';
-import { Title } from './Title/Title';
 
-interface Props {
-  onViewGoUp: () => void;
-}
-
-export const Landing = ({ onViewGoUp }: Props) => {
+export const Landing = () => {
   const [isPreparingDrops, setIsPreparingDrops] = useState(false);
-  const isIntro = useGetIsUnderwaterIntro();
-  const isStarter = useGetIsUnderwaterStarter();
   const isWindowResized = useGetIsWindowResized();
 
   useEffect(() => {
@@ -33,18 +18,6 @@ export const Landing = ({ onViewGoUp }: Props) => {
   return isWindowResized ? (
     <WindowResizedInfo resetDrops={() => setIsPreparingDrops(true)} />
   ) : (
-    <>
-      <BottomGroup />
-
-      {!isPreparingDrops && <LandingDrops />}
-
-      <Header />
-
-      {isIntro && <Title onViewGoUp={onViewGoUp} />}
-
-      {isStarter && <Starter />}
-
-      <Footer />
-    </>
+    <LandingContent isPreparingDrops={isPreparingDrops} />
   );
 };

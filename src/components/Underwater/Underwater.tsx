@@ -14,18 +14,12 @@ const Wrapper = styled.div`
   font-family: ${styles.fonts.uniq};
 `;
 
-interface Props {
-  onViewGoUp: () => void;
-}
-
-export const Underwater = ({ onViewGoUp }: Props) => {
+export const Underwater = () => {
   const isGameRunning = useGetIsUnderwaterGame();
 
   return (
     <Background>
-      <Wrapper>
-        {isGameRunning ? <Game /> : <Landing onViewGoUp={onViewGoUp} />}
-      </Wrapper>
+      <Wrapper>{isGameRunning ? <Game /> : <Landing />}</Wrapper>
     </Background>
   );
 };

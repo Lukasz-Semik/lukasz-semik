@@ -4,9 +4,9 @@ import { useDispatch } from 'react-redux';
 import {
   setIsWindowFocused,
   setIsWindowResized,
-  setWindowContext,
-} from 'src/store/view/actions';
-import { useGetIsWindowResized } from 'src/store/view/selectors';
+  setWindowData,
+} from 'src/store/windowContext/actions';
+import { useGetIsWindowResized } from 'src/store/windowContext/selectors';
 
 // set ssr safe window usage
 export const useWindow = () => {
@@ -15,7 +15,7 @@ export const useWindow = () => {
 
   useEffect(() => {
     if (window) {
-      dispatch(setWindowContext(window));
+      dispatch(setWindowData(window));
 
       window.onblur = () => {
         dispatch(setIsWindowFocused(false));
