@@ -21,6 +21,8 @@ module.exports = {
     'simple-import-sort',
   ],
   rules: {
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-use-before-define': [1],
     '@typescript-eslint/explicit-module-boundary-types': 0,
     'react/require-default-props': 0,

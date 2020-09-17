@@ -17,7 +17,8 @@
     "skipLibCheck": true,
     "noImplicitReturns": true,
     "strict": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "importsNotUsedAsValues": "error"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "vendor", "public"],

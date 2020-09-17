@@ -1,6 +1,6 @@
-import { Action } from 'redux';
+import type { Action } from 'redux';
 
-import {
+import type {
   ADD_SCORE,
   CHANGE_HEALTH_POINTS,
   RESET_GAME,
@@ -8,7 +8,6 @@ import {
   SET_UNDERWATER_STAGE,
 } from './actionTypes';
 
-// eslint-disable-next-line no-shadow
 export enum Stage {
   Intro = 'intro',
   Starter = 'starter',

@@ -1,4 +1,4 @@
-import { Container, Sprite } from '@inlet/react-pixi';
+import type { Container, Sprite } from '@inlet/react-pixi';
 
 import { generateAttributes } from './dropAttributes';
 

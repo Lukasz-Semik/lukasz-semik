@@ -1,10 +1,10 @@
-import { Action, AnyAction } from 'redux';
-import {
+import type { Action, AnyAction } from 'redux';
+import type {
   ThunkAction as ThunkActionBase,
   ThunkDispatch as ThunkDispatchBase,
 } from 'redux-thunk';
 
-import { rootReducer } from './index';
+import type { rootReducer } from './index';
 
 export type AppState = ReturnType<typeof rootReducer>;
 

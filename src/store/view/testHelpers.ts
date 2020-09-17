@@ -1,5 +1,5 @@
 import { initialState } from './reducer';
-import { ViewState } from './types';
+import type { ViewState } from './types';
 
 export const mockViewState = (state: Partial<ViewState> = {}) => ({
   view: {
