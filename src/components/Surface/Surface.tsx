@@ -32,7 +32,7 @@ enum DayPeriod {
 
 const SurfacePlaceholder = styled.div`
   position: relative;
-  z-index: 10000;
+  /* z-index: 10000; */
   width: 100%;
   height: 100%;
   /* background-color: ${styles.colors.bgUnderwaterLight}; */
@@ -133,7 +133,7 @@ const WaterWrapper = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 50px;
+  height: 70px;
   width: 100%;
   /* background-color: ${styles.colors.bgUnderwaterDark}; */
   /*
@@ -247,7 +247,7 @@ const PalmLeavesWrapper = styled.div`
 
 const ButtonsWrapper = styled.div`
   position: absolute;
-  top: 0;
+  top: 20px;
   left: 0;
 `;
 

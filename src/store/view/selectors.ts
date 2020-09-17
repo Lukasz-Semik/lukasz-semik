@@ -20,6 +20,8 @@ export const getIsSurfaceView = createSelector(
   view => view === View.Surface
 );
 
+export const useGetIsSurfaceView = () => useSelector(getIsSurfaceView);
+
 export const getIsUnderwaterView = createSelector(
   getAppView,
   view => view === View.Underwater

@@ -2,10 +2,13 @@ import React from 'react';
 import { rem } from 'polished';
 import styled from 'styled-components';
 
+import { overlayPointerEvents } from 'src/styles/helpers';
+
 import { Logo } from './Logo/Logo';
 import { Hamburger } from './Menu/Hamburger';
 
 const Wrapper = styled.header`
+  ${overlayPointerEvents};
   position: absolute;
   left: 0;
   top: ${rem(15)};

@@ -7,3 +7,11 @@ export const styleOverlay = css`
   right: 0;
   bottom: 0;
 `;
+
+export const overlayPointerEvents = css`
+  pointer-events: none;
+
+  * {
+    pointer-events: all;
+  }
+`;

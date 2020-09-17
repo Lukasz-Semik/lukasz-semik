@@ -2,10 +2,13 @@ import React from 'react';
 import { rem } from 'polished';
 import styled from 'styled-components';
 
+import { overlayPointerEvents } from 'src/styles/helpers';
+
 import { Note } from './Note/Note';
 import { Social } from './Social/Social';
 
 const FooterStyled = styled.footer`
+  ${overlayPointerEvents};
   position: absolute;
   bottom: 0;
   left: 0;

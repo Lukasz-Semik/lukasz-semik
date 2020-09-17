@@ -16,6 +16,7 @@ const Wrapper = styled.button`
   width: ${rem(35)};
   margin-right: ${rem(5)};
   opacity: 0.8;
+  pointer-events: all;
 `;
 
 const Line = styled.div`

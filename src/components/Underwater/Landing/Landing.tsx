@@ -7,8 +7,6 @@ import {
 import { useGetIsWindowResized } from 'src/store/view/selectors';
 
 import { BottomGroup } from '../BottomGroup/BottomGroup';
-import { Footer } from './Footer/Footer';
-import { Header } from './Header/Header';
 import { LandingDrops } from './LandingDrops/LandingDrops';
 import { Starter } from './Modals/Starter/Starter';
 import { WindowResizedInfo } from './Modals/WindowResizedInfo/WindowResizedInfo';
@@ -38,13 +36,9 @@ export const Landing = ({ onViewGoUp }: Props) => {
 
       {!isPreparingDrops && <LandingDrops />}
 
-      <Header />
-
       {isIntro && <Title onViewGoUp={onViewGoUp} />}
 
       {isStarter && <Starter />}
-
-      <Footer />
     </>
   );
 };
