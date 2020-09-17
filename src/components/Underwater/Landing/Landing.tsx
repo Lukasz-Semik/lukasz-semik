@@ -18,6 +18,6 @@ export const Landing = () => {
   return isWindowResized ? (
     <WindowResizedInfo resetDrops={() => setIsPreparingDrops(true)} />
   ) : (
-    <LandingContent />
+    <LandingContent isPreparingDrops={isPreparingDrops} />
   );
 };

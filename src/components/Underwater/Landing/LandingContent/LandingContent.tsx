@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { useView } from 'src/hooks/useView';
 import {
@@ -11,17 +11,14 @@ import { LandingDrops } from '../LandingDrops/LandingDrops';
 import { Starter } from '../Modals/Starter/Starter';
 import { Title } from '../Title/Title';
 
-export const LandingContent = () => {
-  const [isPreparingDrops, setIsPreparingDrops] = useState(false);
+interface Props {
+  isPreparingDrops: boolean;
+}
+
+export const LandingContent = ({ isPreparingDrops }: Props) => {
   const isIntro = useGetIsUnderwaterIntro();
   const isStarter = useGetIsUnderwaterStarter();
   const { isUnderwaterViewMounted } = useView();
-
-  useEffect(() => {
-    if (isPreparingDrops) {
-      setIsPreparingDrops(false);
-    }
-  }, [isPreparingDrops]);
 
   return isUnderwaterViewMounted ? (
     <>
