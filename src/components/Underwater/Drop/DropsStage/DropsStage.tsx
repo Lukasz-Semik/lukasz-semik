@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 import {
   useGetIsWindowFocused,
-  useGetWindowContext,
-} from 'src/store/view/selectors';
+  useGetWindowData,
+} from 'src/store/windowContext/selectors';
 import { styleOverlay } from 'src/styles/helpers';
 
 const Wrapper = styled.div`
@@ -21,15 +21,15 @@ interface RenderProps {
 export const DropsStage = ({
   children,
 }: WithRenderChildrenProps<RenderProps>) => {
-  const windowContext = useGetWindowContext();
+  const windowData = useGetWindowData();
   const isWindowFocused = useGetIsWindowFocused();
 
-  return windowContext ? (
+  return windowData ? (
     <Wrapper>
-      <Stage options={{ transparent: true, resizeTo: windowContext }}>
+      <Stage options={{ transparent: true, resizeTo: windowData }}>
         {children({
-          windowWidth: windowContext.innerWidth || 0,
-          windowHeight: windowContext.innerHeight || 0,
+          windowWidth: windowData.innerWidth || 0,
+          windowHeight: windowData.innerHeight || 0,
           isWindowFocused,
         })}
       </Stage>

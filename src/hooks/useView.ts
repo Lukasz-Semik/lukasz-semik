@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { setAppFutureView, setAppView } from 'src/store/view/actions';
 import {
   useGetAppFutureView,
-  useGetAppView,
   useGetIsViewMounted,
 } from 'src/store/view/selectors';
 import { View } from 'src/store/view/types';

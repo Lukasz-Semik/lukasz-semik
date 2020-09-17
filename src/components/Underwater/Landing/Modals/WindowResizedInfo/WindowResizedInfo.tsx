@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { FormattedMessage } from 'gatsby-plugin-intl';
 
-import { setIsWindowResized } from 'src/store/view/actions';
+import { setIsWindowResized } from 'src/store/windowContext/actions';
 import { PaperModal } from 'src/components/Modals';
 
 import { Button, ButtonsWrapper, CenterButton, Text } from '../styled';

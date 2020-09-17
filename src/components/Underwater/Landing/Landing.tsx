@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { useGetIsWindowResized } from 'src/store/view/selectors';
+import { useGetIsWindowResized } from 'src/store/windowContext/selectors';
 
 import { LandingContent } from './LandingContent/LandingContent';
 import { WindowResizedInfo } from './Modals/WindowResizedInfo/WindowResizedInfo';

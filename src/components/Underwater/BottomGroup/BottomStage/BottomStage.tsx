@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Stage } from '@inlet/react-pixi';
 import styled, { keyframes } from 'styled-components';
 
-import { useGetWindowContext } from 'src/store/view/selectors';
+import { useGetWindowData } from 'src/store/windowContext/selectors';
 import { screenMdMin, screenXlMin, screenXsMin } from 'src/styles/constants';
 
 const animation = keyframes`
@@ -37,11 +37,11 @@ interface RenderProps {
 export const BottomStage = ({
   children,
 }: WithRenderChildrenProps<RenderProps>) => {
-  const windowContext = useGetWindowContext();
+  const windowData = useGetWindowData();
 
   const groupsQty = useMemo(() => {
-    if (windowContext) {
-      const { innerWidth: width } = windowContext;
+    if (windowData) {
+      const { innerWidth: width } = windowData;
 
       if (width <= screenXsMin) {
         return 1;
@@ -58,12 +58,12 @@ export const BottomStage = ({
       return 4;
     }
     return 0;
-  }, [windowContext]);
+  }, [windowData]);
 
-  const windowWidth = windowContext?.innerWidth || 0;
+  const windowWidth = windowData?.innerWidth || 0;
   const groupWidth = windowWidth / groupsQty;
 
-  const windowHeight = windowContext?.innerHeight || 0;
+  const windowHeight = windowData?.innerHeight || 0;
   const groupHeight = (windowHeight * BASE_STAGING_HEIGHT) / BASE_WINDOW_HEIGHT;
 
   return windowWidth ? (
