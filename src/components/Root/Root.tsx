@@ -8,6 +8,7 @@ import { View } from 'src/store/view/types';
 import { styleOverlay } from 'src/styles/helpers';
 import { Underwater } from 'src/components/Underwater/Underwater';
 
+import { Surface } from '../Surface/Surface';
 import { useView } from './useView';
 import { useWindow } from './useWindow';
 
@@ -16,13 +17,6 @@ gsap.registerPlugin(PixiPlugin);
 const Wrapper = styled.div`
   ${styleOverlay};
   overflow: hidden;
-`;
-
-// TODO: move and finish buttons
-const Button2 = styled.button`
-  position: absolute;
-  bottom: 0;
-  z-index: 1;
 `;
 
 const ItemWrapper = styled.div.attrs({ id: 'underwater-item' })<{
@@ -38,15 +32,8 @@ const ItemWrapper = styled.div.attrs({ id: 'underwater-item' })<{
   transition: top 2s ease;
 `;
 
-const SurfacePlaceholder = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: red;
-`;
-
 const Root = () => {
-  const { futureView, goUp, goDown, setView, getIsMounted } = useView();
+  const { futureView, goUp, setView, getIsMounted } = useView();
   useWindow();
 
   return (
@@ -67,11 +54,7 @@ const Root = () => {
         isVisible={futureView === View.Surface}
         startingPosition="-100%"
       >
-        {getIsMounted(View.Surface) && (
-          <SurfacePlaceholder>
-            <Button2 onClick={goDown}>Move</Button2>
-          </SurfacePlaceholder>
-        )}
+        {getIsMounted(View.Surface) && <Surface />}
       </ItemWrapper>
     </Wrapper>
   );

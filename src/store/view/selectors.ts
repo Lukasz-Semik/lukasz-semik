@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import { AppState } from '../types';
+import type { AppState } from '../types';
 import { View } from './types';
 
 export const getViewState = (state: AppState) => state.view;

@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 // @ts-ignore usually we don't want to import json
 import messagess from 'src/intl/en.json';
 
-import { AppState, ThunkDispatch } from 'src/store/types';
+import type { AppState, ThunkDispatch } from 'src/store/types';
 
 import { flattenMessages } from './intl';
 

@@ -1,4 +1,4 @@
-import { ThunkAction } from '../types';
+import type { ThunkAction } from '../types';
 import {
   ADD_SCORE,
   CHANGE_HEALTH_POINTS,

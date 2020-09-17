@@ -1,13 +1,12 @@
-import { Action } from 'redux';
+import type { Action } from 'redux';
 
-import {
+import type {
   SET_APP_VIEW,
   SET_IS_WINDOW_FOCUSED,
   SET_IS_WINDOW_RESIZED,
   SET_WINDOW_CONTEXT,
 } from './actionTypes';
 
-// eslint-disable-next-line no-shadow
 export enum View {
   Underwater = 'underwater',
   Surface = 'surface',

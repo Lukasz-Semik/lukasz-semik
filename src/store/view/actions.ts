@@ -1,4 +1,4 @@
-import { ThunkAction } from '../types';
+import type { ThunkAction } from '../types';
 import { setIsGamePaused } from '../underwater/actions';
 import {
   SET_APP_VIEW,
@@ -7,7 +7,7 @@ import {
   SET_WINDOW_CONTEXT,
 } from './actionTypes';
 import { getIsUnderwaterView } from './selectors';
-import {
+import type {
   SetAppViewAction,
   SetIsWindowResizedAction,
   SetWindowContextAction,

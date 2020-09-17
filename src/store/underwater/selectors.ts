@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import { AppState } from '../types';
+import type { AppState } from '../types';
 import { Stage } from './types';
 
 export const getUnderwaterState = (state: AppState) => state.underwater;
