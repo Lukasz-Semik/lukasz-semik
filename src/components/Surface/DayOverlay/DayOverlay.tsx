@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { rgba } from 'polished';
 import styled from 'styled-components';
 
-import { setDayPeriod } from 'src/store/dayCycle/actions';
+import { setDayPeriod, setTweeningDayPeriod } from 'src/store/dayCycle/actions';
 import { useGetDayPeriod } from 'src/store/dayCycle/selectors';
 import { DayPeriod } from 'src/store/dayCycle/types';
 
@@ -75,8 +75,10 @@ export const DayOverlay = () => {
           backgroundColor: backgroundMap[item],
           duration: 1,
           ease: 'linear',
+          onStart: () => {
+            dispatch(setTweeningDayPeriod(item));
+          },
           onComplete: () => {
-            // todo add setTemporaryDayPeriod to change colors or show stars
             if (i === animationSequences.length - 1) {
               dispatch(setDayPeriod(futureDayPeriod));
             }

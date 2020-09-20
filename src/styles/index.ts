@@ -19,6 +19,7 @@ export default {
     goldDark: darken('0.1', '#ad7f00'),
     grey: 'grey',
     black: '#000',
+    white: '#fff',
     blue: '#5457ff',
   },
   shadows: {

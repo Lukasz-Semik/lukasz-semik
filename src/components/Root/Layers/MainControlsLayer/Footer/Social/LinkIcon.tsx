@@ -15,7 +15,6 @@ const LinkStyled = styled.a`
 
   svg {
     ${size(rem(32))};
-    color: ${styles.colors.black};
     transition: color 0.3s ease;
 
     @media ${styles.breakpoints.smUp} {
