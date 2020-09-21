@@ -24,6 +24,16 @@ export const getIsTweening = createSelector(
 );
 export const useGetIsTweening = () => useSelector(getIsTweening);
 
+export const getIsDayPeriod = (value: DayPeriod, state: AppState) => {
+  const isTweening = getIsTweening(state);
+  const dayPeriod = getDayPeriod(state);
+  const tweeningDayPeriod = getTweeningDayPeriod(state);
+
+  return isTweening ? tweeningDayPeriod === value : dayPeriod === value;
+};
+export const useGetIsDayPeriod = (dayPeriod: DayPeriod) =>
+  useSelector(state => getIsDayPeriod(dayPeriod, state as AppState));
+
 export const getIsNight = createSelector(
   getIsTweening,
   getDayPeriod,

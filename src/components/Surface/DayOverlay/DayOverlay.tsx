@@ -8,6 +8,8 @@ import { setDayPeriod, setTweeningDayPeriod } from 'src/store/dayCycle/actions';
 import { useGetDayPeriod } from 'src/store/dayCycle/selectors';
 import { DayPeriod } from 'src/store/dayCycle/types';
 
+import { Stars } from '../Stars/Stars';
+
 const backgroundMap = {
   [DayPeriod.Day]: rgba(255, 255, 255, 0),
   [DayPeriod.Evening]: rgba('#811d5e', 0.7),
@@ -91,6 +93,8 @@ export const DayOverlay = () => {
   return (
     <>
       <Overlay ref={ref} period={dayPeriod} />
+
+      <Stars />
 
       <ButtonsWrapper>
         <button onClick={() => setFutureDayPeriod(DayPeriod.Day)}>Day</button>{' '}
