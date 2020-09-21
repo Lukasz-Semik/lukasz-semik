@@ -4,10 +4,11 @@ import styled from 'styled-components';
 
 import { overlayPointerEvents } from 'src/styles/helpers';
 
+import { ColorProps, getTransition } from '../helpers';
 import { Note } from './Note/Note';
 import { Social } from './Social/Social';
 
-const FooterStyled = styled.footer`
+const FooterStyled = styled.footer<ColorProps>`
   ${overlayPointerEvents};
   position: absolute;
   bottom: 0;
@@ -17,10 +18,17 @@ const FooterStyled = styled.footer`
   align-items: center;
   width: 100%;
   padding: ${rem(10)};
+  color: ${({ mainColor }) => mainColor};
+  transition: ${getTransition('color')};
+
+  svg {
+    color: ${({ mainColor }) => mainColor};
+    transition: ${getTransition('color')};
+  }
 `;
 
-export const Footer = () => (
-  <FooterStyled>
+export const Footer = ({ mainColor }: ColorProps) => (
+  <FooterStyled mainColor={mainColor}>
     <Social />
 
     <Note />

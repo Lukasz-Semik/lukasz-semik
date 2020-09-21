@@ -2,7 +2,7 @@ import { darken } from 'polished';
 
 import { breakpoints } from './constants';
 
-export default {
+const styles = {
   colors: {
     bgUnderwaterDark: '#0ed2f7',
     bgUnderwaterLight: '#1bfcf0',
@@ -19,6 +19,7 @@ export default {
     goldDark: darken('0.1', '#ad7f00'),
     grey: 'grey',
     black: '#000',
+    white: '#fff',
     blue: '#5457ff',
   },
   shadows: {
@@ -30,3 +31,6 @@ export default {
   },
   breakpoints,
 };
+
+export type Styles = typeof styles;
+export default styles;
