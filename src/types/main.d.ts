@@ -5,3 +5,5 @@ interface ContainerProps<T> {
 interface WithRenderChildrenProps<T> {
   children: (props: T) => React.ReactNode | React.RreactNode[];
 }
+
+type ValueOf<T> = T[keyof T];

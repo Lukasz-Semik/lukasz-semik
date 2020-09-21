@@ -1,5 +1,7 @@
+import type { Styles } from 'src/styles';
+
 export interface ColorProps {
-  mainColor: string;
+  mainColor: ValueOf<Styles['colors']>;
 }
 
 export const getTransition = (key: 'color' | 'background-color') =>
