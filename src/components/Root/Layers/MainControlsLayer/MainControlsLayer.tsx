@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { useGetIsNight } from 'src/store/dayCycle/selectors';
+import { useGetIsDayPeriod } from 'src/store/dayCycle/selectors';
+import { DayPeriod } from 'src/store/dayCycle/types';
 import { useGetIsUnderwaterIntro } from 'src/store/underwater/selectors';
 import { useGetIsViewSet } from 'src/store/view/selectors';
 import { View } from 'src/store/view/types';
@@ -22,7 +23,7 @@ const Wrapper = styled.div`
 export const MainControlsLayer = () => {
   const isUnderwaterIntro = useGetIsUnderwaterIntro();
   const isSurfaceView = useGetIsViewSet(View.Surface);
-  const isNight = useGetIsNight();
+  const isNight = useGetIsDayPeriod(DayPeriod.Night);
   const mainColor = isNight ? styles.colors.grey : styles.colors.black;
 
   return isUnderwaterIntro || isSurfaceView ? (

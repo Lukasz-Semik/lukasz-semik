@@ -5,6 +5,8 @@ import Island from 'src/assets/surface/island-base.svg';
 import PalmLeaves from 'src/assets/surface/palm-leaves.svg';
 import PalmTrunk from 'src/assets/surface/palm-trunk.svg';
 import Sands from 'src/assets/surface/sands.svg';
+import { useGetIsViewSet } from 'src/store/view/selectors';
+import { View } from 'src/store/view/types';
 import styles from 'src/styles';
 
 import { DayOverlay } from './DayOverlay/DayOverlay';
@@ -69,6 +71,8 @@ const PalmLeavesWrapper = styled.div`
 `;
 
 export const Surface = () => {
+  const isSurfaceSet = useGetIsViewSet(View.Surface);
+
   return (
     <SurfacePlaceholder>
       <Water />
@@ -86,7 +90,7 @@ export const Surface = () => {
         <PalmLeaves />
       </PalmLeavesWrapper>
 
-      <DayOverlay />
+      {isSurfaceSet && <DayOverlay />}
     </SurfacePlaceholder>
   );
 };

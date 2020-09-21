@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import type { AppState } from '../types';
-import { DayPeriod } from './types';
+import type { DayPeriod } from './types';
 
 export const getDayCycleState = (state: AppState) => state.dayCycle;
 
@@ -34,13 +34,11 @@ export const getIsDayPeriod = (value: DayPeriod, state: AppState) => {
 export const useGetIsDayPeriod = (dayPeriod: DayPeriod) =>
   useSelector(state => getIsDayPeriod(dayPeriod, state as AppState));
 
-export const getIsNight = createSelector(
+export const getCurrentDayPeriod = createSelector(
   getIsTweening,
   getDayPeriod,
   getTweeningDayPeriod,
   (isTweening, dayPeriod, tweeningDayPeriod) =>
-    isTweening
-      ? tweeningDayPeriod === DayPeriod.Night
-      : dayPeriod === DayPeriod.Night
+    isTweening ? tweeningDayPeriod : dayPeriod
 );
-export const useGetIsNight = () => useSelector(getIsNight);
+export const useGetCurrentDayPeriod = () => useSelector(getCurrentDayPeriod);

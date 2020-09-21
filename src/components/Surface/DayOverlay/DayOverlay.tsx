@@ -9,6 +9,8 @@ import { useGetDayPeriod } from 'src/store/dayCycle/selectors';
 import { DayPeriod } from 'src/store/dayCycle/types';
 
 import { Stars } from '../Stars/Stars';
+// to be considered
+// import { Sun } from '../Sun/Sun';
 
 const backgroundMap = {
   [DayPeriod.Day]: rgba(255, 255, 255, 0),
@@ -95,6 +97,8 @@ export const DayOverlay = () => {
       <Overlay ref={ref} period={dayPeriod} />
 
       <Stars />
+      {/* to be considered */}
+      {/* <Sun /> */}
 
       <ButtonsWrapper>
         <button onClick={() => setFutureDayPeriod(DayPeriod.Day)}>Day</button>{' '}
