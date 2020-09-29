@@ -7,10 +7,9 @@ import styled from 'styled-components';
 import { setDayPeriod, setTweeningDayPeriod } from 'src/store/dayCycle/actions';
 import { useGetDayPeriod } from 'src/store/dayCycle/selectors';
 import { DayPeriod } from 'src/store/dayCycle/types';
+import { overlayPointerEvents } from 'src/styles/helpers';
 
 import { Stars } from '../Stars/Stars';
-// to be considered
-// import { Sun } from '../Sun/Sun';
 
 const backgroundMap = {
   [DayPeriod.Day]: rgba(255, 255, 255, 0),
@@ -23,6 +22,7 @@ const Overlay = styled.div<{ period: DayPeriod }>`
   position: absolute;
   width: 100%;
   height: 100%;
+  ${overlayPointerEvents};
 `;
 
 const ButtonsWrapper = styled.div`
@@ -97,8 +97,6 @@ export const DayOverlay = () => {
       <Overlay ref={ref} period={dayPeriod} />
 
       <Stars />
-      {/* to be considered */}
-      {/* <Sun /> */}
 
       <ButtonsWrapper>
         <button onClick={() => setFutureDayPeriod(DayPeriod.Day)}>Day</button>{' '}

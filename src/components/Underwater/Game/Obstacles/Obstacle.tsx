@@ -72,6 +72,8 @@ export const Obstacle = memo(
           });
         }
       }
+      // we have separate mechanism to react on window changes
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isReady, tl, resetItem]);
 
     return (

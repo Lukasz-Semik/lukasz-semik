@@ -15,3 +15,10 @@ export const overlayPointerEvents = css`
     pointer-events: all;
   }
 `;
+
+export const svgDimensions = css`
+  > svg {
+    width: 100%;
+    height: 100%;
+  }
+`;

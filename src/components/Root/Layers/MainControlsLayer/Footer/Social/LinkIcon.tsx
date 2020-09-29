@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import gsap from 'gsap';
 import { rem, size } from 'polished';
 import styled from 'styled-components';
@@ -36,10 +36,22 @@ interface Props {
 }
 
 export const LinkIcon = ({ children, index, href }: Props) => {
-  const [isMounted, setIsMounted] = useState(false);
   const ref = useRef<HTMLAnchorElement>(null);
   const mountingTl = useMemo(() => gsap.timeline(), []);
   const mountedTl = useMemo(() => gsap.timeline({ repeat: -1 }), []);
+
+  const animateMountedItem = useCallback(() => {
+    mountedTl
+      .to(ref.current, {
+        y: -10,
+        duration: 0.8,
+        delay: 4,
+      })
+      .to(ref.current, {
+        y: 0,
+        duration: 0.8,
+      });
+  }, [mountedTl]);
 
   useEffect(() => {
     if (ref.current) {
@@ -53,28 +65,19 @@ export const LinkIcon = ({ children, index, href }: Props) => {
         .to(ref.current, {
           y: 0,
           duration: 0.7,
-          onComplete: () => setIsMounted(true),
+          onComplete: animateMountedItem,
         });
     }
-  }, [mountingTl, index]);
-
-  useEffect(() => {
-    if (isMounted && ref.current) {
-      mountedTl
-        .to(ref.current, {
-          y: -10,
-          duration: 0.8,
-          delay: 4,
-        })
-        .to(ref.current, {
-          y: 0,
-          duration: 0.8,
-        });
-    }
-  }, [isMounted, mountedTl]);
+  }, [animateMountedItem, mountingTl, index]);
 
   return (
-    <LinkStyled ref={ref} href={href} target="_blank" rel="noopener noreferrer">
+    <LinkStyled
+      key={index}
+      ref={ref}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       {children}
     </LinkStyled>
   );
