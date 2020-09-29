@@ -1,6 +1,6 @@
 import type { Action } from 'redux';
 
-import type { SET_DAY_PERIOD, SET_TWEENING_DAY_PERIOD } from './actionTypes';
+import type { SET_DAY_PERIOD, SET_IS_TWEENING } from './actionTypes';
 
 export enum DayPeriod {
   Morning = 'morning', // about
@@ -11,7 +11,6 @@ export enum DayPeriod {
 
 export interface DayCycleState {
   isTweening: boolean;
-  tweeningDayPeriod?: DayPeriod;
   dayPeriod: DayPeriod;
 }
 
@@ -21,13 +20,10 @@ export interface SetDayPeriodAction extends Action<typeof SET_DAY_PERIOD> {
   };
 }
 
-export interface SetTweeningDayPeriodAction
-  extends Action<typeof SET_TWEENING_DAY_PERIOD> {
+export interface SetIsTweeningAction extends Action<typeof SET_IS_TWEENING> {
   payload: {
-    dayPeriod: DayPeriod;
+    isTweening: boolean;
   };
 }
 
-export type DayStateActionType =
-  | SetDayPeriodAction
-  | SetTweeningDayPeriodAction;
+export type DayStateActionType = SetDayPeriodAction | SetIsTweeningAction;

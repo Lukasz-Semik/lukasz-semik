@@ -14,13 +14,17 @@ interface CommonProps {
   downPosition: number;
 }
 
-const Wrapper = styled.button<CommonProps>`
+const CoconutButton = styled.button<CommonProps>`
+  ${svgDimensions};
   position: absolute;
   top: ${({ top }) => rem(top)};
   left: ${({ left }) => rem(left)};
   width: ${rem(20)};
   height: ${rem(20)};
-  ${svgDimensions};
+
+  &:disabled {
+    cursor: default;
+  }
 `;
 
 interface Props extends CommonProps {
@@ -41,11 +45,11 @@ export const Coconut = ({
 
     if (ref.current) {
       tl.to(ref.current, {
-        top: `${downPosition}%`,
+        top: '95%',
         duration: 0.5,
         ease: 'linear',
       }).to(ref.current, {
-        top: '100%',
+        top: `${downPosition}%`,
         x: leftDownPosition,
         rotate: leftDownPosition > 0 ? 600 : -600,
         duration: 1,
@@ -56,7 +60,7 @@ export const Coconut = ({
 
   return (
     <WindWrapper isPaused={isClicked}>
-      <Wrapper
+      <CoconutButton
         onClick={() => {
           animate();
           setIsClicked(true);
@@ -65,9 +69,10 @@ export const Coconut = ({
         top={top}
         left={left}
         downPosition={downPosition}
+        disabled={isClicked}
       >
         <CoconutIcon />
-      </Wrapper>
+      </CoconutButton>
     </WindWrapper>
   );
 };
