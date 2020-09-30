@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { rgba } from 'polished';
 import styled from 'styled-components';
 
+import { useRwdQuery } from 'src/hooks/useMediaQuery';
 import { setDayPeriod, setIsTweening } from 'src/store/dayCycle/actions';
 import { DayPeriod } from 'src/store/dayCycle/types';
 import { overlayPointerEvents } from 'src/styles/helpers';
@@ -28,6 +29,7 @@ const Overlay = styled.div`
 export const DayOverlay = () => {
   const ref = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
+  const { isMediaSm } = useRwdQuery();
 
   const setNextDayPeriod = useCallback(
     (nextDayPeriod: DayPeriod) => {
@@ -48,7 +50,7 @@ export const DayOverlay = () => {
 
       <Stars />
 
-      <Naviation setNextDayPeriod={setNextDayPeriod} />
+      {isMediaSm && <Naviation setNextDayPeriod={setNextDayPeriod} />}
     </>
   );
 };

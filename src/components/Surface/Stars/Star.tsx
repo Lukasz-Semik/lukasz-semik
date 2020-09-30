@@ -10,10 +10,15 @@ interface ElementProps {
   isVisible: boolean;
 }
 
-const Element = styled.div<ElementProps>`
+const Element = styled.div.attrs(
+  ({ topPosition, leftPosition }: ElementProps) => ({
+    style: {
+      top: `${topPosition}px`,
+      left: `${leftPosition}px`,
+    },
+  })
+)<ElementProps>`
   position: absolute;
-  top: ${({ topPosition }) => topPosition}px;
-  left: ${({ leftPosition }) => leftPosition}px;
   width: 2px;
   height: 2px;
   background-color: ${styles.colors.white};

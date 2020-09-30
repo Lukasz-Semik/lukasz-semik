@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Island from 'src/assets/surface/island.svg';
+import { useView } from 'src/hooks/useView';
 import { useGetIsViewSet } from 'src/store/view/selectors';
 import { View } from 'src/store/view/types';
 import styles from 'src/styles';
 
+import { Content } from './Content/Content';
 import { DayOverlay } from './DayOverlay/DayOverlay';
 import { dimensions } from './dimensions';
 import { Palm } from './Palm/Palm';
@@ -43,8 +45,12 @@ const IslandWrapper = styled.div`
   }
 `;
 
+const TemporaryButton = styled.div`
+  position: absolute;
+`;
 export const Surface = () => {
   const isSurfaceSet = useGetIsViewSet(View.Surface);
+  const { goDown } = useView();
 
   return (
     <Wrapper>
@@ -56,7 +62,14 @@ export const Surface = () => {
 
       <Palm />
 
-      {isSurfaceSet && <DayOverlay />}
+      {isSurfaceSet && (
+        <>
+          <DayOverlay />
+          <Content />
+        </>
+      )}
+
+      <TemporaryButton onClick={goDown}>GoDown</TemporaryButton>
     </Wrapper>
   );
 };
