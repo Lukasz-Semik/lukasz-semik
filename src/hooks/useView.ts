@@ -25,6 +25,7 @@ export const useView = () => {
   }, [dispatch, futureView]);
 
   const isUnderwaterViewMounted = useGetIsViewMounted(View.Underwater);
+
   const isSurfaceViewMounted = useGetIsViewMounted(View.Surface);
 
   return {

@@ -8,6 +8,7 @@ import { setDayPeriod, setIsTweening } from 'src/store/dayCycle/actions';
 import { DayPeriod } from 'src/store/dayCycle/types';
 import { overlayPointerEvents } from 'src/styles/helpers';
 
+import { Naviation } from '../Navigation/Navigation';
 import { Stars } from '../Stars/Stars';
 
 const backgroundMap = {
@@ -22,12 +23,6 @@ const Overlay = styled.div`
   width: 100%;
   height: 100%;
   ${overlayPointerEvents};
-`;
-
-const ButtonsWrapper = styled.div`
-  position: absolute;
-  top: 20px;
-  left: 100px;
 `;
 
 export const DayOverlay = () => {
@@ -53,16 +48,7 @@ export const DayOverlay = () => {
 
       <Stars />
 
-      <ButtonsWrapper>
-        <button onClick={() => setNextDayPeriod(DayPeriod.Day)}>Day</button>{' '}
-        <button onClick={() => setNextDayPeriod(DayPeriod.Night)}>Night</button>{' '}
-        <button onClick={() => setNextDayPeriod(DayPeriod.Evening)}>
-          Evening
-        </button>{' '}
-        <button onClick={() => setNextDayPeriod(DayPeriod.Morning)}>
-          Morning
-        </button>{' '}
-      </ButtonsWrapper>
+      <Naviation setNextDayPeriod={setNextDayPeriod} />
     </>
   );
 };

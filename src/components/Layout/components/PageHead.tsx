@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 export const PageHead = () => (
   <Helmet title="Lukasz Semik | Hi!">
     <link
-      href="https://fonts.googleapis.com/css?family=Nunito:300,400,700|Caveat+Brush&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Nunito:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
   </Helmet>

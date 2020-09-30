@@ -18,6 +18,22 @@
       }
     }
   },
+  "surface": {
+    "sections": {
+      "stack": {
+        "title": "Stack"
+      },
+      "experience": {
+        "title": "Experience"
+      },
+      "about": {
+        "title": "About"
+      },
+      "main": {
+        "title": "Main"
+      }
+    }
+  },
   "shared": {
     "ok": "Ok",
     "back": "Back",
