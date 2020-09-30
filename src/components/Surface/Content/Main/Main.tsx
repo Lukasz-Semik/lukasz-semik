@@ -29,30 +29,18 @@ const InnerWrapper = styled.div`
   transform: translateY(-${rem(70)});
 `;
 
-const Name = styled.h2`
-  margin-bottom: ${rem(20)};
-  font-family: ${styles.fonts.uniq};
-  font-size: ${rem(40)};
-  letter-spacing: 2px;
-  text-align: center;
-
-  @media ${breakpoints.smUp} {
-    font-size: ${rem(80)};
-  }
-`;
-
-const Subtitle = styled.h3`
-  font-size: ${rem(15)};
+const Title = styled.h3`
+  font-size: ${rem(35)};
   text-transform: uppercase;
   text-align: center;
   color: ${styles.colors.grey};
 
   @media ${breakpoints.smUp} {
-    font-size: ${rem(20)};
+    font-size: ${rem(40)};
   }
 `;
 
-const Description = styled.p`
+const Description = styled.h2`
   font-size: ${rem(12)};
   text-align: center;
   text-transform: uppercase;
@@ -82,17 +70,16 @@ const Line = styled.div`
 
 export const Main = () => {
   return (
-    <Wrapper>
-      <InnerWrapper>
-        <MountingOpacityWrapper duration={1}>
-          <Name>Łukasz Semik</Name>
-          <Subtitle>Software Engineer</Subtitle>
+    <MountingOpacityWrapper duration={1}>
+      <Wrapper>
+        <InnerWrapper>
+          <Title>Łukasz Semik</Title>
 
           <Line />
 
-          <Description>Web Development</Description>
-        </MountingOpacityWrapper>
-      </InnerWrapper>
-    </Wrapper>
+          <Description>Software Engineer</Description>
+        </InnerWrapper>
+      </Wrapper>
+    </MountingOpacityWrapper>
   );
 };
