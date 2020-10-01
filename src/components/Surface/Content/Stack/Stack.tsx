@@ -55,6 +55,9 @@ const SkillsWrapper = styled.div`
   position: absolute;
   top: ${rem(150)};
   left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transform: translateX(-50%);
 `;
 
@@ -86,7 +89,9 @@ export const Stack = () => {
         </ButtonsWrapper>
 
         <SkillsWrapper>
-          <Skills currentSkill={currentSkill} />
+          <div>
+            <Skills currentSkill={currentSkill} />
+          </div>
         </SkillsWrapper>
       </Wrapper>
     </MountingOpacityWrapper>
