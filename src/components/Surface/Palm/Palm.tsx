@@ -36,7 +36,7 @@ const PalmLeavesWrapper = styled.div`
 
 export const Palm = () => {
   return (
-    <>
+    <div>
       <WindWrapper>
         <PalmTrunkWrapper>
           <PalmTrunk />
@@ -50,6 +50,6 @@ export const Palm = () => {
           <PalmLeaves />
         </PalmLeavesWrapper>
       </WindWrapper>
-    </>
+    </div>
   );
 };

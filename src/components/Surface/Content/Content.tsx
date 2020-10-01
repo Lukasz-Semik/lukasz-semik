@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { useGetDayPeriod } from 'src/store/dayCycle/selectors';
 import { DayPeriod } from 'src/store/dayCycle/types';
+
 import { Main } from './Main/Main';
 import { Stack } from './Stack/Stack';
 

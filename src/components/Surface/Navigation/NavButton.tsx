@@ -13,7 +13,6 @@ const Button = styled.button<{ hasGreyTheme: boolean; isMarked: boolean }>`
   margin-bottom: ${rem(10)};
   font-size: ${rem(14)};
   font-family: ${styles.fonts.standard};
-  font-weight: 700;
   text-transform: uppercase;
   color: ${({ hasGreyTheme }) =>
     hasGreyTheme ? styles.colors.grey : styles.colors.black};
@@ -42,6 +41,10 @@ const Button = styled.button<{ hasGreyTheme: boolean; isMarked: boolean }>`
       background-color: ${styles.colors.white};
       transform: scaleX(1);
     }
+  }
+
+  &:last-of-type {
+    margin-right: 0;
   }
 `;
 

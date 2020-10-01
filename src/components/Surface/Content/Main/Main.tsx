@@ -26,7 +26,11 @@ const Wrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  transform: translateY(-${rem(70)});
+  transform: translateY(-${rem(100)});
+
+  @media ${breakpoints.smUp} {
+    transform: translateY(-${rem(70)});
+  }
 `;
 
 const Title = styled.h3`
@@ -36,7 +40,7 @@ const Title = styled.h3`
   color: ${styles.colors.grey};
 
   @media ${breakpoints.smUp} {
-    font-size: ${rem(40)};
+    font-size: ${rem(50)};
   }
 `;
 
@@ -54,7 +58,7 @@ const Description = styled.h2`
 const Line = styled.div`
   width: ${rem(40)};
   height: ${rem(2)};
-  margin: ${rem(10)} auto ${rem(15)} auto;
+  margin: ${rem(20)} auto ${rem(25)} auto;
   background-color: ${styles.colors.grey};
   animation: ${lineAnimation} 0.5s ease forwards;
   animation-delay: 1s;

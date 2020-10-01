@@ -9,7 +9,7 @@ import { setDayPeriod, setIsTweening } from 'src/store/dayCycle/actions';
 import { DayPeriod } from 'src/store/dayCycle/types';
 import { overlayPointerEvents } from 'src/styles/helpers';
 
-import { Naviation } from '../Navigation/Navigation';
+import { Navigation } from '../Navigation/Navigation';
 import { Stars } from '../Stars/Stars';
 
 const backgroundMap = {
@@ -50,7 +50,7 @@ export const DayOverlay = () => {
 
       <Stars />
 
-      {isMediaSm && <Naviation setNextDayPeriod={setNextDayPeriod} />}
+      {isMediaSm && <Navigation setNextDayPeriod={setNextDayPeriod} />}
     </>
   );
 };

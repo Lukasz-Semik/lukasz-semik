@@ -21,7 +21,9 @@
   "surface": {
     "sections": {
       "stack": {
-        "title": "Stack"
+        "title": "Stack",
+        "commercialExp": "Commercial Experience",
+        "nonCommercialExp": "Non-commercial Experience"
       },
       "experience": {
         "title": "Experience"
@@ -37,6 +39,7 @@
   "shared": {
     "ok": "Ok",
     "back": "Back",
-    "loading": "Loading"
+    "loading": "Loading",
+    "other": "Other"
   }
 }

@@ -11,12 +11,12 @@ import { NavButton } from './NavButton';
 const Nav = styled.nav`
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  padding: ${rem(15)} ${rem(60)};
+  padding: ${rem(15)};
+  transform: translateX(-50%);
 `;
 
 const InnerWrapper = styled.div`
@@ -30,7 +30,7 @@ interface Props {
   setNextDayPeriod: (dayPeriod: DayPeriod) => void;
 }
 
-export const Naviation = ({ setNextDayPeriod }: Props) => (
+export const Navigation = ({ setNextDayPeriod }: Props) => (
   <MountingOpacityWrapper duration={1}>
     <Nav>
       <InnerWrapper>
