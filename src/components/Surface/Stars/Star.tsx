@@ -10,10 +10,15 @@ interface ElementProps {
   isVisible: boolean;
 }
 
-const Element = styled.div<ElementProps>`
+const Element = styled.div.attrs(
+  ({ topPosition, leftPosition }: ElementProps) => ({
+    style: {
+      top: `${topPosition}px`,
+      left: `${leftPosition}px`,
+    },
+  })
+)<ElementProps>`
   position: absolute;
-  top: ${({ topPosition }) => topPosition}px;
-  left: ${({ leftPosition }) => leftPosition}px;
   width: 2px;
   height: 2px;
   background-color: ${styles.colors.white};
@@ -30,7 +35,7 @@ interface Props {
 }
 
 export const Star = ({ windowWidth, windowHeight, isVisible }: Props) => {
-  const top = useMemo(() => random(0, windowHeight * 0.6 || 0), [windowHeight]);
+  const top = useMemo(() => random(0, windowHeight - 270 || 0), [windowHeight]);
 
   const left = useMemo(() => random(0, windowWidth || 0), [windowWidth]);
 

@@ -26,8 +26,11 @@ const styles = {
     textBasic: '1px 1px rgba(0, 0, 0, 0.3)',
   },
   fonts: {
-    standard: `'Nunito', sans-serif`,
+    // standard: `'Nunito', sans-serif`,
+    // font-family: 'Caveat Brush', cursive;
+    // font-family: 'Lato', sans-serif;
     uniq: `'Caveat Brush', cursive`,
+    standard: `'Lato', sans-serif`,
   },
   breakpoints,
 };

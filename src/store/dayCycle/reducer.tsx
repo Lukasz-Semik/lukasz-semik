@@ -1,11 +1,10 @@
 import type { AnyAction } from 'redux';
 
-import { SET_DAY_PERIOD, SET_TWEENING_DAY_PERIOD } from './actionTypes';
+import { SET_DAY_PERIOD, SET_IS_TWEENING } from './actionTypes';
 import { DayCycleState, DayPeriod, DayStateActionType } from './types';
 
 export const initialState: DayCycleState = {
   dayPeriod: DayPeriod.Day,
-  tweeningDayPeriod: undefined,
   isTweening: false,
 };
 
@@ -19,15 +18,13 @@ export default (
     case SET_DAY_PERIOD:
       return {
         ...state,
-        isTweening: false,
-        tweeningDayPeriod: undefined,
+        isTweening: true,
         dayPeriod: action.payload.dayPeriod,
       };
-    case SET_TWEENING_DAY_PERIOD:
+    case SET_IS_TWEENING:
       return {
         ...state,
-        isTweening: true,
-        tweeningDayPeriod: action.payload.dayPeriod,
+        isTweening: action.payload.isTweening,
       };
     default:
       return state;

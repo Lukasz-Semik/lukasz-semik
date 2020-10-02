@@ -1,4 +1,4 @@
-import { SET_DAY_PERIOD, SET_TWEENING_DAY_PERIOD } from './actionTypes';
+import { SET_DAY_PERIOD, SET_IS_TWEENING } from './actionTypes';
 import type { DayPeriod } from './types';
 
 export const setDayPeriod = (dayPeriod: DayPeriod) => ({
@@ -8,9 +8,9 @@ export const setDayPeriod = (dayPeriod: DayPeriod) => ({
   },
 });
 
-export const setTweeningDayPeriod = (dayPeriod: DayPeriod) => ({
-  type: SET_TWEENING_DAY_PERIOD,
+export const setIsTweening = (isTweening: boolean) => ({
+  type: SET_IS_TWEENING,
   payload: {
-    dayPeriod,
+    isTweening,
   },
 });

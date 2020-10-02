@@ -18,9 +18,29 @@
       }
     }
   },
+  "surface": {
+    "sections": {
+      "stack": {
+        "title": "Stack",
+        "commercialExp": "Commercial Experience",
+        "nonCommercialExp": "Non-commercial Experience"
+      },
+      "experience": {
+        "title": "Experience"
+      },
+      "about": {
+        "title": "About"
+      },
+      "main": {
+        "title": "Main"
+      }
+    }
+  },
   "shared": {
     "ok": "Ok",
     "back": "Back",
-    "loading": "Loading"
+    "loading": "Loading",
+    "other": "Other",
+    "tools": "Tools"
   }
 }

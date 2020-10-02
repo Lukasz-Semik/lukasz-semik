@@ -1,14 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import gsap from 'gsap';
 import { rgba } from 'polished';
 import styled from 'styled-components';
 
-import { setDayPeriod, setTweeningDayPeriod } from 'src/store/dayCycle/actions';
-import { useGetDayPeriod } from 'src/store/dayCycle/selectors';
+// TODO: used for tests
+// import { useRwdQuery } from 'src/hooks/useMediaQuery';
+import { setDayPeriod, setIsTweening } from 'src/store/dayCycle/actions';
 import { DayPeriod } from 'src/store/dayCycle/types';
 import { overlayPointerEvents } from 'src/styles/helpers';
 
+import { Navigation } from '../Navigation/Navigation';
 import { Stars } from '../Stars/Stars';
 
 const backgroundMap = {
@@ -18,98 +20,40 @@ const backgroundMap = {
   [DayPeriod.Night]: rgba('#000011', 0.9),
 };
 
-const Overlay = styled.div<{ period: DayPeriod }>`
+const Overlay = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
   ${overlayPointerEvents};
 `;
 
-const ButtonsWrapper = styled.div`
-  position: absolute;
-  top: 20px;
-  left: 100px;
-`;
-
-const getAnimationSequences = (
-  dayPeriod: DayPeriod,
-  futureDayPeriod: DayPeriod
-) => {
-  const dayCycleOrder = [
-    DayPeriod.Night,
-    DayPeriod.Morning,
-    DayPeriod.Day,
-    DayPeriod.Evening,
-  ];
-  const startIndex = dayCycleOrder.indexOf(dayPeriod);
-  const endIndex = dayCycleOrder.indexOf(futureDayPeriod);
-
-  const isNewDay = startIndex > endIndex;
-
-  if (!isNewDay) {
-    return dayCycleOrder.slice(startIndex + 1, endIndex + 1);
-  }
-
-  return startIndex < dayCycleOrder.length - 1
-    ? [
-        ...dayCycleOrder.slice(startIndex),
-        ...dayCycleOrder.slice(0, endIndex + 1),
-      ]
-    : dayCycleOrder.slice(0, endIndex + 1);
-};
-
 export const DayOverlay = () => {
   const ref = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
+  // const { isMediaSm } = useRwdQuery();
 
-  const dayPeriod = useGetDayPeriod();
-  const [futureDayPeriod, setFutureDayPeriod] = useState<DayPeriod>(dayPeriod);
-
-  const tl = gsap.timeline();
-
-  useEffect(() => {
-    if (ref.current && dayPeriod !== futureDayPeriod) {
-      const animationSequences = getAnimationSequences(
-        dayPeriod,
-        futureDayPeriod
-      );
-
-      animationSequences.forEach((item, i) => {
-        tl.to(ref.current, {
-          backgroundColor: backgroundMap[item],
-          duration: 1,
-          ease: 'linear',
-          onStart: () => {
-            dispatch(setTweeningDayPeriod(item));
-          },
-          onComplete: () => {
-            if (i === animationSequences.length - 1) {
-              dispatch(setDayPeriod(futureDayPeriod));
-            }
-          },
-        });
+  const setNextDayPeriod = useCallback(
+    (nextDayPeriod: DayPeriod) => {
+      gsap.to(ref.current, {
+        backgroundColor: backgroundMap[nextDayPeriod],
+        duration: 1,
+        ease: 'linear',
+        onStart: () => dispatch(setDayPeriod(nextDayPeriod)),
+        onComplete: () => dispatch(setIsTweening(false)),
       });
-    }
-  }, [futureDayPeriod, dayPeriod, dispatch, tl]);
+    },
+    [dispatch]
+  );
 
   return (
     <>
-      <Overlay ref={ref} period={dayPeriod} />
+      <Overlay ref={ref} />
 
       <Stars />
 
-      <ButtonsWrapper>
-        <button onClick={() => setFutureDayPeriod(DayPeriod.Day)}>Day</button>{' '}
-        <button onClick={() => setFutureDayPeriod(DayPeriod.Night)}>
-          Night
-        </button>{' '}
-        <button onClick={() => setFutureDayPeriod(DayPeriod.Evening)}>
-          Evening
-        </button>{' '}
-        <button onClick={() => setFutureDayPeriod(DayPeriod.Morning)}>
-          Morning
-        </button>{' '}
-      </ButtonsWrapper>
+      {/* {isMediaSm && <Navigation setNextDayPeriod={setNextDayPeriod} />} */}
+      {/* TODO: Remove it, for test */}
+      <Navigation setNextDayPeriod={setNextDayPeriod} />
     </>
   );
 };
