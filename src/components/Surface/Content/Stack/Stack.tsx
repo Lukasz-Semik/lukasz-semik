@@ -27,12 +27,12 @@ const Button = styled.button<{ isCurrent: boolean }>`
   text-align: center;
   color: ${({ isCurrent }) =>
     isCurrent ? styles.colors.white : rgba(170, 170, 170, 0.8)};
-  border-left: 1px solid rgba(170, 170, 170, 0.4);
+  border-left: 1px solid ${styles.colors.greyAlpha};
   border-radius: 3px;
   transition: color 0.5s ease;
 
   &:last-of-type {
-    border-right: 1px solid rgba(170, 170, 170, 0.4);
+    border-right: 1px solid ${styles.colors.greyAlpha};
   }
 
   &:hover,

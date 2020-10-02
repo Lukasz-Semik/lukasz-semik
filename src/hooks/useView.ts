@@ -5,6 +5,7 @@ import { setAppFutureView, setAppView } from 'src/store/view/actions';
 import {
   useGetAppFutureView,
   useGetIsViewMounted,
+  useGetIsViewSet,
 } from 'src/store/view/selectors';
 import { View } from 'src/store/view/types';
 
@@ -25,8 +26,9 @@ export const useView = () => {
   }, [dispatch, futureView]);
 
   const isUnderwaterViewMounted = useGetIsViewMounted(View.Underwater);
-
   const isSurfaceViewMounted = useGetIsViewMounted(View.Surface);
+  const isUnderwaterViewSet = useGetIsViewSet(View.Underwater);
+  const isSurfaceViewSet = useGetIsViewSet(View.Underwater);
 
   return {
     futureView,
@@ -35,5 +37,7 @@ export const useView = () => {
     setView,
     isUnderwaterViewMounted,
     isSurfaceViewMounted,
+    isUnderwaterViewSet,
+    isSurfaceViewSet,
   };
 };

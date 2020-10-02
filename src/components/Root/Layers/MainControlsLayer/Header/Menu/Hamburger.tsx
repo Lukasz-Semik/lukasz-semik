@@ -12,13 +12,19 @@ import styled, { css } from 'styled-components';
 import styles from 'src/styles';
 
 import { ColorProps, getTransition } from '../../helpers';
+import { MenuContent } from './MenuContent';
 
-const Wrapper = styled.button`
+const Wrapper = styled.div`
   position: relative;
   width: ${rem(35)};
   margin-right: ${rem(5)};
-  opacity: 0.8;
   pointer-events: all;
+`;
+
+const HamburgerWrapper = styled.button`
+  position: relative;
+  display: block;
+  width: 100%;
 `;
 
 const Line = styled.div<ColorProps>`
@@ -58,6 +64,7 @@ const XElement = styled.span<XelementProps>`
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 1;
   display: inline-block;
   text-shadow: ${styles.shadows.textBasic};
   font-family: ${styles.fonts.uniq};
@@ -71,6 +78,7 @@ const XElement = styled.span<XelementProps>`
   ${({ isVisible }) =>
     isVisible &&
     css`
+      color: ${styles.colors.white};
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
     `};
@@ -152,13 +160,17 @@ export const Hamburger = ({ mainColor }: ColorProps) => {
   }, [isMounted, showHamburger, hideHamburger, isActive]);
 
   return (
-    <Wrapper onClick={() => setIsActive(!isActive)}>
-      <Line1 ref={line1Ref} mainColor={mainColor} />
-      <Line2 ref={line2Ref} mainColor={mainColor} />
-      <Line3 ref={line3Ref} mainColor={mainColor} />
-      <XElement mainColor={mainColor} isVisible={isActive}>
-        X
-      </XElement>
+    <Wrapper>
+      <HamburgerWrapper onClick={() => setIsActive(!isActive)}>
+        <Line1 ref={line1Ref} mainColor={mainColor} />
+        <Line2 ref={line2Ref} mainColor={mainColor} />
+        <Line3 ref={line3Ref} mainColor={mainColor} />
+        <XElement mainColor={mainColor} isVisible={isActive}>
+          X
+        </XElement>
+      </HamburgerWrapper>
+
+      <MenuContent isVisible={isActive} closeMenu={() => setIsActive(false)} />
     </Wrapper>
   );
 };

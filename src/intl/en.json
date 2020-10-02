@@ -41,6 +41,10 @@
     "back": "Back",
     "loading": "Loading",
     "other": "Other",
-    "tools": "Tools"
+    "tools": "Tools",
+    "goDown": "Go down",
+    "goUp": "Go up",
+    "contact": "Contact",
+    "privacyPolicy": "Privacy policy"
   }
 }
