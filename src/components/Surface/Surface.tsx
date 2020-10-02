@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Island from 'src/assets/surface/island.svg';
-import { useView } from 'src/hooks/useView';
 import { useGetIsViewSet } from 'src/store/view/selectors';
 import { View } from 'src/store/view/types';
 import styles from 'src/styles';
@@ -45,12 +44,8 @@ const IslandWrapper = styled.div`
   }
 `;
 
-const TemporaryButton = styled.div`
-  position: absolute;
-`;
 export const Surface = () => {
   const isSurfaceSet = useGetIsViewSet(View.Surface);
-  const { goDown } = useView();
 
   return (
     <Wrapper>
@@ -68,8 +63,6 @@ export const Surface = () => {
           <Content />
         </>
       )}
-
-      <TemporaryButton onClick={goDown}>GoDown</TemporaryButton>
     </Wrapper>
   );
 };

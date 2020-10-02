@@ -17,7 +17,7 @@ const Button = styled.button`
   text-align: center;
   opacity: 0;
   color: rgba(170, 170, 170, 0.8);
-  border: 1px solid rgba(170, 170, 170, 0.4);
+  border: 1px solid ${styles.colors.greyAlpha};
   border-radius: 3px;
   transform: translateY(100%);
   transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
@@ -29,7 +29,6 @@ const Button = styled.button`
 
   &:hover {
     box-shadow: 2px 2px 15px rgba(84, 87, 255, 0.5);
-
     background-color: transparent;
   }
 `;

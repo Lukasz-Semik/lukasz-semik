@@ -1,4 +1,4 @@
-import { darken } from 'polished';
+import { darken, rgba } from 'polished';
 
 import { breakpoints } from './constants';
 
@@ -18,6 +18,7 @@ const styles = {
     goldLight: '#facc6b',
     goldDark: darken('0.1', '#ad7f00'),
     grey: 'grey',
+    greyAlpha: rgba(170, 170, 170, 0.4),
     black: '#000',
     white: '#fff',
     blue: '#5457ff',

@@ -1,12 +1,11 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import gsap from 'gsap';
 import { rgba } from 'polished';
 import styled from 'styled-components';
 
-// TODO: used for tests
-// import { useRwdQuery } from 'src/hooks/useMediaQuery';
 import { setDayPeriod, setIsTweening } from 'src/store/dayCycle/actions';
+import { useGetDayPeriod } from 'src/store/dayCycle/selectors';
 import { DayPeriod } from 'src/store/dayCycle/types';
 import { overlayPointerEvents } from 'src/styles/helpers';
 
@@ -30,20 +29,16 @@ const Overlay = styled.div`
 export const DayOverlay = () => {
   const ref = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
-  // const { isMediaSm } = useRwdQuery();
+  const dayPeriod = useGetDayPeriod();
 
-  const setNextDayPeriod = useCallback(
-    (nextDayPeriod: DayPeriod) => {
-      gsap.to(ref.current, {
-        backgroundColor: backgroundMap[nextDayPeriod],
-        duration: 1,
-        ease: 'linear',
-        onStart: () => dispatch(setDayPeriod(nextDayPeriod)),
-        onComplete: () => dispatch(setIsTweening(false)),
-      });
-    },
-    [dispatch]
-  );
+  useEffect(() => {
+    gsap.to(ref.current, {
+      backgroundColor: backgroundMap[dayPeriod],
+      duration: 1,
+      ease: 'linear',
+      onComplete: () => dispatch(setIsTweening(false)),
+    });
+  }, [dayPeriod, dispatch]);
 
   return (
     <>
@@ -51,9 +46,11 @@ export const DayOverlay = () => {
 
       <Stars />
 
-      {/* {isMediaSm && <Navigation setNextDayPeriod={setNextDayPeriod} />} */}
-      {/* TODO: Remove it, for test */}
-      <Navigation setNextDayPeriod={setNextDayPeriod} />
+      <Navigation
+        setNextDayPeriod={nextDayPeriod =>
+          dispatch(setDayPeriod(nextDayPeriod))
+        }
+      />
     </>
   );
 };
