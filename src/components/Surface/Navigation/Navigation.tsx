@@ -10,12 +10,13 @@ import { NavButton } from './NavButton';
 
 const Nav = styled.nav`
   position: absolute;
-  top: 0;
+  top: ${rem(10)};
   left: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: ${rem(15)};
+  width: 100%;
   transform: translateX(-50%);
 `;
 

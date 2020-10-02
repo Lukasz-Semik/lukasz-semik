@@ -3,6 +3,8 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 import { rem } from 'polished';
 import styled from 'styled-components';
 
+import { MountingOpacityWrapper } from 'src/components/Elements/MountingOpacityWrapper/MountingOpacityWrapper';
+
 import { SkillsList } from '../SkillsList/SkillsList';
 import { SkillsWrapper } from '../SkillsWrapper/SkillsWrapper';
 
@@ -12,7 +14,7 @@ const Title = styled.h3`
 `;
 
 export const Other = () => (
-  <>
+  <MountingOpacityWrapper duration={1}>
     <Title>
       <FormattedMessage id="shared.tools" />
     </Title>
@@ -40,5 +42,5 @@ export const Other = () => (
         ]}
       />
     </SkillsWrapper>
-  </>
+  </MountingOpacityWrapper>
 );

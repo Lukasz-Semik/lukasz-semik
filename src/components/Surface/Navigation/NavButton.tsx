@@ -9,9 +9,9 @@ import { breakpoints } from 'src/styles/constants';
 
 const Button = styled.button<{ hasGreyTheme: boolean; isMarked: boolean }>`
   position: relative;
-  margin-right: ${rem(20)};
+  margin-right: ${rem(5)};
   margin-bottom: ${rem(10)};
-  font-size: ${rem(14)};
+  font-size: ${rem(12)};
   font-family: ${styles.fonts.standard};
   text-transform: uppercase;
   color: ${({ hasGreyTheme }) =>
@@ -19,6 +19,7 @@ const Button = styled.button<{ hasGreyTheme: boolean; isMarked: boolean }>`
   transition: color 0.5s ease;
 
   @media ${breakpoints.smUp} {
+    margin-right: ${rem(20)};
     font-size: ${rem(18)};
   }
 
@@ -27,11 +28,15 @@ const Button = styled.button<{ hasGreyTheme: boolean; isMarked: boolean }>`
     position: absolute;
     display: block;
     width: 100%;
-    height: 3px;
+    height: 2px;
     background-color: ${({ hasGreyTheme }) =>
       hasGreyTheme ? styles.colors.grey : styles.colors.black};
     transform: ${({ isMarked }) => `scaleX(${isMarked ? 1 : 0})`};
     transition: transform 0.5s ease, background-color 0.5s ease;
+
+    @media ${breakpoints.smUp} {
+      height: 3px;
+    }
   }
 
   &:hover {

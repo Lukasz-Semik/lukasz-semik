@@ -37,6 +37,8 @@ const Title = styled.h3`
   font-size: ${rem(35)};
   text-transform: uppercase;
   text-align: center;
+  font-weight: 900;
+  letter-spacing: 1px;
   color: ${styles.colors.grey};
 
   @media ${breakpoints.smUp} {
