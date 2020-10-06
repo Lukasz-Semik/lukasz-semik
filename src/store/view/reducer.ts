@@ -4,8 +4,8 @@ import { SET_APP_FUTURE_VIEW, SET_APP_VIEW } from './actionTypes';
 import { View, ViewActionType, ViewState } from './types';
 
 export const initialState: ViewState = {
-  appView: View.Surface,
-  appFutureView: View.Surface,
+  appView: View.Underwater,
+  appFutureView: View.Underwater,
 };
 
 export default (state = initialState, incomingAction: AnyAction): ViewState => {
