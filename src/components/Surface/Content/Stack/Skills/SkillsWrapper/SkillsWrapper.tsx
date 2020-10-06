@@ -2,6 +2,8 @@ import React from 'react';
 import { rem } from 'polished';
 import styled from 'styled-components';
 
+import { MountingOpacityWrapper } from 'src/components/Elements/MountingOpacityWrapper/MountingOpacityWrapper';
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -14,5 +16,7 @@ interface Props {
 }
 
 export const SkillsWrapper = ({ children }: Props) => (
-  <Wrapper>{children}</Wrapper>
+  <MountingOpacityWrapper duration={1}>
+    <Wrapper>{children}</Wrapper>
+  </MountingOpacityWrapper>
 );

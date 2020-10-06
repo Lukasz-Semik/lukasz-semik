@@ -52,7 +52,7 @@ export const SkillsList = ({ skills, title }: Props) => {
   const itemsRef = useRef<HTMLLIElement[] | null[]>([]);
   const { currentChunkIndex, chunk, goNext, goPrevious } = usePagination<
     string
-  >(skills);
+  >(skills, 4);
 
   useEffect(() => {
     gsap.to(itemsRef.current, {

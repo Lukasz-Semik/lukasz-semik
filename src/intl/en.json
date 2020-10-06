@@ -22,8 +22,8 @@
     "sections": {
       "stack": {
         "title": "Stack",
-        "commercialExp": "Commercial Experience",
-        "nonCommercialExp": "Non-commercial Experience",
+        "commercialExp": "Commercial",
+        "nonCommercialExp": "Non-commercial",
         "other": "Other",
         "tools": "Tools",
         "services": "Services"

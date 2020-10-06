@@ -1,48 +1,86 @@
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import { rem } from 'polished';
-import React, { useEffect, useState } from 'react';
-import styles from 'src/styles';
 import styled from 'styled-components';
-import { TimelineItem } from '../TimelineItem/TimelineItem';
+
+import styles from 'src/styles';
+import { breakpoints } from 'src/styles/constants';
+import { MountingOpacityWrapper } from 'src/components/Elements/MountingOpacityWrapper/MountingOpacityWrapper';
+import {
+  PaginationButton,
+  PaginationButtonsWrapper,
+  usePagination,
+} from 'src/components/Elements/Pagination';
+
+interface Item {
+  title: string;
+  date: string;
+}
+
+const items: Item[] = [
+  {
+    title: 'Junior Frontend Developer',
+    date: 'Netguru (01/2018 - 03.2018)',
+  },
+  {
+    title: 'Frontend Developer',
+    date: 'Netguru (03/2018 - 07.2018)',
+  },
+  {
+    title: 'Frontend Developer & Frontend Team Leader',
+    date: 'Netguru (07/2018 - 08.2019)',
+  },
+  {
+    title: 'Frontend Developer & Frontend Senior Team Leader',
+    date: 'Netguru (08/2019 - 12.2019)',
+  },
+  {
+    title: 'Senior Frontend Developer & Frontend Senior Team Leader',
+    date: 'Netguru (12/2019 - now)',
+  },
+];
 
 const Wrapper = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  max-width: 95%;
-  width: ${rem(500)};
+  max-width: 100%;
+  height: ${rem(400)};
   list-style: none;
-  color: #aaa;
-`;
+  color: ${styles.colors.greyAlpha};
+  transform: translateY(${rem(-50)});
 
-const Item = styled.li`
-  position: relative;
-  padding: ${rem(20)} 0 ${rem(20)} ${rem(50)};
-  width: 100%;
-  font-size: ${rem(14)};
-  border-left: 1px solid #aaa;
-  transform: scaleY(${({ is }) => (is ? 1 : 0)});
-  transition: all 1s ease;
-  transform-origin: top left;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: ${styles.colors.goldDark};
-    transform: translate(-50%, -50%);
+  @media ${breakpoints.smUp} {
+    width: ${rem(500)};
+    transform: translateY(${rem(30)});
   }
 `;
 
+const Button = styled(PaginationButton)`
+  color: ${styles.colors.greyAlpha};
+`;
+
+const ListItem = styled.li`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: ${rem(40)};
+  width: 100%;
+  font-size: ${rem(14)};
+  opacity: 0;
+`;
+
 const Title = styled.h4`
-  margin-bottom: ${rem(5)};
+  margin-bottom: ${rem(10)};
+  padding: 0 ${rem(20)};
   text-align: center;
-  font-size: ${rem(30)};
+  font-size: ${rem(15)};
+
+  @media ${breakpoints.smUp} {
+    font-size: ${rem(30)};
+  }
 `;
 
 const Date = styled.p`
@@ -50,40 +88,41 @@ const Date = styled.p`
   text-align: center;
 `;
 
-const items = [
-  {
-    title: 'Junior Frontend Developer',
-    date: '(01/2017 - 03.2017)',
-  },
-  {
-    title: 'Junior Frontend Developer',
-    date: '(01/2017 - 03.2017)',
-  },
-  {
-    title: 'Junior Frontend Developer',
-    date: '(01/2017 - 03.2017)',
-  },
-  {
-    title: 'Junior Frontend Developer',
-    date: '(01/2017 - 03.2017)',
-  },
-  {
-    title: 'Junior Frontend Developer',
-    date: '(01/2017 - 03.2017)',
-  },
-];
-
 export const Dev = () => {
-  const [is, setIs] = useState(false);
+  const { currentChunkIndex, chunk, goNext, goPrevious } = usePagination<Item>(
+    items,
+    3
+  );
+  const itemsRef = useRef<HTMLLIElement[] | null[]>([]);
+
   useEffect(() => {
-    setTimeout(() => setIs(true), 1);
-  }, []);
+    gsap.to(itemsRef.current, {
+      opacity: 1,
+      duration: 1,
+      stagger: 0.05,
+      ease: 'ease-in',
+    });
+  }, [currentChunkIndex]);
 
   return (
-    <Wrapper>
-      {items.map((item, i) => (
-        <TimelineItem key={i} item={item} />
-      ))}
-    </Wrapper>
+    <MountingOpacityWrapper duration={1}>
+      <Wrapper>
+        {chunk.map((item, index) => (
+          <ListItem
+            key={item.title}
+            ref={element => (itemsRef.current[index] = element)}
+          >
+            <Title>{item.title}</Title>
+            <Date>{item.date}</Date>
+          </ListItem>
+        ))}
+
+        <PaginationButtonsWrapper>
+          <Button onClick={goPrevious}>{'<'}</Button>
+
+          <Button onClick={goNext}>{'>'}</Button>
+        </PaginationButtonsWrapper>
+      </Wrapper>
+    </MountingOpacityWrapper>
   );
 };

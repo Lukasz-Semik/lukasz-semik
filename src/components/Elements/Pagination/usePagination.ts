@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
 import { chunk } from 'lodash';
 
-export function usePagination<T>(items: T[]) {
-  const chunks = chunk(items, 4);
+export function usePagination<T>(items: T[], maxItems: number) {
+  const chunks = chunk(items, maxItems);
   const maxChunkIndex = chunks.length - 1;
   const [currentChunkIndex, setCurrentChunkIndex] = useState(0);
 

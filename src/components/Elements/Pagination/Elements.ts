@@ -32,7 +32,8 @@ export const PaginationButton = styled.button`
     font-size: ${rem(50)};
   }
 
-  &:hover {
-    color: ${styles.colors.greyAlpha};
+  &:hover,
+  &:focus {
+    color: ${styles.colors.white};
   }
 `;
