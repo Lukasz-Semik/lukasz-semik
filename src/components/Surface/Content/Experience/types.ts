@@ -3,3 +3,8 @@ export enum Timeline {
   Dev = 'dev',
   Trainings = 'trainings',
 }
+
+export interface TimelineItem {
+  title: string;
+  date?: string;
+}

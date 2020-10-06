@@ -8,8 +8,8 @@ import {
   SubNavButtonsWrapper,
 } from '../../SubNavigation/SubNavigation';
 import { ContentHandler } from '../ContentHandler/ContentHandler';
-import { Timeline } from './types';
 import { Timelines } from './Timelines/Timelines';
+import { Timeline } from './types';
 
 const Wrapper = styled.div`
   position: absolute;
