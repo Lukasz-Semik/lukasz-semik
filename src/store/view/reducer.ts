@@ -22,7 +22,6 @@ export default (state = initialState, incomingAction: AnyAction): ViewState => {
         ...state,
         appFutureView: action.payload.appView,
       };
-
     default:
       return state;
   }

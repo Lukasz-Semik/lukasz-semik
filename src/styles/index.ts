@@ -18,7 +18,7 @@ const styles = {
     goldLight: '#facc6b',
     goldDark: darken('0.1', '#ad7f00'),
     grey: 'grey',
-    greyAlpha: rgba(170, 170, 170, 0.4),
+    greyAlpha: rgba(170, 170, 170, 0.8),
     black: '#000',
     white: '#fff',
     blue: '#5457ff',
@@ -27,9 +27,6 @@ const styles = {
     textBasic: '1px 1px rgba(0, 0, 0, 0.3)',
   },
   fonts: {
-    // standard: `'Nunito', sans-serif`,
-    // font-family: 'Caveat Brush', cursive;
-    // font-family: 'Lato', sans-serif;
     uniq: `'Caveat Brush', cursive`,
     standard: `'Lato', sans-serif`,
   },
