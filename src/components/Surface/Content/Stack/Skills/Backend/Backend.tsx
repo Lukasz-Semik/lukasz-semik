@@ -14,13 +14,11 @@ export const Backend = () => (
         skills={[
           'Ruby on Rails',
           'Grape',
-          'Devise',
           'Capybara',
           'Carrierwave',
           'Active Admin',
           'JsonApi',
           'Postgres',
-          'Sendgrid (current Twilio)',
         ]}
       />
 

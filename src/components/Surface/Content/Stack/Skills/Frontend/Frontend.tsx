@@ -35,10 +35,7 @@ export const Frontend = () => (
           'Graphql',
           'Gatsby',
           'jQuery',
-          'Firebase',
-          'Heroku',
-          'Contentful',
-          'Netlify',
+          'SASS/SCSS',
         ]}
       />
     </SkillsWrapper>

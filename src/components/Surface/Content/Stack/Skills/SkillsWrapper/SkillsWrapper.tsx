@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  width: ${rem(600)};
+  width: ${rem(900)};
   max-width: 95vw;
 `;
 

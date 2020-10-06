@@ -4,20 +4,24 @@ import { rem } from 'polished';
 import styled from 'styled-components';
 
 import { DayPeriod } from 'src/store/dayCycle/types';
+import { breakpoints } from 'src/styles/constants';
 import { MountingOpacityWrapper } from 'src/components/Elements/MountingOpacityWrapper/MountingOpacityWrapper';
 
 import { NavButton } from './NavButton';
 
 const Nav = styled.nav`
   position: absolute;
-  top: ${rem(10)};
+  top: ${rem(25)};
   left: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: ${rem(15)};
   width: 100%;
   transform: translateX(-50%);
+
+  @media ${breakpoints.smUp} {
+    top: ${rem(20)};
+  }
 `;
 
 const InnerWrapper = styled.div`

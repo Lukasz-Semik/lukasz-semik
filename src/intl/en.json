@@ -23,10 +23,14 @@
       "stack": {
         "title": "Stack",
         "commercialExp": "Commercial Experience",
-        "nonCommercialExp": "Non-commercial Experience"
+        "nonCommercialExp": "Non-commercial Experience",
+        "other": "Other",
+        "tools": "Tools",
+        "services": "Services"
       },
       "experience": {
-        "title": "Experience"
+        "title": "Experience",
+        "trainings": "Trainings"
       },
       "about": {
         "title": "About"
@@ -40,8 +44,6 @@
     "ok": "Ok",
     "back": "Back",
     "loading": "Loading",
-    "other": "Other",
-    "tools": "Tools",
     "goDown": "Go down",
     "goUp": "Go up",
     "contact": "Contact",
