@@ -4,7 +4,7 @@ import { SET_DAY_PERIOD, SET_IS_TWEENING } from './actionTypes';
 import { DayCycleState, DayPeriod, DayStateActionType } from './types';
 
 export const initialState: DayCycleState = {
-  dayPeriod: DayPeriod.Morning,
+  dayPeriod: DayPeriod.Day,
   isTweening: false,
 };
 

@@ -33,7 +33,7 @@ const InnerWrapper = styled.div`
 const Text = styled.p`
   margin-bottom: ${rem(5)};
   text-indent: 2em;
-  font-size: ${rem(12)};
+  font-size: ${rem(14)};
 
   @media ${breakpoints.smUp} {
     font-size: ${rem(16)};
