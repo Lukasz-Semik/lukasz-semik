@@ -1,21 +1,12 @@
 import React from 'react';
 import { rem } from 'polished';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 import styles from 'src/styles';
 import { breakpoints } from 'src/styles/constants';
 import { styleOverlay } from 'src/styles/helpers';
+import { AnimatedLine } from 'src/components/Elements/AnimatedLine/AnimatedLine';
 import { MountingOpacityWrapper } from 'src/components/Elements/MountingOpacityWrapper/MountingOpacityWrapper';
-
-const lineAnimation = keyframes`
-  0% {
-    transform: scaleX(0);
-  }
-
-  100% {
-    transform: scaleX(1);
-  }
-`;
 
 const Wrapper = styled.div`
   ${styleOverlay};
@@ -57,23 +48,6 @@ const Description = styled.h2`
   }
 `;
 
-const Line = styled.div`
-  width: ${rem(40)};
-  height: ${rem(2)};
-  margin: ${rem(20)} auto ${rem(25)} auto;
-  background-color: ${styles.colors.grey};
-  animation: ${lineAnimation} 0.5s ease forwards;
-  animation-delay: 1s;
-  transform: scaleX(0);
-
-  @media ${breakpoints.smUp} {
-    width: ${rem(60)};
-    height: ${rem(3)};
-    margin: ${rem(20)} auto ${rem(25)} auto;
-    font-size: ${rem(15)};
-  }
-`;
-
 export const Main = () => {
   return (
     <MountingOpacityWrapper duration={1}>
@@ -81,7 +55,7 @@ export const Main = () => {
         <InnerWrapper>
           <Title>Łukasz Semik</Title>
 
-          <Line />
+          <AnimatedLine />
 
           <Description>Software Engineer</Description>
         </InnerWrapper>

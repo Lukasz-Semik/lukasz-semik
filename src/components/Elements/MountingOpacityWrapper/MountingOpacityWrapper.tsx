@@ -11,18 +11,26 @@ const opacityAnimation = keyframes`
   }
 `;
 
-const Wrapper = styled.div<{ duration: number }>`
+const Wrapper = styled.div<{ duration: number; delay: number }>`
   opacity: 0;
   ${({ duration }) => css`
     animation: ${opacityAnimation} ${duration}s ease forwards;
   `};
+  animation-delay: ${({ delay }) => `${delay}s`};
 `;
 
 interface Props {
   duration?: number;
+  delay?: number;
   children: React.ReactNode;
 }
 
-export const MountingOpacityWrapper = ({ duration = 0.5, children }: Props) => (
-  <Wrapper duration={duration}>{children}</Wrapper>
+export const MountingOpacityWrapper = ({
+  duration = 0.5,
+  delay = 0,
+  children,
+}: Props) => (
+  <Wrapper delay={delay} duration={duration}>
+    {children}
+  </Wrapper>
 );

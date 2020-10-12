@@ -20,7 +20,7 @@ const Nav = styled.nav`
   transform: translateX(-50%);
 
   @media ${breakpoints.smUp} {
-    top: ${rem(20)};
+    top: ${rem(23)};
   }
 `;
 
