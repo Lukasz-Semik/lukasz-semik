@@ -16,7 +16,12 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  pointer-events: none;
   transform: translateX(-50%);
+
+  * {
+    pointer-events: none;
+  }
 
   @media ${breakpoints.smUp} {
     top: ${rem(150)};
@@ -33,7 +38,7 @@ const InnerWrapper = styled.div`
 const Text = styled.p`
   margin-bottom: ${rem(5)};
   text-indent: 2em;
-  font-size: ${rem(14)};
+  font-size: ${rem(13)};
 
   @media ${breakpoints.smUp} {
     font-size: ${rem(16)};
