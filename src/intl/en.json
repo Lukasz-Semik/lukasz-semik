@@ -33,7 +33,9 @@
         "trainings": "Trainings"
       },
       "about": {
-        "title": "About"
+        "title": "About",
+        "section1": "Hi, Łukasz here. Just a few words about me. I am a fullstack web developer, project leader and team leader. Apart from my stack, I have experience in working as an expert for future clients, making recruitments, developing the frontend department and its processes.",
+        "section2": "Privately, I am a husband and father of one. Me, my family and our dog love to travel by camper (especially to do windsurfing, wakeboarding or just go for a walk in the mountains). Music (listening to, but also creating with my wife) is also a huge part of my life."
       },
       "main": {
         "title": "Main"

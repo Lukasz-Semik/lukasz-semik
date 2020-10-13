@@ -13,7 +13,7 @@ const Button = styled.button<{ hasGreyTheme: boolean; isMarked: boolean }>`
   margin-bottom: ${rem(10)};
   font-size: ${rem(12)};
   font-family: ${styles.fonts.standard};
-  font-weight: 900;
+  font-weight: 700;
   text-transform: uppercase;
   color: ${({ hasGreyTheme }) =>
     hasGreyTheme ? styles.colors.grey : styles.colors.black};
@@ -21,7 +21,7 @@ const Button = styled.button<{ hasGreyTheme: boolean; isMarked: boolean }>`
 
   @media ${breakpoints.smUp} {
     margin-right: ${rem(20)};
-    font-size: ${rem(30)};
+    font-size: ${rem(25)};
   }
 
   &::after {
