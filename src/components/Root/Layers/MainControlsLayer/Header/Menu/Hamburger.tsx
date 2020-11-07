@@ -12,6 +12,7 @@ import styled, { css } from 'styled-components';
 import styles from 'src/styles';
 
 import { ColorProps, getTransition } from '../../helpers';
+import { Contact } from '../Contact/Contact';
 import { MenuContent } from './MenuContent';
 
 const Wrapper = styled.div`
@@ -23,6 +24,7 @@ const Wrapper = styled.div`
 
 const HamburgerWrapper = styled.button`
   position: relative;
+  z-index: 2;
   display: block;
   width: 100%;
 `;
@@ -64,7 +66,7 @@ const XElement = styled.span<XelementProps>`
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 1;
+  z-index: 3;
   display: inline-block;
   text-shadow: ${styles.shadows.textBasic};
   font-family: ${styles.fonts.uniq};
@@ -87,6 +89,7 @@ const XElement = styled.span<XelementProps>`
 export const Hamburger = ({ mainColor }: ColorProps) => {
   const [isActive, setIsActive] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isContactVisible, setIsContactVisilbe] = useState(false);
   const line1Ref = useRef<HTMLDivElement>(null);
   const line2Ref = useRef<HTMLDivElement>(null);
   const line3Ref = useRef<HTMLDivElement>(null);
@@ -159,18 +162,28 @@ export const Hamburger = ({ mainColor }: ColorProps) => {
     }
   }, [isMounted, showHamburger, hideHamburger, isActive]);
 
-  return (
-    <Wrapper>
-      <HamburgerWrapper onClick={() => setIsActive(!isActive)}>
-        <Line1 ref={line1Ref} mainColor={mainColor} />
-        <Line2 ref={line2Ref} mainColor={mainColor} />
-        <Line3 ref={line3Ref} mainColor={mainColor} />
-        <XElement mainColor={mainColor} isVisible={isActive}>
-          X
-        </XElement>
-      </HamburgerWrapper>
+  const currentColor = isContactVisible ? styles.colors.white : mainColor;
 
-      <MenuContent isVisible={isActive} closeMenu={() => setIsActive(false)} />
-    </Wrapper>
+  return (
+    <>
+      <Wrapper>
+        <HamburgerWrapper onClick={() => setIsActive(!isActive)}>
+          <Line1 ref={line1Ref} mainColor={currentColor} />
+          <Line2 ref={line2Ref} mainColor={currentColor} />
+          <Line3 ref={line3Ref} mainColor={currentColor} />
+          <XElement mainColor={currentColor} isVisible={isActive}>
+            X
+          </XElement>
+        </HamburgerWrapper>
+
+        <MenuContent
+          isVisible={isActive}
+          closeMenu={() => setIsActive(false)}
+          toggleContact={() => setIsContactVisilbe(val => !val)}
+        />
+      </Wrapper>
+
+      <Contact isVisible={isContactVisible} />
+    </>
   );
 };

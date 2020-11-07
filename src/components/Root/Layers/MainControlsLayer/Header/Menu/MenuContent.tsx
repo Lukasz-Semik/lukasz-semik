@@ -15,6 +15,7 @@ const Menu = styled.div<{ isVisible: boolean }>`
   position: absolute;
   top: ${rem(-8)};
   right: 0;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,9 +47,10 @@ const Button = styled.button`
 interface Props {
   isVisible: boolean;
   closeMenu: () => void;
+  toggleContact: () => void;
 }
 
-export const MenuContent = ({ isVisible, closeMenu }: Props) => {
+export const MenuContent = ({ isVisible, closeMenu, toggleContact }: Props) => {
   const { goDown, goUp, isUnderwaterViewSet } = useView();
   const dispatch = useDispatch();
   const dayPeriod = useGetDayPeriod();
@@ -87,7 +89,7 @@ export const MenuContent = ({ isVisible, closeMenu }: Props) => {
         </Button>
       )}
 
-      <Button>
+      <Button onClick={toggleContact}>
         <FormattedMessage id="shared.contact" />
       </Button>
 
