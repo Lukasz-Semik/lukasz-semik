@@ -13,6 +13,7 @@ import styles from 'src/styles';
 
 import { ColorProps, getTransition } from '../../helpers';
 import { Contact } from '../Contact/Contact';
+import { PrivacyPolicy } from '../PrivacyPolicy/PrivacyPolicy';
 import { MenuContent } from './MenuContent';
 
 const Wrapper = styled.div`
@@ -90,6 +91,7 @@ export const Hamburger = ({ mainColor }: ColorProps) => {
   const [isActive, setIsActive] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isContactVisible, setIsContactVisilbe] = useState(false);
+  const [isPolicyVisible, setIsPolicyVisible] = useState(false);
   const line1Ref = useRef<HTMLDivElement>(null);
   const line2Ref = useRef<HTMLDivElement>(null);
   const line3Ref = useRef<HTMLDivElement>(null);
@@ -179,11 +181,28 @@ export const Hamburger = ({ mainColor }: ColorProps) => {
         <MenuContent
           isVisible={isActive}
           closeMenu={() => setIsActive(false)}
-          toggleContact={() => setIsContactVisilbe(val => !val)}
+          toggleContact={() => {
+            setIsActive(false);
+            setIsPolicyVisible(false);
+            setIsContactVisilbe(val => !val);
+          }}
+          togglePolicy={() => {
+            setIsActive(false);
+            setIsContactVisilbe(false);
+            setIsPolicyVisible(val => !val);
+          }}
         />
       </Wrapper>
 
-      <Contact isVisible={isContactVisible} />
+      <Contact
+        closeContact={() => setIsContactVisilbe(false)}
+        isVisible={isContactVisible}
+      />
+
+      <PrivacyPolicy
+        closePolicy={() => setIsPolicyVisible(false)}
+        isVisible={isPolicyVisible}
+      />
     </>
   );
 };

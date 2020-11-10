@@ -48,9 +48,15 @@ interface Props {
   isVisible: boolean;
   closeMenu: () => void;
   toggleContact: () => void;
+  togglePolicy: () => void;
 }
 
-export const MenuContent = ({ isVisible, closeMenu, toggleContact }: Props) => {
+export const MenuContent = ({
+  isVisible,
+  closeMenu,
+  toggleContact,
+  togglePolicy,
+}: Props) => {
   const { goDown, goUp, isUnderwaterViewSet } = useView();
   const dispatch = useDispatch();
   const dayPeriod = useGetDayPeriod();
@@ -93,7 +99,7 @@ export const MenuContent = ({ isVisible, closeMenu, toggleContact }: Props) => {
         <FormattedMessage id="shared.contact" />
       </Button>
 
-      <Button>
+      <Button onClick={togglePolicy}>
         <FormattedMessage id="shared.privacyPolicy" />
       </Button>
     </Menu>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { rem, size } from 'polished';
 import styled from 'styled-components';
@@ -37,10 +37,10 @@ interface Props {
 
 export const LinkIcon = ({ children, index, href }: Props) => {
   const ref = useRef<HTMLAnchorElement>(null);
-  const mountingTl = useMemo(() => gsap.timeline(), []);
-  const mountedTl = useMemo(() => gsap.timeline({ repeat: -1 }), []);
 
   const animateMountedItem = useCallback(() => {
+    const mountedTl = gsap.timeline({ repeat: -1 });
+
     mountedTl
       .to(ref.current, {
         y: -10,
@@ -51,9 +51,10 @@ export const LinkIcon = ({ children, index, href }: Props) => {
         y: 0,
         duration: 0.8,
       });
-  }, [mountedTl]);
+  }, []);
 
   useEffect(() => {
+    const mountingTl = gsap.timeline();
     if (ref.current) {
       mountingTl
         .to(ref.current, {
@@ -68,7 +69,7 @@ export const LinkIcon = ({ children, index, href }: Props) => {
           onComplete: animateMountedItem,
         });
     }
-  }, [animateMountedItem, mountingTl, index]);
+  }, [animateMountedItem, index]);
 
   return (
     <LinkStyled

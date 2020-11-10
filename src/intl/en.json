@@ -49,6 +49,9 @@
     "goDown": "Go down",
     "goUp": "Go up",
     "contact": "Contact",
-    "privacyPolicy": "Privacy policy"
+    "privacyPolicy": "Privacy policy",
+    "cancel": "Cancel",
+    "emailLabel": "Your e-mail",
+    "send": "Send"
   }
 }
