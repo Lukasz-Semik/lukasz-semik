@@ -52,6 +52,7 @@
     "privacyPolicy": "Privacy policy",
     "cancel": "Cancel",
     "emailLabel": "Your e-mail",
-    "send": "Send"
+    "send": "Send",
+    "content": "Content"
   }
 }
