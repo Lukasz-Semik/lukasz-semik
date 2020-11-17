@@ -2,15 +2,16 @@ class Health {
   public startingPoints = 100;
 
   public dropSubstractions = {
-    easy: -1,
+    easy: -3,
+    hard: -10,
   };
 
   public obstacleSubstractions = {
-    easy: -5,
+    easy: -10,
   };
 
   public heartAddings = {
-    easy: 10,
+    easy: 30,
   };
 
   public heartAdderVisibilityLevel = this.startingPoints * 0.9;

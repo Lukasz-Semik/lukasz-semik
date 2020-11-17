@@ -11,6 +11,8 @@
       "start": "Start",
       "backToIntro": "Back to intro",
       "resume": "Resume",
+      "score": "Your score: {value}",
+      "ranking": "Rank: {value}",
       "windowResized": {
         "title": "Window has been resized",
         "descriptionGame": "Your window has been resized. If you want to play, game has to be restarted.",

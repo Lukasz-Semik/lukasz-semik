@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { times } from 'lodash';
 
 import { gameParameters } from 'src/constants/game';
+import { useRwdQuery } from 'src/hooks/useMediaQuery';
 import { addScore, changeHealthPoints } from 'src/store/underwater/actions';
 import {
   useGetHealthPoints,
@@ -19,18 +20,23 @@ export const GameScene = () => {
   const dispatch = useDispatch();
   const isGamePaused = useGetIsGamePaused();
   const healthPoints = useGetHealthPoints();
+  const { isMediaMd } = useRwdQuery();
 
   const onSwimEnd = useCallback(
     (isClicked?: boolean) => {
       if (!isClicked) {
         setTimeout(() => {
           dispatch(
-            changeHealthPoints(gameParameters.health.dropSubstractions.easy)
+            changeHealthPoints(
+              isMediaMd
+                ? gameParameters.health.dropSubstractions.easy
+                : gameParameters.health.dropSubstractions.hard
+            )
           );
         }, 0);
       }
     },
-    [dispatch]
+    [dispatch, isMediaMd]
   );
 
   const onHealthClick = useCallback(() => {
@@ -77,19 +83,15 @@ export const GameScene = () => {
             {healthPoints <=
               gameParameters.health.heartAdderVisibilityLevel && (
               <>
-                <HealthPointAdder
-                  windowWidth={windowWidth}
-                  windowHeight={windowHeight}
-                  isGamePaused={isGamePaused}
-                  onClick={onHealthClick}
-                />
-
-                <HealthPointAdder
-                  windowWidth={windowWidth}
-                  windowHeight={windowHeight}
-                  isGamePaused={isGamePaused}
-                  onClick={onHealthClick}
-                />
+                {times(4, index => (
+                  <HealthPointAdder
+                    key={`health-point-adder-${index}`}
+                    windowWidth={windowWidth}
+                    windowHeight={windowHeight}
+                    isGamePaused={isGamePaused}
+                    onClick={onHealthClick}
+                  />
+                ))}
               </>
             )}
 
