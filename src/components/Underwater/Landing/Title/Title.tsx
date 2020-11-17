@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useIntl } from 'gatsby-plugin-intl';
 import { rem } from 'polished';
 import styled from 'styled-components';
@@ -48,6 +48,7 @@ const WavingTitle = styled.h2`
 `;
 
 export const Title = () => {
+  const [isDelayed, setIsDelayed] = useState(false);
   const intl = useIntl();
   const { goUp } = useView();
 
@@ -69,7 +70,11 @@ export const Title = () => {
     return preparedLetters;
   }, [intl]);
 
-  return (
+  useEffect(() => {
+    setTimeout(setIsDelayed(true));
+  }, []);
+
+  return isDelayed ? (
     <Wrapper>
       <WavingTitle>
         {text.map((letter, i) => (
@@ -79,5 +84,5 @@ export const Title = () => {
 
       <GoUpButton onViewGoUp={goUp} />
     </Wrapper>
-  );
+  ) : null;
 };

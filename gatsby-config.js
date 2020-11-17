@@ -11,16 +11,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Caveat+Brush`,
-          },
-        ],
-      },
-    },
-    {
       resolve: 'gatsby-plugin-intl',
       options: {
         path: `${__dirname}/src/intl`,
