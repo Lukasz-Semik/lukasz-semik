@@ -13,6 +13,7 @@ const ContactOverlay = styled.div<{ isVisible: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: scroll;
   width: 100vw;
   height: 100vh;
   background-color: ${styles.colors.black};

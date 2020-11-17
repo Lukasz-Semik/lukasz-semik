@@ -6,12 +6,13 @@ import styled from 'styled-components';
 import styles from 'src/styles';
 import { PaperModal } from 'src/components/Modals';
 
+import { Summary } from './Summary/Summary';
+
 const Text = styled.p`
   margin: ${rem(10)} 0;
   text-align: center;
   color: ${styles.colors.hpRed};
 `;
-
 interface Props {
   restartGame: () => void;
   resumeGame: () => void;
@@ -39,7 +40,10 @@ export const PauseModal = ({
   isGameOver,
   isWindowResized,
 }: Props) => (
-  <PaperModal onClose={resumeGame} isCloseButtonHidden={isWindowResized}>
+  <PaperModal
+    onClose={resumeGame}
+    isCloseButtonHidden={isWindowResized || isGameOver}
+  >
     <PaperModal.Title>
       <FormattedMessage id={getModalTitle(isGameOver, isWindowResized)} />
     </PaperModal.Title>
@@ -57,6 +61,8 @@ export const PauseModal = ({
     <PaperModal.ButtonItem onClick={backToIntro}>
       <FormattedMessage id="underwater.game.backToIntro" />
     </PaperModal.ButtonItem>
+
+    {isGameOver && <Summary />}
 
     {isWindowResized && (
       <Text>
