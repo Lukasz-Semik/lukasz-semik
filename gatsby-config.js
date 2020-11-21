@@ -10,7 +10,7 @@ module.exports = {
         name: `Łukasz Semik`,
         short_name: `Łukasz Semik`,
         start_url: `/`,
-        background_color: `#58f1ff`,
+        background_color: `#0ed2f7`,
         theme_color: `#000`,
         display: `standalone`,
         icon: 'src/assets/drop-ico.png',

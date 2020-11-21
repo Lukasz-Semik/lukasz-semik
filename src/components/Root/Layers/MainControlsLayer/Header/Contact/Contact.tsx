@@ -6,10 +6,13 @@ import { appContent } from 'src/constants/content';
 import styles from 'src/styles';
 import { breakpoints } from 'src/styles/constants';
 
+import { CloseButton } from '../CloseButton/CloseButton';
+
 const ContactOverlay = styled.div<{ isVisible: boolean }>`
   position: absolute;
   right: 0;
   top: -${rem(15)};
+  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,6 +27,7 @@ const ContactOverlay = styled.div<{ isVisible: boolean }>`
 `;
 
 const Form = styled.form<{ isVisible: boolean }>`
+  width: 80%;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   color: ${styles.colors.white};
   transition: transform 1s ease, opacity 1s ease;
@@ -43,11 +47,15 @@ const Input = styled.input`
   display: block;
   width: 100%;
   font-family: ${styles.fonts.standard};
-  font-size: ${rem(20)};
+  font-size: ${rem(14)};
   background-color: transparent;
   border: none;
   color: ${styles.colors.grey};
   outline: none;
+
+  @media ${breakpoints.smUp} {
+    font-size: ${rem(20)};
+  }
 `;
 
 const InputLineBase = styled.div`
@@ -69,24 +77,33 @@ const InputLineColored = styled.div<{ isVisible: boolean }>`
 `;
 
 const Label = styled.label<{ isFocused: boolean }>`
-  font-size: ${rem(30)};
+  font-size: ${rem(18)};
   color: ${({ isFocused }) =>
     isFocused ? styles.colors.goldLight : styles.colors.grey};
   transition: color 0.5s ease;
+
+  @media ${breakpoints.smUp} {
+    font-size: ${rem(30)};
+  }
 `;
 
 const Textarea = styled.textarea`
   width: 100%;
-  height: ${rem(350)};
+  height: ${rem(250)};
   margin: ${rem(10)} 0 ${rem(30)};
   padding: ${rem(5)};
   font-family: ${styles.fonts.standard};
-  font-size: ${rem(20)};
+  font-size: ${rem(14)};
   background-color: transparent;
   color: ${styles.colors.grey};
   border: 1px solid ${styles.colors.grey};
   outline: none;
   transition: border-color 0.5s ease;
+
+  @media ${breakpoints.smUp} {
+    height: ${rem(350)};
+    font-size: ${rem(20)};
+  }
 
   &:focus {
     border-color: ${styles.colors.goldDark};
@@ -101,14 +118,20 @@ const ButtonsWrapper = styled.div`
 `;
 
 const Button = styled.button`
-  width: ${rem(200)};
-  height: ${rem(40)};
+  width: ${rem(150)};
+  height: ${rem(30)};
   margin: 0 auto ${rem(10)} auto;
-  font-size: ${rem(20)};
+  font-size: ${rem(16)};
   border-radius: ${rem(20)};
   background-color: ${styles.colors.hpGreen};
   color: ${styles.colors.black};
   transition: color 0.5s ease, background-color 0.5s ease;
+
+  @media ${breakpoints.smUp} {
+    width: ${rem(200)};
+    height: ${rem(40)};
+    font-size: ${rem(20)};
+  }
 
   &:focus,
   &:hover {
@@ -118,9 +141,13 @@ const Button = styled.button`
 `;
 
 const CancelButton = styled.button`
-  font-size: ${rem(20)};
+  font-size: ${rem(16)};
   color: ${styles.colors.grey};
   transition: color 0.5s ease;
+
+  @media ${breakpoints.smUp} {
+    font-size: ${rem(20)};
+  }
 
   &:hover,
   &:focus {
@@ -142,6 +169,7 @@ export const Contact = ({ isVisible, closeContact }: Props) => {
   return (
     <ContactOverlay isVisible={isVisible}>
       <Form isVisible={isVisible} noValidate>
+        <CloseButton onClick={closeContact} />
         <InputWrapper>
           <Label htmlFor="#email" isFocused={isInputFocused}>
             {appContent.shared.emailLabel()}
