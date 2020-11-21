@@ -1,8 +1,8 @@
 import React from 'react';
-import { FormattedMessage } from 'gatsby-plugin-intl';
 import { rem, size } from 'polished';
 import styled, { keyframes } from 'styled-components';
 
+import { appContent } from 'src/constants/content';
 import styles from 'src/styles';
 
 const sizeAnimation = keyframes`
@@ -74,10 +74,6 @@ export const LoaderElement = ({
       <Circle circleSize={circleSize} />
       <Circle circleSize={circleSize} />
 
-      {hasText && (
-        <Text>
-          <FormattedMessage id="shared.loading" />
-        </Text>
-      )}
+      {hasText && <Text>{appContent.shared.loading()}</Text>}
     </Wrapper>
   ) : null;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { FormattedMessage } from 'gatsby-plugin-intl';
 
+import { appContent } from 'src/constants/content';
 import {
   setUnderwaterGame,
   setUnderwaterIntro,
@@ -17,16 +17,14 @@ export const Starter = () => {
 
   return (
     <PaperModal onClose={backToIntro}>
-      <PaperModal.Title>
-        <FormattedMessage id="underwater.game.new" />
-      </PaperModal.Title>
+      <PaperModal.Title>{appContent.underwater.game.new()}</PaperModal.Title>
 
       <PaperModal.ButtonItem onClick={() => dispatch(setUnderwaterGame())}>
-        <FormattedMessage id="underwater.game.start" />
+        {appContent.underwater.game.start()}
       </PaperModal.ButtonItem>
 
       <PaperModal.ButtonItem onClick={backToIntro}>
-        <FormattedMessage id="shared.back" />
+        {appContent.shared.back()}
       </PaperModal.ButtonItem>
     </PaperModal>
   );

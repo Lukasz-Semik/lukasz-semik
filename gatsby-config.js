@@ -11,14 +11,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-intl',
-      options: {
-        path: `${__dirname}/src/intl`,
-        languages: ['en'],
-        defaultLanguage: 'en',
-      },
-    },
-    {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {

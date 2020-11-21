@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { FormattedMessage } from 'gatsby-plugin-intl';
 import { rem } from 'polished';
 import styled, { keyframes } from 'styled-components';
 
 import { recordsApi } from 'src/api/records';
+import { appContent } from 'src/constants/content';
 import { useGetScore } from 'src/store/underwater/selectors';
 import { LoaderElement } from 'src/components/Elements';
 
@@ -64,25 +64,12 @@ export const Summary = () => {
     <LoaderElement hasText isVisible />
   ) : (
     <Wrapper>
-      <Text>
-        <FormattedMessage
-          id="underwater.game.score"
-          values={{ value: gameScore }}
-        />
-      </Text>
+      <Text>{appContent.underwater.game.score(String(gameScore))}</Text>
 
       <Text>
-        <FormattedMessage
-          id="underwater.game.ranking"
-          values={{
-            value:
-              ranking === 0 ? (
-                <FormattedMessage id="underwater.game.tooWeak" />
-              ) : (
-                ranking
-              ),
-          }}
-        />
+        {appContent.underwater.game.ranking(
+          String(ranking === 0 ? appContent.underwater.game.tooWeak() : ranking)
+        )}
       </Text>
     </Wrapper>
   );

@@ -1,7 +1,8 @@
 import React from 'react';
-import { FormattedMessage } from 'gatsby-plugin-intl';
 import { rem } from 'polished';
 import styled from 'styled-components';
+
+import { appContent } from 'src/constants/content';
 
 import {
   SubNavButton,
@@ -43,7 +44,7 @@ export const Experience = () => (
             isCurrent={currentItem === Timeline.Trainings}
             onClick={() => setCurrentItem(Timeline.Trainings)}
           >
-            <FormattedMessage id="surface.sections.experience.trainings" />
+            {appContent.surface.sections.experience.trainings()}
           </SubNavButton>
         </SubNavButtonsWrapper>
 

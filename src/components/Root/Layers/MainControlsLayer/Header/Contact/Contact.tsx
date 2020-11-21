@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { FormattedMessage } from 'gatsby-plugin-intl';
 import { darken, rem } from 'polished';
 import styled from 'styled-components';
 
+import { appContent } from 'src/constants/content';
 import styles from 'src/styles';
 import { breakpoints } from 'src/styles/constants';
 
@@ -144,7 +144,7 @@ export const Contact = ({ isVisible, closeContact }: Props) => {
       <Form isVisible={isVisible} noValidate>
         <InputWrapper>
           <Label htmlFor="#email" isFocused={isInputFocused}>
-            <FormattedMessage id="shared.emailLabel" />
+            {appContent.shared.emailLabel()}
           </Label>
           <Input
             id="email"
@@ -159,7 +159,7 @@ export const Contact = ({ isVisible, closeContact }: Props) => {
         </InputWrapper>
 
         <Label htmlFor="#content" isFocused={isTextareaFocused}>
-          <FormattedMessage id="shared.content" />
+          {appContent.shared.content()}
         </Label>
         <Textarea
           id="content"
@@ -170,11 +170,9 @@ export const Contact = ({ isVisible, closeContact }: Props) => {
         />
 
         <ButtonsWrapper>
-          <Button>
-            <FormattedMessage id="shared.send" />
-          </Button>
+          <Button>{appContent.shared.send()}</Button>
           <CancelButton onClick={closeContact} type="button">
-            <FormattedMessage id="shared.cancel" />
+            {appContent.shared.cancel()}
           </CancelButton>
         </ButtonsWrapper>
       </Form>

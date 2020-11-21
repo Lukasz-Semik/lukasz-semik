@@ -1,5 +1,6 @@
 import React from 'react';
-import { FormattedMessage } from 'gatsby-plugin-intl';
+
+import { appContent } from 'src/constants/content';
 
 import { SkillsList } from '../SkillsList/SkillsList';
 import { SkillsWrapper } from '../SkillsWrapper/SkillsWrapper';
@@ -7,7 +8,7 @@ import { SkillsWrapper } from '../SkillsWrapper/SkillsWrapper';
 export const Other = () => (
   <SkillsWrapper>
     <SkillsList
-      title={<FormattedMessage id="surface.sections.stack.tools" />}
+      title={appContent.surface.sections.stack.tools()}
       skills={[
         'git',
         'github',
@@ -21,7 +22,7 @@ export const Other = () => (
     />
 
     <SkillsList
-      title={<FormattedMessage id="surface.sections.stack.services" />}
+      title={appContent.surface.sections.stack.services()}
       skills={[
         'CircleCI',
         'New Relic',

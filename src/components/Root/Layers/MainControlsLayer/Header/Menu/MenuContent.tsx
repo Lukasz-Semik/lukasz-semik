@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { FormattedMessage } from 'gatsby-plugin-intl';
 import { rem } from 'polished';
 import styled from 'styled-components';
 
+import { appContent } from 'src/constants/content';
 import { useView } from 'src/hooks/useView';
 import { setDayPeriod } from 'src/store/dayCycle/actions';
 import { useGetDayPeriod } from 'src/store/dayCycle/selectors';
@@ -81,26 +81,20 @@ export const MenuContent = ({
     <Menu isVisible={isVisible}>
       {isUnderwaterViewSet ? (
         <>
-          <Button onClick={goSurface}>
-            <FormattedMessage id="shared.goUp" />
-          </Button>
+          <Button onClick={goSurface}>{appContent.shared.goUp()}</Button>
 
           <Button onClick={() => dispatch(setUnderwaterGame())}>
-            <FormattedMessage id="underwater.startGame" />
+            {appContent.underwater.startGame()}
           </Button>
         </>
       ) : (
-        <Button onClick={goUnderwater}>
-          <FormattedMessage id="shared.goDown" />
-        </Button>
+        <Button onClick={goUnderwater}>{appContent.shared.goDown()}</Button>
       )}
 
-      <Button onClick={toggleContact}>
-        <FormattedMessage id="shared.contact" />
-      </Button>
+      <Button onClick={toggleContact}>{appContent.shared.contact()}</Button>
 
       <Button onClick={togglePolicy}>
-        <FormattedMessage id="shared.privacyPolicy" />
+        {appContent.shared.privacyPolicy()}
       </Button>
     </Menu>
   );

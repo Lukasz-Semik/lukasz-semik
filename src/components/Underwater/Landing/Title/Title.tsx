@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useIntl } from 'gatsby-plugin-intl';
 import { rem } from 'polished';
 import styled from 'styled-components';
 
+import { appContent } from 'src/constants/content';
 import { useView } from 'src/hooks/useView';
 import styles from 'src/styles';
 
@@ -49,11 +49,10 @@ const WavingTitle = styled.h2`
 
 export const Title = () => {
   const [isDelayed, setIsDelayed] = useState(false);
-  const intl = useIntl();
   const { goUp } = useView();
 
   const text = useMemo(() => {
-    const letters = intl.formatMessage({ id: 'underwater.title' }).split('');
+    const letters = appContent.underwater.title().split('');
 
     const preparedLetters = letters
       .map((letter, i) => {
@@ -68,7 +67,7 @@ export const Title = () => {
       .filter(letter => letter.value.trim());
 
     return preparedLetters;
-  }, [intl]);
+  }, []);
 
   useEffect(() => {
     setTimeout(setIsDelayed(true));

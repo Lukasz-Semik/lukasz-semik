@@ -1,8 +1,8 @@
 import React from 'react';
-import { FormattedMessage } from 'gatsby-plugin-intl';
 import { rem } from 'polished';
 import styled from 'styled-components';
 
+import { appContent } from 'src/constants/content';
 import { DayPeriod } from 'src/store/dayCycle/types';
 import { breakpoints } from 'src/styles/constants';
 import { MountingOpacityWrapper } from 'src/components/Elements/MountingOpacityWrapper/MountingOpacityWrapper';
@@ -43,28 +43,28 @@ export const Navigation = ({ setNextDayPeriod }: Props) => (
           day={DayPeriod.Day}
           onClick={() => setNextDayPeriod(DayPeriod.Day)}
         >
-          <FormattedMessage id="surface.sections.main.title" />
+          {appContent.surface.sections.main.title()}
         </NavButton>
 
         <NavButton
           day={DayPeriod.Evening}
           onClick={() => setNextDayPeriod(DayPeriod.Evening)}
         >
-          <FormattedMessage id="surface.sections.stack.title" />
+          {appContent.surface.sections.stack.title()}
         </NavButton>
 
         <NavButton
           day={DayPeriod.Night}
           onClick={() => setNextDayPeriod(DayPeriod.Night)}
         >
-          <FormattedMessage id="surface.sections.experience.title" />
+          {appContent.surface.sections.experience.title()}
         </NavButton>
 
         <NavButton
           day={DayPeriod.Morning}
           onClick={() => setNextDayPeriod(DayPeriod.Morning)}
         >
-          <FormattedMessage id="surface.sections.about.title" />
+          {appContent.surface.sections.about.title()}
         </NavButton>
       </InnerWrapper>
     </Nav>
