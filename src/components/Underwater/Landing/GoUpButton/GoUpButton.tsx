@@ -16,8 +16,8 @@ const Button = styled.button`
   letter-spacing: 1px;
   text-align: center;
   opacity: 0;
-  color: rgba(170, 170, 170, 0.8);
-  border: 1px solid ${styles.colors.greyAlpha};
+  color: ${styles.colors.grey};
+  border: 1px solid ${styles.colors.grey};
   border-radius: 3px;
   transform: translateY(100%);
   transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;

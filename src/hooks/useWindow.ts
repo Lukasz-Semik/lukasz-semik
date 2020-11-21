@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { useRwdQuery } from 'src/hooks/useMediaQuery';
 import {
   setIsWindowFocused,
   setIsWindowResized,
@@ -12,6 +13,7 @@ import { useGetIsWindowResized } from 'src/store/windowContext/selectors';
 export const useWindow = () => {
   const dispatch = useDispatch();
   const isWindowResized = useGetIsWindowResized();
+  const { isMediaMd } = useRwdQuery();
 
   useEffect(() => {
     if (window) {
@@ -26,10 +28,10 @@ export const useWindow = () => {
       };
 
       window.onresize = () => {
-        if (!isWindowResized) {
+        if (!isWindowResized && isMediaMd) {
           dispatch(setIsWindowResized(true));
         }
       };
     }
-  }, [dispatch, isWindowResized]);
+  }, [dispatch, isWindowResized, isMediaMd]);
 };

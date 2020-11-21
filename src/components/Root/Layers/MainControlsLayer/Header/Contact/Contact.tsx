@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import Isemail from 'isemail';
+import { isEmpty } from 'lodash';
 import { darken, rem } from 'polished';
 import styled from 'styled-components';
 
+import { appApi } from 'src/api';
 import { appContent } from 'src/constants/content';
 import styles from 'src/styles';
 import { breakpoints } from 'src/styles/constants';
+import { LoaderElement } from 'src/components/Elements';
+import { notifyError, notifySuccess } from 'src/components/Elements/Toast';
 
 import { CloseButton } from '../CloseButton/CloseButton';
 
@@ -58,36 +63,40 @@ const Input = styled.input`
   }
 `;
 
-const InputLineBase = styled.div`
+const InputLineBase = styled.div<{ hasError: boolean }>`
   position: absolute;
   bottom: -5px;
   width: 100%;
   height: 1px;
-  background-color: ${styles.colors.grey};
+  background-color: ${({ hasError }) =>
+    hasError ? styles.colors.hpRed : styles.colors.grey};
 `;
 
-const InputLineColored = styled.div<{ isVisible: boolean }>`
+const InputLineColored = styled.div<{ isVisible: boolean; hasError: boolean }>`
   position: absolute;
   bottom: -5px;
   width: 100%;
   height: 1px;
-  background-color: ${styles.colors.goldDark};
+  background-color: ${({ hasError }) =>
+    hasError ? styles.colors.hpRed : styles.colors.goldDark};
   transform: ${({ isVisible }) => (isVisible ? 'scale(1)' : 'scale(0)')};
   transition: transform 0.5s ease;
 `;
 
-const Label = styled.label<{ isFocused: boolean }>`
+const Label = styled.label<{ isFocused: boolean; hasError: boolean }>`
   font-size: ${rem(18)};
   color: ${({ isFocused }) =>
     isFocused ? styles.colors.goldLight : styles.colors.grey};
   transition: color 0.5s ease;
+
+  ${({ hasError }) => hasError && `color: ${styles.colors.hpRed}`};
 
   @media ${breakpoints.smUp} {
     font-size: ${rem(30)};
   }
 `;
 
-const Textarea = styled.textarea`
+const Textarea = styled.textarea<{ hasError: boolean }>`
   width: 100%;
   height: ${rem(250)};
   margin: ${rem(10)} 0 ${rem(30)};
@@ -100,6 +109,8 @@ const Textarea = styled.textarea`
   outline: none;
   transition: border-color 0.5s ease;
 
+  ${({ hasError }) => hasError && `border-color: ${styles.colors.hpRed}`};
+
   @media ${breakpoints.smUp} {
     height: ${rem(350)};
     font-size: ${rem(20)};
@@ -110,6 +121,17 @@ const Textarea = styled.textarea`
   }
 `;
 
+const ErrorMsg = styled.p`
+  position: absolute;
+  font-family: ${styles.fonts.standard};
+  color: ${styles.colors.hpRed};
+  transform: translateY(80%);
+`;
+
+const ContentError = styled(ErrorMsg)`
+  transform: translateY(-${rem(25)});
+`;
+
 const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -118,6 +140,9 @@ const ButtonsWrapper = styled.div`
 `;
 
 const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: ${rem(150)};
   height: ${rem(30)};
   margin: 0 auto ${rem(10)} auto;
@@ -164,41 +189,106 @@ export const Contact = ({ isVisible, closeContact }: Props) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [isTextareaFocused, setIsTextareaFocused] = useState(false);
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState<string>();
   const [content, setContent] = useState('');
+  const [contentError, setContentError] = useState<string>();
+
+  const submit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
+      let hasError = false;
+
+      try {
+        const isEmailEmpty = isEmpty(email);
+        if (isEmpty(email)) {
+          setEmailError(appContent.shared.required());
+          hasError = true;
+        }
+
+        if (!isEmailEmpty && !Isemail.validate(email)) {
+          setEmailError(appContent.shared.invalidFormat());
+          hasError = true;
+        }
+
+        if (isEmpty(content)) {
+          setContentError(appContent.shared.required());
+          hasError = true;
+        }
+
+        if (hasError) {
+          return;
+        }
+
+        await appApi.sendEmail({ email, content });
+        notifySuccess(appContent.shared.emailSent);
+        closeContact();
+      } catch (err) {
+        notifyError();
+      }
+    },
+    [content, email, closeContact]
+  );
+
+  const hasEmailError = Boolean(emailError);
+  const hasContentError = Boolean(contentError);
 
   return (
     <ContactOverlay isVisible={isVisible}>
-      <Form isVisible={isVisible} noValidate>
+      <Form onSubmit={submit} isVisible={isVisible} noValidate>
         <CloseButton onClick={closeContact} />
         <InputWrapper>
-          <Label htmlFor="#email" isFocused={isInputFocused}>
+          <Label
+            hasError={hasEmailError}
+            htmlFor="#email"
+            isFocused={isInputFocused}
+          >
             {appContent.shared.emailLabel()}
           </Label>
           <Input
             id="email"
             type="email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={e => {
+              setEmailError(undefined);
+              setEmail(e.target.value);
+            }}
             onFocus={() => setIsInputFocused(true)}
             onBlur={() => setIsInputFocused(false)}
           />
-          <InputLineBase />
-          <InputLineColored isVisible={isInputFocused} />
+          <InputLineBase hasError={hasEmailError} />
+          <InputLineColored
+            hasError={hasEmailError}
+            isVisible={isInputFocused}
+          />
+          {emailError && <ErrorMsg>{emailError}</ErrorMsg>}
         </InputWrapper>
 
-        <Label htmlFor="#content" isFocused={isTextareaFocused}>
-          {appContent.shared.content()}
-        </Label>
-        <Textarea
-          id="content"
-          onChange={e => setContent(e.target.value)}
-          value={content}
-          onFocus={() => setIsTextareaFocused(true)}
-          onBlur={() => setIsTextareaFocused(false)}
-        />
+        <div style={{ position: 'relative' }}>
+          <Label
+            hasError={hasContentError}
+            htmlFor="#content"
+            isFocused={isTextareaFocused}
+          >
+            {appContent.shared.content()}
+          </Label>
+          <Textarea
+            id="content"
+            onChange={e => {
+              setContentError(undefined);
+              setContent(e.target.value);
+            }}
+            hasError={hasContentError}
+            value={content}
+            onFocus={() => setIsTextareaFocused(true)}
+            onBlur={() => setIsTextareaFocused(false)}
+          />
+          {contentError && <ContentError>{contentError}</ContentError>}
+        </div>
 
         <ButtonsWrapper>
-          <Button>{appContent.shared.send()}</Button>
+          <Button>
+            <LoaderElement isVisible />
+          </Button>
           <CancelButton onClick={closeContact} type="button">
             {appContent.shared.cancel()}
           </CancelButton>
