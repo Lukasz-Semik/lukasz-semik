@@ -1,8 +1,8 @@
 import React from 'react';
-import { FormattedMessage } from 'gatsby-plugin-intl';
 import { rem } from 'polished';
 import styled from 'styled-components';
 
+import { appContent } from 'src/constants/content';
 import styles from 'src/styles';
 import { PaperModal } from 'src/components/Modals';
 
@@ -23,14 +23,14 @@ interface Props {
 
 const getModalTitle = (isGameOver: boolean, isWindowResized: boolean) => {
   if (isWindowResized) {
-    return 'underwater.game.windowResized.title';
+    return appContent.underwater.game.windowResized.title();
   }
 
   if (isGameOver) {
-    return 'underwater.game.over';
+    return appContent.underwater.game.over();
   }
 
-  return 'underwater.game.pause';
+  return appContent.underwater.game.pause();
 };
 
 export const PauseModal = ({
@@ -45,29 +45,27 @@ export const PauseModal = ({
     isCloseButtonHidden={isWindowResized || isGameOver}
   >
     <PaperModal.Title>
-      <FormattedMessage id={getModalTitle(isGameOver, isWindowResized)} />
+      {getModalTitle(isGameOver, isWindowResized)}
     </PaperModal.Title>
 
     {!isGameOver && !isWindowResized && (
       <PaperModal.ButtonItem onClick={resumeGame}>
-        <FormattedMessage id="underwater.game.resume" />
+        {appContent.underwater.game.resume()}
       </PaperModal.ButtonItem>
     )}
 
     <PaperModal.ButtonItem onClick={restartGame}>
-      <FormattedMessage id="underwater.game.restart" />
+      {appContent.underwater.game.restart()}
     </PaperModal.ButtonItem>
 
     <PaperModal.ButtonItem onClick={backToIntro}>
-      <FormattedMessage id="underwater.game.backToIntro" />
+      {appContent.underwater.game.backToIntro()}
     </PaperModal.ButtonItem>
 
     {isGameOver && <Summary />}
 
     {isWindowResized && (
-      <Text>
-        <FormattedMessage id="underwater.game.windowResized.descriptionGame" />
-      </Text>
+      <Text>{appContent.underwater.game.windowResized.descriptionGame()}</Text>
     )}
   </PaperModal>
 );

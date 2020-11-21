@@ -1,8 +1,8 @@
 import React from 'react';
-import { FormattedMessage } from 'gatsby-plugin-intl';
 import { rem } from 'polished';
 import styled from 'styled-components';
 
+import { appContent } from 'src/constants/content';
 import styles from 'src/styles';
 import { breakpoints } from 'src/styles/constants';
 import { AnimatedLine } from 'src/components/Elements/AnimatedLine/AnimatedLine';
@@ -51,15 +51,11 @@ export const About = () => {
       <InnerWrapper>
         <AnimatedLine lineColor={styles.colors.black} />
         <MountingOpacityWrapper duration={1.5}>
-          <Text>
-            <FormattedMessage id="surface.sections.about.section1" />
-          </Text>
+          <Text>{appContent.surface.sections.about.section1()}</Text>
         </MountingOpacityWrapper>
 
         <MountingOpacityWrapper duration={1.5} delay={0.5}>
-          <Text>
-            <FormattedMessage id="surface.sections.about.section2" />
-          </Text>
+          <Text>{appContent.surface.sections.about.section2()}</Text>
           <AnimatedLine lineColor={styles.colors.black} />
         </MountingOpacityWrapper>
       </InnerWrapper>

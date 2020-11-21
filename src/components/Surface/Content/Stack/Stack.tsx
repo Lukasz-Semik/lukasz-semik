@@ -1,8 +1,8 @@
 import React from 'react';
-import { FormattedMessage } from 'gatsby-plugin-intl';
 import { rem } from 'polished';
 import styled from 'styled-components';
 
+import { appContent } from 'src/constants/content';
 import { breakpoints } from 'src/styles/constants';
 
 import {
@@ -48,7 +48,7 @@ export const Stack = () => (
             isCurrent={currentItem === Skill.Other}
             onClick={() => setCurrentItem(Skill.Other)}
           >
-            <FormattedMessage id="surface.sections.stack.other" />
+            {appContent.surface.sections.stack.other()}
           </SubNavButton>
         </SubNavButtonsWrapper>
 

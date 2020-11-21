@@ -1,5 +1,6 @@
 import React from 'react';
-import { FormattedMessage } from 'gatsby-plugin-intl';
+
+import { appContent } from 'src/constants/content';
 
 import { SkillsList } from '../SkillsList/SkillsList';
 import { SkillsWrapper } from '../SkillsWrapper/SkillsWrapper';
@@ -7,7 +8,7 @@ import { SkillsWrapper } from '../SkillsWrapper/SkillsWrapper';
 export const Frontend = () => (
   <SkillsWrapper>
     <SkillsList
-      title={<FormattedMessage id="surface.sections.stack.commercialExp" />}
+      title={appContent.surface.sections.stack.commercialExp()}
       skills={[
         'HTML',
         'CSS',
@@ -23,7 +24,7 @@ export const Frontend = () => (
     />
 
     <SkillsList
-      title={<FormattedMessage id="surface.sections.stack.nonCommercialExp" />}
+      title={appContent.surface.sections.stack.nonCommercialExp()}
       skills={[
         'Vue + Vuex',
         'Angular 2+ (basics)',

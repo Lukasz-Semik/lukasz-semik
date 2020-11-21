@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useRef } from 'react';
-import { FormattedMessage } from 'gatsby-plugin-intl';
 import gsap from 'gsap';
 import { rem } from 'polished';
 import styled from 'styled-components';
 
+import { appContent } from 'src/constants/content';
 import styles from 'src/styles';
 
 const Button = styled.button`
@@ -54,7 +54,7 @@ export const GoUpButton = ({ onViewGoUp }: Props) => {
 
   return (
     <Button ref={ref} onClick={onViewGoUp}>
-      <FormattedMessage id="underwater.letsMeet" />
+      {appContent.underwater.letsMeet()}
     </Button>
   );
 };
