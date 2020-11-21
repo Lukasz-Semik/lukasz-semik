@@ -1,4 +1,0 @@
-1. Surface - a11y based on layers mechanism
-2. tests for dayCycle
-3. Load properly fonts
-4. Underwater a11y

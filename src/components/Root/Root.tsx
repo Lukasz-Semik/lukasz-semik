@@ -28,7 +28,6 @@ const Root = () => {
   return (
     <Wrapper>
       <LevelsLayer />
-
       <MainControlsLayer />
       <ToastWrapper />
     </Wrapper>

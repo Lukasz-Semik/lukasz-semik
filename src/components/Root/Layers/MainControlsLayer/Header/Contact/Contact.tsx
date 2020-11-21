@@ -186,6 +186,7 @@ interface Props {
 }
 
 export const Contact = ({ isVisible, closeContact }: Props) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [isTextareaFocused, setIsTextareaFocused] = useState(false);
   const [email, setEmail] = useState('');
@@ -196,6 +197,8 @@ export const Contact = ({ isVisible, closeContact }: Props) => {
   const submit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
+      setIsLoading(true);
+
       let hasError = false;
 
       try {
@@ -225,6 +228,7 @@ export const Contact = ({ isVisible, closeContact }: Props) => {
       } catch (err) {
         notifyError();
       }
+      setIsLoading(false);
     },
     [content, email, closeContact]
   );
@@ -287,7 +291,7 @@ export const Contact = ({ isVisible, closeContact }: Props) => {
 
         <ButtonsWrapper>
           <Button>
-            <LoaderElement isVisible />
+            {isLoading ? <LoaderElement isVisible /> : appContent.shared.send()}
           </Button>
           <CancelButton onClick={closeContact} type="button">
             {appContent.shared.cancel()}
