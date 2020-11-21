@@ -4,6 +4,7 @@ import { rem } from 'polished';
 import styled from 'styled-components';
 
 import styles from 'src/styles';
+import { CloseButton } from '../CloseButton/CloseButton';
 
 const Wrapper = styled.div<{ isVisible: boolean }>`
   position: absolute;
@@ -44,15 +45,6 @@ const Wrapper = styled.div<{ isVisible: boolean }>`
   }
 `;
 
-const CloseButton = styled.button`
-  position: absolute;
-  top: ${rem(10)};
-  right: ${rem(10)};
-  font-family: ${styles.fonts.uniq} !important;
-  font-size: ${rem(30)};
-  color: ${styles.colors.white};
-`;
-
 interface Props {
   isVisible: boolean;
   closePolicy: () => void;
@@ -61,7 +53,7 @@ interface Props {
 export const PrivacyPolicy = ({ isVisible, closePolicy }: Props) => {
   return (
     <Wrapper isVisible={isVisible}>
-      <CloseButton onClick={closePolicy}>X</CloseButton>
+      <CloseButton onClick={closePolicy} />
       <h1>Privacy Policy</h1>
       <p>Last updated: November 10, 2020</p>
       <p>

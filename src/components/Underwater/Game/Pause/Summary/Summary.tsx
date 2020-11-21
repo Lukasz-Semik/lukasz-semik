@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { rem } from 'polished';
 import styled, { keyframes } from 'styled-components';
 
-import { recordsApi } from 'src/api/records';
+import { appApi } from 'src/api';
 import { appContent } from 'src/constants/content';
 import { useGetScore } from 'src/store/underwater/selectors';
 import { LoaderElement } from 'src/components/Elements';
+import { notifyError } from 'src/components/Elements/Toast';
 
 const Text = styled.p`
   margin-bottom: ${rem(10)};
@@ -46,14 +47,14 @@ export const Summary = () => {
   useEffect(() => {
     const saveRecord = async () => {
       try {
-        const response = await recordsApi.create(gameScore);
+        const response = await appApi.createRecord(gameScore);
         setRanking(response.data.data.ranking);
 
         setTimeout(() => {
           setIsLoading(false);
         }, 3000);
       } catch (err) {
-        console.log({ err });
+        notifyError();
       }
     };
 

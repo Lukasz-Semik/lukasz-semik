@@ -41,7 +41,7 @@ export const appContent = {
       about: {
         title: () => 'About',
         section1: () =>
-          'Hi, Łukasz here. Just a few words about me. I am a fullstack web developer, project leader and team leader. Apart from my stack, I have experience in working as an expert for future clients, making recruitments, developing the frontend department and its processes.',
+          'Hi, Łukasz here. Just a few words about me. I am the fullstack web developer, project leader and team leader. Apart from my stack, I have experience in working as an expert for future clients, making recruitments, developing the frontend department and its processes.',
         section2: () =>
           'Privately, I am a husband and father of one. Me, my family and our dog love to travel by camper (especially to do windsurfing, wakeboarding or just go for a walk in the mountains). Music (listening to, but also creating with my wife) is also a huge part of my life.',
       },
@@ -62,6 +62,10 @@ export const appContent = {
     emailLabel: () => 'Your e-mail',
     send: () => 'Send',
     content: () => 'Content',
+    required: () => 'Required',
+    invalidFormat: () => 'Invalid format',
+    smthWrong: () => 'Something went wrong',
+    emailSent: () => 'Email successfully sent',
   },
 };
 
