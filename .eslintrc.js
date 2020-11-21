@@ -68,6 +68,7 @@ module.exports = {
           // Absolute imports and other imports such as Vue-style `@/foo`.
           // Anything that does not start with a dot.
           [
+            '^(src/api)(/.*|$)',
             '^(src/assets)(/.*|$)',
             '^(src/constants)(/.*|$)',
             '^(src/helpers)(/.*|$)',

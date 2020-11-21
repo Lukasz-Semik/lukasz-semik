@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@inlet/react-pixi": "^1.1.11",
+    "axios": "^0.21.0",
     "babel-plugin-styled-components": "^1.11.1",
     "gatsby": "^2.24.56",
     "gatsby-plugin-intl": "^0.3.3",
