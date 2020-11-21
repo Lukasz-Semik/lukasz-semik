@@ -3,6 +3,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 import { rem } from 'polished';
 import styled, { keyframes } from 'styled-components';
 
+import { recordsApi } from 'src/api/records';
 import { useGetScore } from 'src/store/underwater/selectors';
 import { LoaderElement } from 'src/components/Elements';
 
@@ -39,11 +40,25 @@ const Wrapper = styled.div`
 
 export const Summary = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [ranking, setRanking] = useState<number>();
   const gameScore = useGetScore();
 
   useEffect(() => {
-    setTimeout(() => setIsLoading(false), 5000);
-  }, []);
+    const saveRecord = async () => {
+      try {
+        const response = await recordsApi.create(gameScore);
+        setRanking(response.data.data.ranking);
+
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 3000);
+      } catch (err) {
+        console.log({ err });
+      }
+    };
+
+    saveRecord();
+  }, [gameScore]);
 
   return isLoading ? (
     <LoaderElement hasText isVisible />
@@ -57,7 +72,17 @@ export const Summary = () => {
       </Text>
 
       <Text>
-        <FormattedMessage id="underwater.game.ranking" values={{ value: 2 }} />
+        <FormattedMessage
+          id="underwater.game.ranking"
+          values={{
+            value:
+              ranking === 0 ? (
+                <FormattedMessage id="underwater.game.tooWeak" />
+              ) : (
+                ranking
+              ),
+          }}
+        />
       </Text>
     </Wrapper>
   );
