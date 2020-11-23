@@ -44,7 +44,7 @@ const IslandWrapper = styled.div`
   }
 `;
 
-export const Surface = () => {
+const Surface = () => {
   const isSurfaceSet = useGetIsViewSet(View.Surface);
 
   return (
@@ -66,3 +66,5 @@ export const Surface = () => {
     </Wrapper>
   );
 };
+
+export default Surface;
