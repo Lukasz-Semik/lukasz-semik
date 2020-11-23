@@ -1,4 +1,5 @@
 import React from 'react';
+import LazyLoad from 'react-lazyload';
 import get from 'lodash/get';
 import styled from 'styled-components';
 
@@ -43,12 +44,14 @@ export const LevelsLayer = () => {
         {isUnderwaterViewMounted && <Underwater />}
       </ItemWrapper>
 
-      <ItemWrapper
-        isVisible={futureView === View.Surface}
-        startingPosition="-100%"
-      >
-        {isSurfaceViewMounted && <Surface />}
-      </ItemWrapper>
+      <LazyLoad height={10} once>
+        <ItemWrapper
+          isVisible={futureView === View.Surface}
+          startingPosition="-100%"
+        >
+          {isSurfaceViewMounted && <Surface />}
+        </ItemWrapper>
+      </LazyLoad>
     </>
   );
 };
