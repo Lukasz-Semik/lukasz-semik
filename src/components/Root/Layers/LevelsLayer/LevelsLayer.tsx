@@ -3,8 +3,7 @@ import get from 'lodash/get';
 import styled from 'styled-components';
 
 import { View } from 'src/store/view/types';
-import { styleOverlay } from 'src/styles/helpers';
-import { LoaderElement } from 'src/components/Elements';
+import { Suspense } from 'src/components/Elements/Suspense/Suspense';
 import { Underwater } from 'src/components/Underwater/Underwater';
 
 import { useView } from '../../../../hooks/useView';
@@ -22,14 +21,6 @@ const ItemWrapper = styled.div.attrs({ id: 'underwater-item' })<{
   width: 100%;
   height: 100%;
   transition: top 2s ease;
-`;
-
-const LoaderWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  ${styleOverlay};
-  background: radial-gradient(#80deea, #14e3fa 60%);
 `;
 
 export const LevelsLayer = () => {
@@ -59,15 +50,9 @@ export const LevelsLayer = () => {
         startingPosition="-100%"
       >
         {isSurfaceViewMounted && (
-          <React.Suspense
-            fallback={
-              <LoaderWrapper>
-                <LoaderElement size={300} hasText isVisible />
-              </LoaderWrapper>
-            }
-          >
+          <Suspense>
             <Surface />
-          </React.Suspense>
+          </Suspense>
         )}
       </ItemWrapper>
     </>
