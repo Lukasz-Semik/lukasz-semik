@@ -243,7 +243,7 @@ export const Contact = ({ isVisible, closeContact }: Props) => {
         <InputWrapper>
           <Label
             hasError={hasEmailError}
-            htmlFor="#email"
+            htmlFor="email"
             isFocused={isInputFocused}
           >
             {appContent.shared.emailLabel()}
@@ -270,7 +270,7 @@ export const Contact = ({ isVisible, closeContact }: Props) => {
         <div style={{ position: 'relative' }}>
           <Label
             hasError={hasContentError}
-            htmlFor="#content"
+            htmlFor="content"
             isFocused={isTextareaFocused}
           >
             {appContent.shared.content()}

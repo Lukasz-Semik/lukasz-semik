@@ -15,15 +15,27 @@ const Wrapper = styled.div`
 
 export const Social = () => (
   <Wrapper>
-    <LinkIcon key={0} index={0} href="https://www.linkedin.com/in/lukasz-semik">
+    <LinkIcon
+      hiddenDescritpion="Linked In"
+      index={0}
+      href="https://www.linkedin.com/in/lukasz-semik"
+    >
       <LinkedinIcon />
     </LinkIcon>
 
-    <LinkIcon key={1} index={1} href="https://www.facebook.com/luki.djpluki">
+    <LinkIcon
+      hiddenDescritpion="Facebook"
+      index={1}
+      href="https://www.facebook.com/luki.djpluki"
+    >
       <FacebookIcon />
     </LinkIcon>
 
-    <LinkIcon key={2} index={2} href="https://github.com/Lukasz-Semik">
+    <LinkIcon
+      hiddenDescritpion="Github"
+      index={2}
+      href="https://github.com/Lukasz-Semik"
+    >
       <GithubIcon />
     </LinkIcon>
   </Wrapper>

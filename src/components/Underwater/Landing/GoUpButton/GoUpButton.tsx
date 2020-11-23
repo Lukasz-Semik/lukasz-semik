@@ -12,7 +12,6 @@ const Button = styled.button`
   padding: ${rem(5)} 0;
   font-size: ${rem(20)};
   font-family: ${styles.fonts.standard};
-  font-weight: 200;
   letter-spacing: 1px;
   text-align: center;
   opacity: 0;
