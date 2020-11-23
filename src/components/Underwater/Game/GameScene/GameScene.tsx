@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { times } from 'lodash';
+import times from 'lodash/times';
 
 import { gameParameters } from 'src/constants/game';
 import { useRwdQuery } from 'src/hooks/useMediaQuery';

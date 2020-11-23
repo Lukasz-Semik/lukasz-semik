@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { random } from 'lodash';
+import random from 'lodash/random';
 import styled from 'styled-components';
 
 import styles from 'src/styles';

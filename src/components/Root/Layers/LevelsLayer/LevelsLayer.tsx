@@ -1,5 +1,5 @@
 import React from 'react';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import styled from 'styled-components';
 
 import { View } from 'src/store/view/types';

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { random } from 'lodash';
+import random from 'lodash/random';
 
 import { useRwdQuery } from 'src/hooks/useMediaQuery';
 

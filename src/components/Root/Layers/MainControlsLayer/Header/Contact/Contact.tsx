@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import Isemail from 'isemail';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { darken, rem } from 'polished';
 import styled from 'styled-components';
 

@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { chunk } from 'lodash';
+import chunk from 'lodash/chunk';
 
 export function usePagination<T>(items: T[], maxItems: number) {
   const chunks = chunk(items, maxItems);

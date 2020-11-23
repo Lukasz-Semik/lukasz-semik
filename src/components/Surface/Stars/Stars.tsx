@@ -1,5 +1,5 @@
 import React from 'react';
-import { times } from 'lodash';
+import times from 'lodash/times';
 
 import { useGetIsDayPeriod } from 'src/store/dayCycle/selectors';
 import { DayPeriod } from 'src/store/dayCycle/types';
