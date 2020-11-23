@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Container } from '@inlet/react-pixi';
-import { times } from 'lodash';
+import times from 'lodash/times';
 
 import { BottomStage } from './BottomStage/BottomStage';
 import { Items } from './Items/Items';

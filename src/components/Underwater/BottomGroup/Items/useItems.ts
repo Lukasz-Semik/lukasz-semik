@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
-import { random, times } from 'lodash';
+import random from 'lodash/random';
+import times from 'lodash/times';
 
 interface Attributes {
   groupWidth: number;

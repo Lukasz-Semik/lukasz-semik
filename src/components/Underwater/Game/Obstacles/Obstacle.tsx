@@ -1,7 +1,8 @@
 import React, { memo, useEffect, useMemo, useRef, useState } from 'react';
 import { Container, Sprite } from '@inlet/react-pixi';
 import gsap from 'gsap';
-import { random, times } from 'lodash';
+import random from 'lodash/random';
+import times from 'lodash/times';
 
 import { useAnimation } from 'src/hooks/useAnimation';
 

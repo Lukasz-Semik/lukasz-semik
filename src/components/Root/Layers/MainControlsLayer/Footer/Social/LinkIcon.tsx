@@ -29,13 +29,24 @@ const LinkStyled = styled.a`
   }
 `;
 
+const Description = styled.p`
+  position: absolute;
+  visibility: hidden;
+`;
+
 interface Props {
   index: number;
   href: string;
+  hiddenDescritpion: string;
   children: React.ReactElement;
 }
 
-export const LinkIcon = ({ children, index, href }: Props) => {
+export const LinkIcon = ({
+  children,
+  index,
+  href,
+  hiddenDescritpion,
+}: Props) => {
   const ref = useRef<HTMLAnchorElement>(null);
 
   const animateMountedItem = useCallback(() => {
@@ -79,6 +90,7 @@ export const LinkIcon = ({ children, index, href }: Props) => {
       target="_blank"
       rel="noopener noreferrer"
     >
+      <Description>{hiddenDescritpion}</Description>
       {children}
     </LinkStyled>
   );

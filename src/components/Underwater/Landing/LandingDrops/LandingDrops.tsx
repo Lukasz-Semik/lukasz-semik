@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { times } from 'lodash';
+import times from 'lodash/times';
 
 import { setUnderwaterStarter } from 'src/store/underwater/actions';
 

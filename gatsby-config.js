@@ -14,9 +14,18 @@ module.exports = {
         theme_color: `#000`,
         display: `standalone`,
         icon: 'src/assets/drop-ico.png',
+        icon_options: {
+          purpose: `any maskable`,
+        },
       },
     },
     'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-plugin-html-attributes',
+      options: {
+        lang: 'en',
+      },
+    },
     {
       resolve: 'gatsby-plugin-layout',
       options: {

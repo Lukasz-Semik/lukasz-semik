@@ -12,7 +12,6 @@ export const SubNavButton = styled.button<{
   width: ${rem(100)};
   padding: ${rem(5)} ${rem(10)};
   font-size: ${rem(14)};
-  font-weight: 200;
   letter-spacing: 1px;
   text-align: center;
   color: ${({ isCurrent }) =>
