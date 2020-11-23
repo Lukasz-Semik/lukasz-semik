@@ -4,7 +4,7 @@ import { BottomGroup } from '../BottomGroup/BottomGroup';
 import { GameScene } from './GameScene/GameScene';
 import { MainPanel } from './MainPanel/MainPanel';
 
-const Game = () => {
+export const Game = () => {
   const [isResetingDrops, setIsResetingDrops] = useState(false);
 
   useEffect(() => {
@@ -26,5 +26,3 @@ const Game = () => {
     </>
   );
 };
-
-export default Game;

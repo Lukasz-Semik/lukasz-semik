@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import get from 'lodash/get';
 import styled from 'styled-components';
 
@@ -24,12 +24,17 @@ const ItemWrapper = styled.div.attrs({ id: 'underwater-item' })<{
 `;
 
 export const LevelsLayer = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const {
     futureView,
     isUnderwaterViewMounted,
     isSurfaceViewMounted,
     setView,
   } = useView();
+
+  useEffect(() => {
+    setTimeout(() => setIsMounted(true), [1000]);
+  }, []);
 
   return (
     <>
@@ -49,7 +54,7 @@ export const LevelsLayer = () => {
         isVisible={futureView === View.Surface}
         startingPosition="-100%"
       >
-        {isSurfaceViewMounted && (
+        {isSurfaceViewMounted && isMounted && (
           <Suspense>
             <Surface />
           </Suspense>
