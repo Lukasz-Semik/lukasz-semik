@@ -11,8 +11,6 @@ import { breakpoints } from 'src/styles/constants';
 import { LoaderElement } from 'src/components/Elements';
 import { notifyError, notifySuccess } from 'src/components/Elements/Toast';
 
-import { CloseButton } from '../CloseButton/CloseButton';
-
 const ContactOverlay = styled.div<{ isVisible: boolean }>`
   position: absolute;
   right: 0;
@@ -20,8 +18,6 @@ const ContactOverlay = styled.div<{ isVisible: boolean }>`
   z-index: 9999;
   display: flex;
   justify-content: center;
-  align-items: center;
-  overflow: scroll;
   width: 100vw;
   height: 100vh;
   background-color: ${styles.colors.black};
@@ -32,6 +28,7 @@ const ContactOverlay = styled.div<{ isVisible: boolean }>`
 `;
 
 const Form = styled.form<{ isVisible: boolean }>`
+  margin-top: ${rem(80)};
   width: 80%;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   color: ${styles.colors.white};
@@ -98,7 +95,7 @@ const Label = styled.label<{ isFocused: boolean; hasError: boolean }>`
 
 const Textarea = styled.textarea<{ hasError: boolean }>`
   width: 100%;
-  height: ${rem(250)};
+  height: ${rem(150)};
   margin: ${rem(10)} 0 ${rem(30)};
   padding: ${rem(5)};
   font-family: ${styles.fonts.standard};
@@ -106,6 +103,7 @@ const Textarea = styled.textarea<{ hasError: boolean }>`
   background-color: transparent;
   color: ${styles.colors.grey};
   border: 1px solid ${styles.colors.grey};
+  resize: none;
   outline: none;
   transition: border-color 0.5s ease;
 
@@ -239,7 +237,6 @@ export const Contact = ({ isVisible, closeContact }: Props) => {
   return (
     <ContactOverlay isVisible={isVisible}>
       <Form onSubmit={submit} isVisible={isVisible} noValidate>
-        <CloseButton onClick={closeContact} />
         <InputWrapper>
           <Label
             hasError={hasEmailError}

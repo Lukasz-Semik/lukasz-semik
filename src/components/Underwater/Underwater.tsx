@@ -4,10 +4,12 @@ import styled from 'styled-components';
 import { useGetIsUnderwaterGame } from 'src/store/underwater/selectors';
 import styles from 'src/styles';
 import { styleOverlay } from 'src/styles/helpers';
+import { Suspense } from 'src/components/Elements/Suspense/Suspense';
 
 import { Background } from './Background/Background';
-import { Game } from './Game/Game';
 import { Landing } from './Landing/Landing';
+
+const Game = React.lazy(() => import('./Game/Game'));
 
 const Wrapper = styled.div`
   ${styleOverlay};
@@ -19,7 +21,15 @@ export const Underwater = () => {
 
   return (
     <Background>
-      <Wrapper>{isGameRunning ? <Game /> : <Landing />}</Wrapper>
+      <Wrapper>
+        {isGameRunning ? (
+          <Suspense>
+            <Game />
+          </Suspense>
+        ) : (
+          <Landing />
+        )}
+      </Wrapper>
     </Background>
   );
 };
