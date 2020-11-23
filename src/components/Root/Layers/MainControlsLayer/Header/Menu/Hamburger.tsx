@@ -105,7 +105,7 @@ export const Hamburger = ({ mainColor }: ColorProps) => {
         tl.to(line1Ref.current, {
           ...commonAttrs,
           x: 0,
-          delay: withDelay ? 2 : undefined,
+          delay: withDelay ? 1 : undefined,
         })
           .to(
             line2Ref.current,

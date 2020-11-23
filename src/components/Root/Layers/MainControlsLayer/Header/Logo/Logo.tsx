@@ -41,7 +41,7 @@ export const Logo = () => {
       tl.to(letterRef1.current, {
         opacity: 1,
         duration: 0.5,
-        delay: 2,
+        delay: 1,
         ease: 'linear',
       })
         .to(letterRef2.current, {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useView } from 'src/hooks/useView';
 import {
@@ -16,13 +16,18 @@ interface Props {
 }
 
 export const LandingContent = ({ isPreparingDrops }: Props) => {
+  const [isMounted, setIsMounted] = useState(false);
   const isIntro = useGetIsUnderwaterIntro();
   const isStarter = useGetIsUnderwaterStarter();
   const { isUnderwaterViewMounted } = useView();
 
+  useEffect(() => {
+    setTimeout(() => setIsMounted(true), 2);
+  }, []);
+
   return isUnderwaterViewMounted ? (
     <>
-      <BottomGroup />
+      {isMounted && <BottomGroup />}
 
       {!isPreparingDrops && <LandingDrops />}
 

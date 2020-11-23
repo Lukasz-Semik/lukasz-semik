@@ -89,6 +89,7 @@ export const LinkIcon = ({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      title={hiddenDescritpion}
     >
       <Description>{hiddenDescritpion}</Description>
       {children}

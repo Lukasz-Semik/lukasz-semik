@@ -267,6 +267,7 @@ export const PrivacyPolicy = ({ isVisible, closePolicy }: Props) => {
         <a
           href="https://www.freeprivacypolicy.com/blog/cookies/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Cookies: What Do They Do?
         </a>
