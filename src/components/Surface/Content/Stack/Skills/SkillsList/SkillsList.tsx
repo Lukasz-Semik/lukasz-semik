@@ -1,35 +1,13 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React from 'react';
+import chunk from 'lodash/chunk';
 import { rem } from 'polished';
 import styled from 'styled-components';
 
 import { breakpoints } from 'src/styles/constants';
-import {
-  PaginationButton,
-  PaginationButtonsWrapper,
-  usePagination,
-} from 'src/components/Elements/Pagination';
+import { CarouselElement } from 'src/components/Elements';
 
-const List = styled.ul`
-  position: relative;
+const Wrapper = styled.div`
   width: 50%;
-  height: ${rem(300)};
-  list-style: none;
-
-  @media ${breakpoints.smUp} {
-    height: ${rem(300)};
-  }
-`;
-
-const ListItem = styled.li`
-  margin-bottom: ${rem(15)};
-  text-align: center;
-  font-size: ${rem(14)};
-  opacity: 0;
-
-  @media ${breakpoints.smUp} {
-    font-size: ${rem(30)};
-  }
 `;
 
 const Title = styled.h3`
@@ -43,44 +21,48 @@ const Title = styled.h3`
   }
 `;
 
+const List = styled.ul`
+  position: relative;
+  height: ${rem(180)};
+  list-style: none;
+
+  @media ${breakpoints.smUp} {
+    height: ${rem(250)};
+  }
+`;
+
+const ListItem = styled.li`
+  margin-bottom: ${rem(15)};
+  text-align: center;
+  font-size: ${rem(14)};
+
+  @media ${breakpoints.smUp} {
+    font-size: ${rem(30)};
+  }
+`;
+
 interface Props {
-  skills: string[];
-  title?: React.ReactNode;
+  title?: string;
+  name: string;
+  items: string[];
 }
 
-export const SkillsList = ({ skills, title }: Props) => {
-  const itemsRef = useRef<HTMLLIElement[] | null[]>([]);
-  const { currentChunkIndex, chunk, goNext, goPrevious } = usePagination<
-    string
-  >(skills, 4);
-
-  useEffect(() => {
-    gsap.to(itemsRef.current, {
-      opacity: 1,
-      duration: 1,
-      stagger: 0.05,
-      ease: 'ease-in',
-    });
-  }, [currentChunkIndex]);
+export const SkillsList = ({ name, items, title }: Props) => {
+  const itemsChunks = chunk(items, 4);
 
   return (
-    <List>
+    <Wrapper>
       {title && <Title>{title}</Title>}
 
-      {chunk.map((item, index) => (
-        <ListItem
-          ref={element => (itemsRef.current[index] = element)}
-          key={item}
-        >
-          {item}
-        </ListItem>
-      ))}
-
-      <PaginationButtonsWrapper>
-        <PaginationButton onClick={goPrevious}>{'<'}</PaginationButton>
-
-        <PaginationButton onClick={goNext}>{'>'}</PaginationButton>
-      </PaginationButtonsWrapper>
-    </List>
+      <CarouselElement>
+        {itemsChunks.map((itemsChunk, index) => (
+          <List key={`${name}-${index}`}>
+            {itemsChunk.map(item => (
+              <ListItem key={item}>{item}</ListItem>
+            ))}
+          </List>
+        ))}
+      </CarouselElement>
+    </Wrapper>
   );
 };

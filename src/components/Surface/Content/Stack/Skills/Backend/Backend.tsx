@@ -8,8 +8,9 @@ import { SkillsWrapper } from '../SkillsWrapper/SkillsWrapper';
 export const Backend = () => (
   <SkillsWrapper>
     <SkillsList
+      name="be-com"
       title={appContent.surface.sections.stack.commercialExp()}
-      skills={[
+      items={[
         'Ruby on Rails',
         'Grape',
         'Capybara',
@@ -21,8 +22,9 @@ export const Backend = () => (
     />
 
     <SkillsList
+      name="be-non-com"
       title={appContent.surface.sections.stack.nonCommercialExp()}
-      skills={[
+      items={[
         'NodeJS (with Express)',
         'Nest',
         'TypeORM',
