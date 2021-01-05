@@ -26,4 +26,4 @@ const items: TimelineItem[] = [
   },
 ];
 
-export const Dev = () => <TimelineList items={items} />;
+export const Dev = () => <TimelineList name="dev" items={items} />;

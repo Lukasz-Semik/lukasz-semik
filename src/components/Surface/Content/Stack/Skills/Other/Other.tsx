@@ -8,8 +8,9 @@ import { SkillsWrapper } from '../SkillsWrapper/SkillsWrapper';
 export const Other = () => (
   <SkillsWrapper>
     <SkillsList
+      name="other-com"
       title={appContent.surface.sections.stack.tools()}
-      skills={[
+      items={[
         'git',
         'github',
         'package managers',
@@ -22,8 +23,9 @@ export const Other = () => (
     />
 
     <SkillsList
+      name="other-non-com"
       title={appContent.surface.sections.stack.services()}
-      skills={[
+      items={[
         'CircleCI',
         'New Relic',
         'Rollbar',

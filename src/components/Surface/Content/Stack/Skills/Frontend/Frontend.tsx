@@ -8,8 +8,9 @@ import { SkillsWrapper } from '../SkillsWrapper/SkillsWrapper';
 export const Frontend = () => (
   <SkillsWrapper>
     <SkillsList
+      name="fe-com"
       title={appContent.surface.sections.stack.commercialExp()}
-      skills={[
+      items={[
         'HTML',
         'CSS',
         'JavaScript/TypeScript',
@@ -24,8 +25,9 @@ export const Frontend = () => (
     />
 
     <SkillsList
+      name="fe-non-com"
       title={appContent.surface.sections.stack.nonCommercialExp()}
-      skills={[
+      items={[
         'Vue + Vuex',
         'Angular 2+ (basics)',
         'Graphql',
