@@ -37,6 +37,7 @@ export const appContent = {
       experience: {
         title: () => 'Experience',
         trainings: () => 'Trainings',
+        other: () => 'Other',
       },
       about: {
         title: () => 'About',

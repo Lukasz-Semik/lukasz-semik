@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const DotsWrapper = styled.div`
+const DotsWrapper = styled.div<{ dotsColor?: string }>`
   position: absolute;
   bottom: 24px;
   left: 50%;
@@ -39,6 +39,7 @@ const DotsWrapper = styled.div`
       width: 12px !important;
       height: 12px !important;
       opacity: 0.4;
+      ${({ dotsColor }) => dotsColor && `background: ${dotsColor} !important;`}
     }
 
     &--selected::before {
@@ -47,9 +48,14 @@ const DotsWrapper = styled.div`
   }
 `;
 
+interface Props {
+  dotsColor?: string;
+}
+
 export const CarouselElement = ({
   children,
-}: React.PropsWithChildren<Record<string, any>>) => {
+  dotsColor,
+}: React.PropsWithChildren<Props>) => {
   const [state, setState] = useState(0);
   const onChange = (value: number) => setState(value);
 
@@ -62,7 +68,7 @@ export const CarouselElement = ({
       </Slider>
 
       {dotsCount > 1 && (
-        <DotsWrapper>
+        <DotsWrapper dotsColor={dotsColor}>
           <Dots number={dotsCount} value={state} onChange={onChange} />
         </DotsWrapper>
       )}
