@@ -2,7 +2,7 @@ import React from 'react';
 
 import type { ListItem } from 'src/components/Elements/List/List';
 
-import { TimelineList } from '../TimeLineList';
+import { TimelineList } from '../TimelineList';
 
 const items: ListItem[] = [
   {
