@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { List, ListItem } from 'src/components/Elements/List/List';
+import type { ListItem } from 'src/components/Elements/List/List';
+
+import { TimelineList } from '../TimeLineList';
 
 const items: ListItem[] = [
   {
@@ -25,4 +27,4 @@ const items: ListItem[] = [
   },
 ];
 
-export const Dev = () => <List items={items} />;
+export const Dev = () => <TimelineList items={items} />;

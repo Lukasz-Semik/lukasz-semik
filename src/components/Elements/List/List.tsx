@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { rem, rgba } from 'polished';
-import styled, { keyframes } from 'styled-components';
+import gsap from 'gsap';
+import { rem } from 'polished';
+import styled from 'styled-components';
 
+import ArrowDown from 'src/assets/surface/chevron-down-solid.svg';
 import styles from 'src/styles';
 import { breakpoints } from 'src/styles/constants';
 import { MountingOpacityWrapper } from 'src/components/Elements/MountingOpacityWrapper/MountingOpacityWrapper';
@@ -27,68 +29,28 @@ const ListStyled = styled.ul`
   }
 `;
 
-const ListItem = styled.li`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: ${rem(20)};
-  width: 100%;
-  font-size: ${rem(14)};
+const ArrowWrapper = styled.div`
+  height: ${rem(10)};
+  opacity: 0.4;
 `;
 
-const Title = styled.h4`
-  margin-bottom: ${rem(10)};
-  padding: 0 ${rem(20)};
-  text-align: center;
-  font-size: ${rem(25)};
-
-  @media ${breakpoints.smUp} {
-    font-size: ${rem(30)};
-  }
-`;
-
-const ScrollIndicator = styled.div`
+const ScrollIndicator = styled.div<{ scrollColor: string }>`
   position: fixed;
-  bottom: -${rem(45)};
+  bottom: -${rem(25)};
   left: 50%;
-  height: ${rem(35)};
-  width: ${rem(20)};
-  border: 2px solid ${rgba(styles.colors.greyAlpha, 0.4)};
-  border-radius: ${rem(10)};
+  color: ${({ scrollColor }) => scrollColor};
   transform: translateX(-50%);
-`;
 
-const scrollAnimation = keyframes`
-  0% {
-    top: ${rem(8)};
-    opacity: 1;
+  svg {
+    width: ${rem(20)};
+    height: ${rem(15)};
+    transition: color 0.3s ease;
+
+    @media ${styles.breakpoints.smUp} {
+      width: ${rem(30)};
+      height: ${rem(25)};
+    }
   }
-
-  50% {
-    top: ${rem(12)};
-    opacity: 1;
-  }
-
-  100% {
-    top: ${rem(16)};
-    opacity: 0;
-  }
-`;
-
-const ScrollIndicatorElement = styled.div`
-  position: absolute;
-  top: ${rem(8)};
-  left: 50%;
-  width: 3px;
-  height: 5px;
-  background-color: ${rgba(styles.colors.greyAlpha, 0.4)};
-  animation: ${scrollAnimation} 2s infinite;
-  transform: translateX(-50%);
-`;
-
-const Description = styled.p`
-  font-size: ${rem(16)};
 `;
 
 export interface ListItem {
@@ -98,9 +60,15 @@ export interface ListItem {
 
 interface Props {
   items: ListItem[];
+  className?: string;
+  renderItem: (item: ListItem) => React.ReactNode;
+  scrollColor: string;
 }
 
-export const List = ({ items }: Props) => {
+export const List = ({ items, className, renderItem, scrollColor }: Props) => {
+  const arrow1Ref = useRef<HTMLDivElement>(null);
+  const arrow2Ref = useRef<HTMLDivElement>(null);
+
   const listRef = useRef<HTMLUListElement>(null);
   const [isScrollIndicatorVisible, setIsScrollIndicatorVisible] = useState(
     false
@@ -112,21 +80,47 @@ export const List = ({ items }: Props) => {
         (listRef?.current?.scrollHeight || 0) >
         (listRef?.current?.clientHeight || 0);
       setIsScrollIndicatorVisible(isVisible);
-    }, 0);
+
+      if (isVisible) {
+        const tl = gsap.timeline({ repeat: -1 });
+        tl.to(arrow1Ref.current, {
+          opacity: 1,
+          duration: 1,
+        })
+          .to(
+            arrow2Ref.current,
+            {
+              opacity: 1,
+              duration: 1,
+            },
+            '-=0.5'
+          )
+          .to(arrow1Ref.current, { opacity: 0.4, duration: 1 }, '-=0.5')
+          .to(
+            arrow2Ref.current,
+            {
+              opacity: 0.4,
+              duration: 1,
+            },
+            '-=0.5'
+          );
+      }
+    }, 300);
   }, []);
 
   return (
-    <ListStyled ref={listRef}>
+    <ListStyled className={className} ref={listRef}>
       <MountingOpacityWrapper duration={1}>
-        {items.map(item => (
-          <ListItem key={item.title}>
-            <Title>{item.title}</Title>
-            {item.description && <Description>{item.description}</Description>}
-          </ListItem>
-        ))}
+        {items.map(renderItem)}
+
         {isScrollIndicatorVisible && (
-          <ScrollIndicator>
-            <ScrollIndicatorElement />
+          <ScrollIndicator scrollColor={scrollColor}>
+            <ArrowWrapper ref={arrow1Ref}>
+              <ArrowDown />
+            </ArrowWrapper>
+            <ArrowWrapper ref={arrow2Ref}>
+              <ArrowDown />
+            </ArrowWrapper>
           </ScrollIndicator>
         )}
       </MountingOpacityWrapper>

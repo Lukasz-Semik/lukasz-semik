@@ -1,68 +1,64 @@
 import React from 'react';
-import chunk from 'lodash/chunk';
-import { rem } from 'polished';
+import { rem, rgba } from 'polished';
 import styled from 'styled-components';
 
+import styles from 'src/styles';
 import { breakpoints } from 'src/styles/constants';
-import { CarouselElement } from 'src/components/Elements';
+import { List, ListItem } from 'src/components/Elements/List/List';
 
 const Wrapper = styled.div`
-  width: 50%;
+  width: 95%;
 `;
 
-const Title = styled.h3`
-  margin-bottom: ${rem(20)};
-  font-size: ${rem(15)};
-  text-align: center;
-
-  @media ${breakpoints.smUp} {
-    margin-bottom: ${rem(40)};
-    font-size: ${rem(30)};
-  }
+const ListItemStyled = styled.li`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 `;
 
-const List = styled.ul`
+const ListItemTitle = styled.h4`
   position: relative;
-  height: ${rem(180)};
-  list-style: none;
+  margin-bottom: ${rem(10)};
+  text-align: center;
+  font-size: ${rem(18)};
+  color: ${styles.colors.black};
 
   @media ${breakpoints.smUp} {
-    height: ${rem(250)};
+    font-size: ${rem(25)};
   }
 `;
 
-const ListItem = styled.li`
-  margin-bottom: ${rem(15)};
-  text-align: center;
-  font-size: ${rem(14)};
-
-  @media ${breakpoints.smUp} {
-    font-size: ${rem(30)};
-  }
+const Description = styled.span`
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  font-size: ${rem(12)};
+  color: ${styles.colors.greyAlpha};
+  transform: translateX(100%) translateY(-50%);
 `;
 
 interface Props {
-  title?: string;
-  name: string;
-  items: string[];
+  items: ListItem[];
 }
 
-export const SkillsList = ({ name, items, title }: Props) => {
-  const itemsChunks = chunk(items, 4);
-
+export const SkillsList = ({ items }: Props) => {
   return (
     <Wrapper>
-      {title && <Title>{title}</Title>}
-
-      <CarouselElement>
-        {itemsChunks.map((itemsChunk, index) => (
-          <List key={`${name}-${index}`}>
-            {itemsChunk.map(item => (
-              <ListItem key={item}>{item}</ListItem>
-            ))}
-          </List>
-        ))}
-      </CarouselElement>
+      <List
+        items={items}
+        renderItem={item => (
+          <ListItemStyled key={item.title}>
+            <ListItemTitle>
+              {item.title}
+              {item.description && (
+                <Description>{item.description}</Description>
+              )}
+            </ListItemTitle>
+          </ListItemStyled>
+        )}
+        scrollColor={rgba(styles.colors.black, 0.7)}
+      />
     </Wrapper>
   );
 };

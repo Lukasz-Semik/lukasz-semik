@@ -1,36 +1,49 @@
 import React from 'react';
 
-import { appContent } from 'src/constants/content';
-
 import { SkillsList } from '../SkillsList/SkillsList';
 import { SkillsWrapper } from '../SkillsWrapper/SkillsWrapper';
 
+const items = [
+  {
+    title: 'Ruby on Rails',
+  },
+  {
+    title: 'Postgres',
+  },
+  {
+    title: 'Active Admin',
+  },
+  {
+    title: 'REST API',
+  },
+  {
+    title: 'JSON:API',
+  },
+  {
+    title: 'JavaScript/TypeScript',
+  },
+  {
+    title: 'GraphQL',
+  },
+  {
+    title: 'NestJS',
+  },
+  {
+    title: 'MongoDB',
+  },
+  {
+    title: 'TypeORM',
+  },
+  {
+    title: 'NodeJS (with Express)',
+  },
+  {
+    title: 'Mocha/Chai',
+  },
+];
+
 export const Backend = () => (
   <SkillsWrapper>
-    <SkillsList
-      name="be-com"
-      title={appContent.surface.sections.stack.commercialExp()}
-      items={[
-        'Ruby on Rails',
-        'Grape',
-        'Capybara',
-        'Carrierwave',
-        'Active Admin',
-        'JsonApi',
-        'Postgres',
-      ]}
-    />
-
-    <SkillsList
-      name="be-non-com"
-      title={appContent.surface.sections.stack.nonCommercialExp()}
-      items={[
-        'NodeJS (with Express)',
-        'Nest',
-        'TypeORM',
-        'Sequelize',
-        'Socket.IO',
-      ]}
-    />
+    <SkillsList items={items} />
   </SkillsWrapper>
 );
