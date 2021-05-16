@@ -4,6 +4,7 @@ export const appContent = {
     title: () => "Hi! I'm Łukasz",
     startGame: () => 'Start the game',
     letsMeet: () => "Let's meet",
+    clickDrop: () => 'Click the drop :)',
     game: {
       new: () => 'New game',
       over: () => 'Game over',
