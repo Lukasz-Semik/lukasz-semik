@@ -1,7 +1,6 @@
 export enum Timeline {
-  NonDev = 'nonDev',
   Dev = 'dev',
-  Trainings = 'trainings',
+  Other = 'other',
 }
 
 export interface TimelineItem {

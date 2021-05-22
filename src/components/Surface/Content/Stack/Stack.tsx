@@ -15,7 +15,7 @@ import { Skill } from './types';
 
 const SkillsWrapper = styled.div`
   position: absolute;
-  top: ${rem(140)};
+  top: ${rem(120)};
   left: 50%;
   display: flex;
   justify-content: center;
@@ -23,7 +23,7 @@ const SkillsWrapper = styled.div`
   transform: translateX(-50%);
 
   @media ${breakpoints.smUp} {
-    top: ${rem(180)};
+    top: ${rem(160)};
   }
 `;
 

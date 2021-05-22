@@ -29,22 +29,16 @@ export const Experience = () => (
       <>
         <SubNavButtonsWrapper isClicked={isClicked}>
           <SubNavButton
-            isCurrent={currentItem === Timeline.NonDev}
-            onClick={() => setCurrentItem(Timeline.NonDev)}
-          >
-            Non-dev
-          </SubNavButton>
-          <SubNavButton
             isCurrent={currentItem === Timeline.Dev}
             onClick={() => setCurrentItem(Timeline.Dev)}
           >
             Dev
           </SubNavButton>
           <SubNavButton
-            isCurrent={currentItem === Timeline.Trainings}
-            onClick={() => setCurrentItem(Timeline.Trainings)}
+            isCurrent={currentItem === Timeline.Other}
+            onClick={() => setCurrentItem(Timeline.Other)}
           >
-            {appContent.surface.sections.experience.trainings()}
+            {appContent.surface.sections.experience.other()}
           </SubNavButton>
         </SubNavButtonsWrapper>
 

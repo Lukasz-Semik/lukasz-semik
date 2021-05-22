@@ -57,7 +57,7 @@ export const MenuContent = ({
   toggleContact,
   togglePolicy,
 }: Props) => {
-  const { goDown, goUp, isUnderwaterViewSet } = useView();
+  const { goDown, goUp, isUnderwaterViewSet, isSurfaceViewMounted } = useView();
   const dispatch = useDispatch();
   const dayPeriod = useGetDayPeriod();
 
@@ -83,9 +83,11 @@ export const MenuContent = ({
         <>
           <Button onClick={goSurface}>{appContent.shared.goUp()}</Button>
 
-          <Button onClick={() => dispatch(setUnderwaterGame())}>
-            {appContent.underwater.startGame()}
-          </Button>
+          {!isSurfaceViewMounted && (
+            <Button onClick={() => dispatch(setUnderwaterGame())}>
+              {appContent.underwater.startGame()}
+            </Button>
+          )}
         </>
       ) : (
         <Button onClick={goUnderwater}>{appContent.shared.goDown()}</Button>

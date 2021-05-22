@@ -1,40 +1,57 @@
 import React from 'react';
 
-import { appContent } from 'src/constants/content';
-
 import { SkillsList } from '../SkillsList/SkillsList';
 import { SkillsWrapper } from '../SkillsWrapper/SkillsWrapper';
 
+const items = [
+  {
+    title: 'HTML/CSS',
+  },
+  {
+    title: 'SCSS/SASS',
+  },
+  {
+    title: 'JavaScript/TypeScript',
+  },
+  {
+    title: 'React + ecosystem',
+  },
+  {
+    title: 'GraphQL/Apollo Client',
+  },
+  {
+    title: 'Jest/Enzyme/React Testing Library',
+  },
+  {
+    title: 'Redux + ecosystem',
+  },
+  {
+    title: 'CSSModules/styled-components',
+  },
+  {
+    title: 'PWA/SSR/a11y',
+  },
+  {
+    title: 'Gatsby',
+  },
+  {
+    title: 'Cypress',
+  },
+  {
+    title: 'GSAP',
+  },
+  {
+    title: 'Vue + Vuex',
+    description: '(Basics)',
+  },
+  {
+    title: 'Angular 2+',
+    description: '(Basics)',
+  },
+];
+
 export const Frontend = () => (
   <SkillsWrapper>
-    <SkillsList
-      name="fe-com"
-      title={appContent.surface.sections.stack.commercialExp()}
-      items={[
-        'HTML',
-        'CSS',
-        'JavaScript/TypeScript',
-        'React + ecosystem',
-        'Redux',
-        'Jest',
-        'Enzyme/React Testing Library',
-        'Cypress',
-        'CSSModules/styled-components',
-        'PWA/SSR/a11y',
-      ]}
-    />
-
-    <SkillsList
-      name="fe-non-com"
-      title={appContent.surface.sections.stack.nonCommercialExp()}
-      items={[
-        'Vue + Vuex',
-        'Angular 2+ (basics)',
-        'Graphql',
-        'Gatsby',
-        'jQuery',
-        'SASS/SCSS',
-      ]}
-    />
+    <SkillsList items={items} />
   </SkillsWrapper>
 );
