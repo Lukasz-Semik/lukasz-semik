@@ -28,7 +28,7 @@ export const useView = () => {
   const isUnderwaterViewMounted = useGetIsViewMounted(View.Underwater);
   const isSurfaceViewMounted = useGetIsViewMounted(View.Surface);
   const isUnderwaterViewSet = useGetIsViewSet(View.Underwater);
-  const isSurfaceViewSet = useGetIsViewSet(View.Underwater);
+  const isSurfaceViewSet = useGetIsViewSet(View.Surface);
 
   return {
     futureView,
