@@ -34,7 +34,7 @@
     "gatsby-plugin-typescript": "^2.4.19",
     "gsap": "^3.5.1",
     "isemail": "^3.2.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "pixi.js": "^5.2.0",
     "polished": "^3.6.6",
     "react": "^16.13.1",
